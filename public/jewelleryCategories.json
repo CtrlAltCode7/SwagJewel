@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Rings",
+    "links": [
+      {
+        "label": "Engagement Rings",
+        "url": "/engagement-rings"
+      },
+      {
+        "label": "Wedding Rings",
+        "url": "/wedding-rings"
+      },
+      {
+        "label": "Promise Rings",
+        "url": "/promise-rings"
+      }
+    ]
+  },
+  {
+    "title": "Necklaces",
+    "links": [
+      {
+        "label": "Pendants",
+        "url": "/pendants"
+      },
+      {
+        "label": "Chains",
+        "url": "/chains"
+      },
+      {
+        "label": "Statement Necklaces",
+        "url": "/statement-necklaces"
+      }
+    ]
+  },
+  {
+    "title": "Earrings",
+    "links": [
+      {
+        "label": "Stud Earrings",
+        "url": "/stud-earrings"
+      },
+      {
+        "label": "Hoop Earrings",
+        "url": "/hoop-earrings"
+      },
+      {
+        "label": "Drop Earrings",
+        "url": "/drop-earrings"
+      }
+    ]
+  }
+]
