@@ -11,16 +11,14 @@ export default function ActionAreaCard({ image, title, description }) {
     <Link to={"home"}>
       <Card
         sx={{
-          maxWidth: title && description ? 380 : "455px",
+          maxWidth: title && description ? 345 : "455px",
           m: 1,
           width: "100%",
           objectFit: !title && !description ? "contain" : "fill",
-          // height: "400px",
+          // height: "300px",
           // objectFit: "inherit"
           // backgroundColor: "red"
-          borderRadius: ".5rem"
         }}
-        elevation={5}
       >
         <CardActionArea>
           <CardMedia

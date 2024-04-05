@@ -23,6 +23,7 @@ function ListedItems({
       textAlign={footer ? "center" : "left"}
       sx={{
         textDecoration: "none",
+        flexWrap: "wrap"
       }}
     >
       <Link to={redirect} style={removeUnderline}>

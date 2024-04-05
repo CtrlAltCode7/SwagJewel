@@ -9,7 +9,7 @@ import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AdbIcon from "@mui/icons-material/Adb";
-import StullerLogo from "../../assets/stuller-logo-desktop.svg";
+import StullerLogo from "../../assets/swag-logo.png";
 import {
   Collapse,
   Drawer,

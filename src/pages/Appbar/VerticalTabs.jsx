@@ -19,7 +19,7 @@ function TabPanel(props) {
       {...other}
       style={{
         backgroundColor: "#4C5A63",
-        width: "-webkit-fill-available"
+        width: "-webkit-fill-available",
       }}
     >
       {value === index && (
@@ -69,8 +69,10 @@ export default function VerticalTabs({ tabData }) {
         flexGrow: 1,
         bgcolor: "background.paper",
         display: "flex",
-        height: "100vh",
+        width: "100%",
+        // height: "100vh",
         // backgroundColor: "red",
+        overflowY: "scroll !important", // or "scroll" for always visible scrollbar
       }}
     >
       <Tabs
@@ -85,9 +87,11 @@ export default function VerticalTabs({ tabData }) {
           borderColor: "divider",
           minWidth: "fit-content",
           backgroundColor: "#697780",
+          alignItems: "flex-start",
+
           "& .MuiTab-root.Mui-selected": {
             color: "#fff",
-            backgroundColor: "#4C5A63"
+            backgroundColor: "#4C5A63",
           },
         }}
         TabIndicatorProps={{ style: { background: "#fff" } }}
@@ -99,9 +103,11 @@ export default function VerticalTabs({ tabData }) {
             {...a11yProps(index)}
             onMouseEnter={(event) => handleMouseEnter(event, index)}
             sx={{
-            //   backgroundColor: "red",
               color: "#fff",
-      
+              textAlign: "end",
+              overflowY: 'auto',
+              alignItems: "flex-start",
+
             }}
           />
         ))}
@@ -114,6 +120,8 @@ export default function VerticalTabs({ tabData }) {
           sx={
             {
               // backgroundColor: "red",
+              overflowY: 'auto',
+
             }
           }
         >

@@ -14,6 +14,10 @@ import AppBar from "../Appbar/Appbar";
 import TabsComponent from "../Appbar/Tabs";
 import BasicTabs from "../Appbar/Tabs";
 import { Link } from "react-router-dom";
+import Banner from "../Banner";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { makeStyles } from "@mui/styles";
+import {ImageSlider} from "../../components/carousel/ImageSlider";
 
 function Index() {
   const cardData = [
@@ -26,11 +30,6 @@ function Index() {
       image: "https://meteor.stullercloud.com/das/128969968",
       title: "Religious Jewelry",
       description: "Browse designs made to express devotion.",
-    },
-    {
-      image: "https://meteor.stullercloud.com/das/128969793?&border=1",
-      title: "Equipment & Tools",
-      description: "Take advantage of exclusive pricing.",
     },
     {
       image: "https://meteor.stullercloud.com/das/128969793?&border=1",
@@ -58,6 +57,55 @@ function Index() {
     // Add more objects as needed for additional cards
   ];
   const tabLabels = ["Engagement Rings", "Item Two", "Item Three"];
+
+  // const useStyles = makeStyles((theme) => ({
+  //   banner: {
+  //     marginBottom: 4,
+  //   },
+  //   itemBanner: {
+  //     backgroundColor: "#f0f0f0",
+  //     padding: 2,
+  //     borderRadius: 1,
+  //   },
+  //   title: {
+  //     fontSize: "1.5rem",
+  //     fontWeight: "bold",
+  //     marginBottom: 1,
+  //   },
+  //   description: {
+  //     marginBottom: 2,
+  //   },
+  // }));
+  // const classes = useStyles();
+  const data = [
+    {
+      subtitle: "TOP STAFF PICK",
+      title: "Shop Rings",
+      description: "Proin interdum magna primis id consequat dictum",
+      buttonText: "Shop now",
+      buttonLink: "home",
+      backgroundImage:
+        "https://dreamingtheme.kiendaotac.com/html/ysera/assets/images/banner-home-2.jpg",
+    },
+    {
+      subtitle: "TOP STAFF PICK",
+      title: "Shop Rings",
+      description: "Proin interdum magna primis id consequat dictum",
+      buttonText: "Shop now",
+      buttonLink: "home",
+      backgroundImage:
+        "https://dreamingtheme.kiendaotac.com/html/ysera/assets/images/slider-thumb5.jpg",
+    },
+    {
+      subtitle: "TOP STAFF PICK",
+      title: "Shop Rings",
+      description: "Proin interdum magna primis id consequat dictum",
+      buttonText: "Shop now",
+      buttonLink: "home",
+      backgroundImage:
+        "https://dreamingtheme.kiendaotac.com/html/ysera/assets/images/banner-home-5.jpg",
+    },
+  ];
   return (
     <>
       <ResponsiveAppBar />
@@ -72,21 +120,19 @@ function Index() {
         <Typography
           component={"span"}
           className="overlay-button"
-          sx={{
-            width: "max-content",
-            textAlign: "end",
-          }}
+          sx={{ typography: { sm: "body1", xs: "body2", md: "h6", lg: "h6" } }}
         >
-          <Typography variant="subtitle1">
+          <Typography>
             Discover styles designed to capture every step on the
           </Typography>
-          <Typography variant="subtitle1">journey of a lifetime.</Typography>
+          <Typography variant="h6">journey of a lifetime.</Typography>
           <Link to={"home"}>
             <Button
               variant="outlined"
               sx={{
                 borderColor: "ActiveBorder",
                 color: "ActiveBorder",
+                textAlign: "center",
               }}
             >
               Shop now
@@ -113,9 +159,15 @@ function Index() {
         title="Dynamic Title"
         description="Dynamic Description"
       /> */}
-      <Stack
+      {/* <Stack
         flexDirection={"row"}
-        sx={{ p: 2, justifyContent: "space-between" }}
+        sx={{
+          p: 20,
+          justifyContent: "center",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "100px",
+        }}
       >
         {cardData1?.map((card, index) => (
           // <Box key={index} sx={{}}>
@@ -127,10 +179,41 @@ function Index() {
           />
           // </Box>
         ))}
-      </Stack>
+      </Stack> */}
+      {/* <Grid2 item lg={6} md={6} sm={12} className={classes.banner}>
+        <div className={classes.itemBanner}>
+          <div className="inner">
+            <div className="banner-content">
+              <Typography variant="h6" className="ysera-subtitle">
+                TOP STAFF PICK
+              </Typography>
+              <Typography variant="h4" className={classes.title}>
+                Shop Rings
+              </Typography>
+              <Typography variant="body1" className={classes.description}>
+                Proin interdum magna primis id consequat dictum
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                className="button btn-shop-now"
+              >
+                Shop now
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Grid2> */}
+      {/* <Banner /> */}
       <Stack
         flexDirection={"row"}
-        sx={{ p: 2, justifyContent: "space-evenly" }}
+        sx={{
+          p: 9,
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "1.5rem",
+          backgroundColor: "#f6f6f6",
+        }}
       >
         {cardData?.map((card, index) => (
           // <Box key={index} sx={{}}>
@@ -143,73 +226,46 @@ function Index() {
           // </Box>
         ))}
       </Stack>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          padding: "1rem",
+        }}
+      >
+        {data &&
+          data.map((item, index) => (
+            <>
+              <div
+                id="Mutliback1"
+                style={{
+                  // backgroundImage: uri(
+                  //   "c"
+                  // ),
+                  backgroundImage: `url(${item.backgroundImage})`,
+                }}
+              >
+                <h4 className="ysera-subtitle">{item.subtitle}</h4>
+                <h3 className="title">{item.title}</h3>
+                <div className="description">{item.description}</div>
+                <Link to={item.buttonLink} className="button btn-shop-now">
+                  {item.buttonText}
+                </Link>
+              </div>
+            </>
+          ))}
+      </Box>
+      {/* <Grid2>
+        <Typography></Typography>
+      </Grid2> */}
       <DBCarousel />
-      <ListedText />
+      {/* <ImageSlider />
+      <ListedText /> */}
       <Footer />
 
       <StickyFooter />
-      {/* <div
-        style={{
-          position: "sticky",
-          bottom: 0,
-          background: "#000",
-          color: "#fff",
-        }}
-      >
-        <h5>Anywhere Fitness, a TT44 Company</h5>
-      </div> */}
-
-      {/* <div
-        // style={{
-        //   position: "relative",
-        //   backgroundImage: `url("https://via.placeholder.com/500")`,
-        //   backgroundRepeat: 'no-repeat',
-        //   width:'250px' 
-        // }}
-        style={{  
-          backgroundImage: "url(" + "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" + ")",
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div style={{ position: "absolute" }}>
-          <button>hello</button>
-        </div>
-      </div> */}
-      {/* <div
-        style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1589308078059-be1415eab4c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")`,
-          width: 400,
-          height: 200,
-          // position: "relative",
-          // display: "flex",
-          // justifyContent: "end",
-          // alignItems: "center",
-          display: "grid",
-          placeItems: "end"
-        }}
-      >
-        <div
-          style={{
-            // position: "absolute",
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            position: "relative",
-            top: "21%",
-            paddingRight: "2.1rem",
-            gap: "0.25rem",
-            textAlignLast: "end"
-          }}
-        >
-          <span>Discover styles designed to capture every step on the</span>
-          <span>Hello World!</span>
-
-          
-          <span><Button style={{ display: "inline-block"}}>hh</Button></span>
-        </div>
-      </div> */}
     </>
   );
 }

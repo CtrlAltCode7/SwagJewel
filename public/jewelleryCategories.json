@@ -49,5 +49,22 @@
         "url": "/drop-earrings"
       }
     ]
+  },
+  {
+    "title": "Earrings",
+    "links": [
+      {
+        "label": "Stud Earrings",
+        "url": "/stud-earrings"
+      },
+      {
+        "label": "Hoop Earrings",
+        "url": "/hoop-earrings"
+      },
+      {
+        "label": "Drop Earrings",
+        "url": "/drop-earrings"
+      }
+    ]
   }
 ]

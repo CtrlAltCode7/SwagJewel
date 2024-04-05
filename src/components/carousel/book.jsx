@@ -12,9 +12,12 @@ import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function BookCard({ book }) {
-  console.log('book 1234', book);
+  console.log("book 1234", book);
   return (
-    <Card sx={{ width: "250px", height: "335px" }}>
+    <Card
+      sx={{ width: "250px", height: "325px", border: "1px solid #eee" }}
+      elevation={1}
+    >
       <CardMedia
         component="img"
         height="200"
@@ -29,9 +32,9 @@ export default function BookCard({ book }) {
           </Typography>
         </Link>
 
-        <Typography variant="body2" color="text.secondary">
+        {/* <Typography variant="body2" color="text.secondary">
           {book.author}
-        </Typography>
+        </Typography> */}
       </CardContent>
     </Card>
   );

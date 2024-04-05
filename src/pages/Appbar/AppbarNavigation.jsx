@@ -66,13 +66,13 @@ function AppbarNavigation({categories}) {
       style={{
         display: "flex",
         // justifyContent: { xs: "none", md: "none", lg: "space-between"},
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         // gap: "8rem",
-        columnGap: "8rem",
-        padding: "1rem 3rem 1rem 1rem",
+        columnGap: "7rem",
+        padding: "2rem 5rem 2rem 2rem",
         flexWrap: "wrap",
         backgroundColor: "#4C5A63",
-        height: "100vh"
+        // height: "100vh"
       }}
     >
       {categories?.map((section, index) => (
@@ -84,7 +84,7 @@ function AppbarNavigation({categories}) {
             sx={{
               color: "#fff",
             }}
-            variant="subtitle2"
+            variant="h6"
           >{section.title}</Typography>
           {section.links.map((link, linkIndex) => (
             <li key={linkIndex}>

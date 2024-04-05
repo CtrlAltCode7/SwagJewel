@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -52,6 +52,8 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = useState(false);
   const [mouseOverTabs, setMouseOverTabs] = useState(false);
+  const [productCategory, setProductCategory] = useState([]);
+
   const boxRef = useRef(null);
 
   const handleChange = (event, newValue) => {
@@ -94,7 +96,7 @@ export default function BasicTabs() {
     color: "#fff",
   };
 
-  const tabData = [
+  let tabData = [
     {
       label: "Engagement Rings",
       content: <AppbarNavigation categories={jewelleryCategories} />,
@@ -143,6 +145,22 @@ export default function BasicTabs() {
     // Add more tab data as needed
   ];
 
+  tabData = productCategory.map(item => ({
+    label: item.Category.Name,
+    content: tabData.find(tab => tab.label === item.Category.Name)?.content || null, // Retain content from original tabData if available
+  }));
+
+  console.log('tabData', tabData)
+
+  const productlabel = productCategory.map((category,index)=>{
+    return {
+      label: category.Category.Name
+    }
+  })
+
+  console.log('productlabel', productlabel)
+
+
   const tabLabels = [
     "Products",
     "Services",
@@ -150,6 +168,28 @@ export default function BasicTabs() {
     "Events & Training",
     "Educational Resources",
   ];
+
+  const getProductCategories = async () => {
+    try {
+      const response = await fetch(`https://swagjewelers.com/api/category`)
+        .then((res) => res.json())
+        .then((data) => {
+          return data;
+        });
+
+      console.log("API response: ??????????", response);
+      setProductCategory(response.data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(()=>{
+    getProductCategories()
+
+  },[])
+
+  console.log('productCategory', productCategory)
 
   return (
     <Box
@@ -278,7 +318,7 @@ export default function BasicTabs() {
             index={1}
             onMouseLeave={(e) => handleMouseLeave(e, 1)}
             sx={{
-              height: "100vh",
+              // height: "100vh",
             }}
           >
             <AppbarNavigation categories={jewelleryCategories} />

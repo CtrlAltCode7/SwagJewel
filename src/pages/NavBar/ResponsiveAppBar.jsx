@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import CallIcon from "@mui/icons-material/Call";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
-import StullerLogo from "../../assets/stuller-logo-desktop.svg";
+import StullerLogo from "../../assets/swag-logo.png";
 import { Link } from "react-router-dom";
 
 const pages = [
