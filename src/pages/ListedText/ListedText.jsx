@@ -32,7 +32,7 @@ const data = [
 function ListedText() {
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "space-around", margin: "3rem 0", }}>
+      <Box sx={{ display: "flex", justifyContent: "space-around", margin: "0rem 0 1.5rem 0", }}>
         {data?.map((item, index) => (
           <ListedItems
             key={index}

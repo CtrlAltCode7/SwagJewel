@@ -70,9 +70,9 @@ export default function VerticalTabs({ tabData }) {
         bgcolor: "background.paper",
         display: "flex",
         width: "100%",
-        // height: "100vh",
+        // height: , 
         // backgroundColor: "red",
-        overflowY: "scroll !important", // or "scroll" for always visible scrollbar
+        // overflowY: "scroll !important", // or "scroll" for always visible scrollbar
       }}
     >
       <Tabs
@@ -95,6 +95,8 @@ export default function VerticalTabs({ tabData }) {
           },
         }}
         TabIndicatorProps={{ style: { background: "#fff" } }}
+        scrollButtons
+        allowScrollButtonsMobile
       >
         {tabData?.map((tab, index) => (
           <Tab
@@ -105,9 +107,8 @@ export default function VerticalTabs({ tabData }) {
             sx={{
               color: "#fff",
               textAlign: "end",
-              overflowY: 'auto',
+              overflowY: "auto",
               alignItems: "flex-start",
-
             }}
           />
         ))}
@@ -117,18 +118,15 @@ export default function VerticalTabs({ tabData }) {
           key={index}
           value={value}
           index={index}
-          sx={
-            {
-              // backgroundColor: "red",
-              overflowY: 'auto',
-
-            }
-          }
+          sx={{
+            // backgroundColor: "red",
+            overflowY: "auto",
+          }}
         >
           {tab.content}
         </TabPanel>
       ))}
-      <MySvgComponent />
+      {/* <MySvgComponent /> */}
     </Box>
   );
 }

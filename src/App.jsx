@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 // import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment,resetValue } from "./redux/userSlice"
+import { decrement, increment,resetValue } from "./store/userSlice.js"
 // import ResponsiveAppBar from "./pages/ResponsiveAppBar.jsx";
 import Index from "./pages/NavBar/index.jsx";
 

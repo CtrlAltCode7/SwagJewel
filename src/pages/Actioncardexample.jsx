@@ -5,17 +5,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Box } from "@mui/material";
 
 export default function ActionAreaCard({ image, title, description }) {
   return (
-    <Link to={"home"}>
+    <Link to={"home"} style={{ textDecoration: "none" }}>
       <Card
         sx={{
-          maxWidth: title && description ? 345 : "none",
+          maxWidth: title && description ? 390 : "none",
           m: 1,
           width: "100%",
           objectFit: !title && !description ? "contain" : "fill",
           // backgroundColor: "red"
+          boxShadow: "none",
+          borderRadius: 0,
         }}
       >
         <CardActionArea>
@@ -24,17 +27,37 @@ export default function ActionAreaCard({ image, title, description }) {
             height={!title && !description ? 175 : 200}
             image={image}
             alt={title}
-            sx={{ objectFit: "fill" }}
+            sx={{ objectFit: "fill", textDecoration: "none" }}
           />
           {title && description && (
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+            <Box
+              sx={{
+                boxShadow: "none",
+                textDecoration: "none",
+                textAlign: "center",
+                mt: "0.5rem",
+              }}
+            >
+              <Typography
+                variant="subtitle1"
+                component="div"
+                sx={{
+                  fontWeight: "bold",
+                  color: "#555",
+                }}
+              >
                 {title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  color: "#555",
+                }}
+              >
                 {description}
               </Typography>
-            </CardContent>
+            </Box>
           )}
         </CardActionArea>
       </Card>

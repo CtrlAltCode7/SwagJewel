@@ -37,7 +37,7 @@ function DBCarousel() {
       return 2; // For medium-sized screens, display 2 cards per page
     } else if (screenWidth > 1600) {
       return 5; // For medium-sized screens, display 2 cards per page
-    }else if(screenWidth > 1200) {
+    } else if (screenWidth > 1200) {
       return 4; // For larger screens, display 3 cards per page
     } else {
       return 3; // For larger screens, display 3 cards per page
@@ -102,11 +102,19 @@ function DBCarousel() {
         alignItems: "center",
         alignContent: "center",
         justifyContent: "center",
-        width: "95%",
-        margin: "40px",
+        // width: "95%",
+        marginTop: "40px",
         flexWrap: "wrap",
         overflow: "hidden",
         // backgroundColor: "red"
+        boxShadow: "none !important",
+        border: 0,
+        "& .MuiPaper-root": {
+          borderRadius: 0,
+          boxShadow: "0 0 0 0 rgba(0,0,0,0)",
+          border: 0
+        }
+
       }}
     >
       <IconButton
@@ -124,9 +132,16 @@ function DBCarousel() {
               width: "100%",
               height: "100%",
               display: currentPage === index ? "block" : "none",
+         
             }}
           >
-            <Slide direction={slideDirection} in={currentPage === index}>
+            <Slide
+              direction={slideDirection}
+              in={currentPage === index}
+              timeout={{ enter: 900, exit: 900 }} // Adjust transition duration
+              mountOnEnter
+              unmountOnExit
+            >
               <Stack
                 spacing={2}
                 direction="row"

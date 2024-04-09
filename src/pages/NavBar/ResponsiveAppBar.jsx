@@ -116,7 +116,7 @@ function ResponsiveAppBar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              // mr: 2,
               display: { xs: "flex", md: "none" },
               fontFamily: "monospace",
               fontWeight: 700,
@@ -135,7 +135,7 @@ function ResponsiveAppBar() {
             component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
-              mr: 2,
+              // mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
@@ -170,7 +170,7 @@ function ResponsiveAppBar() {
                   <Typography
                     variant="subtitle2"
                     sx={{
-                      my: 2,
+                      // my: 2,
                       color: "#555",
                       display: "block",
                       padding: "6px 8px",
@@ -182,6 +182,35 @@ function ResponsiveAppBar() {
                     }}
                   >
                     {page}
+                    {page == "Stuller Blog " && (
+                      <Typography
+                        component={"span"}
+                        sx={{
+                          backgroundColor: "#00997A",
+                          padding: "0.1rem 0.5rem",
+                          borderRadius: "50px",
+                          textTransform: "uppercase",
+                          color: "#fff",
+                          fontSize: "0.6rem",
+                          border: "1px solid transparent",
+                          mr: 1,
+                        
+                        }}
+                      >
+                        <Typography
+                          component="span"
+                          fontWeight="bold"
+                          variant="caption"
+                          sx={{
+                            fontSize: "0.6rem",
+                            mr: "0.2rem",
+                          }}
+                        >
+                          New
+                        </Typography>
+                        posts
+                      </Typography>
+                    )}
                   </Typography>
                 </Link>
 
@@ -203,7 +232,7 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               flexGrow: 0,
-              p: 2,
+              padding: "0rem 1.5rem .1rem",
               textAlign: "center",
               ":hover": {
                 bgcolor: "#999", // theme.palette.primary.main
@@ -215,22 +244,31 @@ function ResponsiveAppBar() {
                   color: "#fff", // Change icon color on hover
                 },
               },
-              borderLeft: "1px solid #ddd",
+              borderLeft: "1.5px solid #ddd",
             }}
           >
             {/* <Tooltip title="Open settings"> */}
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <ShoppingCartIcon />
               </IconButton>
               <Typography
                 sx={{
-                  color: "#555",
+                  color: "#777",
+                  fontWeight: "500",
                   ":hover": {
                     color: "red",
                   },
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.1rem",
                 }}
+                variant="caption"
               >
                 CART
               </Typography>
@@ -263,7 +301,7 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               flexGrow: 0,
-              p: 2,
+              padding: "0rem 1.5rem .1rem",
               textAlign: "center",
               ":hover": {
                 bgcolor: "#999", // theme.palette.primary.main
@@ -274,19 +312,31 @@ function ResponsiveAppBar() {
                   color: "#fff", // Change icon color on hover
                 },
               },
-              borderLeft: "1px solid #ddd",
+              borderLeft: "1.5px solid #ddd",
             }}
           >
             {/* <Tooltip title="Open settings"> */}
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <PersonIcon />
               </IconButton>
               <Typography
                 sx={{
-                  color: "#555",
+                  color: "#777",
+                  fontWeight: "500",
+                  ":hover": {
+                    color: "red",
+                  },
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.1rem",
                 }}
+                variant="caption"
               >
                 LOG IN
               </Typography>

@@ -2,7 +2,7 @@ import React from "react";
 import ResponsiveAppBar from "./ResponsiveAppBar";
 import SearchAppBar from "./SearchAppBar";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import ActionAreaCard from "../ActionAreaCard";
+import ActionAreaCard from "../Actioncardexample";
 import DBCarousel from "../../components/carousel/dbCarousel";
 import ListedText from "../ListedText/ListedText";
 import img1 from "../../assets/128968694.webp";
@@ -10,14 +10,15 @@ import img2 from "../../assets/128968687.webp";
 import img3 from "../../assets/128968698.webp";
 import Footer from "../Footer/Footer";
 import StickyFooter from "../Footer/StickyFooter";
-import AppBar from "../Appbar/Appbar";
 import TabsComponent from "../Appbar/Tabs";
 import BasicTabs from "../Appbar/Tabs";
 import { Link } from "react-router-dom";
 import Banner from "../Banner";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { makeStyles } from "@mui/styles";
-import {ImageSlider} from "../../components/carousel/ImageSlider";
+import { ImageSlider } from "../../components/carousel/ImageSlider";
+// import { withTheme } from '@mui/system';
+import { styled, alpha } from "@mui/material/styles";
 
 function Index() {
   const cardData = [
@@ -106,10 +107,36 @@ function Index() {
         "https://dreamingtheme.kiendaotac.com/html/ysera/assets/images/banner-home-5.jpg",
     },
   ];
+
+  const StyledPopularBox = styled(Box)(({ theme }) => ({
+    // color: "inherit",
+    // width: "100%",
+    // "& .MuiInputBase-input": {
+    //   padding: theme.spacing(1, 1, 1, 0),
+    //   // vertical padding + font size from searchIcon
+    //   paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    //   transition: theme.transitions.create("width"),
+    //   [theme.breakpoints.up("sm")]: {
+    //     width: "12ch",
+    //     "&:focus": {
+    //       width: "20ch",
+    //     },
+    //   },
+    // },
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#547f9e",
+    border: "1px solid #547f9e",
+    padding: "0.8rem",
+    position: "relative",
+    [theme.breakpoints.up("lg")]: {
+      margin: "1.5rem 9rem 0", // Apply margin only at lg screens
+    },
+  }));
   return (
     <>
       <ResponsiveAppBar />
-      {/* <AppBar /> */}
       <SearchAppBar />
       <BasicTabs tabLabels={tabLabels} />
       <div className="image-container">
@@ -159,14 +186,14 @@ function Index() {
         title="Dynamic Title"
         description="Dynamic Description"
       /> */}
-      {/* <Stack
+      <Stack
         flexDirection={"row"}
         sx={{
-          p: 20,
+          // p: 20,
           justifyContent: "center",
           display: "flex",
           flexWrap: "wrap",
-          gap: "100px",
+          gap: "10px",
         }}
       >
         {cardData1?.map((card, index) => (
@@ -179,7 +206,7 @@ function Index() {
           />
           // </Box>
         ))}
-      </Stack> */}
+      </Stack>
       {/* <Grid2 item lg={6} md={6} sm={12} className={classes.banner}>
         <div className={classes.itemBanner}>
           <div className="inner">
@@ -208,11 +235,12 @@ function Index() {
       <Stack
         flexDirection={"row"}
         sx={{
-          p: 9,
+          // p: 9,
           justifyContent: "center",
           flexWrap: "wrap",
-          gap: "1.5rem",
-          backgroundColor: "#f6f6f6",
+          gap: "1rem",
+          // backgroundColor: "#f6f6f6",
+          border: "1px solid #f6f6f6",
         }}
       >
         {cardData?.map((card, index) => (
@@ -226,7 +254,32 @@ function Index() {
           // </Box>
         ))}
       </Stack>
-      <Box
+      <StyledPopularBox>
+        <Typography
+          variant="body1"
+          sx={{
+            textTransform: "uppercase",
+            color: "#fff",
+          }}
+        >
+          Popular products
+        </Typography>
+        <Box
+          sx={{
+            content: '""',
+            position: "absolute",
+            top: "100%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 0,
+            height: 0,
+            borderLeft: "13px solid transparent",
+            borderRight: "13px solid transparent",
+            borderTop: "11px solid #547f9e",
+          }}
+        />
+      </StyledPopularBox>
+      {/* <Box
         sx={{
           display: "flex",
           flexDirection: "row",
@@ -256,13 +309,14 @@ function Index() {
               </div>
             </>
           ))}
-      </Box>
+      </Box> */}
       {/* <Grid2>
         <Typography></Typography>
       </Grid2> */}
+
       <DBCarousel />
-      {/* <ImageSlider />
-      <ListedText /> */}
+      {/* <ImageSlider /> */}
+      <ListedText /> 
       <Footer />
 
       <StickyFooter />

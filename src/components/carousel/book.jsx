@@ -23,11 +23,20 @@ export default function BookCard({ book }) {
         height="200"
         image={book.image_url}
         title={book.title}
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "scale-down" }}
       />
       <CardContent>
         <Link to="https://www.google.com/search" target="_blank">
-          <Typography gutterBottom variant="body2" component="div">
+          <Typography
+            gutterBottom
+            variant="body2"
+            component="div"
+            sx={{
+              textAlign: "center",
+              ":hover": { color: "#75b0da", cursor: "pointer",textDecorationColor: "#75b0da",},
+
+            }}
+          >
             {book.title}
           </Typography>
         </Link>

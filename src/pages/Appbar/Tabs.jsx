@@ -99,47 +99,47 @@ export default function BasicTabs() {
   let tabData = [
     {
       label: "Engagement Rings",
-      content: <AppbarNavigation categories={jewelleryCategories} />,
+      content: <AppbarNavigation categories={jewelleryCategories} enableShopByButton={true} />,
     },
     {
       label: "Wedding Bands",
-      content: <AppbarNavigation categories={weddingbandsCategories} />,
+      content: <AppbarNavigation categories={weddingbandsCategories} enableShopByButton={true} />,
     },
     {
       label: "Chain & Cord",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Jewelry",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Mountings",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Findings",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Lab Grown Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Gemstone",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Metals",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
     {
       label: "Tools & Supplier",
-      content: <AppbarNavigation categories={chainAndCord} />,
+      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
     },
 
     // Add more tab data as needed
@@ -261,14 +261,51 @@ export default function BasicTabs() {
 
           /> */}
           {tabLabels?.map((label, index) => (
-            <Tab
-              key={index}
-              label={label}
-              {...a11yProps(index)}
-              onMouseEnter={(e) => handleMouseEnter(e, index)}
-              sx={commanTabStyle}
-            />
+            <>
+              <Tab
+                key={index}
+                label={label}
+                {...a11yProps(index)}
+                onMouseEnter={(e) => handleMouseEnter(e, index)}
+                sx={commanTabStyle}
+              />
+              {label == "Educational Resources" && (
+                <Typography
+                  // component={"span"}
+                  sx={{
+                    backgroundColor: "#00997A",
+                    padding: "0.1rem 0.5rem",
+                    borderRadius: "50px",
+                    textTransform: "uppercase",
+                    color: "#fff",
+                    // fontSize: "1.10rem",
+                    border: "1px solid transparent",
+                    mr: 1,
+                    alignSelf: "center",
+                    cursor: "pointer"
+
+                  }}
+                  variant="subtitle2"
+                >
+                  {/* <Typography
+                    component="span"
+                    fontWeight="bold"
+                    variant="caption"
+                    sx={{
+                      fontSize: "0.6rem",
+                      mr: "0.2rem",
+                    }}
+                  >
+                    New
+                  </Typography> */}
+                  Mother's Day
+                </Typography>
+              )}
+            </>
           ))}
+          {/* {
+
+          } */}
         </Tabs>
         <Box>
           <Button
@@ -317,9 +354,11 @@ export default function BasicTabs() {
             value={value}
             index={1}
             onMouseLeave={(e) => handleMouseLeave(e, 1)}
-            sx={{
-              // height: "100vh",
-            }}
+            sx={
+              {
+                // height: "100vh",
+              }
+            }
           >
             <AppbarNavigation categories={jewelleryCategories} />
           </CustomTabPanel>

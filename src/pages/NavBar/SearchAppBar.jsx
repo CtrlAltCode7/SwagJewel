@@ -23,19 +23,25 @@ import {
 } from "@mui/material";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 import NestedList from "./ListItem/NestedList";
+import CustomizedSearchInput from "./CustomizedSearchInput";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    // backgroundColor: alpha(theme.palette.common.white, 0.25),
+    // backgroundColor: "red"
   },
   marginLeft: 0,
+  // minWidth: "400px",
+
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
+    // backgroundColor: "red",
+    minWidth: "400px"
   },
 }));
 
@@ -84,6 +90,7 @@ export default function SearchAppBar() {
           backgroundColor: "#eee",
           padding: "1rem 0",
           borderBottom: "1px solid #cecece",
+
         }}
       >
         <Toolbar>
@@ -170,7 +177,7 @@ export default function SearchAppBar() {
           >
             <img src={StullerLogo} width={180} />
           </Typography>
-          <Search
+          {/* <Search
             sx={{
               backgroundColor: "#fff",
               borderRadius: "1rem",
@@ -179,6 +186,7 @@ export default function SearchAppBar() {
                 color: "red",
                 backgroundColor: "red",
               },
+              placeSelf: "end"
             }}
           >
             <SearchIconWrapper>
@@ -188,7 +196,8 @@ export default function SearchAppBar() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </Search> */}
+          <CustomizedSearchInput />
         </Toolbar>
       </AppBar>
     </Box>

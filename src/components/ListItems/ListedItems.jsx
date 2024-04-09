@@ -11,7 +11,7 @@ function ListedItems({
   body5,
   body6,
   body7,
-  footer,
+  footer=false,
   redirect
 }) {
   const removeUnderline = {
@@ -31,9 +31,12 @@ function ListedItems({
           variant={footer ? "h6" : "body2"}
           gutterBottom
           sx={{
-            fontWeight: "bold",
+            fontWeight: "100",
             color: footer ? "" : "#666",
             ":hover": { color: "#75b0da", cursor: "pointer" },
+            marginBottom: footer ? "0.6rem" : "0.4rem",
+            fontSize: footer ? "1.7rem" : "1rem",
+            fontFamily: "sans-serif"
           }}
         >
           {heading}

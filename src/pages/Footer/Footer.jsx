@@ -24,12 +24,13 @@ const classes = {
     background: "#eee",
     paddingBottom: "2rem",
     borderTop: "1px solid #ccc",
+    // paddingTop: 5
   },
   linkContainer: {
     display: "flex",
     justifyContent: "space-between",
     padding: "1rem",
-    alignItems: "baseline",
+    // alignItems: "start",
     flexWrap: "wrap",
   },
   links: {
@@ -104,8 +105,8 @@ export default function Footer() {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          padding: "1rem",
-          alignItems: "baseline",
+          padding: "3rem 1rem",
+          alignItems: "flex-start",
           flexWrap: "wrap",
         }}
       >
