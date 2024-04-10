@@ -12,27 +12,33 @@ const data = [
     heading: "Bridal",
     body1: "ever&ever",
     body2: "New Products",
-    body3: "Bridal Mountings"
+    body3: "Bridal Mountings",
   },
   {
     heading: "Mountings",
     body1: "Advanced Mountings Search",
     body2: "3C Designs",
-    body3: "New Products"
+    body3: "New Products",
   },
   {
     heading: "Findings",
     body1: "Die-Struck Jewelry ",
     body2: "Semi-Set Findings",
-    body3: "New Products"
-    
+    body3: "New Products",
   },
 ];
 
 function ListedText() {
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "space-around", margin: "0rem 0 1.5rem 0", }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "0rem 0 1.5rem 0",
+          flexWrap: "wrap",
+        }}
+      >
         {data?.map((item, index) => (
           <ListedItems
             key={index}
