@@ -90,35 +90,44 @@ export default function SearchAppBar() {
           backgroundColor: "#eee",
           padding: "1rem 0",
           borderBottom: "1px solid #cecece",
-
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{
+          justifyContent: "space-between"
+        }}>
           <AdbIcon sx={{ display: { xs: "none", md: "none" }, mr: 1 }} />
 
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
+          <Box
             sx={{
-              mr: 1,
-              display: { xs: "flex", md: "none" },
-              backgroundColor: "#000",
-              justifyContent: "space-between",
-            }}
-            onClick={(e) => handleClick(e)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            sx={{
-              display: { xs: "flex", md: "none" },
-              color: "#000",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            Menu
-          </Typography>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{
+                mr: 1,
+                display: { xs: "flex", md: "none" },
+                backgroundColor: "#000",
+                justifyContent: "space-between",
+              }}
+              onClick={(e) => handleClick(e)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              sx={{
+                display: { xs: "flex", md: "none" },
+                color: "#000",
+              }}
+            >
+              Menu
+            </Typography>
+          </Box>
+
           {/* <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
             <List
               className={{

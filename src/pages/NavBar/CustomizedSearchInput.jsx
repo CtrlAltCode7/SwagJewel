@@ -17,6 +17,9 @@ export default function CustomizedSearchInput() {
         alignItems: 'center',
         width: 400,
         borderRadius: '20px',
+        '@media (max-width: 600px)': { // Media query for smaller screens
+          width: '50%', // Adjust width for smaller screens
+        }
       }}
     >
       {/* <IconButton sx={{ p: '10px' }} aria-label="menu">

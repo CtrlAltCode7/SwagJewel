@@ -109,20 +109,6 @@ function Index() {
   ];
 
   const StyledPopularBox = styled(Box)(({ theme }) => ({
-    // color: "inherit",
-    // width: "100%",
-    // "& .MuiInputBase-input": {
-    //   padding: theme.spacing(1, 1, 1, 0),
-    //   // vertical padding + font size from searchIcon
-    //   paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    //   transition: theme.transitions.create("width"),
-    //   [theme.breakpoints.up("sm")]: {
-    //     width: "12ch",
-    //     "&:focus": {
-    //       width: "20ch",
-    //     },
-    //   },
-    // },
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -132,6 +118,9 @@ function Index() {
     position: "relative",
     [theme.breakpoints.up("lg")]: {
       margin: "1.5rem 9rem 0", // Apply margin only at lg screens
+    },
+    [theme.breakpoints.down("md")]: {
+      marginBottom: "1.5rem", // Apply margin only at lg screens
     },
   }));
   return (
