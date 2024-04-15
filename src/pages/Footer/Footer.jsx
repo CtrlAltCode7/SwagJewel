@@ -13,6 +13,10 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Link } from "react-router-dom";
 import SociaMedia from "./SociaMedia";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { useEffect } from "react";
+import { useState } from "react";
+import FooterAccordionForMobile from "./FooterAccordionForMobile";
 
 // const useStyles = makeStyles((theme) => ({
 
@@ -53,6 +57,8 @@ const classes = {
   },
 };
 export default function Footer() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+
   //   const classes = useStyles();
   const data = [
     {
@@ -96,34 +102,49 @@ export default function Footer() {
   ];
 
   const redirectToFacebook = () => {
-    window.open('https://www.facebook.com', '_blank'); // Opens the link in a new tab
+    window.open("https://www.facebook.com", "_blank"); // Opens the link in a new tab
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty dependency array ensures that effect runs only once on mount
+
+  console.log("isMobile", isMobile);
   return (
     <footer style={classes.footerStyles}>
-      <div
-        style={{
-          display: "flex",
+      <Box
+        sx={{
+          display: { md: "flex", lg: "flex" },
           justifyContent: "space-between",
           padding: "3rem 1rem",
           alignItems: "flex-start",
           flexWrap: "wrap",
         }}
       >
-        {data?.map((item, index) => (
-          <ListedItems
-            key={index}
-            heading={item.heading}
-            body1={item.body1}
-            body2={item.body2}
-            body3={item.body3}
-            body4={item.body4}
-            body5={item.body5}
-            body6={item.body6}
-            body7={item.body7}
-            redirect={item.redirect}
-          />
-        ))}
+        {isMobile
+          ? <FooterAccordionForMobile />
+          : data?.map((item, index) => (
+              <ListedItems
+                key={index}
+                heading={item.heading}
+                body1={item.body1}
+                body2={item.body2}
+                body3={item.body3}
+                body4={item.body4}
+                body5={item.body5}
+                body6={item.body6}
+                body7={item.body7}
+                redirect={item.redirect}
+              />
+            ))}
+
         {/* {data?.map((item, index) => (
           <>
             <div style={classes.links} id="1">
@@ -169,6 +190,15 @@ export default function Footer() {
             gap: "1rem",
             padding: "4rem 2rem 3rem 0",
             flexWrap: "wrap",
+            "@media (max-width: 600px)": {
+              // Media query for smaller screens
+              // width: '50%', // Adjust width for smaller screens
+              // flexDirection: "column",
+              width: "100%",
+              padding: 0,
+              flexDirection: "row",
+              justifyContent: "space-around",
+            },
           }}
         >
           <Link to={"/home"} style={{ textDecoration: "none" }}>
@@ -192,7 +222,7 @@ export default function Footer() {
             />
           </Link>
         </Box>
-      </div>
+      </Box>
       <Box
         sx={{
           display: "flex",
@@ -201,6 +231,12 @@ export default function Footer() {
           //   borderBottom: "2px solid red",
           paddingRight: "1rem",
           color: "#000",
+          "@media (max-width: 600px)": {
+            // Media query for smaller screens
+            flexDirection: "column-reverse",
+            textAlign: "center",
+            paddingRight: 0,
+          },
         }}
       >
         <Box
@@ -209,17 +245,63 @@ export default function Footer() {
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
+            "@media (max-width: 600px)": {
+              // Media query for smaller screens
+              flexDirection: "column",
+              textAlign: "center",
+            },
           }}
         >
           <img src={localJewelleryImg} />
-          <span className="text-center">
+          <Typography
+            component={"span"}
+            className="text-center"
+            sx={{
+              "@media (max-width: 600px)": {
+                // Media query for smaller screens
+                color: "#7a8f9e!important",
+                fontWeight: "bold",
+              },
+            }}
+          >
             Connecting consumers with jewelry providers
-          </span>
+          </Typography>
         </Box>
         <Box>
-          <Typography>
+          <Typography
+            sx={{
+              "@media (max-width: 600px)": {
+                // Media query for smaller screens
+                display: "flex",
+                flexDirection: "column-reverse",
+                textAlign: "center",
+                fontSize: "62.5%",
+                color: "#777",
+                gap: "1rem",
+                letterSpacing: " .035em",
+                textTransform: "uppercase",
+                wordSpacing: "0.1em",
+              },
+            }}
+            component={"span"}
+          >
             Weekdays 8AM - 7PM CST
-            <Typography variant="h6" component={"span"} ml={"0.9rem"}>
+            <Typography
+              variant="h6"
+              component={"span"}
+              ml={"0.9rem"}
+              sx={{
+                "@media (max-width: 600px)": {
+                  // Media query for smaller screens
+                  backgroundColor: "#7a8f9e!important",
+                  fontSize: "1rem",
+                  color: "#fff",
+                  borderRadius: "15px",
+                  padding: "0.5rem 5rem 0.5rem 5rem",
+                },
+              }}
+              startIcon={<LocalPhoneIcon />}
+            >
               800-877-7777
             </Typography>
           </Typography>
@@ -238,9 +320,13 @@ export default function Footer() {
           justifyContent: "space-between",
           alignItems: "center",
           //   borderBottom: "2px solid red",
-          padding: "1rem",
+          padding: "1.5%",
           color: "#666",
-          paddingRight: "1rem",
+          // paddingRight: "1rem",
+          "@media (max-width: 600px)": {
+            // Media query for smaller screens
+            flexDirection: "column",
+          },
         }}
       >
         <Box
@@ -249,16 +335,26 @@ export default function Footer() {
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
+            "@media (max-width: 600px)": {
+              // Media query for smaller screens
+              flexDirection: "column",
+              marginBottom: "10%",
+            },
           }}
         >
           {termsAndConditionData?.map((tc) => (
             <>
-              <Typography variant="body2" className="text-center"
-              sx={{
-                ":hover":{
-                  color: !tc?.toLowerCase().includes("copyrights") ? "rebeccapurple" : ""
-                }
-              }}>
+              <Typography
+                variant="body2"
+                className="text-center"
+                sx={{
+                  ":hover": {
+                    color: !tc?.toLowerCase().includes("copyrights")
+                      ? "rebeccapurple"
+                      : "",
+                  },
+                }}
+              >
                 {tc}
               </Typography>
             </>
@@ -268,7 +364,7 @@ export default function Footer() {
           sx={{
             display: "flex",
             gap: "1rem",
-            paddingRight: "1rem",
+            // paddingRight: "1rem",
           }}
         >
           <SociaMedia />

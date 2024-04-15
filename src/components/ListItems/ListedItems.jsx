@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from 'react-router-dom';
 
 function ListedItems({
@@ -17,13 +17,18 @@ function ListedItems({
   const removeUnderline = {
     textDecoration: "none",
   };
+  const [smallScreenActivated, SetSmallScreenActivated] = useState(false);
   return (
     <Box
       alignItems="center"
       textAlign={footer ? "center" : "left"}
       sx={{
         textDecoration: "none",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        "@media (max-width: 600px)": {
+          // Media query for smaller screens
+          marginBottom: "10%"
+        },
       }}
     >
       <Link to={redirect} style={removeUnderline}>
@@ -36,11 +41,12 @@ function ListedItems({
             ":hover": { color: "#75b0da", cursor: "pointer" },
             marginBottom: footer ? "0.6rem" : "0.4rem",
             fontSize: footer ? "1.7rem" : "1rem",
-            fontFamily: "sans-serif"
+            fontFamily: "sans-serif",
           }}
         >
           {heading}
         </Typography>
+        
       </Link>
       <Link to={redirect} style={removeUnderline}>
         <Typography

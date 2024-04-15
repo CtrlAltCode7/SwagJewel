@@ -19,6 +19,16 @@ export default function ActionAreaCard({ image, title, description }) {
           // backgroundColor: "red"
           boxShadow: "none",
           borderRadius: 0,
+          '@media (max-width: 600px)': { // Media query for smaller screens
+            // maxWidth: '100%', // Adjust width for smaller screens
+            // backgroundColor: "red",
+            // minWidth: "-webkit-fill-available"
+            // display: "block"
+            margin: "0 !important",
+            width: "92%",
+            padding: "1rem"
+
+          }
         }}
       >
         <CardActionArea>
@@ -27,7 +37,7 @@ export default function ActionAreaCard({ image, title, description }) {
             height={!title && !description ? 175 : 200}
             image={image}
             alt={title}
-            sx={{ objectFit: "fill", textDecoration: "none" }}
+            sx={{ objectFit: "fill", textDecoration: "none",}}
           />
           {title && description && (
             <Box

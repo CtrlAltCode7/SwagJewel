@@ -21,6 +21,12 @@ export default function FooterGraphicText({
         height: "fit-content",
         width: "23rem",
         flex: 1,
+        "@media (max-width: 600px)": {
+          // Media query for smaller screens
+          // width: '50%', // Adjust width for smaller screens
+          // flexDirection: "column",
+          width: "100%",
+        },
       }}
     >
       <CardActionArea>
@@ -57,7 +63,7 @@ export default function FooterGraphicText({
                 {boldTitle}
               </Typography>
               <Typography
-                variant={variantStyle2}
+                variant={variantStyle1}
                 letterSpacing={"0.1rem"}
                 sx={{
                   textDecoration: "none",
@@ -72,6 +78,8 @@ export default function FooterGraphicText({
             <Box
               sx={{
                 textAlignLast: "end",
+                display: { xs: "none", md: "flex", lg: "flex"},
+                flexDirection: "column"
               }}
             >
               <Typography variant="body2" color="text.secondary">

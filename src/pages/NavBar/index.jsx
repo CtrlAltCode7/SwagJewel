@@ -19,6 +19,7 @@ import { makeStyles } from "@mui/styles";
 import { ImageSlider } from "../../components/carousel/ImageSlider";
 // import { withTheme } from '@mui/system';
 import { styled, alpha } from "@mui/material/styles";
+import "../../styles/HomeStyles.css";
 
 function Index() {
   const cardData = [
@@ -123,12 +124,13 @@ function Index() {
       marginBottom: "1.5rem", // Apply margin only at lg screens
     },
   }));
+  // const BannerImg =
   return (
     <>
       <ResponsiveAppBar />
       <SearchAppBar />
       <BasicTabs tabLabels={tabLabels} />
-      <div className="image-container">
+      {/* <div className="image-container">
         <img
           src="https://meteor.stullercloud.com/das/128967869"
           alt="Your Image"
@@ -155,6 +157,34 @@ function Index() {
             </Button>
           </Link>
         </Typography>
+      </div> */}
+      <div
+        className="home"
+        style={{
+          backgroundImage: `url(https://meteor.stullercloud.com/das/129678024)`,
+        }}
+      >
+        <div className="headerContainer">
+          <img src="https://meteor.stullercloud.com/das/129679303?fmt=png&hei=120" />
+          {/* <h1
+            style={{
+              textTransform: "uppercase",
+              fontStyle: "italic"
+            }}
+          >
+            Celebrate
+          </h1>
+          <h1>MoM</h1> */}
+          <p style={{
+            fontSize: "18px"
+          }}>
+            Browse best-selling and favorite styles to celebrate a mother's
+            love.
+          </p>
+          <Link to="/menu">
+            <button className="banner-shop-now-btn">Shop Now</button>
+          </Link>
+        </div>
       </div>
       {/* <Box>
         <Button
@@ -224,12 +254,22 @@ function Index() {
       <Stack
         flexDirection={"row"}
         sx={{
+          display: { sm: "none", md: "flex", lg: "flex" },
           // p: 9,
           justifyContent: "center",
           flexWrap: "wrap",
           gap: "1rem",
           // backgroundColor: "#f6f6f6",
           border: "1px solid #f6f6f6",
+          width: "100%",
+          "@media (max-width: 600px)": {
+            // Media query for smaller screens
+            // maxWidth: '100%', // Adjust width for smaller screens
+            // backgroundColor: "red",
+            // minWidth: "-webkit-fill-available"
+            // display: "none !important"
+            margin: "0 !important",
+          },
         }}
       >
         {cardData?.map((card, index) => (
@@ -305,7 +345,7 @@ function Index() {
 
       <DBCarousel />
       {/* <ImageSlider /> */}
-      <ListedText /> 
+      <ListedText />
       <Footer />
 
       <StickyFooter />

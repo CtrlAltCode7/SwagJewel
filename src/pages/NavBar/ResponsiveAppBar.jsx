@@ -62,6 +62,7 @@ function ResponsiveAppBar() {
         sx={{
           backgroundColor: "#fff",
           borderBottom: "1px solid #cecece",
+          padding: "0 2% 0 2% !important"
         }}
       >
         <Toolbar disableGutters>
@@ -81,7 +82,7 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
-            <Box sx={{ display: "flex" }} onClick={handleCall}>
+            <Box sx={{ display: { xs: "none", md: "flex" }}} onClick={handleCall}>
               <CallIcon
                 sx={{
                   display: { xs: "none", md: "flex" },
@@ -92,6 +93,7 @@ function ResponsiveAppBar() {
               <Typography
                 sx={{
                   color: "#547f9e!important",
+                  display: { xs: "none", md: "flex" },
                 }}
                 variant="subtitle2"
               >
@@ -125,11 +127,11 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            <img src={StullerLogo} width={180} />
+            <img src={StullerLogo} width={"75%"} />
           </Typography>
 
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -146,7 +148,7 @@ function ResponsiveAppBar() {
             }}
           >
             LOGOddd
-          </Typography>
+          </Typography> */}
           <Box
             sx={{
               flexGrow: 1,
@@ -232,7 +234,7 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               flexGrow: 0,
-              padding: "0rem 1.5rem .1rem",
+              padding: "0rem 2% .1%",
               textAlign: "center",
               ":hover": {
                 bgcolor: "#999", // theme.palette.primary.main
@@ -301,7 +303,7 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               flexGrow: 0,
-              padding: "0rem 1.5rem .1rem",
+              padding: "0rem 2% .1%",
               textAlign: "center",
               ":hover": {
                 bgcolor: "#999", // theme.palette.primary.main

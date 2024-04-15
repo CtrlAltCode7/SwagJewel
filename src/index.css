@@ -1,5 +1,5 @@
 html{
-  display: flex;
+  /* display: flex; */
 
 
 }
@@ -7,7 +7,7 @@ html{
 body {
   margin: 0;
   padding-right: 0 !important;
-  overflow: unset !important;
+  overflow-x: hidden !important;
   
 
 }
@@ -112,6 +112,9 @@ img {
     padding: 15px;
     /* Adjust padding for smaller screens */
   }
+  #footer-section {
+    background-color: red;
+  }
 }
 
 .description {
@@ -185,4 +188,12 @@ img {
 
 .button:hover{
   background-color: #000;
+}
+
+@media screen and (max-width: 600px) {
+  #footer-section {
+    position: relative !important;
+    overflow-x: hidden;
+    width: 95% !important;
+  }
 }

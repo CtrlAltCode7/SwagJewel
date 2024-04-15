@@ -112,14 +112,22 @@ function DBCarousel() {
         "& .MuiPaper-root": {
           borderRadius: 0,
           boxShadow: "0 0 0 0 rgba(0,0,0,0)",
-          border: 0
-        }
-
+          border: 0,
+        },
       }}
     >
       <IconButton
         onClick={handlePrevPage}
-        sx={{ margin: 5 }}
+        sx={{
+          margin: 5,
+          "@media (max-width: 600px)": {
+            // Media query for smaller screens
+            // width: '50%', // Adjust width for smaller screens
+            margin: 0,
+            padding: 0
+
+          },
+        }}
         disabled={currentPage === 0}
       >
         <NavigateBeforeIcon />
@@ -132,7 +140,6 @@ function DBCarousel() {
               width: "100%",
               height: "100%",
               display: currentPage === index ? "block" : "none",
-         
             }}
           >
             <Slide
@@ -168,6 +175,12 @@ function DBCarousel() {
         onClick={handleNextPage}
         sx={{
           margin: 5,
+          "@media (max-width: 600px)": {
+            // Media query for smaller screens
+            // width: '50%', // Adjust width for smaller screens
+            margin: 0,
+            padding: 0
+          },
         }}
         disabled={
           currentPage >= Math.ceil((cards?.length || 0) / cardsPerPage) - 1
