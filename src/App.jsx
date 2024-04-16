@@ -4,9 +4,10 @@ import viteLogo from "/vite.svg";
 // import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment,resetValue } from "./store/userSlice.js"
+import { decrement, increment, resetValue } from "./store/userSlice.js";
 // import ResponsiveAppBar from "./pages/ResponsiveAppBar.jsx";
 import Index from "./pages/NavBar/index.jsx";
+import ProductListing from "./pages/ProductListing/ProductListing.jsx";
 
 function Home() {
   return (
@@ -18,7 +19,7 @@ function Home() {
 }
 
 function HomePage() {
-  const { user } = useSelector(state=>state);
+  const { user } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
@@ -33,10 +34,7 @@ function HomePage() {
     dispatch(resetValue());
   };
 
-  
-
-
-  console.log('user', user.value)
+  console.log("user", user.value);
   return (
     <div style={{ padding: 20 }}>
       <h2>Home View {user?.value}</h2>
@@ -44,8 +42,6 @@ function HomePage() {
       <button onClick={handleIncrement}>Increment</button>
       <button onClick={handleDecrement}>Decrement</button>
       <button onClick={handleReset}>Reset</button>
-
-
     </div>
   );
 }
@@ -59,7 +55,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="home" element={<HomePage />} />
-
+          <Route path="productlisting" element={<ProductListing />} />
         </Routes>
       </Router>
     </>
