@@ -62,7 +62,7 @@ function ResponsiveAppBar() {
         sx={{
           backgroundColor: "#fff",
           borderBottom: "1px solid #cecece",
-          padding: "0 2% 0 2% !important"
+          padding: "0 2% 0 2% !important",
         }}
       >
         <Toolbar disableGutters>
@@ -82,7 +82,10 @@ function ResponsiveAppBar() {
               alignItems: "center",
             }}
           >
-            <Box sx={{ display: { xs: "none", md: "flex" }}} onClick={handleCall}>
+            <Box
+              sx={{ display: { xs: "none", md: "flex" } }}
+              onClick={handleCall}
+            >
               <CallIcon
                 sx={{
                   display: { xs: "none", md: "flex" },
@@ -111,24 +114,25 @@ function ResponsiveAppBar() {
             </Typography>
           </Box>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              // mr: 2,
-              display: { xs: "flex", md: "none" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "red",
-              textDecoration: "none",
-            }}
-          >
-            <img src={StullerLogo} width={"75%"} />
-          </Typography>
+          <Link to={"/productlisting"}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                // mr: 2,
+                display: { xs: "flex", md: "none" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "red",
+                textDecoration: "none",
+              }}
+            >
+              <img src={StullerLogo} width={"75%"} />
+            </Typography>
+          </Link>
 
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           {/* <Typography
@@ -196,7 +200,6 @@ function ResponsiveAppBar() {
                           fontSize: "0.6rem",
                           border: "1px solid transparent",
                           mr: 1,
-                        
                         }}
                       >
                         <Typography
