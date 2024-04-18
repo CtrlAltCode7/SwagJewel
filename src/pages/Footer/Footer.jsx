@@ -190,7 +190,7 @@ export default function Footer() {
             gap: "1rem",
             padding: "4rem 2rem 3rem 0",
             flexWrap: "wrap",
-            "@media (max-width: 600px)": {
+            "@media (max-width:  768px)": {
               // Media query for smaller screens
               // width: '50%', // Adjust width for smaller screens
               // flexDirection: "column",
@@ -231,7 +231,7 @@ export default function Footer() {
           //   borderBottom: "2px solid red",
           paddingRight: "1rem",
           color: "#000",
-          "@media (max-width: 600px)": {
+          "@media (max-width:  768px)": {
             // Media query for smaller screens
             flexDirection: "column-reverse",
             textAlign: "center",
@@ -245,7 +245,7 @@ export default function Footer() {
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
-            "@media (max-width: 600px)": {
+            "@media (max-width:  768px)": {
               // Media query for smaller screens
               flexDirection: "column",
               textAlign: "center",
@@ -257,7 +257,7 @@ export default function Footer() {
             component={"span"}
             className="text-center"
             sx={{
-              "@media (max-width: 600px)": {
+              "@media (max-width:  768px)": {
                 // Media query for smaller screens
                 color: "#7a8f9e!important",
                 fontWeight: "bold",
@@ -270,7 +270,7 @@ export default function Footer() {
         <Box>
           <Typography
             sx={{
-              "@media (max-width: 600px)": {
+              "@media (max-width:  768px)": {
                 // Media query for smaller screens
                 display: "flex",
                 flexDirection: "column-reverse",
@@ -291,7 +291,7 @@ export default function Footer() {
               component={"span"}
               ml={"0.9rem"}
               sx={{
-                "@media (max-width: 600px)": {
+                "@media (max-width:  768px)": {
                   // Media query for smaller screens
                   backgroundColor: "#7a8f9e!important",
                   fontSize: "1rem",
@@ -323,7 +323,7 @@ export default function Footer() {
           padding: "1.5%",
           color: "#666",
           // paddingRight: "1rem",
-          "@media (max-width: 600px)": {
+          "@media (max-width:  768px)": {
             // Media query for smaller screens
             flexDirection: "column",
           },
@@ -335,7 +335,7 @@ export default function Footer() {
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
-            "@media (max-width: 600px)": {
+            "@media (max-width:  768px)": {
               // Media query for smaller screens
               flexDirection: "column",
               marginBottom: "10%",

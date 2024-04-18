@@ -19,7 +19,7 @@ export default function ActionAreaCard({ image, title, description }) {
           // backgroundColor: "red"
           boxShadow: "none",
           borderRadius: 0,
-          '@media (max-width: 600px)': { // Media query for smaller screens
+          '@media (max-width:  768px)': { // Media query for smaller screens
             // maxWidth: '100%', // Adjust width for smaller screens
             // backgroundColor: "red",
             // minWidth: "-webkit-fill-available"

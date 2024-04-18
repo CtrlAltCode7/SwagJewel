@@ -6,6 +6,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import AppbarNavigation from "./AppbarNavigation";
 import MySvgComponent from "../../components/svg/MySvgComponent";
+import jewelleryCategories from "../../../public/jewelleryCategories.json";
+import customJewellery from "../../../public/customJewelleryData.json";
+import eventsAndTraining from "../../../public/EventsAndTraing.json";
+import weddingbandsCategories from "../../../public/weddingbands.json";
+import chainAndCord from "../../../public/chainAndCord.json";
+import { Link, useNavigate } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -44,7 +50,8 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs({ tabData }) {
+export default function VerticalTabs({ tabData1 }) {
+  // console.log('tabs data', tabData)
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -61,6 +68,60 @@ export default function VerticalTabs({ tabData }) {
   const handleMouseLeave = (event, newValue) => {
     // Your onMouseLeave logic here
     console.log("Mouse left tab:", newValue);
+  };
+
+  const navigate = useNavigate(); 
+  const tabData = [
+    {
+      label: "Engagement Rings",
+      content: <AppbarNavigation categories={jewelleryCategories} />,
+    },
+    {
+      label: "Wedding Bands",
+      content: <AppbarNavigation categories={weddingbandsCategories} />,
+    },
+    {
+      label: "Chain & Cord",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Jewelry",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Mountings",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Findings",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Diamonds",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Lab Grown Diamonds",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Gemstone",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Metals",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+    {
+      label: "Tools & Supplier",
+      content: <AppbarNavigation categories={chainAndCord} />,
+    },
+
+    // Add more tab data as needed
+  ];
+  const handleTabClick = () => {
+    // Redirect to another page
+    navigate('/productlisting');
   };
 
   return (
@@ -110,6 +171,7 @@ export default function VerticalTabs({ tabData }) {
               overflowY: "auto",
               alignItems: "flex-start",
             }}
+            onClick={handleTabClick}
           />
         ))}
       </Tabs>

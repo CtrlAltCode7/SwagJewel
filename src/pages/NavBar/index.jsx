@@ -170,7 +170,7 @@ function Index() {
             gap: "1rem",
             border: "1px solid #f6f6f6",
             width: "100%",
-            "@media (max-width: 600px)": {
+            "@media (max-width: 768px)": {
               margin: "0 !important",
             },
           }}

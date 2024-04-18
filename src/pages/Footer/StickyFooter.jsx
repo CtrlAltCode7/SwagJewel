@@ -46,7 +46,7 @@ const StickyFooter = () => {
           display: "flex",
           justifyContent: "center",
           gap: "1rem",
-          "@media (max-width: 600px)": {
+          "@media (max-width:  768px)": {
             // Media query for smaller screens
             flexDirection: "column",
             alignItems: "center",

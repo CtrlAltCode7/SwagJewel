@@ -21,7 +21,7 @@ export default function FooterGraphicText({
         height: "fit-content",
         width: "23rem",
         flex: 1,
-        "@media (max-width: 600px)": {
+        "@media (max-width:  768px)": {
           // Media query for smaller screens
           // width: '50%', // Adjust width for smaller screens
           // flexDirection: "column",

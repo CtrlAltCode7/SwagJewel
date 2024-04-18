@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link } from "react-router-dom";
 
 function ListedItems({
   heading,
@@ -11,8 +11,8 @@ function ListedItems({
   body5,
   body6,
   body7,
-  footer=false,
-  redirect
+  footer = false,
+  redirect,
 }) {
   const removeUnderline = {
     textDecoration: "none",
@@ -25,9 +25,9 @@ function ListedItems({
       sx={{
         textDecoration: "none",
         flexWrap: "wrap",
-        "@media (max-width: 600px)": {
+        "@media (max-width:  768px)": {
           // Media query for smaller screens
-          marginBottom: "10%"
+          marginBottom: "10%",
         },
       }}
     >
@@ -37,8 +37,8 @@ function ListedItems({
           gutterBottom
           sx={{
             fontWeight: "100",
-            color: footer ? "" : "#666",
-            ":hover": { color: "#75b0da", cursor: "pointer" },
+            color: footer ? "#555 !important" : "#666",
+            ":hover": { color: "#75b0da !important", cursor: "pointer" },
             marginBottom: footer ? "0.6rem" : "0.4rem",
             fontSize: footer ? "1.7rem" : "1rem",
             fontFamily: "sans-serif",
@@ -46,7 +46,6 @@ function ListedItems({
         >
           {heading}
         </Typography>
-        
       </Link>
       <Link to={redirect} style={removeUnderline}>
         <Typography
@@ -54,8 +53,8 @@ function ListedItems({
           gutterBottom
           sx={{
             fontWeight: 400,
-            color: footer ? "" : "#000",
-            ":hover": { color: "#75b0da", cursor: "pointer" },
+            color: footer ? "#555 !important" : "#000",
+            ":hover": { color: "#75b0da !important", cursor: "pointer" },
           }}
         >
           {body1}
@@ -67,8 +66,8 @@ function ListedItems({
           gutterBottom
           sx={{
             fontWeight: 400,
-            color: footer ? "" : "#000",
-            ":hover": { color: "#75b0da", cursor: "pointer" },
+            color: footer ? "#555 !important" : "#000",
+            ":hover": { color: "#75b0da !important", cursor: "pointer" },
           }}
         >
           {body2}
@@ -80,8 +79,8 @@ function ListedItems({
           gutterBottom
           sx={{
             fontWeight: 400,
-            color: footer ? "" : "#000",
-            ":hover": { color: "#75b0da", cursor: "pointer" },
+            color: footer ? "#555 !important" : "#000",
+            ":hover": { color: "#75b0da !important", cursor: "pointer" },
           }}
         >
           {body3}
@@ -95,8 +94,8 @@ function ListedItems({
               gutterBottom
               sx={{
                 fontWeight: 400,
-                color: footer ? "" : "#000",
-                ":hover": { color: "#75b0da", cursor: "pointer" },
+                color: footer ? "#555 !important" : "#000",
+                ":hover": { color: "#75b0da !important", cursor: "pointer" },
               }}
             >
               {body4}
@@ -112,8 +111,8 @@ function ListedItems({
               gutterBottom
               sx={{
                 fontWeight: 400,
-                color: footer ? "" : "#000",
-                ":hover": { color: "#75b0da", cursor: "pointer" },
+                color: footer ? "#555 !important" : "#000",
+                ":hover": { color: "#75b0da !important", cursor: "pointer" },
               }}
             >
               {body5}
@@ -129,7 +128,7 @@ function ListedItems({
               gutterBottom
               sx={{
                 fontWeight: 400,
-                color: footer ? "#000" : "#000",
+                color: footer ? "#555 !important" : "#000",
                 ":hover": { color: "#75b0da", cursor: "pointer" },
               }}
             >
@@ -146,7 +145,7 @@ function ListedItems({
               gutterBottom
               sx={{
                 fontWeight: 400,
-                color: footer ? "#000" : "#000",
+                color: footer ? "#555 !important" : "#000",
                 ":hover": { color: "#75b0da", cursor: "pointer" },
               }}
             >

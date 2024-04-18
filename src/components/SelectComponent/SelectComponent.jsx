@@ -22,6 +22,7 @@ export default function SelectComponent({title,minWidthSize}) {
         borderRadius: "5px",
         // padding: "1rem 0"
       }}
+      
     >
       <Grid
         sx={
@@ -37,10 +38,12 @@ export default function SelectComponent({title,minWidthSize}) {
             minWidth: parseInt(minWidthSize),
             minHeight: 35,
             gap: "1rem",
-            "@media (max-width: 1200px) and (min-width: 600px)": {
+            width: "90% !important",
+            "@media (max-width: 1200px) and (min-width:  768px)": {
               /* This rule will apply when the screen width is between 300px and 600px */
-              width: "260px !important",
+              // width: "260px !important",
             },
+            
           }}
         >
           {title && (
@@ -73,9 +76,11 @@ export default function SelectComponent({title,minWidthSize}) {
                   ".MuiNativeSelect-icon": {
                     color: "red",
                   },
+                  // width: "90%"
                 },
               },
             }}
+            sx={{ flexGrow: 1 }}
 
             // sx={{
             //   padding: "10px 14px !important"

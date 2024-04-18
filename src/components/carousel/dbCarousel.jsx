@@ -120,7 +120,7 @@ function DBCarousel() {
         onClick={handlePrevPage}
         sx={{
           margin: 5,
-          "@media (max-width: 600px)": {
+          "@media (max-width:  768px)": {
             // Media query for smaller screens
             // width: '50%', // Adjust width for smaller screens
             margin: 0,
@@ -175,7 +175,7 @@ function DBCarousel() {
         onClick={handleNextPage}
         sx={{
           margin: 5,
-          "@media (max-width: 600px)": {
+          "@media (max-width:  768px)": {
             // Media query for smaller screens
             // width: '50%', // Adjust width for smaller screens
             margin: 0,

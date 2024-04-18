@@ -32,9 +32,13 @@ export default function BookCard({ book }) {
             variant="body2"
             component="div"
             sx={{
+              color: "#555 !important",
               textAlign: "center",
-              ":hover": { color: "#75b0da", cursor: "pointer",textDecorationColor: "#75b0da",},
-
+              ":hover": {
+                color: "#75b0da !important",
+                cursor: "pointer",
+                textDecorationColor: "#75b0da",
+              },
             }}
           >
             {book.title}

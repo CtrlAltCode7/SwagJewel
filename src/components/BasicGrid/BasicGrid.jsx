@@ -22,12 +22,12 @@ export default function BasicGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        <Grid xs={12} sm={6} md={4} lg={3}>
+        <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
             <AccordionExpandIcon />
           </Item>
         </Grid>
-        <Grid xs={12} sm={6} md={8} lg={9}>
+        <Grid xs={12} sm={12} md={9} lg={9}>
           <Item>
             <Typography
               variant="h4"
@@ -56,7 +56,7 @@ export default function BasicGrid() {
               justifyContent: "space-evenly !important",
               // flexGrow: 1,
               padding: "1rem 1rem 0",
-              "@media (max-width: 600px)": {
+              "@media (max-width:  768px)": {
                 flexDirection: "column",
               },
             }}
@@ -72,7 +72,7 @@ export default function BasicGrid() {
                 paddingTop: "2rem",
                 flexWrap: "wrap",
 
-                "@media (max-width: 600px)": {
+                "@media (max-width:  768px)": {
                   flexDirection: "column",
                   margin: 0,
                 },
@@ -88,7 +88,7 @@ export default function BasicGrid() {
             sx={{
               padding: "0 1.4rem ",
               justifyContent: "space-evenly !important",
-              "@media (max-width: 600px)": {
+              "@media (max-width:  768px)": {
                 padding: "0 1rem ",
               },
             }}
@@ -146,9 +146,10 @@ export default function BasicGrid() {
               </Typography>
             </Box>
           </Item>
-          <Item
+          <Item 
             sx={{
               margin: "0 1rem",
+              
             }}
           >
             <Box
@@ -156,6 +157,8 @@ export default function BasicGrid() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                // flexDirection: { md: "column", lg: "row"},
+                // flexWrap: "wrap"
               }}
             >
               <Box
@@ -167,7 +170,7 @@ export default function BasicGrid() {
                 <Typography variant="body2" mr={1}>
                   Sort by
                 </Typography>
-                <SelectComponent />
+                <SelectComponent minWidthSize="50"/>
               </Box>
               <Box
                 sx={{
@@ -178,13 +181,14 @@ export default function BasicGrid() {
               >
                 <Typography>Showing 1 - 36 of 1226</Typography>|
                 <Typography>Items per page</Typography>
-                <SelectComponent />
+                <SelectComponent minWidthSize="50"/>
               </Box>
               <Box
                 sx={{
                   display: { xs: "flex", md: "none", lg: "none" },
                   alignItems: "center",
                 }}
+                md="3"
               >
                 <Typography
                   variant="body2"
@@ -195,7 +199,7 @@ export default function BasicGrid() {
                   Items:
                 </Typography>
 
-                <SelectComponent />
+                <SelectComponent minWidthSize="50"/>
               </Box>
             </Box>
           </Item>
@@ -225,6 +229,12 @@ export default function BasicGrid() {
               }}
               
             />
+          </Item>
+          <Item sx={{
+              margin: "0 2%",
+
+          }}>
+            hi
           </Item>
         </Grid>
       </Grid>
