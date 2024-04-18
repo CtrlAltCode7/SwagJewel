@@ -14,9 +14,11 @@ import StarBorder from "@mui/icons-material/StarBorder";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Button, Typography } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
+import { useNavigate } from "react-router-dom";
 
 export default function NestedList({ handleClose }) {
   const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate(); 
 
   const handleClick = () => {
     setOpen(!open);
@@ -27,6 +29,11 @@ export default function NestedList({ handleClose }) {
   };
   const colorText = {
     color: "#fff",
+  };
+
+  const handleTabClick = () => {
+    // Redirect to another page
+    navigate('/productlisting');
   };
 
   return (
@@ -64,7 +71,7 @@ export default function NestedList({ handleClose }) {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={handleTabClick}>
             {/* <ListItemIcon>
               <StarBorder />
             </ListItemIcon> */}
@@ -72,7 +79,7 @@ export default function NestedList({ handleClose }) {
           </ListItemButton>
         </List>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={handleTabClick}>
             {/* <ListItemIcon>
               <StarBorder />
             </ListItemIcon> */}
