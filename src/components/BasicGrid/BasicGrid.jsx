@@ -5,7 +5,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import FooterAccordionForMobile from "../../pages/Footer/FooterAccordionForMobile";
 import AccordionExpandIcon from "../Accordion/AccordionExpandIcon";
-import { Button, Pagination, Switch, Typography } from "@mui/material";
+import { Button, Pagination, Switch, Tooltip, Typography } from "@mui/material";
 import SelectComponent from "../SelectComponent/SelectComponent";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -19,6 +19,27 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function BasicGrid() {
   const label = { inputProps: { "aria-label": "Size switch demo" } };
+  function Logo({ background, hoverBackground }) {
+    const Logo = styled.div`
+      background: ${props => `url(${props.background}) no-repeat top center`};
+      height: 300px;
+      width: 300px;
+      background-size: cover;
+      &:hover {
+        background: ${props =>
+          `url(${props.hoverBackground}) no-repeat top center`};
+        background-size: contain;
+      }
+    `;
+  
+    return (
+      <Logo
+        background={background}
+        hoverBackground={hoverBackground}
+        className="logoContent"
+      />
+    );
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -146,10 +167,9 @@ export default function BasicGrid() {
               </Typography>
             </Box>
           </Item>
-          <Item 
+          <Item
             sx={{
               margin: "0 1rem",
-              
             }}
           >
             <Box
@@ -170,7 +190,7 @@ export default function BasicGrid() {
                 <Typography variant="body2" mr={1}>
                   Sort by
                 </Typography>
-                <SelectComponent minWidthSize="50"/>
+                <SelectComponent minWidthSize="50" />
               </Box>
               <Box
                 sx={{
@@ -181,7 +201,7 @@ export default function BasicGrid() {
               >
                 <Typography>Showing 1 - 36 of 1226</Typography>|
                 <Typography>Items per page</Typography>
-                <SelectComponent minWidthSize="50"/>
+                <SelectComponent minWidthSize="50" />
               </Box>
               <Box
                 sx={{
@@ -199,7 +219,7 @@ export default function BasicGrid() {
                   Items:
                 </Typography>
 
-                <SelectComponent minWidthSize="50"/>
+                <SelectComponent minWidthSize="50" />
               </Box>
             </Box>
           </Item>
@@ -216,25 +236,151 @@ export default function BasicGrid() {
               shape="rounded"
               color="primary"
               sx={{
-                '& .Mui-selected': {
-                  backgroundColor: 'blue', // Customize background color of selected button
-                  color: 'white', // Customize text color of selected button
+                "& .Mui-selected": {
+                  backgroundColor: "blue", // Customize background color of selected button
+                  color: "white", // Customize text color of selected button
                 },
-                '& button:not(.Mui-selected)': {
-                  backgroundColor: 'lightgray', // Customize background color of other buttons
-                  color: 'black', // Customize text color of other buttons
-        
+                "& button:not(.Mui-selected)": {
+                  backgroundColor: "lightgray", // Customize background color of other buttons
+                  color: "black", // Customize text color of other buttons
                 },
-
               }}
-              
             />
           </Item>
-          <Item sx={{
-              margin: "0 2%",
-
-          }}>
-            hi
+          <Item>
+            <Box
+              sx={{
+                margin: "0 2%",
+                display: "flex",
+                gap: "1rem",
+              }}
+            >
+              <Box
+                sx={{
+                  // display: "flex",
+                  // flexDirection: "row"
+                  padding: "4% 2%",
+                  border: "1px solid red",
+                  height: "375px",
+                  transition: "border-color 0.3s ease", // Add transition effect for smooth hover
+                  "&:hover": {
+                    borderColor: "blue", // Change border color on hover
+                    ".anniversary-band": {
+                      textDecoration: "underline", // Underline text on hover
+                    },
+                  },
+                }}
+                className="custom-box"
+              >
+                <Box>
+                  <img src="https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$" />
+                </Box>
+                <Box
+                  sx={{
+                    textAlign: "left",
+                  }}
+                >
+                  <Tooltip title="Add" placement="top">
+                    <Button
+                      sx={{
+                        fontSize: "12px",
+                        backgroundColor: "green",
+                        color: "#fff",
+                        minWidth: "45px",
+                        padding: 0,
+                        borderRadius: "15px",
+                        fontWeight: "bold",
+                        marginTop: "5%",
+                        marginBottom: "15%",
+                        "&:hover": {
+                          "&.MuiButtonBase-root.MuiButton-root": {
+                            /* Add your custom styles here */
+                            // backgroundColor: 'your-desired-color',
+                            /* Add other styles as needed */
+                            // backgroundColor: "rgba(25, 118, 210, 0)",
+                            backgroundColor: "green",
+                            color: "#fff",
+                          },
+                        },
+                      }}
+                      disableRipple={true}
+                    >
+                      new
+                    </Button>
+                  </Tooltip>
+                  <Typography
+                    sx={
+                      {
+                        // "&:hover": {
+                        //   textDecoration: 'underline'
+                        // },
+                      }
+                    }
+                    className="anniversary-band"
+                  >
+                    Anniversary Band
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: "2%",
+                    }}
+                  >
+                    <Tooltip title="Add" placement="top">
+                      {/* <Button
+                        sx={{
+                          fontSize: "12px",
+                          backgroundColor: "green",
+                          color: "#fff",
+                          minWidth: "45px",
+                          padding: 0,
+                          borderRadius: "15px",
+                          fontWeight: "bold",
+                          marginBottom: "1rem",
+                          "&:hover": {
+                            "&.MuiButtonBase-root.MuiButton-root": {
+                              backgroundColor: "green",
+                              color: "#fff",
+                            },
+                          },
+                        }}
+                        disableRipple={true}
+                      > */}
+                      <img
+                        src="https://assets.stullercloud.com/das/84852017.svg"
+                        width={20}
+                      />
+                      {/* </Button> */}
+                    </Tooltip>
+                    <Tooltip title="Add" placement="top">
+                      <img
+                        src="https://assets.stullercloud.com/das/84852009.svg"
+                        width={20}
+                      />
+                    </Tooltip>
+                    <Tooltip title="Add" placement="top">
+                      <img
+                        src="https://assets.stullercloud.com/das/84852008.svg"
+                        width={20}
+                      />
+                    </Tooltip>
+                  </Box>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      fontWeight: "bold",
+                      textDecoration: "none !important",
+                      "&.anniversary-band": {
+                        // Target the Typography with the class .anniversary-band
+                        textDecoration: "underline", // Underline text on hover
+                      },
+                    }}
+                  >
+                    123531
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
           </Item>
         </Grid>
       </Grid>

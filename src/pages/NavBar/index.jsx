@@ -146,8 +146,13 @@ function Index() {
             // p: 20,
             justifyContent: "center",
             display: "flex",
-            flexWrap: "wrap",
-            gap: "10px",
+            // flexWrap: "wrap",
+            gap: "1%",
+            margin: ".5% 2% 1% 1% !important",
+            "@media (max-width: 1200px) and (min-width:  768px)": {
+              flexWrap: "wrap"
+
+            },
           }}
         >
           {cardData1?.map((card, index) => (

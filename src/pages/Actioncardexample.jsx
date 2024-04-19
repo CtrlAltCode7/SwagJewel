@@ -12,10 +12,10 @@ export default function ActionAreaCard({ image, title, description }) {
     <Link to={"home"} style={{ textDecoration: "none" }}>
       <Card
         sx={{
-          maxWidth: title && description ? 390 : "none",
+          maxWidth: title && description ? 390 : "100%",
           m: 1,
           width: "100%",
-          objectFit: !title && !description ? "contain" : "fill",
+          objectFit: !title && !description ? "contain" : "contain",
           // backgroundColor: "red"
           boxShadow: "none",
           borderRadius: 0,
@@ -37,7 +37,12 @@ export default function ActionAreaCard({ image, title, description }) {
             height={!title && !description ? 175 : 200}
             image={image}
             alt={title}
-            sx={{ objectFit: "fill", textDecoration: "none",}}
+            sx={{ objectFit: "fill", textDecoration: "none",
+            "@media (max-width: 1200px) and (min-width:  768px)": {
+              width: "100%"
+
+            },
+          }}
           />
           {title && description && (
             <Box

@@ -21,7 +21,7 @@ export default function AccordionExpandIcon() {
   const accordionData = [
     {
       id: 1,
-      title: "Accordion 1",
+      title: "Category (5)",
       contents: [
         {
           id: 1,
@@ -242,7 +242,10 @@ export default function AccordionExpandIcon() {
             aria-controls={`panel${item.id}-content`}
             id={`panel${item.id}-header`}
             sx={{
-              backgroundColor: "#eee"
+              backgroundColor: "#eee",
+              color: "#555",
+              fontWeight: "bold",
+              textTransform: "uppercase"
             }}
           >
             <span>{item.title}</span>

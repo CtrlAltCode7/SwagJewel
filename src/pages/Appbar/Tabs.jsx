@@ -25,6 +25,8 @@ function CustomTabPanel(props) {
       {...other}
       style={{
         backgroundColor: "royalblue",
+        position: "absolute",
+        width: "100%"
       }}
     >
       {value === index && (
@@ -99,67 +101,95 @@ export default function BasicTabs() {
   let tabData = [
     {
       label: "Engagement Rings",
-      content: <AppbarNavigation categories={jewelleryCategories} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation
+          categories={jewelleryCategories}
+          enableShopByButton={true}
+        />
+      ),
     },
     {
       label: "Wedding Bands",
-      content: <AppbarNavigation categories={weddingbandsCategories} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation
+          categories={weddingbandsCategories}
+          enableShopByButton={true}
+        />
+      ),
     },
     {
       label: "Chain & Cord",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Jewelry",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Mountings",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Findings",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Lab Grown Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Gemstone",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Metals",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
     {
       label: "Tools & Supplier",
-      content: <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />,
+      content: (
+        <AppbarNavigation categories={chainAndCord} enableShopByButton={true} />
+      ),
     },
 
     // Add more tab data as needed
   ];
 
-  tabData = productCategory.map(item => ({
+  tabData = productCategory.map((item) => ({
     label: item.Category.Name,
-    content: tabData.find(tab => tab.label === item.Category.Name)?.content || null, // Retain content from original tabData if available
+    content:
+      tabData.find((tab) => tab.label === item.Category.Name)?.content || null, // Retain content from original tabData if available
   }));
 
-  console.log('tabData', tabData)
+  console.log("tabData", tabData);
 
-  const productlabel = productCategory.map((category,index)=>{
+  const productlabel = productCategory.map((category, index) => {
     return {
-      label: category.Category.Name
-    }
-  })
+      label: category.Category.Name,
+    };
+  });
 
-  console.log('productlabel', productlabel)
-
+  // console.log('productlabel', productlabel)
 
   const tabLabels = [
     "Products",
@@ -184,12 +214,11 @@ export default function BasicTabs() {
     }
   };
 
-  useEffect(()=>{
-    getProductCategories()
+  useEffect(() => {
+    getProductCategories();
+  }, []);
 
-  },[])
-
-  console.log('productCategory', productCategory)
+  // console.log('productCategory', productCategory)
 
   return (
     <Box
@@ -267,7 +296,9 @@ export default function BasicTabs() {
                 label={label}
                 {...a11yProps(index)}
                 onMouseEnter={(e) => handleMouseEnter(e, index)}
-                sx={commanTabStyle}
+                sx={
+                  (commanTabStyle)
+                }
               />
               {label == "Educational Resources" && (
                 <Typography
@@ -282,8 +313,7 @@ export default function BasicTabs() {
                     border: "1px solid transparent",
                     mr: 1,
                     alignSelf: "center",
-                    cursor: "pointer"
-
+                    cursor: "pointer",
                   }}
                   variant="subtitle2"
                 >
