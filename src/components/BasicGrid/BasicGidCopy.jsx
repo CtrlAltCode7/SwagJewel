@@ -786,6 +786,8 @@ export default function BasicGrid() {
               display: "flex",
               gap: "1rem",
               flexWrap: "wrap",
+              justifyContent: "center !important"
+              // marginBottom: "1rem"
 
               // "@media (min-width: 1200px)": {
               //   // width: "100%"

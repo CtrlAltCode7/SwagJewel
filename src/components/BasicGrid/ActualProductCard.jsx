@@ -9,6 +9,8 @@ function ActualProductCard() {
           // margin: "0 2%",
           display: "flex",
           gap: "1rem",
+          justifyItems: "center",
+
         }}
         xs={12} sm={12} md={3} lg={3}
 
