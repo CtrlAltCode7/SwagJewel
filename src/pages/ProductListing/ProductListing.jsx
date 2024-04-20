@@ -2,9 +2,12 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import CustomSeparator from "../../components/CustomSeparator/CustomSeparator";
 import { Box, Grid } from "@mui/material";
-import BasicGrid from "../../components/BasicGrid/BasicGrid";
+import BasicGidCopy from "../../components/BasicGrid/BasicGidCopy";
+// import ProductCard from "../../components/BasicGrid/ProductCard";
+import ProductCardDetails from "../../components/BasicGrid/ProductCardDetails"
 
 export default function ProductListing() {
+
   return (
     <Layout>
       <Box sx={{
@@ -15,7 +18,8 @@ export default function ProductListing() {
       }}>
         {/* breadcrumb */}
         <CustomSeparator />
-        <BasicGrid />
+        <BasicGidCopy />
+        {/* <ProductCard product={products}/> */}
       </Box>
     </Layout>
   );

@@ -21,6 +21,8 @@ import { ImageSlider } from "../../components/carousel/ImageSlider";
 import { styled, alpha } from "@mui/material/styles";
 import "../../styles/HomeStyles.css";
 import Layout from "../../components/Layout/Layout";
+// import SwipeToSlide from "../../components/carousel/SwipeToSlide";
+import ProductSlider from "../../components/carousel/ProductSlider";
 
 function Index() {
   const cardData = [
@@ -107,6 +109,23 @@ function Index() {
     },
   }));
   // const BannerImg =
+  const products = [
+    { title: "Product 1", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 2", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 4", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 5", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 6", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+
+    // Add more product objects as needed
+  ];
   return (
     <>
       <Layout>
@@ -150,8 +169,7 @@ function Index() {
             gap: "1%",
             margin: ".5% 2% 1% 1% !important",
             "@media (max-width: 1200px) and (min-width:  768px)": {
-              flexWrap: "wrap"
-
+              flexWrap: "wrap",
             },
           }}
         >
@@ -214,7 +232,9 @@ function Index() {
             }}
           />
         </StyledPopularBox>
-        <DBCarousel />
+        {/* <DBCarousel /> */}
+        {/* <SwipeToSlide /> */}
+        <ProductSlider />
       </Layout>
     </>
   );

@@ -15,8 +15,11 @@ export default function BookCard({ book }) {
   console.log("book 1234", book);
   return (
     <Card
-      sx={{ width: "250px", height: "325px", border: "1px solid #eee" }}
-      elevation={1}
+      // sx={{ width: "250px", height: "325px", border: "1px solid #eee" }}
+      // elevation={1}
+      sx={{
+        boxShadow: "none"
+      }}
     >
       <CardMedia
         component="img"
