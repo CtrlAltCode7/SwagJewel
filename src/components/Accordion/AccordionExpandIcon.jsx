@@ -1,270 +1,100 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Checkbox from "@mui/material/Checkbox";
-import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Box } from "@mui/material";
-
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-export default function AccordionExpandIcon() {
-  const [expanded, setExpanded] = React.useState({});
+import Typography from "@mui/material/Typography";
+import { Box, Checkbox } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+
+function AccordionComponent({ data }) {
+  const [expanded, setExpanded] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded((prevExpanded) => ({
-      ...prevExpanded,
-      [panel]: isExpanded ? true : false,
-    }));
+    setExpanded(isExpanded ? panel : null);
   };
 
-  const accordionData = [
-    {
-      id: 1,
-      title: "Category (5)",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Accordion 2",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    // Add more accordion items as needed
-  ];
+  const contentLength = data?.map((item, index) => item.contents.length) || 0;
+
+  console.log("data", contentLength);
 
   return (
     <div>
-      {accordionData.map((item) => (
+      {data.map((accordion, index) => (
         <Accordion
-          key={item.id}
-          expanded={expanded[`panel${item.id}`]}
-          onChange={handleChange(`panel${item.id}`)}
+          key={index}
+          expanded={expanded === `panel${index}`}
+          onChange={handleChange(`panel${index}`)}
           sx={{
-            marginBottom: "1rem"
+            marginBottom: "1rem",
           }}
         >
           <AccordionSummary
             expandIcon={
-              expanded[`panel${item.id}`] ? (
-                <RemoveCircleOutlineIcon />
+              expanded === `panel${index}` ? (
+                <RemoveCircleIcon style={{ color: "#6fa8d1" }} />
               ) : (
-                <AddCircleOutlineIcon />
+                <AddCircleIcon style={{ color: "#999", backgroundColor: "" }} />
               )
             }
-            aria-controls={`panel${item.id}-content`}
-            id={`panel${item.id}-header`}
+            aria-controls={`panel${index}-content`}
+            id={`panel${index}-header`}
             sx={{
               backgroundColor: "#eee",
               color: "#555",
-              fontWeight: "bold",
-              textTransform: "uppercase"
+              textTransform: "uppercase",
             }}
           >
-            <span>{item.title}</span>
+            <Typography
+              sx={{
+                color: "#555",
+                fontWeight: "bold",
+                // marginRight: ".5rem"
+                // gap: ".4rem"
+              }}
+            >
+              {accordion.title}
+              <Typography component={"span"}ml={1}>
+                {`(${accordion?.contents?.length || 0})`}
+              </Typography>
+            </Typography>
           </AccordionSummary>
           <AccordionDetails
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              maxHeight: "240px",
+              overflowY: "auto",
+              "&::-webkit-scrollbar": {
+                width: "7px",
+                backgroundColor: "#e6e6e6",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#6fa8d1",
+                borderRadius: "10px",
+              },
             }}
           >
-            {item.contents.map((content,index) => (
+            {accordion.contents.map((content, index) => (
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
                 }}
+                key={content.id}
               >
-                <Checkbox /> {/* Adding Checkbox under AccordionDetails */}
-                <Typography key={content.id}>{content.text}</Typography>
+                <Checkbox style={{
+                  color: "#999"
+                }}/>
+                <Typography
+                  sx={{
+                    color: "#555",
+                    fontSize: "14px"
+                  }}
+                >
+                  {content.text}
+                </Typography>
               </Box>
             ))}
           </AccordionDetails>
@@ -273,3 +103,5 @@ export default function AccordionExpandIcon() {
     </div>
   );
 }
+
+export default AccordionComponent;

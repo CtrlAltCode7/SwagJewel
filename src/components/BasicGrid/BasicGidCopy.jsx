@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
-  // boxShadow: 'none',
+  boxShadow: 'none',
 }));
 
 export default function BasicGrid() {
@@ -552,12 +552,229 @@ export default function BasicGrid() {
     },
     // Add more product objects as needed
   ];
+  const accordionData = [
+    {
+      id: 1,
+      title: "Category",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 1",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 1",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 1",
+        },
+        {
+          id: 1,
+          text: "Content 1 for Accordion 1",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 1",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 1",
+        },
+        {
+          id: 1,
+          text: "Content 1 for Accordion 1",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 1",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 1",
+        },
+        {
+          id: 1,
+          text: "Content 1 for Accordion 1",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 1",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 1",
+        },
+        {
+          id: 1,
+          text: "Content 1 for Accordion 1",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 1",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 1",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Product State",
+      contents: [
+        {
+          id: 1,
+          text: "Semi-set",
+        },
+        {
+          id: 2,
+          text: "Set",
+        },
+        {
+          id: 3,
+          text: "unset",
+        },
+        {
+          id: 4,
+          text: "N/A",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Primary Stone Size",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "Primary Stone Type",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: "Setting Method",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 6,
+      title: "3C Designs",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 7,
+      title: "Metal Type",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 8,
+      title: "Metal Karat",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    {
+      id: 9,
+      title: "Discount",
+      contents: [
+        {
+          id: 1,
+          text: "Content 1 for Accordion 2",
+        },
+        {
+          id: 2,
+          text: "Content 2 for Accordion 2",
+        },
+        {
+          id: 3,
+          text: "Content 3 for Accordion 2",
+        },
+      ],
+    },
+    // Add more accordion items as needed
+  ];
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
-            <AccordionExpandIcon />
+            <AccordionExpandIcon data={accordionData} />
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
@@ -579,6 +796,8 @@ export default function BasicGrid() {
           <Item
             sx={{
               margin: "0 1rem",
+              paddingLeft: 0,
+              paddingRight: 0,
             }}
           >
             <img

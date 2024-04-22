@@ -32,12 +32,6 @@ function ActualProductCard() {
               ".anniversary-band": {
                 textDecoration: "underline",
               },
-              "#productImg": {
-                display: "none",
-              },
-              "#productImgOnHover": {
-                display: "block",
-              },
             },
           }}
           className="custom-box"
@@ -46,6 +40,15 @@ function ActualProductCard() {
             height={190}
             sx={{
               padding: "7% 7% 0",
+              "&:hover": {
+                "#productImg": {
+                  display: "none",
+                },
+                "#productImgOnHover": {
+                  display: "block",
+                  textAlign: "center",
+                },
+              },
             }}
           >
             <img
@@ -60,9 +63,42 @@ function ActualProductCard() {
           <Box
             sx={{
               textAlign: "left",
+              padding: "8.13%"
             }}
           >
-            <Tooltip title="Add" placement="top">
+            <Tooltip
+              title={
+                <span
+                  style={{
+                    padding: "1rem",
+                    color: "#555",
+                    backgroundColor: "#fff",
+                    border: "1px solid",
+                    fontSize: "14px",
+                  }}
+                >
+                  <span style={{ marginRight: "8px", fontWeight: "bold" }}>
+                    New:
+                  </span>
+                  Newly released products
+                </span>
+              }
+              placement="top"
+              // sx={{ borderRadius: "5px", }}
+              componentsProps={{
+                tooltip: {
+                  sx: {
+                    bgcolor: "common.black",
+                    "& .MuiTooltip-arrow": {
+                      color: "common.black",
+                    },
+                    "&.MuiTooltip-tooltip": {
+                      backgroundColor: "#fff",
+                    },
+                  },
+                },
+              }}
+            >
               <Button
                 sx={{
                   fontSize: "12px",
