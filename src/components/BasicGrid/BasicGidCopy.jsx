@@ -21,28 +21,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function BasicGrid() {
   const label = { inputProps: { "aria-label": "Size switch demo" } };
-  function Logo({ background, hoverBackground }) {
-    const Logo = styled(`div`)(({ theme }) => ({
-      background: `${(props) =>
-        `url(${props.background}) no-repeat top center`}`,
-      height: "300px",
-      width: "300px",
-      backgroundSize: "cover",
-      "&:hover": {
-        background: `${(props) =>
-          "url(${props.hoverBackground}) no-repeat top center"}`,
-        backgroundSize: "contain",
-      },
-    }));
-
-    return (
-      <Logo
-        background={background}
-        hoverBackground={hoverBackground}
-        className="logoContent"
-      />
-    );
-  }
   const products = [
     {
       id: 1,
@@ -583,7 +561,11 @@ export default function BasicGrid() {
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
-          <Item>
+          <Item
+            sx={{
+              margin: "0 1rem",
+            }}
+          >
             <Typography
               variant="h4"
               sx={{
@@ -594,42 +576,64 @@ export default function BasicGrid() {
               Anniversary & Eternity Bands
             </Typography>
           </Item>
-          <Item>
+          <Item
+            sx={{
+              margin: "0 1rem",
+            }}
+          >
             <img
               src="https://meteor.stullercloud.com/das/130123378"
               style={{
                 height: "19vh",
                 objectFit: "fill",
+                width: "-webkit-fill-available",
               }}
             />
           </Item>
           <Item
             sx={{
-              paddingTop: "0 1rem",
-              overflow: "hidden !important",
-              display: "flex",
-              justifyContent: "space-evenly !important",
+              margin: "0 1rem",
+              backgroundColor: "#eee",
+              padding: "2rem 1.5rem 0",
+            }}
+          >
+            <Grid container spacing={2}>
+              <SelectComponent title="Finger Size" minWidthSize="200" />
+              <SelectComponent title="Primary Stone Count" minWidthSize="200" />
+              <SelectComponent title="Primary Stone Shape" minWidthSize="200" />
+              <SelectComponent title="Metal Color" minWidthSize="200" />
+            </Grid>
+          </Item>
+          {/* <Item
+            sx={{
+              // paddingTop: "0 1rem",
+              // overflow: "hidden !important",
+              // display: "flex",
+              // justifyContent: "space-evenly !important",
               // flexGrow: 1,
-              padding: "1rem 1rem 0",
+              // padding: "1rem 1rem 0",
+              // backgroundColor: "red",
+              // margin: "0 1rem",
+              // flexGrow: 1,
+
               "@media (max-width:  768px)": {
-                flexDirection: "column",
+                // flexDirection: "column",
               },
             }}
           >
             <Box
               sx={{
-                backgroundColor: "#eee",
-                flexDirection: "row",
-                display: "flex",
-                gap: "1rem",
-                padding: "1rem",
-                // margin: "0 1rem",
-                paddingTop: "2rem",
-                flexWrap: "wrap",
+                // backgroundColor: "#eee",
+                // flexDirection: "row",
+                // display: "flex",
+                // gap: "1rem",
+                // padding: "1rem",
+                // // margin: "0 1rem",
+                // paddingTop: "2rem",
 
-                "@media (max-width:  768px)": {
+                "@media (max-width:  1200px)": {
                   flexDirection: "column",
-                  margin: 0,
+                  // margin: 0,
                 },
               }}
             >
@@ -638,13 +642,18 @@ export default function BasicGrid() {
               <SelectComponent title="Primary Stone Shape" minWidthSize="200" />
               <SelectComponent title="Metal Color" minWidthSize="200" />
             </Box>
-          </Item>
+          </Item> */}
           <Item
             sx={{
-              padding: "0 1.4rem ",
+              // padding: "0 1.4rem ",
+              // backgroundColor: "red",
+              margin: "0 1rem",
+              padding: 0,
+              backgroundColor: "#eee",
+
               justifyContent: "space-evenly !important",
               "@media (max-width:  768px)": {
-                padding: "0 1rem ",
+                // padding: "0 1rem ",
               },
             }}
           >
@@ -674,7 +683,10 @@ export default function BasicGrid() {
           </Item>
           <Item
             sx={{
-              padding: "0 1.4rem ",
+              // padding: "0 1.4rem ",
+              // backgroundColor: "ActiveBorder",
+              margin: "0 1rem",
+              padding: 0,
             }}
           >
             <Box
@@ -703,6 +715,8 @@ export default function BasicGrid() {
           </Item>
           <Item
             sx={{
+              // margin: "0 1rem",
+              // backgroundColor: "red",
               margin: "0 1rem",
             }}
           >
@@ -724,18 +738,21 @@ export default function BasicGrid() {
                 <Typography variant="body2" mr={1}>
                   Sort by
                 </Typography>
-                <SelectComponent minWidthSize="50" />
+                <SelectComponent minWidthSize="150" placeholder="Newest" />
               </Box>
               <Box
                 sx={{
                   display: { xs: "none", md: "flex", lg: "flex" },
                   gap: "1rem",
                   alignItems: "center",
+                  flex: "auto",
+                  justifyContent: "flex-end",
+                  // alignItems: "center",
                 }}
               >
                 <Typography>Showing 1 - 36 of 1226</Typography>|
                 <Typography>Items per page</Typography>
-                <SelectComponent minWidthSize="50" />
+                <SelectComponent minWidthSize="20" placeholder="26" />
               </Box>
               <Box
                 sx={{
@@ -753,7 +770,7 @@ export default function BasicGrid() {
                   Items:
                 </Typography>
 
-                <SelectComponent minWidthSize="50" />
+                <SelectComponent minWidthSize="60" placeholder="50" />
               </Box>
             </Box>
           </Item>
@@ -781,34 +798,56 @@ export default function BasicGrid() {
               }}
             />
           </Item>
-          <Item
-            sx={{
-              display: "flex",
-              gap: "1rem",
-              flexWrap: "wrap",
-              justifyContent: "center !important"
-              // marginBottom: "1rem"
-
-              // "@media (min-width: 1200px)": {
-              //   // width: "100%"
-              //   flexWrap: "wrap",
-
-              // },
-            }}
+          {/* <Item
+   
             xs={12}
             sm={12}
             md={3}
+            lg={3} */}
+
+          {/* <ProductCard product={products} /> */}
+          {/* <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+            <ActualProductCard />
+          </Item> */}
+
+          {/* <Item xs={12} sm={6} md={3} lg={3}>
+  <Grid container spacing={2}>
+    {Array.from({ length: 4 }).map((_, index) => (
+      <Grid key={index} item xs={12} sm={3}> 
+        <div>Hello World</div>
+      </Grid>
+    ))}
+    {Array.from({ length: 4 }).map((_, index) => (
+      <Grid key={index} item xs={12} sm={3}>
+        <ActualProductCard />
+      </Grid>
+    ))}
+  </Grid>
+</Item> */}
+          <Item
+            xs={12}
+            sm={6}
+            md={3}
             lg={3}
+            sx={{
+              margin: "0 1rem",
+            }}
           >
-            {/* <ProductCard product={products} /> */}
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
+            <Grid container spacing={2}>
+              {Array.from({ length: 4 }).map((_, index) => (
+                <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
+                  {" "}
+                  {/* Set md={4} to display 3 items in a row when screen width is less than 1200px, and lg={3} to maintain 4 items in a row for larger screens */}
+                  <ActualProductCard />
+                </Grid>
+              ))}
+            </Grid>
           </Item>
         </Grid>
       </Grid>
