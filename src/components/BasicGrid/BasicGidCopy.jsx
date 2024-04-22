@@ -798,38 +798,6 @@ export default function BasicGrid() {
               }}
             />
           </Item>
-          {/* <Item
-   
-            xs={12}
-            sm={12}
-            md={3}
-            lg={3} */}
-
-          {/* <ProductCard product={products} /> */}
-          {/* <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-            <ActualProductCard />
-          </Item> */}
-
-          {/* <Item xs={12} sm={6} md={3} lg={3}>
-  <Grid container spacing={2}>
-    {Array.from({ length: 4 }).map((_, index) => (
-      <Grid key={index} item xs={12} sm={3}> 
-        <div>Hello World</div>
-      </Grid>
-    ))}
-    {Array.from({ length: 4 }).map((_, index) => (
-      <Grid key={index} item xs={12} sm={3}>
-        <ActualProductCard />
-      </Grid>
-    ))}
-  </Grid>
-</Item> */}
           <Item
             xs={12}
             sm={6}
@@ -842,8 +810,6 @@ export default function BasicGrid() {
             <Grid container spacing={2}>
               {Array.from({ length: 4 }).map((_, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                  {" "}
-                  {/* Set md={4} to display 3 items in a row when screen width is less than 1200px, and lg={3} to maintain 4 items in a row for larger screens */}
                   <ActualProductCard />
                 </Grid>
               ))}

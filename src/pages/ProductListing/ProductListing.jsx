@@ -12,8 +12,14 @@ export default function ProductListing() {
     <Layout>
       <Box sx={{
         margin: "0% 2% 2% 4%",
-        "@media (max-width: 1200px)": {
-          // margin: "0 2%"
+        "@media (min-width: 1250px)": {
+          margin: "0 5%"
+        },
+        "@media (min-width: 1350px)": {
+          margin: "0 8%"
+        },
+        "@media (min-width: 1450px)": {
+          margin: "0 10%"
         },
       }}>
         {/* breadcrumb */}

@@ -10,10 +10,11 @@ function ActualProductCard() {
           display: "flex",
           gap: "1rem",
           justifyItems: "center",
-
         }}
-        xs={12} sm={12} md={3} lg={3}
-
+        xs={12}
+        sm={12}
+        md={3}
+        lg={3}
       >
         <Box
           sx={{
@@ -21,7 +22,7 @@ function ActualProductCard() {
             padding: "4% 2%",
             border: "1px solid #dee2e6",
             height: "375px",
-            // width: "150px",
+            width: "100%", // Set width to 100% to adjust dynamically
             transition: "border-color 0.3s ease", // Add transition effect for smooth hover
             "#productImgOnHover": {
               display: "none",
@@ -41,13 +42,18 @@ function ActualProductCard() {
           }}
           className="custom-box"
         >
-          <Box height={190}>
+          <Box
+            height={190}
+            sx={{
+              padding: "7% 7% 0",
+            }}
+          >
             <img
               id="productImg"
-              src="https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
+              src="https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
             />
             <img
-              src="https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
+              src="https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
               id="productImgOnHover"
             />
           </Box>
