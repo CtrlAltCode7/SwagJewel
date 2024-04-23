@@ -16,7 +16,7 @@ import CallIcon from "@mui/icons-material/Call";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import StullerLogo from "../../assets/swag-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const pages = [
   "Contact Us",
@@ -29,6 +29,8 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate(); 
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -53,6 +55,11 @@ function ResponsiveAppBar() {
       // Proceed with call initiation
       window.location.href = "tel:8008777777";
     }
+  };
+
+  const handleLogoICon = () => {
+    // Redirect to another page
+    navigate('/');
   };
 
   return (
@@ -114,7 +121,7 @@ function ResponsiveAppBar() {
             </Typography>
           </Box>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Link to={"/productlisting"}>
+          {/* <Link to={"/productlisting"}> */}
             <Typography
               variant="h6"
               noWrap
@@ -129,10 +136,12 @@ function ResponsiveAppBar() {
                 color: "red",
                 textDecoration: "none",
               }}
+              onClick={handleLogoICon}
+
             >
               <img src={StullerLogo} width={"75%"} />
             </Typography>
-          </Link>
+          {/* </Link> */}
 
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           {/* <Typography

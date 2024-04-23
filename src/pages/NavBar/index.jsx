@@ -23,6 +23,7 @@ import "../../styles/HomeStyles.css";
 import Layout from "../../components/Layout/Layout";
 // import SwipeToSlide from "../../components/carousel/SwipeToSlide";
 import ProductSlider from "../../components/carousel/ProductSlider";
+import HomePageSubBanner from "../HomePageSubBanner/HomePageSubBanner";
 
 function Index() {
   const cardData = [
@@ -159,7 +160,7 @@ function Index() {
             </Link>
           </div>
         </div>
-        <Stack
+        {/* <Stack
           flexDirection={"row"}
           sx={{
             // p: 20,
@@ -170,6 +171,9 @@ function Index() {
             margin: ".5% 2% 1% 1% !important",
             "@media (max-width: 1200px) and (min-width:  768px)": {
               flexWrap: "wrap",
+            },
+            "@media (max-width: 767px)": {
+              flexWrap: "wrap !important",
             },
           }}
         >
@@ -183,18 +187,22 @@ function Index() {
             />
             // </Box>
           ))}
-        </Stack>
+        </Stack> */}
+        <HomePageSubBanner />
         <Stack
           flexDirection={"row"}
           sx={{
-            display: { sm: "none", md: "flex", lg: "flex" },
+            display: { sm: "flex", md: "flex", lg: "flex" },
             justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
+            padding: "0 1rem",
+            gap: "1.7rem",
             border: "1px solid #f6f6f6",
-            width: "100%",
+            // width: "100%",
             "@media (max-width: 768px)": {
               margin: "0 !important",
+              flexWrap: "wrap",
+              gap: "1rem !important",
+
             },
           }}
         >

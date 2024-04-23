@@ -39,6 +39,7 @@ function ActualProductCard() {
           <Box
             height={190}
             sx={{
+              display: "inline-block",
               padding: "7% 7% 0",
               "&:hover": {
                 "#productImg": {
@@ -63,7 +64,11 @@ function ActualProductCard() {
           <Box
             sx={{
               textAlign: "left",
-              padding: "8.13%"
+              padding: "8.13%",
+              "@media (max-width:  768px)": {
+                // Media query for smaller screens
+                padding: "0 4.13%",
+              },
             }}
           >
             <Tooltip
@@ -109,7 +114,7 @@ function ActualProductCard() {
                   borderRadius: "15px",
                   fontWeight: "bold",
                   marginTop: "5%",
-                  marginBottom: "15%",
+                  marginBottom: "10%",
                   "&:hover": {
                     "&.MuiButtonBase-root.MuiButton-root": {
                       /* Add your custom styles here */

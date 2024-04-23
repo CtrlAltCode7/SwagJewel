@@ -37,6 +37,8 @@ export default function BookCard({ book }) {
             sx={{
               color: "#555 !important",
               textAlign: "center",
+              textDecorationColor: "#555 !important",
+              textDecorationLine: "underline",
               ":hover": {
                 color: "#75b0da !important",
                 cursor: "pointer",

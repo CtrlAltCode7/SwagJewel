@@ -771,7 +771,16 @@ export default function BasicGrid() {
   ];
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          "@media (max-width:  900px)": {
+            // Media query for smaller screens
+            flexDirection: "column-reverse"
+          },
+        }}
+      >
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
             <AccordionExpandIcon data={accordionData} />

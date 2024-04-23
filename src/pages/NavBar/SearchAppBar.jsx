@@ -24,6 +24,7 @@ import {
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 import NestedList from "./ListItem/NestedList";
 import CustomizedSearchInput from "./CustomizedSearchInput";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,11 +77,19 @@ export default function SearchAppBar() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate(); 
+
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogoICon = () => {
+    // Redirect to another page
+    navigate('/');
   };
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: "#eee" }}>
@@ -183,6 +192,7 @@ export default function SearchAppBar() {
               flexGrow: 1,
               display: { xs: "none", sm: "none", md: "block", lg: "block" },
             }}
+            onClick={handleLogoICon}
           >
             <img src={StullerLogo} width={180} />
           </Typography>
