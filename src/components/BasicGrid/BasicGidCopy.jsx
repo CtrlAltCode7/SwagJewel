@@ -9,6 +9,10 @@ import { Button, Pagination, Switch, Tooltip, Typography } from "@mui/material";
 import SelectComponent from "../SelectComponent/SelectComponent";
 import ProductCard from "./ProductCardDetails";
 import ActualProductCard from "./ActualProductCard";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getImageUrlsWithGroupDescription } from "../../helpers/CommonFuntions";
+import { useState } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -20,6 +24,42 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function BasicGrid() {
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
+  const apiData = useSelector((state) => state.api.data);
+  console.log('apiData', apiData)
+
+  // const imageUrls = apiData?.data?.rows?.map((item) => {
+  //   const images = JSON.parse(item.Images); // Parsing the JSON string
+  //   // Extracting URLs from the images array
+  //   return images?.map((image) => image.FullUrl);
+  // });
+
+//   const imageUrlsWithGroupDescription = apiData?.data?.rows?.map((item) => {
+//     console.log('item', item)
+//     const images = JSON.parse(item.Images); // Parsing the JSON string
+//     // Extracting URLs from the images array
+//     const urls = images?.map((image) => image.FullUrl) || "";
+//     return {
+//         urls: urls,
+//         groupDescription: item.GroupDescription // Assuming the groupdescription field exists in your data
+//     };
+// });
+
+useEffect(() => {
+  if (apiData) {
+    const data = getImageUrlsWithGroupDescription(apiData);
+    setImageUrlsWithGroupDescription(data);
+    console.log("first", data);
+  }
+}, [apiData]);
+
+console.log("imageUrls", imageUrlsWithGroupDescription);
+  // Flattening the array of arrays into a single array of URLs
+  // const flattenedUrls = imageUrls.flat();
+
+  // Now 'flattenedUrls' contains all the image URLs
+  // console.log("flattenedUrls",flattenedUrls);
+
   const label = { inputProps: { "aria-label": "Size switch demo" } };
   const products = [
     {
@@ -777,7 +817,7 @@ export default function BasicGrid() {
         sx={{
           "@media (max-width:  900px)": {
             // Media query for smaller screens
-            flexDirection: "column-reverse"
+            flexDirection: "column-reverse",
           },
         }}
       >
@@ -1036,9 +1076,22 @@ export default function BasicGrid() {
             }}
           >
             <Grid container spacing={2}>
-              {Array.from({ length: 4 }).map((_, index) => (
+              {/* {Array.from({ length: 4 }).map((_, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                  <ActualProductCard />
+                  <ActualProductCard 
+                   productImg={"https://meteor.stullercloud.com/das/35535773?$standard$"}
+                   productImgOnHover={"https://meteor.stullercloud.com/das/14952862?$standard$"}
+                   productTitle={"Cross Pendant "}
+                  />
+                </Grid>
+              ))} */}
+              {imageUrlsWithGroupDescription?.map((imgWithTitle, index) => (
+                <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
+                  <ActualProductCard
+                    productImg={imgWithTitle?.urls[0] || ""}
+                    productImgOnHover={imgWithTitle?.urls[1] || ""}
+                    productTitle={imgWithTitle?.groupDescription}
+                  />
                 </Grid>
               ))}
             </Grid>

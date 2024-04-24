@@ -1,7 +1,9 @@
 import { Box, Button, Tooltip, Typography } from "@mui/material";
 import React from "react";
+import { useState } from "react";
 
-function ActualProductCard() {
+function ActualProductCard({ productImg, productImgOnHover, productTitle }) {
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
       <Box
@@ -24,9 +26,7 @@ function ActualProductCard() {
             height: "375px",
             width: "100%", // Set width to 100% to adjust dynamically
             transition: "border-color 0.3s ease", // Add transition effect for smooth hover
-            "#productImgOnHover": {
-              display: "none",
-            },
+     
             "&:hover": {
               borderColor: "#999",
               ".anniversary-band": {
@@ -39,28 +39,26 @@ function ActualProductCard() {
           <Box
             height={190}
             sx={{
-              display: "inline-block",
+              display: "inline-block !important",
               padding: "7% 7% 0",
+              "#productImgOnHover": {
+                display: "none !important",
+              },
               "&:hover": {
                 "#productImg": {
-                  display: "none",
+                  display: "none !important",
                 },
                 "#productImgOnHover": {
-                  display: "block",
+                  display: "block !important",
                   textAlign: "center",
                 },
               },
             }}
           >
-            <img
-              id="productImg"
-              src="https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
-            />
-            <img
-              src="https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$"
-              id="productImgOnHover"
-            />
+            <img id="productImg" src={productImg} height={190} />
+            <img src={productImgOnHover} id="productImgOnHover" height={190} />
           </Box>
+
           <Box
             sx={{
               textAlign: "left",
@@ -141,7 +139,7 @@ function ActualProductCard() {
               }
               className="anniversary-band"
             >
-              Anniversary Band
+              {productTitle}
             </Typography>
             <Box
               sx={{

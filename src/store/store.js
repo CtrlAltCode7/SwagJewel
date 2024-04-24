@@ -16,12 +16,14 @@ import {
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import localStorage from "redux-persist/es/storage";
 import userReducer from "./userSlice";
+import apiReducer from "./apiSlice"
 // import cartReducer from "./cartSlice";
 // import navigationReducer from "./navigationSlice";
 
 const reducers = combineReducers({
 //   cart: cartReducer,
   user: userReducer,
+  api: apiReducer,
 //   navigation: navigationReducer,
 });
 
@@ -30,7 +32,7 @@ const persistConfig = {
   version: 1,
   storage: localStorage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ["user"],
+  whitelist: ["user","api"],
   blacklist: [],
 };
 

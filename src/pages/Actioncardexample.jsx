@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 export default function ActionAreaCard({ image, title, description }) {
   console.log("first", title, description);
   return (
-    <Link to={"home"} style={{ textDecoration: "none", width: "100%" }}>
+    <Link to={"home"} style={{ textDecoration: "none" }}>
       <Card
         sx={{
-          width: "100%",
+          // width: 390,
           // height: { xs: 331, md: !title && !description ? 175 : 200 },
           boxShadow: "none",
           borderRadius: 0,
@@ -20,7 +20,13 @@ export default function ActionAreaCard({ image, title, description }) {
           },
           "@media (max-width: 768px)": {
             // height: 331,
+            width: "100%"
           },
+          // "@media (max-width: 1200px) and (min-width: 768px": {
+          //   // width: "390px !important"
+          //   padding : "0 1rem !important"
+            
+          // },
         }}
       >
         <CardMedia

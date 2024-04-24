@@ -10,6 +10,8 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { getImageUrlsWithGroupDescription } from "../../helpers/CommonFuntions";
+import { useSelector } from "react-redux";
 
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
@@ -30,7 +32,10 @@ function SampleNextArrow(props) {
 }
 
 function ProductSlider({ products }) {
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
   const [cards, setCards] = useState([]);
+  const apiData = useSelector((state) => state.api.data);
+  console.log('apiData', apiData)
 
   const settings = {
     infinite: false,
@@ -77,7 +82,7 @@ function ProductSlider({ products }) {
           return data;
         });
 
-      console.log("API response:", response);
+      // console.log("API response:", response);
       setCards(response);
     } catch (err) {
       console.error(err.message);
@@ -89,6 +94,18 @@ function ProductSlider({ products }) {
     fetchBooks();
     // eslint-disable-next-line
   }, []);
+
+
+
+  useEffect(() => {
+    if (apiData) {
+      const data = getImageUrlsWithGroupDescription(apiData).filter(Boolean);
+      setImageUrlsWithGroupDescription(data);
+      console.log("first", data);
+    }
+  }, [apiData]);
+  
+  console.log("imageUrls- productListing", imageUrlsWithGroupDescription);
 
   return (
     <div
@@ -104,7 +121,7 @@ function ProductSlider({ products }) {
             <h3>{product.title}</h3>
           </div>
         ))} */}
-        {cards.map((bookItem, index) => (
+        {imageUrlsWithGroupDescription?.map((bookItem, index) => (
           <BookCard book={bookItem} key={index} />
         ))}
       </Slider>

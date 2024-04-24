@@ -24,8 +24,8 @@ export default function BookCard({ book }) {
       <CardMedia
         component="img"
         height="200"
-        image={book.image_url}
-        title={book.title}
+        image={book.urls[0]}
+        title={book.groupDescription}
         style={{ objectFit: "scale-down" }}
       />
       <CardContent>
@@ -46,7 +46,7 @@ export default function BookCard({ book }) {
               },
             }}
           >
-            {book.title}
+            {book.groupDescription}
           </Typography>
         </Link>
 

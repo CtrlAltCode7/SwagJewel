@@ -24,8 +24,15 @@ import Layout from "../../components/Layout/Layout";
 // import SwipeToSlide from "../../components/carousel/SwipeToSlide";
 import ProductSlider from "../../components/carousel/ProductSlider";
 import HomePageSubBanner from "../HomePageSubBanner/HomePageSubBanner";
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchData } from '../../store/apiSlice';
+import { useEffect } from "react";
+import { useState } from "react";
+import { getImageUrlsWithGroupDescription } from "../../helpers/CommonFuntions";
 
 function Index() {
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
+
   const cardData = [
     {
       image: "https://meteor.stullercloud.com/das/128969798",
@@ -127,6 +134,29 @@ function Index() {
 
     // Add more product objects as needed
   ];
+
+  const dispatch = useDispatch();
+  const data1 = useSelector((state) => state.api.data);
+  console.log('data1', data1)
+  const status = useSelector((state) => state.api.status);
+  const error = useSelector((state) => state.api.error);
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  // if (status === 'loading') {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (status === 'failed') {
+  //   return <div>Error: {error}</div>;
+  // }
+
+  // const apiData = useSelector((state) => state.api.data);
+  // console.log('apiData', apiData)
+
+
   return (
     <>
       <Layout>
@@ -197,6 +227,7 @@ function Index() {
             padding: "0 1rem",
             gap: "1.7rem",
             border: "1px solid #f6f6f6",
+            marginTop: ".4rem",
             // width: "100%",
             "@media (max-width: 768px)": {
               margin: "0 !important",
