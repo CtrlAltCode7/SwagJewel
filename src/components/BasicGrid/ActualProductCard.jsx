@@ -1,9 +1,15 @@
 import { Box, Button, Tooltip, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ActualProductCard({ productImg, productImgOnHover, productTitle }) {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate(); 
+  const handleProductICon = () => {
+    // Redirect to another page
+    navigate('/productdetails');
+  };
   return (
     <>
       <Box
@@ -17,6 +23,8 @@ function ActualProductCard({ productImg, productImgOnHover, productTitle }) {
         sm={12}
         md={3}
         lg={3}
+        onClick={handleProductICon}
+
       >
         <Box
           sx={{

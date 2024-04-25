@@ -160,64 +160,7 @@ function Index() {
   return (
     <>
       <Layout>
-        <div
-          className="home"
-          style={{
-            backgroundImage: `url(https://meteor.stullercloud.com/das/129678024)`,
-          }}
-        >
-          <div className="headerContainer">
-            <img src="https://meteor.stullercloud.com/das/129679303?fmt=png&hei=120" />
-            {/* <h1
-            style={{
-              textTransform: "uppercase",
-              fontStyle: "italic"
-            }}
-          >
-            Celebrate
-          </h1>
-          <h1>MoM</h1> */}
-            <p
-              style={{
-                fontSize: "18px",
-              }}
-            >
-              Browse best-selling and favorite styles to celebrate a mother's
-              love.
-            </p>
-            <Link to="/menu">
-              <button className="banner-shop-now-btn">Shop Now</button>
-            </Link>
-          </div>
-        </div>
-        {/* <Stack
-          flexDirection={"row"}
-          sx={{
-            // p: 20,
-            justifyContent: "center",
-            display: "flex",
-            // flexWrap: "wrap",
-            gap: "1%",
-            margin: ".5% 2% 1% 1% !important",
-            "@media (max-width: 1200px) and (min-width:  768px)": {
-              flexWrap: "wrap",
-            },
-            "@media (max-width: 767px)": {
-              flexWrap: "wrap !important",
-            },
-          }}
-        >
-          {cardData1?.map((card, index) => (
-            // <Box key={index} sx={{}}>
-            <ActionAreaCard
-              key={index}
-              image={card.image}
-              title={card.title}
-              description={card.description}
-            />
-            // </Box>
-          ))}
-        </Stack> */}
+       <Banner />
         <HomePageSubBanner />
         <Stack
           flexDirection={"row"}

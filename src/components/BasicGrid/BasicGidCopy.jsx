@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getImageUrlsWithGroupDescription } from "../../helpers/CommonFuntions";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -20,13 +21,14 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
-  boxShadow: 'none',
+  boxShadow: "none",
 }));
 
 export default function BasicGrid() {
-  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] =
+    useState([]);
   const apiData = useSelector((state) => state.api.data);
-  console.log('apiData', apiData)
+  console.log("apiData", apiData);
 
   // const imageUrls = apiData?.data?.rows?.map((item) => {
   //   const images = JSON.parse(item.Images); // Parsing the JSON string
@@ -34,26 +36,26 @@ export default function BasicGrid() {
   //   return images?.map((image) => image.FullUrl);
   // });
 
-//   const imageUrlsWithGroupDescription = apiData?.data?.rows?.map((item) => {
-//     console.log('item', item)
-//     const images = JSON.parse(item.Images); // Parsing the JSON string
-//     // Extracting URLs from the images array
-//     const urls = images?.map((image) => image.FullUrl) || "";
-//     return {
-//         urls: urls,
-//         groupDescription: item.GroupDescription // Assuming the groupdescription field exists in your data
-//     };
-// });
+  //   const imageUrlsWithGroupDescription = apiData?.data?.rows?.map((item) => {
+  //     console.log('item', item)
+  //     const images = JSON.parse(item.Images); // Parsing the JSON string
+  //     // Extracting URLs from the images array
+  //     const urls = images?.map((image) => image.FullUrl) || "";
+  //     return {
+  //         urls: urls,
+  //         groupDescription: item.GroupDescription // Assuming the groupdescription field exists in your data
+  //     };
+  // });
 
-useEffect(() => {
-  if (apiData) {
-    const data = getImageUrlsWithGroupDescription(apiData);
-    setImageUrlsWithGroupDescription(data);
-    console.log("first", data);
-  }
-}, [apiData]);
+  useEffect(() => {
+    if (apiData) {
+      const data = getImageUrlsWithGroupDescription(apiData);
+      setImageUrlsWithGroupDescription(data);
+      console.log("first", data);
+    }
+  }, [apiData]);
 
-console.log("imageUrls", imageUrlsWithGroupDescription);
+  console.log("imageUrls", imageUrlsWithGroupDescription);
   // Flattening the array of arrays into a single array of URLs
   // const flattenedUrls = imageUrls.flat();
 
@@ -1087,11 +1089,13 @@ console.log("imageUrls", imageUrlsWithGroupDescription);
               ))} */}
               {imageUrlsWithGroupDescription?.map((imgWithTitle, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                  <ActualProductCard
-                    productImg={imgWithTitle?.urls[0] || ""}
-                    productImgOnHover={imgWithTitle?.urls[1] || ""}
-                    productTitle={imgWithTitle?.groupDescription}
-                  />
+                  {/* <Link to={"/productdetails"} style={{ textDecoration: "none !important"}}> */}
+                    <ActualProductCard
+                      productImg={imgWithTitle?.urls[0] || ""}
+                      productImgOnHover={imgWithTitle?.urls[1] || ""}
+                      productTitle={imgWithTitle?.groupDescription}
+                    />
+                  {/* </Link> */}
                 </Grid>
               ))}
             </Grid>
