@@ -5,6 +5,7 @@ import { Box, Typography } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CopyToClipboardText from "./copyToClipboardText";
 import ShareSocialMedia from "./shareSocialMedia";
+import ProductDetailSection from "./productDetailSection";
 
 export default function ProductDetails() {
   return (
@@ -38,6 +39,7 @@ export default function ProductDetails() {
           <CopyToClipboardText />
           <ShareSocialMedia />
         </Box>
+        <ProductDetailSection />
       </Box>
     </Layout>
   );

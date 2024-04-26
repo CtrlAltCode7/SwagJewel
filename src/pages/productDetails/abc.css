@@ -1,0 +1,5 @@
+.pp-slider .slick-dots>li{
+    /* background-color: red !important; */
+    width: 70px;
+    border-radius: 5px;
+}
