@@ -4,19 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
-// import { Book as book  } from "./dbCarousel";
-//create type for props
-// type BookProps = {
-//   book: Book;
-// };
 
-// eslint-disable-next-line react/prop-types
 export default function BookCard({ book }) {
-  console.log("book 1234", book);
   return (
     <Card
-      // sx={{ width: "250px", height: "325px", border: "1px solid #eee" }}
-      // elevation={1}
       sx={{
         boxShadow: "none"
       }}
@@ -49,10 +40,6 @@ export default function BookCard({ book }) {
             {book.groupDescription}
           </Typography>
         </Link>
-
-        {/* <Typography variant="body2" color="text.secondary">
-          {book.author}
-        </Typography> */}
       </CardContent>
     </Card>
   );

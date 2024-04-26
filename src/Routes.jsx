@@ -11,11 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 //   Loader,
 //   ListingLoader,
 //   DetailLoader,
-// } from "./components/UI/molecules/LazyLoader";
-import Index from "./pages/NavBar";
-import { HomePage } from "./pages/HomePage";
-import ProductListing from "./pages/ProductListing/ProductListing";
-import ProductDetails from "./pages/ProductDetails/index";
+// } from "./components/ui/molecules/lazyLoader";
+import Index from "./pages/navBar/index";
+import { HomePage } from "./pages/homePage";
+import ProductListing from "./pages/productListing/productListing";
+import ProductDetails from "./pages/productDetails/index";
 
 const routes = [
   {
