@@ -1,17 +1,18 @@
 .actionTableCell a {
-    color: #555; /* Default color */
+    color: #555;
+    /* Default color */
     text-decoration: none;
-  }
+}
 
-  .actionTableCell .display-block-xs {
-    color: red !important;
+.actionTableCell .display-block-xs {
+    color: #555 !important;
     cursor: pointer;
     text-decoration: underline;
 
     &:hover {
-        color: green !important;
+        color: #75b0da !important;
     }
-  }
+}
 
 @media screen and (max-width: 768px) {
 
@@ -59,9 +60,11 @@
         flex-direction: column;
 
     }
+
     .actionTableCell a:hover {
-        color: red !important; /* Change color on hover */
-      }
+        color: red !important;
+        /* Change color on hover */
+    }
 
     /* } */
 
@@ -72,7 +75,8 @@
     table.canBeSetWithTable tr:nth-child(even) {
         background-color: #fff;
     }
-/* 
+
+    /* 
     table.actionTableCell {
         flex-direction: column;
     } */

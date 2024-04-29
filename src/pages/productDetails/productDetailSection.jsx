@@ -29,7 +29,7 @@ export default function ProductDetailSection() {
             This is the content for the first portion. It can include any
             information or components you want to display.
           </Typography> */}
-          <span>hi</span>
+          {/* <span>hi</span> */}
             <ProductDetailSlider />
           </Paper>
         </Grid>
