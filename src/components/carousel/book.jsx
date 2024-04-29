@@ -9,7 +9,9 @@ export default function BookCard({ book }) {
   return (
     <Card
       sx={{
-        boxShadow: "none"
+        boxShadow: "none",
+        // background: "blue",
+        // width: 145
       }}
     >
       <CardMedia
@@ -17,7 +19,7 @@ export default function BookCard({ book }) {
         height="200"
         image={book.urls[0]}
         title={book.groupDescription}
-        style={{ objectFit: "scale-down" }}
+        style={{ objectFit: "scale-down"}}
       />
       <CardContent>
         <Link to="https://www.google.com/search" target="_blank">

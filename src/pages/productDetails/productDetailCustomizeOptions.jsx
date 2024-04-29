@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 
 export default function ProductDetailCustomizeOptions() {
@@ -6,23 +6,14 @@ export default function ProductDetailCustomizeOptions() {
     <>
       <Box
         sx={{
-          // backgroundColor: "#eee",
+          backgroundColor: "#eee",
           textAlign: "center",
+          padding: "1rem"
         }}
       >
         <Typography variant="body2">
           There are no in-stock options for this style
         </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: 2
-        }}
-      >
-        <Typography variant="body2">Product</Typography>
-        <Typography variant="body2">Anniversary Band</Typography>
       </Box>
     </>
   );

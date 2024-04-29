@@ -1,0 +1,9 @@
+.slide-content:hover .product-description {
+    color: #75b0da;
+    /* Change to the desired highlight color */
+}
+
+.product-description{
+    font-size: 14px;
+    color: #555;
+}

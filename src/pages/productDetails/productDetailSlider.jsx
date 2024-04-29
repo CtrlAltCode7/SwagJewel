@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import "./abc.css";
+import "./productSlider.css";
 // import { baseUrl } from "./config";
 // config.js
 export const baseUrl =
@@ -31,20 +31,20 @@ export default function ProductDetailSlider() {
   const settings = {
     customPaging: function (i) {
       const isActive = i === this.currentSlide; // Check if the image is currently active
-      const borderStyle = isActive ? "1px solid blue" : "1px solid";
+      const borderStyle = isActive ? "0 0 0 3px #547f9e" : "0 0 0 1px #bbbbbb";
       return (
-        <a style={{ width: "100px !important", height: "100px !important" }}>
-          {" "}
+        <a>
           {/* Adjust width and height here */}
           <img
             src={`${baseUrl}/abstract0${i + 1}.jpg`}
             alt={`Slide ${i + 1}`}
             style={{
-              border: borderStyle,
-              width: "100% !important",
-              height: "100% !important",
+              boxShadow: borderStyle,
+              // width: "100% !important",
+              // height: "100% !important",
               borderRadius: "5px",
-              margin: "auto"
+              margin: "auto",
+              
             }}
           />
         </a>
@@ -55,11 +55,11 @@ export default function ProductDetailSlider() {
     // className: "slides",
     dotsStyle: {
       marginBottom: "20px !important",
-      width: "200px",
-      height: "200px",
+      // width: "200px",
+      // height: "200px",
     },
     infinite: true,
-    speed: 500,
+    // speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow to="next" />,
@@ -73,13 +73,13 @@ export default function ProductDetailSlider() {
         // maxWidth: "100%"
       }}
     >
-      <Slider className="pp-slider" {...settings}>
+      <Slider className="product-slider" {...settings}>
         <div
           style={{
             border: "1px solid #000",
           }}
         >
-          <img src={`${baseUrl}/abstract01.jpg`} alt="Slide 1" />
+          <img src={`${baseUrl}/abstract01.jpg`} alt="Slide 1" className="big-img-slider"/>
         </div>
         <div>
           <img src={`${baseUrl}/abstract02.jpg`} alt="Slide 2" />

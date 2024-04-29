@@ -1,0 +1,49 @@
+.product-slider .slick-dots>li {
+    /* background-color: red !important; */
+    width: 70px;
+    border-radius: 5px;
+}
+
+/* .product-slider > img{ */
+
+
+.product-slider .slick-slide.slick-current img {
+    /* Add your styles here */
+    max-width: 500px;
+    margin: 0 auto
+}
+
+@media (max-width: 768px) {
+    .product-slider .slick-slide.slick-current img {
+        max-width: 300px;
+        /* Adjust as needed */
+        margin: 0 auto;
+        /* Center the image */
+    }
+}
+
+@media (max-width: 500px) {
+    .product-slider {
+        padding: 0rem 2rem;
+        text-align: center;
+    }
+
+    .product-slider .slick-slide.slick-current img {
+        max-width: 200px;
+        /* Adjust as needed */
+        margin: 0 auto;
+        /* Center the image */
+    }
+
+    .product-slider .slick-dots {
+        display: contents !important;
+    }
+
+    .product-slider .slick-dots li {
+        /* Add your styles here */
+        /* For example: */
+        display: inline-block;
+        margin: 0 5px;
+        /* Adjust margin as needed */
+    }
+}

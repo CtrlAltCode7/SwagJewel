@@ -1,0 +1,80 @@
+.actionTableCell a {
+    color: #555; /* Default color */
+    text-decoration: none;
+  }
+
+  .actionTableCell .display-block-xs {
+    color: red !important;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+        color: green !important;
+    }
+  }
+
+@media screen and (max-width: 768px) {
+
+
+    /* @media screen and (max-width: 600px) { */
+
+
+    table.canBeSetWithTable thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table.canBeSetWithTable tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    table.canBeSetWithTable td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+    }
+
+    table.canBeSetWithTable td::before {
+        /*
+          * aria-label has no advantage, it won't be read inside a table
+          content: attr(aria-label);
+          */
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:last-child {
+        /* border-bottom: 0; */
+        flex-direction: column;
+
+    }
+    .actionTableCell a:hover {
+        color: red !important; /* Change color on hover */
+      }
+
+    /* } */
+
+    table.canBeSetWithTable tr:nth-child(odd) {
+        background-color: #f5f5f5;
+    }
+
+    table.canBeSetWithTable tr:nth-child(even) {
+        background-color: #fff;
+    }
+/* 
+    table.actionTableCell {
+        flex-direction: column;
+    } */
+
+}

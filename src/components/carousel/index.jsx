@@ -7,31 +7,33 @@ import { useState } from "react";
 import { useEffect } from "react";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { getImageUrlsWithGroupDescription } from "../../helpers/index";
 import { useSelector } from "react-redux";
+import "./productsToConsider.css"
 
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
-  return(
-    <div onClick={onClick} className={`arrow ${className}`} >
-      <KeyboardArrowLeftIcon class="arrows" style={{color:"white"}}/>
+  return (
+    <div onClick={onClick} className={`arrow ${className}`}>
+      <KeyboardArrowLeftIcon class="arrows" style={{ color: "white" }} />
     </div>
-  )
-  }
+  );
+};
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return(
-    <div onClick={onClick} className={`arrow ${className}`} >
-      <KeyboardArrowRightIcon class="arrows" style={{color:"white"}} />
+  return (
+    <div onClick={onClick} className={`arrow ${className}`}>
+      <KeyboardArrowRightIcon class="arrows" style={{ color: "white" }} />
     </div>
-  )
+  );
 }
 
 function ProductSlider({ products }) {
-  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] =
+    useState([]);
   const [cards, setCards] = useState([]);
   const apiData = useSelector((state) => state.api.data);
 
@@ -40,7 +42,7 @@ function ProductSlider({ products }) {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    className:"slides",
+    className: "slides",
     nextArrow: <SampleNextArrow to="next" />,
     prevArrow: <SamplePrevArrow to="prev" />,
     initialSlide: 0,
@@ -93,34 +95,41 @@ function ProductSlider({ products }) {
     // eslint-disable-next-line
   }, []);
 
-
-
   useEffect(() => {
     if (apiData) {
       const data = getImageUrlsWithGroupDescription(apiData).filter(Boolean);
       setImageUrlsWithGroupDescription(data);
-      console.log("first", data);
+      // console.log("first", data);
     }
   }, [apiData]);
-  
 
   return (
     <div
       className="slider-container"
       style={{
         padding: "3% 10%",
+        // background: "red",
+        // textAlign: "center !important",
       }}
     >
       <Slider {...settings}>
-        {/* {products.map((product, index) => (
-          <div key={index} className="slide-content">
-            <img src={product.image} alt={product.title} />
-            <h3>{product.title}</h3>
-          </div>
-        ))} */}
-        {imageUrlsWithGroupDescription?.map((bookItem, index) => (
-          <BookCard book={bookItem} key={index} />
-        ))}
+        {products
+          ? products.map((product, index) => (
+              <div key={index} className="slide-content" style={{
+                textAlign: "center !important",
+                // margin: "10px 38px "
+              }}>
+                <img src={product.image} alt={product.title} style={{
+                  margin: "auto"
+                }} />
+                <p className="product-description" style={{
+                  textAlign: "center"
+                }}>{product.title}</p>
+              </div>
+            ))
+          : imageUrlsWithGroupDescription?.map((bookItem, index) => (
+              <BookCard book={bookItem} key={index} />
+            ))}
       </Slider>
     </div>
   );
