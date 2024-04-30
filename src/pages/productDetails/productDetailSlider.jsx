@@ -72,7 +72,6 @@ export default function ProductDetailSlider({ handleClick, activeClass }) {
     <div
       className={`slider-container ${sliderBorder}`}
       style={{
-        padding: "2rem",
         // maxWidth: "100%"
       }}
     >

@@ -7,9 +7,12 @@ export const dialogTitle = {
   },
   dialogTitleBox: {
     color: "#555",
-    fontSize: "2.1875rem",
+    fontSize: "2.18rem",
     fontWeight: "100",
     wordSpacing: "0.06em",
+    "@media (max-width: 768px)": {
+      fontSize: "1.1875rem",
+    },
   },
   dialogSlickDots: {
     textAlign: "left",

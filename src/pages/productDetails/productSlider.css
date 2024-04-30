@@ -4,6 +4,11 @@
     border-radius: 5px;
 }
 
+.slider-container {
+    padding: "2rem",
+
+}
+
 .product-slider .abc {
     bottom: auto;
     text-align: left;
@@ -33,6 +38,10 @@
         margin: 0 auto;
         /* Center the image */
     }
+    .slider-container {
+        padding: 0 !important
+    
+    }
 }
 
 @media (max-width: 500px) {
@@ -58,5 +67,9 @@
         display: inline-block;
         margin: 0 5px;
         /* Adjust margin as needed */
+    }
+    .slider-container {
+        padding: 0 !important
+    
     }
 }
