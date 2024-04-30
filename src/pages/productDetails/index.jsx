@@ -170,7 +170,7 @@ export default function ProductDetails() {
             }}
           >
             <Typography variant="h6" component={"span"} color={"#555"}>
-              Can Be Set With{" "}
+              Can Be Set With
               <Typography
                 variant="body2"
                 component={"span"}

@@ -10,7 +10,13 @@ import "./productSlider.css";
 export const baseUrl =
   "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj=metals&obj.recipe=rose&$xlarge$";
 
-export default function ProductDetailSlider() {
+const imageUrls = [
+  `${baseUrl}/abstract01.jpg`,
+  `${baseUrl}/abstract02.jpg`,
+  `${baseUrl}/abstract03.jpg`,
+  `${baseUrl}/abstract04.jpg`,
+];
+export default function ProductDetailSlider({ handleClick, activeClass }) {
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -28,38 +34,35 @@ export default function ProductDetailSlider() {
       </div>
     );
   }
+
+  const dotClasses = activeClass ? "abc" : ""
+  const sliderBorder = activeClass ? "applyBorder" : ""
   const settings = {
     customPaging: function (i) {
       const isActive = i === this.currentSlide; // Check if the image is currently active
       const borderStyle = isActive ? "0 0 0 3px #547f9e" : "0 0 0 1px #bbbbbb";
       return (
         <a>
-          {/* Adjust width and height here */}
           <img
             src={`${baseUrl}/abstract0${i + 1}.jpg`}
             alt={`Slide ${i + 1}`}
             style={{
               boxShadow: borderStyle,
-              // width: "100% !important",
-              // height: "100% !important",
               borderRadius: "5px",
               margin: "auto",
-              
             }}
           />
         </a>
       );
     },
     dots: true,
-    // dotsClass: "slick-dots slick-thumb",
+    dotsClass: `slick-dots slick-thumb ${dotClasses}`,
     // className: "slides",
     dotsStyle: {
       marginBottom: "20px !important",
-      // width: "200px",
-      // height: "200px",
     },
     infinite: true,
-    // speed: 500,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow to="next" />,
@@ -67,29 +70,30 @@ export default function ProductDetailSlider() {
   };
   return (
     <div
-      className="slider-container"
+      className={`slider-container ${sliderBorder}`}
       style={{
         padding: "2rem",
         // maxWidth: "100%"
       }}
     >
       <Slider className="product-slider" {...settings}>
-        <div
-          style={{
-            border: "1px solid #000",
-          }}
-        >
-          <img src={`${baseUrl}/abstract01.jpg`} alt="Slide 1" className="big-img-slider"/>
-        </div>
-        <div>
-          <img src={`${baseUrl}/abstract02.jpg`} alt="Slide 2" />
-        </div>
-        <div>
-          <img src={`${baseUrl}/abstract03.jpg`} alt="Slide 3" />
-        </div>
-        <div>
-          <img src={`${baseUrl}/abstract04.jpg`} alt="Slide 4" />
-        </div>
+        {imageUrls.map((url, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #000",
+              background: "red",
+              cursor: "pointer",
+            }}
+            onClick={handleClick}
+          >
+            <img
+              src={url}
+              alt={`Slide ${index + 1}`}
+              className="big-img-slider"
+            />
+          </div>
+        ))}
       </Slider>
     </div>
   );

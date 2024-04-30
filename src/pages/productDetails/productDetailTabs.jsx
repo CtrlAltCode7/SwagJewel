@@ -5,7 +5,8 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteIcon from '@mui/icons-material/Delete';
+import "./productDetailTabsStyle.css"
 
 function CustomTabPanel({ children, value, index, ...other }) {
   return (
@@ -52,9 +53,7 @@ export default function ProductDetailTabs({ tabs }) {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
-          sx={{
-            flexWrap: "wrap",
-          }}
+          className="product-tab-container"
           TabIndicatorProps={{
             style: { display: "none" },
           }}
@@ -67,15 +66,7 @@ export default function ProductDetailTabs({ tabs }) {
               label={
                 <Button
                   variant={value === index ? "contained" : "outlined"}
-                  startIcon={
-                    tab.showIcon ? (
-                      <img
-                        src={tab.iconUrl}
-                        alt="Icon"
-                        style={{ borderRadius: 10 }}
-                      />
-                    ) : null
-                  } // Conditionally include icon
+                  startIcon={tab.showIcon ? <img src={tab.iconUrl} alt="Icon" style={{ borderRadius: 10 }} /> : null} // Conditionally include icon
                   sx={{
                     borderRadius: 20,
                     textTransform: "none",

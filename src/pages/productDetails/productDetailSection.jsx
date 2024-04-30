@@ -1,5 +1,4 @@
 import React from "react";
-// import { Grid, Paper, Typography } from "@mui/material";
 import {
   Box,
   Button,
@@ -14,6 +13,7 @@ import ProductDetailCustomizeOptions from "./productDetailCustomizeOptions";
 import ProductDetailTabs from "./productDetailTabs";
 import ProductDetailContentTabs from "./productDetailContentTabs";
 import ProductDetailsCustomizeHeaderOption from "./productDetailsCustomizeHeaderOption";
+import ScrollDialog from "./productDetailsDialogBox";
 
 export default function ProductDetailSection() {
   const theme = useTheme();
@@ -21,16 +21,10 @@ export default function ProductDetailSection() {
   return (
     <>
       <Grid container spacing={2} mt={0.5}>
-        {/* First Portion */}
         <Grid item xs={12} sm={isSmallScreen ? 12 : 6}>
           <Paper elevation={3} style={{ padding: 2 }}>
-            {/* <Typography variant="h6">First Portion</Typography>
-          <Typography>
-            This is the content for the first portion. It can include any
-            information or components you want to display.
-          </Typography> */}
-          {/* <span>hi</span> */}
-            <ProductDetailSlider />
+            {/* <ProductDetailSlider /> */}
+            <ScrollDialog />
           </Paper>
         </Grid>
 

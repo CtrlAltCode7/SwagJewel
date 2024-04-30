@@ -7,6 +7,7 @@ import Fade from "@mui/material/Fade";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/material";
 import IosShareIcon from "@mui/icons-material/IosShare";
+import ProductDetailSocialMedia from "./productDetailSocialMedia";
 
 export default function ShareSocialMedia() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,6 +38,7 @@ export default function ShareSocialMedia() {
                 }}
               >
                 <Box sx={{ p: 2 }}>
+                  <ProductDetailSocialMedia />
                   
                 </Box>
               </Box>

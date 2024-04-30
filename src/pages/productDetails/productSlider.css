@@ -4,7 +4,20 @@
     border-radius: 5px;
 }
 
+.product-slider .abc {
+    bottom: auto;
+    text-align: left;
+    top: 0;
+    display: grid !important;
+    gap: 4rem;
+    right: 8rem;
+}
+
 /* .product-slider > img{ */
+.applyBorder {
+    border: 1px solid;
+    border-radius: 5px;
+}
 
 
 .product-slider .slick-slide.slick-current img {
