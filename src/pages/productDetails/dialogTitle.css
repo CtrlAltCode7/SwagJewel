@@ -1,0 +1,13 @@
+.dialogTitle {
+    color: #555;
+    font-size: "2.18rem";
+    font-weight: "100";
+    word-spacing: 0.06em;
+}
+
+
+@media (max-width: 768px) {
+    .dialogTitle {
+        font-size: "1.18rem";
+    }
+}

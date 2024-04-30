@@ -2,6 +2,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
 import { dialogTitle } from "./productDetailsDialogTitleStyle";
 import ClearIcon from "@mui/icons-material/Clear";
+import "./dialogTitle.css"
 
 export default function ProductDetailsDialogTitle({ handleClose }) {
   const styles = dialogTitle;
@@ -10,7 +11,7 @@ export default function ProductDetailsDialogTitle({ handleClose }) {
     <>
       <Box sx={styles.titleContainer}>
         <Box>
-          <Typography sx={styles.dialogTitleBox}>14K Rose Anniversary Band Mounting</Typography>
+          <Typography className="dialogTitle">14K Rose Anniversary Band Mounting</Typography>
         </Box>
         <Box>
           <IconButton onClick={handleClose}>
