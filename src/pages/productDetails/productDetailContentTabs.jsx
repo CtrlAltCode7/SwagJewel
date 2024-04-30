@@ -50,10 +50,14 @@ export default function ProductDetailContentTabs() {
             {
               label: "Lab-Grown Diamonds",
               content: <ProductDetailsDimondsCategory />,
+              showIcon: true,
+              iconUrl: "https://meteor.stullercloud.com/das/37618011?hei=20&fmt=smart-alpha"
             },
             {
               label: "Diamonds",
               content: <ProductDetailsDimondsCategory />,
+              showIcon: true,
+              iconUrl: "https://meteor.stullercloud.com/das/119231635?hei=20"
 
             },
           ]}

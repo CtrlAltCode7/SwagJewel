@@ -161,6 +161,13 @@ export default function ProductDetailsDimondsCategory() {
                 borderRadius: 20,
                 textTransform: "none",
                 padding: ".5rem 1.5rem",
+                background: "#6fa8d1",
+                color: "#fff",
+                borderColor: "#6fa8d1",
+                "&:hover":{
+                  backgroundColor: "#999",
+                  
+                }
               }}
               // onClick={() => handleChange(null, index)}
             >

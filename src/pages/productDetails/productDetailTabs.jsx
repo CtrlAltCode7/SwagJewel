@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function CustomTabPanel({ children, value, index, ...other }) {
   return (
@@ -54,6 +55,9 @@ export default function ProductDetailTabs({ tabs }) {
           sx={{
             flexWrap: "wrap",
           }}
+          TabIndicatorProps={{
+            style: { display: "none" },
+          }}
         >
           {tabs.map((tab, index) => (
             <Tab
@@ -63,9 +67,25 @@ export default function ProductDetailTabs({ tabs }) {
               label={
                 <Button
                   variant={value === index ? "contained" : "outlined"}
+                  startIcon={
+                    tab.showIcon ? (
+                      <img
+                        src={tab.iconUrl}
+                        alt="Icon"
+                        style={{ borderRadius: 10 }}
+                      />
+                    ) : null
+                  } // Conditionally include icon
                   sx={{
                     borderRadius: 20,
                     textTransform: "none",
+                    color: value === index ? "#fff" : "#000", // Text color
+                    backgroundColor:
+                      value === index ? "#547f9e!important" : "transparent", // Background color
+                    "&:hover": {
+                      backgroundColor: value === index ? "#0056b3" : "#999", // Hover background color
+                      color: value === index ? "#fff" : "#fff", // Text color
+                    },
                   }}
                   onClick={() => handleChange(null, index)}
                 >
@@ -74,7 +94,7 @@ export default function ProductDetailTabs({ tabs }) {
               }
               sx={{
                 padding: 2,
-                paddingRight: 1
+                paddingRight: 1,
               }}
             />
           ))}
