@@ -8,7 +8,7 @@ import CreateAccountSection from "../../components/createAccountTextandButton/cr
 export default function Login() {
   return (
     <Layout>
-      {/* <Grid
+      <Grid
         container
         spacing={0}
         justifyContent="space-between"
@@ -40,7 +40,7 @@ export default function Login() {
               </Typography>
             </Box>
         </Grid>
-      </Grid> */}
+      </Grid>
       {/* <div
         style={{
           background: "red",
@@ -116,10 +116,10 @@ export default function Login() {
           Hello
         </div>
       </div> */}
-      <div className="parent">
+      {/* <div className="parent">
         <div className="child">hi</div>
         <div className="child">hello</div>
-      </div>
+      </div> */}
 
     </Layout>
   );
