@@ -75,17 +75,17 @@ export default function Footer() {
       heading: "Marketing Resources",
       body1: "Catalogs + Brochures",
       body2: "Marketing Images",
-      body3: "Stuller Companies",
+      body3: "SWAG Jewelers Companies",
     },
     {
-      heading: "Stuller Companies",
+      heading: "SWAG Jewelers Companies",
       body1: "Gemvision",
       body2: "B&D Lasers",
     },
     {
-      heading: "About Stuller",
+      heading: "About SWAG Jewelers",
       body1: "About Us",
-      body2: "Stuller First®",
+      body2: "SWAG Jewelers First®",
       body3: "Corporate Responsibility",
       body4: "Press Center",
       body5: "International Enquiries",
@@ -98,7 +98,7 @@ export default function Footer() {
     "Compliance",
     "Terms + Conditions",
     "Supplier Portal",
-    "Copyright ©2024 Stuller, Inc. All rights reserved",
+    // "Copyright ©2024 SWAG Jewelers, Inc. All rights reserved",
   ];
 
   const redirectToFacebook = () => {
@@ -203,7 +203,7 @@ export default function Footer() {
         >
           <Link to={"/home"} style={{ textDecoration: "none" }}>
             <FooterGraphicText
-              boldTitle={"STULLER"}
+              boldTitle={"SWAG Jewelers"}
               title={"BLOG"}
               description1={"Selling tips, trends,"}
               description2={"education, and more"}
@@ -213,7 +213,7 @@ export default function Footer() {
           </Link>
           <Link to={"/home"} style={{ textDecoration: "none" }}>
             <FooterGraphicText
-              boldTitle={"STULLER"}
+              boldTitle={"SWAG Jewelers"}
               title={"BLOG"}
               description1={"Selling tips, trends,"}
               description2={"education, and more"}
@@ -302,7 +302,7 @@ export default function Footer() {
               }}
               startIcon={<LocalPhoneIcon />}
             >
-              800-877-7777
+              {/* 800-877-7777 */}
             </Typography>
           </Typography>
         </Box>

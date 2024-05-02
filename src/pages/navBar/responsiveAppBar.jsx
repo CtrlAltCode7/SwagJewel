@@ -21,7 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 const pages = [
   "Contact Us",
   "Catalogs + Publications",
-  "Stuller Blog ",
+  "SWAG Jewelers Blog ",
   "Locate a Jeweler",
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -49,17 +49,22 @@ function ResponsiveAppBar() {
 
   const handleCall = () => {
     const confirmed = window.confirm(
-      "Are you sure you want to dial 8008777777?"
+      "Are you sure you want to dial ?"
     );
     if (confirmed) {
       // Proceed with call initiation
-      window.location.href = "tel:8008777777";
+      window.location.href = "tel:";
     }
   };
 
   const handleLogoICon = () => {
     // Redirect to another page
     navigate('/');
+  };
+
+  const handleLogin = () => {
+    // Redirect to another page
+    navigate('/login');
   };
 
   return (
@@ -107,7 +112,7 @@ function ResponsiveAppBar() {
                 }}
                 variant="subtitle2"
               >
-                8008777777
+                {/* 8008777777 */}
               </Typography>
             </Box>
 
@@ -197,7 +202,7 @@ function ResponsiveAppBar() {
                     }}
                   >
                     {page}
-                    {page == "Stuller Blog " && (
+                    {page == "SWAG Jewelers Blog " && (
                       <Typography
                         component={"span"}
                         sx={{
@@ -335,6 +340,7 @@ function ResponsiveAppBar() {
                 display: "flex",
                 flexDirection: "column",
               }}
+              onClick={handleLogin}
             >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
