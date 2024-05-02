@@ -16,6 +16,7 @@ import Index from "./pages/navBar/index";
 import { HomePage } from "./pages/homePage";
 import ProductListing from "./pages/productListing/productListing";
 import ProductDetails from "./pages/productDetails/index";
+import Login from "./pages/login";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
   {
     path: "/productdetails",
     element: <ProductDetails />,
+    // loader: <Loader />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
     // loader: <Loader />,
   },
 ];

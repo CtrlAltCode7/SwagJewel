@@ -1,0 +1,35 @@
+.create-account-typo {
+    font-size: 27px !important;
+    color: #fff;
+    font-weight: 100;
+}
+
+.create-account-label-box {
+    color: #fff;
+    font-size: 14px;
+    /* padding: 0 !important; */
+}
+
+.create-account-label {
+    padding-right: 0 1rem !important;
+}
+
+.create-account-btn {
+    background-color: #999 !important;
+
+}
+
+.create-account-btn:hover {
+    background-color: #777 !important;
+}
+
+
+
+@media (max-width: 768px) {
+    .create-account--section-container {
+        place-content: center;
+        text-align: center;
+        margin-bottom: 2rem;
+
+    }
+}

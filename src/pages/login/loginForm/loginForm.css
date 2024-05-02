@@ -1,0 +1,92 @@
+#loginFormContainer {
+    background-color: #fff;
+    padding: 30px 50px;
+
+}
+
+.loginTitle {
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #555;
+    font-family: Roboto, system, sans-serif;
+    font-weight: 100 !important;
+    letter-spacing: -.015em;
+    line-height: 1;
+    line-height: 4.5rem;
+    padding-bottom: 10px;
+    text-transform: none;
+    word-spacing: 0.06em;
+}
+
+#loginFormContainer input,
+#loginContainer input {
+    border-radius: 3px;
+    height: 35px;
+    padding: 10px !important;
+}
+
+.recover-box {
+    text-align: end;
+}
+
+/* .user-label,
+.user-password {
+    color: #555 !important;
+    font-weight: normal;
+} */
+
+#loginid .fa-user,
+.fa .fa-lock {}
+
+#user-icon {
+    font-size: 24px !important;
+    color: #CDCDCD !important;
+    top: 37px;
+    right: 6px;
+}
+
+.recover-box a {
+    color: #777;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signed-in {
+    cursor: pointer;
+    font-family: Roboto, system, sans-serif;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 5px;
+    /* margin-right: 15px!important; */
+    /* padding-left: 35px; */
+    position: relative;
+    vertical-align: middle;
+
+}
+
+.login-btn-container {
+    text-align: center;
+}
+
+.login-btn-container .login-btn {
+    font-weight: 300;
+    border-radius: 3px;
+    text-transform: uppercase;
+    color: #FFF;
+    max-width: 300px !important;
+    width: 100%;
+    padding: .5rem;
+    line-height: 34px;
+    font-size: 20px;
+    background-color: #75b0da;
+
+}
+
+@media (max-width: 768px) {
+    #loginFormContainer {
+        padding: 30px 20px !important;
+
+    }
+}
