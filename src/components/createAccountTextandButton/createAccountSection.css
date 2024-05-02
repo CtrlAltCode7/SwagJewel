@@ -32,4 +32,12 @@
         margin-bottom: 2rem;
 
     }
+
+    .create-account-typo {
+        color: #777;
+    }
+    
+    .create-account-label-box {
+        color: #777;
+    }
 }
