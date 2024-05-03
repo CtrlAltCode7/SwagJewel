@@ -12,10 +12,8 @@
 
 }
 
-
 .login-first-section {
     max-width: 2.333333% !important;
-
 }
 
 .create-account-container {
@@ -24,54 +22,41 @@
     gap: 3rem;
     align-items: center;
     margin-top: 2rem !important;
-    /* justify-content: center; */
     place-items: flex-start;
 }
-
-.help-container {}
 
 .help-text {
     font-size: 27px !important;
     color: var(--custom-color) !important;
-    ;
-
 }
 
 .help-description {
     font-size: 14px !important;
     color: var(--custom-color) !important;
-
-
-
 }
 
 @media (max-width: 768px) {
     .login-container {
         max-width: 93% !important;
-
     }
 
     .help-text {
         text-align: center;
-
     }
 
     .help-description {
         text-align: center;
         place-items: start;
         margin: 1rem !important;
-
-
     }
 }
 
 .parent {
     position: relative;
     width: 90%;
-    /* height: 200px; */
     background-color: antiquewhite;
     max-width: 1260px;
-    margin: 0 auto;
+    margin: 125px auto 200px !important;
     margin-bottom: 100px;
     height: 350px;
     margin: 200px auto;
@@ -82,7 +67,6 @@
 
 .child {
     position: absolute;
-    /* box-sizing: border-box; */
     top: 0;
     height: 100%;
     width: 50%;
@@ -96,7 +80,6 @@
     width: 50%;
     background-color: #FFF;
     border: 1px solid #BBB;
-    /* padding: 30px 50px; */
     border-radius: 5px;
 }
 
@@ -111,9 +94,7 @@
     top: 0;
     left: 55%;
     padding: 3vw;
-    /* background-color: aqua; */
     max-width: 550px;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -140,6 +121,5 @@
         color: #555;
         gap: 0 !important;
         margin-top: 4rem;
-
     }
 }

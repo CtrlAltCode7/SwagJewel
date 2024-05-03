@@ -24,11 +24,11 @@ const LoginForm = () => {
         sx={{
           float: "left",
           fontSize: {
-            xs: 30, // Font size for extra small screens
-            sm: 32, // Font size for small screens
-            md: 34, // Font size for medium screens
-            lg: 36, // Font size for large screens
-            xl: 37, // Font size for extra large screens
+            xs: 30, 
+            sm: 32,
+            md: 34,
+            lg: 36,
+            xl: 37,
           },
         }}
         className="loginTitle"
@@ -66,10 +66,6 @@ const LoginForm = () => {
                 endAdornment: <span className="fa fa-user" id="user-icon" />,
               }}
               disableAnimation={true}
-
-              //   label="Username"
-              //   onClick={handleLabelWidth}
-              //   labelWidth={labelWidth}
             />
           </Grid>
           <Grid item xs={12}>
@@ -77,14 +73,12 @@ const LoginForm = () => {
               htmlFor="password"
               shrink
               className="user-password"
-              //   id="user-icon"
             >
               Password
             </InputLabel>
             <TextField
               id="password"
               name="password"
-              //   label="Password"
               variant="outlined"
               type="password"
               fullWidth
@@ -92,14 +86,6 @@ const LoginForm = () => {
               InputProps={{
                 endAdornment: <span className="fa fa-lock" id="user-icon" />,
               }}
-              //   inputProps={{
-              //     shrink: true,
-              //     endAdornment: (
-              //       <InputAdornment position="end">
-              //         <AccountCircle />
-              //       </InputAdornment>
-              //     ),
-              //   }}
               disableAnimation={true}
             />
           </Grid>

@@ -1,0 +1,72 @@
+/* .sign-up-container {
+    background: url(https://meteor.stullercloud.com/das/75918656?scl=1.1&fmt=png) no-repeat right, linear-gradient(to top, rgba(3, 3, 3, 0.3) 0%, rgba(3, 3, 3, 0) 100%), url(https://meteor.stullercloud.com/das/52699161?scl=1&$sharpenpng$) repeat left !important;
+    background-size: auto;
+} */
+
+.signup-title-container {
+    /* background-color: beige !important; */
+}
+
+.signup-title {
+    /* font-size: 2.313rem !important; */
+    font-weight: 100;
+    color: #fff;
+}
+
+.custom-field-container {
+    margin-top: 1.7rem;
+    padding-right: 1.5rem
+}
+
+.custom-field-recaptcha {
+    padding-top: 1rem !important;
+}
+
+.apply-btn-container {
+    margin-top: 1rem;
+}
+
+.apply-btn {
+    padding: 10px 15px !important;
+    background-color: #bbb !important;
+    color: #fff;
+}
+
+.privacy-container {
+    margin-top: 1.3rem;
+}
+
+.privacy-title {
+    color: #bbb !important;
+}
+
+.privacy-link {
+    color: #bbb;
+}
+
+.account-type-selector1{
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .custom-field-container {
+        margin-top: 1rem !important;
+    }
+    
+    .account-type-selector{
+        display: none;
+    }
+
+    .account-type-selector1{
+        display: block;
+    }
+
+    .apply-btn-container {
+        padding-right: 1.5rem !important;
+    }
+
+    .privacy-container {
+        padding-bottom: 1.3rem;
+    }
+
+}

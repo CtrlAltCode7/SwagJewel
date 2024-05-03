@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, Typography, Button } from "@mui/material";
-import "./createAccountSection.css";
+import "./accountSection.css";
 
-const CreateAccountSection = ({ title, description, buttonText }) => {
+const AccountSection = ({ title, description, buttonText }) => {
   return (
     <Grid container spacing={2} className="create-account--section-container">
       <Grid item xs={12}>
@@ -40,4 +40,4 @@ const CreateAccountSection = ({ title, description, buttonText }) => {
   );
 };
 
-export default CreateAccountSection;
+export default AccountSection;
