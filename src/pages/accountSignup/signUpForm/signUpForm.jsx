@@ -28,6 +28,7 @@ function SignUpForm() {
         backgroundSize: "auto",
         height: "600px",
         margin: "0 auto",
+        paddingTop: "2rem",
         "@media (max-width: 600px)": {
           height: "auto",
           paddingLeft: "1.5rem",
