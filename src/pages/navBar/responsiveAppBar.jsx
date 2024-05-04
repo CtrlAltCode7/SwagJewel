@@ -17,6 +17,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 import StullerLogo from "../../assets/swag-logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import LoginPopper from "../login/loginPopper/loginPopper";
+import { useState } from "react";
 
 const pages = [
   "Contact Us",
@@ -27,8 +29,17 @@ const pages = [
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [placement, setPlacement] = useState();
+
+  const handleClick = (newPlacement) => (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen((prev) => placement !== newPlacement || !prev);
+    setPlacement(newPlacement);
+  };
   const navigate = useNavigate(); 
 
 
@@ -64,7 +75,8 @@ function ResponsiveAppBar() {
 
   const handleLogin = () => {
     // Redirect to another page
-    navigate('/login');
+    // navigate('/login');
+    handleClick("bottom")
   };
 
   return (
@@ -340,13 +352,14 @@ function ResponsiveAppBar() {
                 display: "flex",
                 flexDirection: "column",
               }}
-              onClick={handleLogin}
+              onClick={handleClick("bottom")
+            }
             >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <PersonIcon />
               </IconButton>
-              <Typography
+              {/* <Typography
                 sx={{
                   color: "#777",
                   fontWeight: "500",
@@ -359,7 +372,8 @@ function ResponsiveAppBar() {
                 variant="caption"
               >
                 LOG IN
-              </Typography>
+              </Typography> */}
+              <LoginPopper open={open} placement={placement} anchorEl={anchorEl} setOpen={setOpen}/>
             </Box>
 
             {/* </Tooltip> */}
