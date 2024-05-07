@@ -1,14 +1,30 @@
 .form-heading {
     padding-bottom: 1rem;
     border-bottom: 1px solid #ccc;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem !important;
 
 }
 
-.radio-form-container{
+.radio-form-container {
     flex-direction: column !important;
 }
 
-.radio-email-field{
+.radio-email-field {
     margin-right: 2rem !important;
+}
+
+.form-text-area {
+    width: 100% !important;
+    height: 121px !important;
+    margin-bottom: 1rem !important;
+}
+
+.form-input-label {
+    color: #555 !important;
+}
+
+.contact-us-form-label {
+    color: #555 !important;
+    font-weight: 700;
+
 }

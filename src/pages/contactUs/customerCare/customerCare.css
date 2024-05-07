@@ -1,0 +1,84 @@
+.customer-care-header-icon {
+    width: 30px !important;
+}
+
+.customer-care-header {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.customer-care {
+    margin-top: 15px;
+    padding: 25px 50px;
+    background-color: #eee;
+}
+
+.customer-care-times {
+    flex: 1 1 auto;
+    padding-top: 0;
+    text-align: right;
+
+}
+
+.customer-care-header {
+    border-bottom: 1px solid #ccc !important;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.customer-care-info-section {
+    display: -webkit-flex;
+    display: flex !important;
+}
+
+.customer-care-info {
+    /* display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 3rem; */
+
+}
+
+.customer-care-icon {
+    text-align: center !important;
+    width: 50px !important;
+}
+
+.customer-care-info-with-button {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.customer-care-info-button {
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+.customer-care-info-section {
+    /* display: -webkit-flex; */
+    display: flex;
+}
+
+.customer-care-header-ext {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    font-family: Roboto, system, sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+}
+
+.customer-care-title-color {
+    color: #555 !important 
+}
