@@ -10,7 +10,7 @@ function handleClick(event) {
   console.info("You clicked a breadcrumb.");
 }
 
-export default function CustomSeparator() {
+export default function CustomSeparator({ breadcrumbsColor }) {
   const breadcrumbs = [
     <Link
       underline="hover"
@@ -30,7 +30,7 @@ export default function CustomSeparator() {
     >
       Core
     </Link>,
-    <Typography key="3" color="text.primary">
+    <Typography key="3" color="inherit">
       Breadcrumb
     </Typography>,
   ];
@@ -40,6 +40,9 @@ export default function CustomSeparator() {
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
+        sx={{
+          color: breadcrumbsColor && breadcrumbsColor
+        }}
       >
         {breadcrumbs}
       </Breadcrumbs>

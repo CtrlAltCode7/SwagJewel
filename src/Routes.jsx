@@ -18,6 +18,7 @@ import ProductListing from "./pages/productListing/productListing";
 import ProductDetails from "./pages/productDetails/index";
 import Login from "./pages/login";
 import AccountSignUp from "./pages/accountSignup";
+import ContactUs from "./pages/contactUs/index";
 
 const routes = [
   {
@@ -48,6 +49,16 @@ const routes = [
   {
     path: "/signup",
     element: <AccountSignUp />,
+    // loader: <Loader />,
+  },
+  {
+    path: "/signup",
+    element: <AccountSignUp />,
+    // loader: <Loader />,
+  },
+  {
+    path: "/contact-us",
+    element: <ContactUs />,
     // loader: <Loader />,
   },
 ];

@@ -20,11 +20,18 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginPopper from "../login/loginPopper/loginPopper";
 import { useState } from "react";
 
+// const pages = [
+//   "Contact Us",
+//   "Catalogs + Publications",
+//   "SWAG Jewelers Blog ",
+//   "Locate a Jeweler",
+// ];
+
 const pages = [
-  "Contact Us",
-  "Catalogs + Publications",
-  "SWAG Jewelers Blog ",
-  "Locate a Jeweler",
+  { name: "Contact Us", link: "/contact-us" },
+  { name: "Catalogs + Publications", link: "/catalogs-publications" },
+  { name: "SWAG Jewelers Blog", link: "/swag-jewelers-blog" },
+  { name: "Locate a Jeweler", link: "/locate-a-jeweler" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -40,8 +47,7 @@ function ResponsiveAppBar() {
     setOpen((prev) => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
   };
-  const navigate = useNavigate(); 
-
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -59,9 +65,7 @@ function ResponsiveAppBar() {
   };
 
   const handleCall = () => {
-    const confirmed = window.confirm(
-      "Are you sure you want to dial ?"
-    );
+    const confirmed = window.confirm("Are you sure you want to dial ?");
     if (confirmed) {
       // Proceed with call initiation
       window.location.href = "tel:";
@@ -70,13 +74,13 @@ function ResponsiveAppBar() {
 
   const handleLogoICon = () => {
     // Redirect to another page
-    navigate('/');
+    navigate("/");
   };
 
   const handleLogin = () => {
     // Redirect to another page
     // navigate('/login');
-    handleClick("bottom")
+    handleClick("bottom");
   };
 
   return (
@@ -139,25 +143,24 @@ function ResponsiveAppBar() {
           </Box>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           {/* <Link to={"/productlisting"}> */}
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                // mr: 2,
-                display: { xs: "flex", md: "none" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "red",
-                textDecoration: "none",
-              }}
-              onClick={handleLogoICon}
-
-            >
-              <img src={StullerLogo} width={"75%"} />
-            </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              // mr: 2,
+              display: { xs: "flex", md: "none" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "red",
+              textDecoration: "none",
+            }}
+            onClick={handleLogoICon}
+          >
+            <img src={StullerLogo} width={"75%"} />
+          </Typography>
           {/* </Link> */}
 
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -186,15 +189,9 @@ function ResponsiveAppBar() {
             }}
           >
             {pages.map((page, index) => (
-              // console.log('page', pages.length-1,index)
               <>
-                {/* <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-       
-                > */}
                 <Link
-                  to={"home"}
+                  to={page.link} // Use the provided link for each page
                   style={{
                     textDecoration: "none",
                   }}
@@ -202,19 +199,17 @@ function ResponsiveAppBar() {
                   <Typography
                     variant="subtitle2"
                     sx={{
-                      // my: 2,
                       color: "#555",
                       display: "block",
                       padding: "6px 8px",
                       ":hover": {
-                        // bgcolor: "red", // theme.palette.primary.main
                         color: "#75b0da",
                         cursor: "pointer",
                       },
                     }}
                   >
-                    {page}
-                    {page == "SWAG Jewelers Blog " && (
+                    {page.name}
+                    {page.name === "SWAG Jewelers Blog" && (
                       <Typography
                         component={"span"}
                         sx={{
@@ -244,8 +239,6 @@ function ResponsiveAppBar() {
                     )}
                   </Typography>
                 </Link>
-
-                {/* </Button> */}
                 {pages.length - 1 !== index && (
                   <span
                     className="px-3 c-gray-lt-2"
@@ -352,8 +345,7 @@ function ResponsiveAppBar() {
                 display: "flex",
                 flexDirection: "column",
               }}
-              onClick={handleClick("bottom")
-            }
+              onClick={handleClick("bottom")}
             >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
@@ -373,7 +365,12 @@ function ResponsiveAppBar() {
               >
                 LOG IN
               </Typography> */}
-              <LoginPopper open={open} placement={placement} anchorEl={anchorEl} setOpen={setOpen}/>
+              <LoginPopper
+                open={open}
+                placement={placement}
+                anchorEl={anchorEl}
+                setOpen={setOpen}
+              />
             </Box>
 
             {/* </Tooltip> */}

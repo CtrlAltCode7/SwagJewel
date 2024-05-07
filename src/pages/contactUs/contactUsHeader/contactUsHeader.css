@@ -1,0 +1,32 @@
+.breadcrum-container {
+    display: -webkit-flex;
+    display: flex !important;
+    -webkit-flex-flow: column;
+    flex-flow: column;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    position: relative;
+    height: 125px;
+
+}
+
+.breadcrum-container:before {
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    z-index: 0;
+}
+
+.breadcrum-container::before {
+    background-image: url(https://meteor.stullercloud.com/das/62079234?cropn=0,0.3,.8,.6&scl=1&$sharpenpng$);
+}
+
+.container-div{
+}
+
