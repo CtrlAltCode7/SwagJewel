@@ -15,8 +15,75 @@ import {
 } from "@mui/material";
 import "./loginForm.css";
 import { AccountCircle } from "@mui/icons-material";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   // Email validation regex pattern
+  //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //   // Validation logic
+  //   if (!username) {
+  //     setUsernameError("Email is required");
+  //     return;
+  //   }
+  //   if (!emailPattern.test(username)) {
+  //     setUsernameError("Please enter a valid email address");
+  //     return;
+  //   }
+  //   if (!password) {
+  //     setPasswordError("Password is required");
+  //     return;
+  //   }
+  // };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    let usernameErr = "";
+    let passwordErr = "";
+
+    if (!username) {
+      usernameErr = "Email is required";
+    } else if (!emailPattern.test(username)) {
+      usernameErr = "Please enter a valid email address";
+    }
+
+    if (!password) {
+      passwordErr = "Password is required";
+    }
+
+    setUsernameError(usernameErr);
+    setPasswordError(passwordErr);
+
+    if (!username && !password) {
+      setUsernameError("Email is required");
+      setPasswordError("Password is required");
+      return;
+    }
+
+    if (!usernameErr && !passwordErr) {
+      alert("hi")
+    }
+  };
+
   return (
     <Container id="loginFormContainer">
       <Typography
@@ -24,7 +91,7 @@ const LoginForm = () => {
         sx={{
           float: "left",
           fontSize: {
-            xs: 30, 
+            xs: 30,
             sm: 32,
             md: 34,
             lg: 36,
@@ -50,7 +117,7 @@ const LoginForm = () => {
           />
         </a>
       </div>
-      <form action="/login/" id="login-form" method="post" className="clear">
+      <form onSubmit={handleSubmit} id="login-form" method="post" className="">
         <input id="returnUrl" name="returnUrl" type="hidden" value="" />
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -62,6 +129,10 @@ const LoginForm = () => {
               name="userName"
               fullWidth
               size="small"
+              value={username}
+              onChange={handleUsernameChange}
+              helperText={usernameError}
+              error={Boolean(usernameError)}
               InputProps={{
                 endAdornment: <span className="fa fa-user" id="user-icon" />,
               }}
@@ -69,11 +140,7 @@ const LoginForm = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <InputLabel
-              htmlFor="password"
-              shrink
-              className="user-password"
-            >
+            <InputLabel htmlFor="password" shrink className="user-password">
               Password
             </InputLabel>
             <TextField
@@ -83,6 +150,10 @@ const LoginForm = () => {
               type="password"
               fullWidth
               size="small"
+              value={password}
+              onChange={handlePasswordChange}
+              helperText={passwordError}
+              error={Boolean(passwordError)}
               InputProps={{
                 endAdornment: <span className="fa fa-lock" id="user-icon" />,
               }}

@@ -7,13 +7,7 @@ import {
   FormLabel,
 } from "@mui/material";
 
-const AccountTypeSelector = () => {
-  const [selectedValue, setSelectedValue] = React.useState("professional");
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
-
+const AccountTypeSelector = ({ handleChange, selectedRadioValue }) => {
   return (
     <div className="form-input-group">
       <FormControl component="fieldset">
@@ -21,7 +15,7 @@ const AccountTypeSelector = () => {
         <RadioGroup
           aria-label="account-type"
           name="account-type"
-          value={selectedValue}
+          value={selectedRadioValue}
           onChange={handleChange}
         >
           <FormControlLabel

@@ -32,6 +32,11 @@
     color: #fff;
 }
 
+.apply-btn:hover{
+    background-color: #fff !important;
+    color: black !important;
+}
+
 .privacy-container {
     margin-top: 1.3rem;
 }

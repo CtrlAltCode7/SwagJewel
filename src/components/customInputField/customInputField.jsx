@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./customInputField.css";
 import { InputLabel, TextField } from "@mui/material";
+import { useState } from "react";
 
-export default function CustomInputField({ label, className}) {
-    const capitalizedLabel = label.charAt(0).toUpperCase() + label.slice(1);
+export default function CustomInputField({ label, className, value, onChange, error }) {
+  const capitalizedLabel = label.charAt(0).toUpperCase() + label.slice(1);
+
   return (
     <>
-      <InputLabel
-        htmlFor=""
-        shrink
-        className={`input-label ${className}`}
-        
-      >
+      <InputLabel htmlFor="" shrink className={`input-label ${className}`}>
         {capitalizedLabel && capitalizedLabel}
       </InputLabel>
       <TextField
         id=""
-        name=""
+        name={label}
         fullWidth
         size="small"
-        sx={{
-        }}
+        sx={{}}
         className="custom-textfield"
+        value={value}
+        onChange={onChange}
+        error={!!error}
+        helperText={error}
       />
     </>
   );
