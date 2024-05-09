@@ -28,10 +28,13 @@ export default function BasicGrid() {
     useState([]);
   const apiData = useSelector((state) => state.api.data);
   useEffect(() => {
-    if (apiData) {
+    if (apiData && apiData.length > 0) {
+      console.log("apiData", apiData)
       const data = getImageUrlsWithGroupDescription(apiData);
       setImageUrlsWithGroupDescription(data);
       console.log("first", data);
+    } else {
+      console.log("apiData is empty");
     }
   }, [apiData]);
 
@@ -1060,14 +1063,14 @@ export default function BasicGrid() {
                   />
                 </Grid>
               ))} */}
-              {imageUrlsWithGroupDescription?.map((imgWithTitle, index) => (
+              {(imageUrlsWithGroupDescription)?.map((imgWithTitle, index) => (
                 <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
                   {/* <Link to={"/productdetails"} style={{ textDecoration: "none !important"}}> */}
-                    <ProductCard
-                      productImg={imgWithTitle?.urls[0] || ""}
-                      productImgOnHover={imgWithTitle?.urls[1] || ""}
-                      productTitle={imgWithTitle?.groupDescription}
-                    />
+                  <ProductCard
+                    productImg={imgWithTitle?.urls[0] || ""}
+                    productImgOnHover={imgWithTitle?.urls[1] || ""}
+                    productTitle={imgWithTitle?.groupDescription}
+                  />
                   {/* </Link> */}
                 </Grid>
               ))}

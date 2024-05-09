@@ -4,12 +4,11 @@ export const getImageUrlsWithGroupDescription = (apiData) => {
   }
 
   return apiData.data.rows.map((item) => {
-    const images = JSON.parse(item.Images || "[]"); // Parsing the JSON string
-    // Extracting URLs from the images array
+    const images = JSON.parse(item.Images || "[]");
     const urls = images.map((image) => image.FullUrl);
     return {
       urls: urls || [],
-      groupDescription: item.GroupDescription || "", // Assuming the groupdescription field exists in your data
+      groupDescription: item.GroupDescription || "", 
     };
   });
 };
