@@ -12,6 +12,7 @@ import { styled } from "@mui/system";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import EmptyCart from "../../cart/emptyCart/emptyCart";
 
 const StyledContainer = styled("div")({
   textAlign: "center",
@@ -46,6 +47,7 @@ const StyledLink = styled("a")({
 });
 
 export default function LoginPopper({ open, placement, anchorEl, setOpen }) {
+  console.log(open, anchorEl,"I am login part",placement)
   // const [open1, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const navigate = useNavigate();
@@ -74,7 +76,7 @@ export default function LoginPopper({ open, placement, anchorEl, setOpen }) {
   return (
     <Box>
       <Popper
-        sx={{ zIndex: 1200 }}
+        sx={{ zIndex: 1200, minWidth: '40%',}}
         open={open}
         anchorEl={anchorEl}
         placement={placement}
@@ -83,7 +85,7 @@ export default function LoginPopper({ open, placement, anchorEl, setOpen }) {
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
             <Paper>
-              <StyledContainer onClick={(event) => event.stopPropagation()}>
+              {/* <StyledContainer onClick={(event) => event.stopPropagation()}>
                 <StyledForm>
                   <div>
                     <StyledInputGroup>
@@ -141,7 +143,9 @@ export default function LoginPopper({ open, placement, anchorEl, setOpen }) {
                     Apply for an Account
                   </StyledButton>
                 </div>
-              </StyledContainer>
+              </StyledContainer> */}
+              {/* <div>hi</div> */}
+              <EmptyCart />
             </Paper>
           </Fade>
         )}

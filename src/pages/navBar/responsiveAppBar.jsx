@@ -19,6 +19,7 @@ import StullerLogo from "../../assets/swag-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import LoginPopper from "../login/loginPopper/loginPopper";
 import { useState } from "react";
+import Cart from "../cart/cart";
 
 // const pages = [
 //   "Contact Us",
@@ -41,11 +42,20 @@ function ResponsiveAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState();
+  const [anchorE2, setAnchorE2] = useState(null);
+  const [open1, setOpen1] = useState(false);
+  const [placement1, setPlacement1] = useState();
 
   const handleClick = (newPlacement) => (event) => {
     setAnchorEl(event.currentTarget);
     setOpen((prev) => placement !== newPlacement || !prev);
     setPlacement(newPlacement);
+  };
+
+  const handleClick1 = (newPlacement) => (event) => {
+    setAnchorE2(event.currentTarget);
+    setOpen1((prev) => placement !== newPlacement || !prev);
+    setPlacement1(newPlacement);
   };
   const navigate = useNavigate();
 
@@ -277,25 +287,19 @@ function ResponsiveAppBar() {
                 display: "flex",
                 flexDirection: "column",
               }}
+              onClick={handleClick1("bottom")}
             >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                 <ShoppingCartIcon />
               </IconButton>
-              <Typography
-                sx={{
-                  color: "#777",
-                  fontWeight: "500",
-                  ":hover": {
-                    color: "red",
-                  },
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.1rem",
-                }}
-                variant="caption"
-              >
-                CART
-              </Typography>
+
+              <Cart open1={open1}
+                placement1={placement1}
+                anchorEl={anchorE2}
+                setOpen1={setOpen1} 
+              />
+
             </Box>
 
             {/* </Tooltip> */}
