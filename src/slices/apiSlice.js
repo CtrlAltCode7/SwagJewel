@@ -12,7 +12,7 @@ const initialState = {
 // Define the thunk for fetching data from the API
 export const fetchData = createAsyncThunk('api/fetchData', async () => {
   try {
-    const response = await axios.get('https://api.swagjewelers.com/api/product');
+    const response = await axios.get('https://api.swagjewelers.com/api/stuller?PageSize=20&Page=1&Include[]=1&Filter[]=5');
     return response.data;
   } catch (error) {
     throw Error(error.response.data.error);

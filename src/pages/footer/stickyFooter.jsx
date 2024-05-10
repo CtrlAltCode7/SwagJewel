@@ -20,7 +20,7 @@ const StickyFooter = () => {
       }
     };
 
-    fetchPrices();
+    // fetchPrices();
   }, []);
 
   const verticalAlignment = {
