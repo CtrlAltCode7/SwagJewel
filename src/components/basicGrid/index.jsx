@@ -52,12 +52,12 @@ export default function BasicGrid() {
   useEffect(() => {
     if (apiData && apiData?.data?.Products.length > 0) {
       // console.log("apiData", apiData)
-      // const data = getImageUrlsWithGroupDescription(apiData);
-      // setImageUrlsWithGroupDescription(data);
+      const data = getImageUrlsWithGroupDescription(apiData);
+      setImageUrlsWithGroupDescription(data);
       // if (apiData?.data?.PageSize > 10) {
-      // setTotalPages(Math.ceil(data.length / productsPerPage));
+      setTotalPages(Math.ceil(data.length / productsPerPage));
       // }
-      fetchBooks()
+      // fetchBooks()
       // console.log("@@@@@@", data);
     } else {
       console.log("apiData is empty");
