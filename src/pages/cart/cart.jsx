@@ -1,59 +1,87 @@
-import * as React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Fade from "@mui/material/Fade";
-import Paper from "@mui/material/Paper";
+import { IconButton, Paper, Typography } from "@mui/material";
 import EmptyCart from "./emptyCart/emptyCart";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-export default function Cart({open1,placement1,anchorE2,setOpen1}) {
-    console.log(open1,"I am here in cart");
-    return (
-        <Box>
-            <Popper
-                sx={{ zIndex: 1200 }}
-                open={open1}
-                anchorEl={anchorE2}
-                placement={placement1}
-                transition
-            >
-                {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
-                        <Paper>
-                        <EmptyCart />
+export default function Cart({ placement1 }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const popperRef = useRef(null);
 
-                        </Paper>
-                    </Fade>
-                )}
-            </Popper>
-            {/* <Grid container justifyContent="center"> */}
-            {/* <Grid item> */}
-            {/* <Button >bottom</Button> */}
-            <Typography
-                sx={{
-                    color: "#777",
-                    fontWeight: "500",
-                    ":hover": {
-                        color: "red",
-                    },
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1rem",
-                }}
-                variant="caption"
-            // onClick={handleClick("bottom")}
-            >
-                Cartj
-            </Typography>
-            {/* </Grid> */}
-            {/* </Grid> */}
-        </Box>
-    )
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popperRef.current && !popperRef.current.contains(event.target)) {
+        setAnchorEl(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
+
+  return (
+    <div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+        onClick={handleClick}
+      >
+        <IconButton sx={{ p: 1 }}>
+          <ShoppingCartIcon />
+        </IconButton>
+        <Typography
+          sx={{
+            color: "#777",
+            fontWeight: "500",
+            ":hover": {
+              color: "red",
+            },
+            fontSize: "0.6rem",
+            letterSpacing: "0.1rem",
+          }}
+          variant="caption"
+        >
+          Cart
+        </Typography>
+      </Box>
+      <Popper
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        ref={popperRef}
+        sx={{
+          overflow: "hidden",
+        }}
+      >
+        <Paper>
+          <Box
+            sx={{
+              border: 1,
+              p: 1,
+              bgcolor: "background.paper",
+              width: "100%",
+              "@media (min-width: 1280px)": {
+                width: "360px",
+              },
+            }}
+          >
+            <EmptyCart />
+          </Box>
+        </Paper>
+      </Popper>
+    </div>
+  );
 }
-
-
-
-
-
-

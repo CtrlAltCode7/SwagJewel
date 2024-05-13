@@ -211,8 +211,6 @@ function Index() {
             }}
           />
         </StyledPopularBox>
-        {/* <DBCarousel /> */}
-        {/* <SwipeToSlide /> */}
         <ProductSlider />
       </Layout>
     </>

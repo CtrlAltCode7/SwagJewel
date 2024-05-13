@@ -13,8 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import CallIcon from "@mui/icons-material/Call";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PersonIcon from "@mui/icons-material/Person";
 import StullerLogo from "../../assets/swag-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import LoginPopper from "../login/loginPopper/loginPopper";
@@ -39,18 +37,10 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState();
-  const [anchorE2, setAnchorE2] = useState(null);
-  const [open1, setOpen1] = useState(false);
-  const [placement1, setPlacement1] = useState();
 
-  const handleClick = (newPlacement) => (event) => {
-    setAnchorEl(event.currentTarget);
-    setOpen((prev) => placement !== newPlacement || !prev);
-    setPlacement(newPlacement);
-  };
+
+
+
 
   const handleClick1 = (newPlacement) => (event) => {
     setAnchorE2(event.currentTarget);
@@ -282,25 +272,11 @@ function ResponsiveAppBar() {
             }}
           >
             {/* <Tooltip title="Open settings"> */}
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-              onClick={handleClick1("bottom")}
-            >
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                <ShoppingCartIcon />
-              </IconButton>
+   
 
-              <Cart open1={open1}
-                placement1={placement1}
-                anchorEl={anchorE2}
-                setOpen1={setOpen1} 
+              <Cart
               />
-
-            </Box>
+            {/* </Box> */}
 
             {/* </Tooltip> */}
             {/* <Menu
@@ -343,63 +319,8 @@ function ResponsiveAppBar() {
               borderLeft: "1.5px solid #ddd",
             }}
           >
-            {/* <Tooltip title="Open settings"> */}
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-              onClick={handleClick("bottom")}
-            >
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                <PersonIcon />
-              </IconButton>
-              {/* <Typography
-                sx={{
-                  color: "#777",
-                  fontWeight: "500",
-                  ":hover": {
-                    color: "red",
-                  },
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.1rem",
-                }}
-                variant="caption"
-              >
-                LOG IN
-              </Typography> */}
-              <LoginPopper
-                open={open}
-                placement={placement}
-                anchorEl={anchorEl}
-                setOpen={setOpen}
-              />
-            </Box>
-
-            {/* </Tooltip> */}
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
+            <LoginPopper />
+     
           </Box>
         </Toolbar>
       </Container>

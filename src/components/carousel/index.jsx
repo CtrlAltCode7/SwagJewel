@@ -110,6 +110,7 @@ function ProductSlider({ products }) {
         padding: "3% 10%",
         // background: "red",
         // textAlign: "center !important",
+        overflow: "hidden"
       }}
     >
       <Slider {...settings}>
