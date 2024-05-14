@@ -105,9 +105,9 @@ function ProductSlider({ products }) {
 
   return (
     <div
-      className="slider-container"
+      className="slider-container homepade-slider"
       style={{
-        padding: "3% 10%",
+        padding: "3% 10% !important",
         // background: "red",
         // textAlign: "center !important",
         overflow: "hidden"

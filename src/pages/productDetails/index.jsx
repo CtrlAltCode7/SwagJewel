@@ -156,7 +156,7 @@ export default function ProductDetails() {
         </Box>
         <Box
           sx={{
-            padding: "3% 10%",
+            padding: "3% 10% !important",
             "@media (max-width: 768px)": {
               padding: 0, // Reduced padding for smaller screens
             },

@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { getImageUrlsWithGroupDescription } from "../../helpers/index";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -29,6 +30,7 @@ export default function BasicGrid() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(5);
+  const [accordionApiData, setAccordionApiData] = useState([]);
 
 
   const apiData = useSelector((state) => state.api.data);
@@ -62,7 +64,7 @@ export default function BasicGrid() {
     } else {
       console.log("apiData is empty");
     }
-  }, [apiData]);
+  }, [apiData,productsPerPage]);
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
   const products = [
@@ -825,6 +827,37 @@ export default function BasicGrid() {
 
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
+
+  useEffect(() => {
+    const fetchAccordionData = async () => {
+      try {
+        const response = await axios.get('https://api.swagjewelers.com/api/stuller/advanced-filters');
+        const filterData = response?.data?.data?.AdvancedProductFilter; // Assuming your API response structure is like the one you provided
+        const updatedAccordionData = filterData.map(item => ({
+          id: item.Type,
+          title: item.Type,
+          contents: item.Values.map(value => ({
+            id: value.Value,
+            text: value.DisplayValue
+          }))
+        }));
+        setAccordionApiData(updatedAccordionData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchAccordionData();
+
+    return () => {
+    };
+  }, []);
+
+  const remainingProducts = imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
+
+
+  console.log('accordionApiData', accordionApiData);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -839,7 +872,7 @@ export default function BasicGrid() {
       >
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
-            <AccordionComponent data={accordionData} />
+            <AccordionComponent data={accordionApiData || accordionData} />
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
@@ -1034,7 +1067,7 @@ export default function BasicGrid() {
                   // alignItems: "center",
                 }}
               >
-                <Typography>{`Showing ${startIndex} - ${endIndex} of ${apiData?.data?.Products.length}`}</Typography>|
+                <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${apiData?.data?.Products.length}`}</Typography>|
                 <Typography>Items per page</Typography>
                 {/* <SelectComponent minWidthSize="20" placeholder="26" /> */}
                 <FormControl>
@@ -1065,9 +1098,9 @@ export default function BasicGrid() {
                     
                     onChange={handleProdutPerPageChange}
                   >
-                    <MenuItem value={5}>5</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
+                    <MenuItem value={5} disabled={remainingProducts < 5}>5</MenuItem>
+                    <MenuItem value={10} disabled={remainingProducts < 10}>10</MenuItem>
+                    <MenuItem value={15} disabled={remainingProducts < 15}>15</MenuItem>
                   </Select>
                 </FormControl>
               </Box>

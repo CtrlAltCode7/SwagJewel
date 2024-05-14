@@ -2,28 +2,78 @@ import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import Typography from "@mui/material/Typography";
-import { Box, Checkbox } from "@mui/material";
+import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { useEffect } from "react";
 
 function AccordionComponent({ data }) {
-  const [expanded, setExpanded] = useState(null);
+  // const [expanded, setExpanded] = useState(null);
+  const [loadingAccordion, setLoadingAccordion] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
+    if (isExpanded) {
+      setLoadingAccordion(panel);
+      // Simulate async data loading
+      setTimeout(() => {
+        setLoadingAccordion(null);
+      }, 1000); // Replace 1000 with actual loading time
+    }
   };
 
-  const contentLength = data?.map((item, index) => item.contents.length) || 0;
+  const [expanded, setExpanded] = useState(null);
+  const [checkedItems, setCheckedItems] = useState({});
 
-  console.log("data", contentLength);
+  // const handleChange = (panel) => (event, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : null);
+  // };
+
+  const handleCheckboxChange = (contentId, title) => (event) => {
+    const isChecked = event.target.checked;
+    setCheckedItems((prevCheckedItems) => ({
+      ...prevCheckedItems,
+      [contentId]: { ...prevCheckedItems[contentId], [title]: isChecked },
+    }));
+  };
+
+  useEffect(() => {
+    // Function to send data to API
+    const sendDataToAPI = async () => {
+      // Prepare data to send to API
+      const checkedData = {};
+      Object.entries(checkedItems).forEach(([contentId, checked]) => {
+        Object.entries(checked).forEach(([title, isChecked]) => {
+          if (isChecked) {
+            checkedData[title] = checkedData[title] || [];
+            checkedData[title].push(contentId);
+          }
+        });
+      });
+
+      // Here you can send 'checkedData' to your API using fetch or any other method
+      console.log("Data to be sent to API:", checkedData);
+      // Example of API call using fetch
+      // await fetch('your_api_endpoint', {
+      //   method: 'POST',
+      //   body: JSON.stringify(checkedData),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // });
+    };
+
+    // Call the function when checkedItems state changes
+    sendDataToAPI();
+  }, [checkedItems]); // Run this effect whenever checkedItems changes
+
+  console.log("checkedItems", checkedItems);
 
   return (
     <div>
-      {data.map((accordion, index) => (
+      {data?.map((accordion, index) => (
         <Accordion
           key={index}
           expanded={expanded === `panel${index}`}
@@ -37,7 +87,7 @@ function AccordionComponent({ data }) {
               expanded === `panel${index}` ? (
                 <RemoveCircleIcon style={{ color: "#6fa8d1" }} />
               ) : (
-                <AddCircleIcon style={{ color: "#999", backgroundColor: "" }} />
+                <AddCircleIcon style={{ color: "#999" }} />
               )
             }
             aria-controls={`panel${index}-content`}
@@ -52,19 +102,17 @@ function AccordionComponent({ data }) {
               sx={{
                 color: "#555",
                 fontWeight: "bold",
-                // marginRight: ".5rem"
-                // gap: ".4rem"
               }}
             >
               {accordion.title}
-              <Typography component={"span"}ml={1}>
+              <Typography component={"span"} ml={1}>
                 {`(${accordion?.contents?.length || 0})`}
               </Typography>
             </Typography>
           </AccordionSummary>
           <AccordionDetails
             sx={{
-              maxHeight: "240px",
+              maxHeight: "240px", // Set maximum height for virtualization
               overflowY: "auto",
               "&::-webkit-scrollbar": {
                 width: "7px",
@@ -76,27 +124,47 @@ function AccordionComponent({ data }) {
               },
             }}
           >
-            {accordion.contents.map((content, index) => (
+            {loadingAccordion === `panel${index}` ? (
               <Box
                 sx={{
                   display: "flex",
+                  justifyContent: "center",
                   alignItems: "center",
+                  height: "100%",
+                  width: "100%",
                 }}
-                key={content.id}
               >
-                <Checkbox style={{
-                  color: "#999"
-                }}/>
-                <Typography
+                Loading...
+              </Box>
+            ) : (
+              expanded === `panel${index}` &&
+              accordion.contents.map((content) => (
+                <Box
+                  key={content.id}
                   sx={{
-                    color: "#555",
-                    fontSize: "14px"
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
-                  {content.text}
-                </Typography>
-              </Box>
-            ))}
+                  <Checkbox
+                    checked={
+                      checkedItems[content.id] &&
+                      checkedItems[content.id][accordion.title]
+                    }
+                    onChange={handleCheckboxChange(content.id, accordion.title)}
+                    style={{ color: "#999" }}
+                  />
+                  <Typography
+                    sx={{
+                      color: "#555",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {content.text}
+                  </Typography>
+                </Box>
+              ))
+            )}
           </AccordionDetails>
         </Accordion>
       ))}
