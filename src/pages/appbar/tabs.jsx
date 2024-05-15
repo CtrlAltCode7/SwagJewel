@@ -201,7 +201,7 @@ export default function BasicTabs() {
 
   const getProductCategories = async () => {
     try {
-      const response = await fetch(`https://swagjewelers.com/api/category`)
+      const response = await fetch(`https://api.swagjewelers.com/api/category`)
         .then((res) => res.json())
         .then((data) => {
           return data;

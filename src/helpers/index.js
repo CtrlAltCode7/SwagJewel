@@ -1,14 +1,11 @@
 export const getImageUrlsWithGroupDescription = (apiData) => {
-  console.log('@@@@@@@@', apiData);
   if (!apiData || !apiData.message == "Failed") {
     return [];
   }
 
   return apiData.data.Products.map((item) => {
     const images = item.Images;
-    console.log('@@@@', images)
     const urls = images.map((image) => image.FullUrl);
-    console.log('@@@@@@', urls)
     return {
       urls: urls || [],
       groupDescription: item.GroupDescription || "", 

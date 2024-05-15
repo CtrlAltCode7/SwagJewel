@@ -17,18 +17,24 @@ import { useEffect } from "react";
 import { postData } from "../../../helpers";
 
 function SignUpForm() {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [lastname, setLastname] = useState("");
   const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [errors, setErrors] = useState({});
   const [selectedRadioValue, setSelectedRadioValue] = useState("professional");
   const [loading, setLoading] = useState(false);
+  const [countryCode, setCountryCode] = useState("+1"); // Default country code
 
   const handleChange = (event) => {
     setSelectedRadioValue(event.target.value);
   };
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +42,12 @@ function SignUpForm() {
     if (name === "username") setUsername(value);
     else if (name === "email") setEmail(value);
     else if (name === "lastname") setLastname(value);
+    else if (name === "password") setPassword(value);
+    else if (name === "firstname") setFirstName(value);
+    else if (name === "confirmpassword") setConfirmPassword(value);
     else if (name === "phone") setPhone(value);
+
+    // else if (name === "password") setPhone(value);
   };
 
   // const validateForm = () => {
@@ -44,7 +55,7 @@ function SignUpForm() {
   //   if (!username.trim()) errors.username = "Username is required";
   //   if (!email.trim()) errors.email = "Email is required";
   //   if (!lastname.trim()) errors.lastname = "Lastname is required";
-  //   if (!phone.trim()) errors.phone = "Phone is required";
+  //   if (!password.trim()) errors.password = "Phone is required";
   //   // You can add more validations as needed
   //   return errors;
   // };
@@ -61,10 +72,10 @@ function SignUpForm() {
       errors.username = "Username should be alphanumeric";
     }
 
-    if (!lastname.trim()) {
-      errors.lastname = "Lastname is required";
-    } else if (!nameRegex.test(lastname.trim())) {
-      errors.lastname = "Lastname should be alphanumeric";
+    if (!firstname.trim()) {
+      errors.firstname = "Firstname is required";
+    } else if (!nameRegex.test(firstname.trim())) {
+      errors.firstname = "FirstName should be alphanumeric";
     }
 
     if (!email.trim()) {
@@ -74,9 +85,21 @@ function SignUpForm() {
     }
 
     if (!phone.trim()) {
-      errors.phone = "Phone number is required";
+      errors.phone = "Phone is required";
     } else if (!phoneRegex.test(phone.trim())) {
-      errors.phone = "Phone number should be 10 digits";
+      errors.phone = "Phone should be 10 digits";
+    }
+
+    if (!password.trim()) {
+      errors.password = "Password is required";
+    }
+
+    if (!confirmPassword.trim()) {
+      errors.confirmpassword = "Confirm Password is required";
+    }
+
+    if (password.trim() !== confirmPassword.trim()) {
+      errors.confirmpassword = "Passwords do not match";
     }
 
     return errors;
@@ -90,24 +113,80 @@ function SignUpForm() {
     } else {
       setErrors({});
       setLoading(true); // Set loading state to true
-      var formData = new FormData();
-      formData.append("username", username);
-      formData.append("email", email);
-      formData.append("lastname", lastname);
-      formData.append("phone", phone);
+      // var formData = new FormData();
+      // formData.append("userName", username);
+      // formData.append("email", email);
+      // formData.append("lastName", lastname);
+      // formData.append("firstName", firstname);
+      // formData.append("password", password);
+      // formData.append("phone", countryCode+phone);
+      // formData.append("RoleId", 1);
 
-      postData("", formData)
-        .then((result) => {
-          console.log("Success:", result);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setLoading(false); // Set loading state to false when request completes
-          }, 2000);
-        });
+      // console.log("formData @@@@@", username,firstname,lastname,email,countryCode+phone,password,selectedRadioValue);
+      // console.log('first', formData)
+
+      // postData("https://api.swagjewelers.com/api/user/register", formData)
+      //   .then((result) => {
+      //     console.log("Success:", result);
+      //     if (result.message == "Success") {
+      //       console.log("result", result);
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error:", error);
+      //   })
+      //   .finally(() => {
+      //     setTimeout(() => {
+      //       setLoading(false); // Set loading state to false when request completes
+      //     }, 2000);
+      //   });
+
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      const payload = JSON.stringify({
+        userName: username,
+        email: email,
+        phone: countryCode + phone,
+        firstName: firstname,
+        lastName: lastname,
+        password: password,
+        RoleId: 1,
+      });
+
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: payload,
+        redirect: "follow",
+      };
+
+      try {
+        fetch("https://api.swagjewelers.com/api/user/register", requestOptions)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text();
+          })
+          .then((result) => {
+            console.log("+++++++++++++++++++++++", result);
+            const parsedResult = JSON.parse(result);
+            if (parsedResult.message === "Success") {
+              navigate("/login");
+            } else {
+              // Handle other cases
+              console.log('first',parsedResult)
+              alert(`${parsedResult.message}`)
+            }
+          });
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+      }
     }
   };
 
@@ -131,9 +210,10 @@ function SignUpForm() {
         background:
           "url(https://meteor.stullercloud.com/das/75918656?scl=1.1&fmt=png) no-repeat right, linear-gradient(to top, rgba(3, 3, 3, 0.3) 0%, rgba(3, 3, 3, 0) 100%), url(https://meteor.stullercloud.com/das/52699161?scl=1&$sharpenpng$) repeat left",
         backgroundSize: "auto",
-        height: "600px",
+        // height: "600px",
         margin: "0 auto",
         paddingTop: "2rem",
+        paddingBlock: "2rem",
         "@media (max-width: 600px)": {
           height: "auto",
           paddingLeft: "1.5rem",
@@ -170,6 +250,14 @@ function SignUpForm() {
             <Grid item xs={12} sm={5}>
               <div className="custom-field-container">
                 <CustomInputField
+                  label={"firstname"}
+                  value={firstname}
+                  onChange={handleInputChange}
+                  error={errors.firstname}
+                />
+              </div>
+              <div className="custom-field-container">
+                <CustomInputField
                   label={"username"}
                   value={username}
                   onChange={handleInputChange}
@@ -178,11 +266,13 @@ function SignUpForm() {
               </div>
               <div className="custom-field-container">
                 <CustomInputField
-                  label={"email"}
-                  value={email}
+                  label={"phone"}
+                  value={phone}
                   onChange={handleInputChange}
-                  error={errors.email}
-                  selectedRadioValue
+                  error={errors.phone}
+                  countryCode={countryCode}
+                  setCountryCode={setCountryCode}
+                  // selectedRadioValue
                 />
               </div>
               <div className="custom-field-container custom-field-recaptcha account-type-selector">
@@ -203,10 +293,27 @@ function SignUpForm() {
               </div>
               <div className="custom-field-container">
                 <CustomInputField
-                  label={"phone"}
-                  value={phone}
+                  label={"email"}
+                  value={email}
                   onChange={handleInputChange}
-                  error={errors.phone}
+                  error={errors.email}
+                  // selectedRadioValue
+                />
+              </div>
+              <div className="custom-field-container">
+                <CustomInputField
+                  label={"password"}
+                  value={password}
+                  onChange={handleInputChange}
+                  error={errors.password}
+                />
+              </div>
+              <div className="custom-field-container">
+                <CustomInputField
+                  label={"confirmpassword"}
+                  value={confirmPassword}
+                  onChange={handleInputChange}
+                  error={errors.confirmpassword}
                 />
               </div>
               <div className="custom-field-container custom-field-recaptcha account-type-selector1">

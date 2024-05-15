@@ -91,7 +91,7 @@ function ProductSlider({ products }) {
 
   // useEffect hook to fetch the data from the database
   useEffect(() => {
-    fetchBooks();
+    // fetchBooks();
     // eslint-disable-next-line
   }, []);
 
