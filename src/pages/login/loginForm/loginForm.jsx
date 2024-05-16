@@ -12,16 +12,25 @@ import {
   OutlinedInput,
   InputAdornment,
   Switch,
+  CircularProgress,
+  Snackbar,
 } from "@mui/material";
 import "./loginForm.css";
 import { AccountCircle } from "@mui/icons-material";
 import { useState } from "react";
+import axios from "axios";
+import MuiAlert from "@mui/material/Alert";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -30,6 +39,8 @@ const LoginForm = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  const navigate = useNavigate();
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -55,15 +66,16 @@ const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[a-zA-Z0-9]+$/;
 
     let usernameErr = "";
     let passwordErr = "";
 
     if (!username) {
-      usernameErr = "Email is required";
+      usernameErr = "UserName is required";
     } else if (!emailPattern.test(username)) {
-      usernameErr = "Please enter a valid email address";
+      usernameErr = "Please enter a valid UserName";
     }
 
     if (!password) {
@@ -74,18 +86,67 @@ const LoginForm = () => {
     setPasswordError(passwordErr);
 
     if (!username && !password) {
-      setUsernameError("Email is required");
+      setUsernameError("UserName is required");
       setPasswordError("Password is required");
       return;
     }
 
     if (!usernameErr && !passwordErr) {
       // alert("hi");
-      console.log('first', username);
-      console.log('first', password);
+      setLoading(true);
+      setNotification("");
+      console.log("first", username);
+      console.log("first", password);
 
+      let data = JSON.stringify({
+        userName: username,
+        password: password,
+      });
+
+      let config = {
+        method: "post",
+        maxBodyLength: Infinity,
+        url: "https://api.swagjewelers.com/api/user/authenticate",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
+
+      axios
+        .request(config)
+        .then((response) => {
+          if (response.status == 200 && response.data.message == "Success") {
+            const token = response.data.data.token;
+            localStorage.setItem("token", JSON.stringify(token));
+            // console.log('token', token)
+            navigate("/home");
+          }
+          console.log("response", response);
+          console.log("@@@@@@@@@", JSON.stringify(response.data));
+          const message = response.data.message;
+          setNotification(message);
+        })
+        .catch((error) => {
+          console.log("@@@@@@@@@@", error);
+          const message = error.response.data.message;
+          setNotification(message);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
   };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
+  useEffect(() => {
+    if (notification) {
+      setOpenSnackbar(true);
+    }
+  }, [notification]);
 
   return (
     <Container id="loginFormContainer">
@@ -175,14 +236,32 @@ const LoginForm = () => {
             <input id="rememberMe" type="hidden" name="rememberMe" />
           </Grid>
           <Grid item xs={12} className="login-btn-container">
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className="login-btn"
+            {loading ? (
+              <CircularProgress size={24} color="primary" />
+            ) : (
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className="login-btn"
+              >
+                Log In
+              </Button>
+            )}
+            <Snackbar
+              open={openSnackbar}
+              autoHideDuration={3000}
+              onClose={handleCloseSnackbar}
             >
-              Log In
-            </Button>
+              <MuiAlert
+                elevation={6}
+                variant="filled"
+                onClose={handleCloseSnackbar}
+                severity="success"
+              >
+                {notification}
+              </MuiAlert>
+            </Snackbar>
           </Grid>
         </Grid>
       </form>

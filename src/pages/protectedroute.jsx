@@ -2,8 +2,12 @@ import { Navigate } from "react-router-dom";
 
 export function PrivateRoute({ children }) {
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+  const token = localStorage.getItem("token");
 
-  if (!isLoggedIn) {
+  console.log('#####', isLoggedIn);
+  console.log('#####', token)
+
+  if (!isLoggedIn || !token === "") {
     return <Navigate to="*" />;
   }
 

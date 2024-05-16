@@ -1,16 +1,27 @@
 import * as React from "react";
 import { Box, Checkbox, Button, TextField, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginContent() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission here
   };
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/login")
+
+  }
+  const handleAccountOpen = () => {
+    navigate("/signup")
+
+  }
+  
   return (
     <Box className="text-center menu-dropdown-container w-100 u-regular-font-size">
       <form onSubmit={handleSubmit} className="u-relative">
         <Box>
-          <div className="form-input-group">
+          {/* <div className="form-input-group">
             <TextField
               placeholder="Username..."
               type="text"
@@ -18,8 +29,8 @@ export default function LoginContent() {
               tabIndex="10"
               data-test="username"
             />
-          </div>
-          <div className="form-input-group">
+          </div> */}
+          {/* <div className="form-input-group">
             <TextField
               placeholder="Password..."
               type="password"
@@ -28,7 +39,7 @@ export default function LoginContent() {
               tabIndex="11"
               data-test="password"
             />
-          </div>
+          </div> */}
           <div className="mb-4">
             <Button
               type="submit"
@@ -38,11 +49,12 @@ export default function LoginContent() {
               color="primary"
               fullWidth
               className="u-border-radius-xlarge"
+              onClick={handleLogin}
             >
               Log In
             </Button>
           </div>
-          <div className="form-input-group my-4">
+          {/* <div className="form-input-group my-4">
             <Checkbox
               id="remember-me"
               tabIndex="12"
@@ -52,10 +64,10 @@ export default function LoginContent() {
             <label htmlFor="remember-me" style={{ marginLeft: "-15px" }}>
               Keep me signed in on this computer
             </label>
-          </div>
+          </div> */}
         </Box>
       </form>
-      <Box className="my-3">
+      {/* <Box className="my-3">
         <Typography
           component="a"
           href="/forgot?returnUrl=%2Fbrowse%2Fwedding-and-engagement%2Fengagements%2Fsolitaire%2F%3Fpage%3D1"
@@ -63,15 +75,17 @@ export default function LoginContent() {
         >
           Recover username or password
         </Typography>
-      </Box>
+      </Box> */}
       <Box className="mt-5 mb-3 pt-3">
         <Button
-          href="/accountsignup/"
+          // href="/accountsignup/"
           data-test="apply-for-an-account-button"
           variant="contained"
           color="primary"
           fullWidth
           className="u-border-radius-xlarge"
+          onClick={handleAccountOpen}
+
         >
           Apply for an Account
         </Button>
