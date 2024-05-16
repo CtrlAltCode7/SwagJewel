@@ -32,6 +32,7 @@ export default function InitialPageLoad() {
   }, []);
   const handleClose = () => {
     setOpen(false);
+    window.location.reload();
   };
 
   const handleSubmit = () => {
@@ -54,8 +55,10 @@ export default function InitialPageLoad() {
       //   console.log("Password did not match.");
       setError(true);
       handleHomepage();
+    } else {
+      setOpen(false);
+      navigate("*");
     }
-    setOpen(false);
   };
   return (
     <Dialog open={open} onClose={handleClose}>
