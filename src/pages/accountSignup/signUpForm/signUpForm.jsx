@@ -4,6 +4,7 @@ import {
   CircularProgress,
   Grid,
   InputLabel,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,6 +16,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { postData } from "../../../helpers";
+import axios from "axios";
+import MuiAlert from '@mui/material/Alert';
 
 function SignUpForm() {
   const [firstname, setFirstName] = useState("");
@@ -30,11 +33,21 @@ function SignUpForm() {
   const [selectedRadioValue, setSelectedRadioValue] = useState("professional");
   const [loading, setLoading] = useState(false);
   const [countryCode, setCountryCode] = useState("+1"); // Default country code
+  const [notification, setNotification] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleChange = (event) => {
     setSelectedRadioValue(event.target.value);
   };
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('first', notification)
+    if (notification) {
+      console.log('notification', notification.length)
+      setOpenSnackbar(true);
+    }
+  }, [notification]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -84,11 +97,11 @@ function SignUpForm() {
       errors.email = "Invalid email format";
     }
 
-    if (!phone.trim()) {
-      errors.phone = "Phone is required";
-    } else if (!phoneRegex.test(phone.trim())) {
-      errors.phone = "Phone should be 10 digits";
-    }
+    // if (!phone.trim()) {
+    //   errors.phone = "Phone is required";
+    // } else if (!phoneRegex.test(phone.trim())) {
+    //   errors.phone = "Phone should be 10 digits";
+    // }
 
     if (!password.trim()) {
       errors.password = "Password is required";
@@ -105,89 +118,52 @@ function SignUpForm() {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
     } else {
       setErrors({});
-      setLoading(true); // Set loading state to true
-      // var formData = new FormData();
-      // formData.append("userName", username);
-      // formData.append("email", email);
-      // formData.append("lastName", lastname);
-      // formData.append("firstName", firstname);
-      // formData.append("password", password);
-      // formData.append("phone", countryCode+phone);
-      // formData.append("RoleId", 1);
-
-      // console.log("formData @@@@@", username,firstname,lastname,email,countryCode+phone,password,selectedRadioValue);
-      // console.log('first', formData)
-
-      // postData("https://api.swagjewelers.com/api/user/register", formData)
-      //   .then((result) => {
-      //     console.log("Success:", result);
-      //     if (result.message == "Success") {
-      //       console.log("result", result);
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error:", error);
-      //   })
-      //   .finally(() => {
-      //     setTimeout(() => {
-      //       setLoading(false); // Set loading state to false when request completes
-      //     }, 2000);
-      //   });
-
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      const payload = JSON.stringify({
-        userName: username,
-        email: email,
-        phone: countryCode + phone,
-        firstName: firstname,
-        lastName: lastname,
-        password: password,
-        RoleId: 1,
-      });
-
-      const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: payload,
-        redirect: "follow",
-      };
-
+      setLoading(true);
+      setNotification("");
       try {
-        fetch("https://api.swagjewelers.com/api/user/register", requestOptions)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-            return response.text();
-          })
-          .then((result) => {
-            console.log("+++++++++++++++++++++++", result);
-            const parsedResult = JSON.parse(result);
-            if (parsedResult.message === "Success") {
-              navigate("/login");
-            } else {
-              // Handle other cases
-              console.log('first',parsedResult)
-              alert(`${parsedResult.message}`)
-            }
-          });
+        const payload = JSON.stringify({});
+        const phoneNumberWithCountryCode = phone ? countryCode + phone : "";
+        setLoading(true);
+        const response = await axios.post(
+          "https://api.swagjewelers.com/api/user/register",
+          {
+            userName: username,
+            email: email,
+            phone: phoneNumberWithCountryCode,
+            firstName: firstname,
+            lastName: lastname,
+            password: password,
+            accountOption: selectedRadioValue,
+            RoleId: 1,
+          }
+        );
+        if (response.status == 200) {
+          const message = response.data.message;
+          setNotification(message);
+          navigate("/login");
+        }
       } catch (error) {
-        console.error("Error:", error);
+        // Handle errors here
+        console.error("Error:", error.message);
+        const message = error.response.data.message;
+        // alert(message);
+        setNotification(message);
       } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+        setLoading(false);
       }
+
     }
+  };
+
+  const handlePostRequest = async () => {
+
   };
 
   const handleApplyButtonClick = () => {
@@ -200,7 +176,10 @@ function SignUpForm() {
       // Your form submission logic here
     }
   };
-
+  console.log("@@@@@@", notification);
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
   return (
     <Grid
       container
@@ -360,6 +339,20 @@ function SignUpForm() {
                     Apply Now
                   </Button>
                 )}
+                <Snackbar
+                  open={openSnackbar}
+                  autoHideDuration={3000}
+                  onClose={handleCloseSnackbar}
+                >
+                  <MuiAlert
+                    elevation={6}
+                    variant="filled"
+                    onClose={handleCloseSnackbar}
+                    severity="success"
+                  >
+                    {notification}
+                  </MuiAlert>
+                </Snackbar>
               </Box>
               <Box className="privacy-container">
                 <Typography variant="body2" className="privacy-title">
