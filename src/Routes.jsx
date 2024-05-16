@@ -19,46 +19,78 @@ import ProductDetails from "./pages/productDetails/index";
 import Login from "./pages/login";
 import AccountSignUp from "./pages/accountSignup";
 import ContactUs from "./pages/contactUs/index";
+import InitialPageLoad from "./pages/initialPageLoad/initialPageLoad";
+import { Loader } from "./components/lazyLoader";
+import { PrivateRoute } from "./pages/protectedroute";
+import Error from "./pages/error/error";
 
 const routes = [
   {
     path: "/",
-    element: <Index />,
+    element: <InitialPageLoad />,
     // loader: <Loader />,
   },
   {
     path: "/home",
-    element: <HomePage />,
+    element: (
+      <PrivateRoute>
+        <Index />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/homePage",
+    element: (
+      <PrivateRoute>
+        <HomePage />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
   {
     path: "/productListing",
-    element: <ProductListing />,
+    element: (
+      <PrivateRoute>
+        <ProductListing />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
   {
     path: "/productdetails",
-    element: <ProductDetails />,
+    element: (
+      <PrivateRoute>
+        <ProductDetails />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <PrivateRoute>
+        <Login />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
   {
     path: "/signup",
-    element: <AccountSignUp />,
-    // loader: <Loader />,
-  },
-  {
-    path: "/signup",
-    element: <AccountSignUp />,
+    element: (
+      <PrivateRoute>
+        <AccountSignUp />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
   {
     path: "/contact-us",
-    element: <ContactUs />,
+    element: (
+      <PrivateRoute>
+        <ContactUs />
+      </PrivateRoute>
+    ),
     // loader: <Loader />,
   },
 ];
@@ -90,15 +122,16 @@ const AllRoutes = () => {
             key={path}
           />
         ))}
-        {/* <Route
+        <Route
           exact
           path="*"
           element={
             <React.Suspense fallback={<Loader />}>
-              <ErrorInfo type="404" />
+              {/* <ErrorInfo type="404" /> */}
+              <Error errorCode="404" errorMessage="Access Denied" />
             </React.Suspense>
           }
-        /> */}
+        />
       </Routes>
     </Router>
   );

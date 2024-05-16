@@ -80,7 +80,10 @@ const LoginForm = () => {
     }
 
     if (!usernameErr && !passwordErr) {
-      alert("hi")
+      // alert("hi");
+      console.log('first', username);
+      console.log('first', password);
+
     }
   };
 

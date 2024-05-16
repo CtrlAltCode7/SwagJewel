@@ -27,12 +27,11 @@ function SignUpForm() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [errors, setErrors] = useState({});
   const [selectedRadioValue, setSelectedRadioValue] = useState("professional");
   const [loading, setLoading] = useState(false);
-  const [countryCode, setCountryCode] = useState("+1"); // Default country code
+  const [countryCode, setCountryCode] = useState("+1");
   const [notification, setNotification] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -42,9 +41,7 @@ function SignUpForm() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('first', notification)
     if (notification) {
-      console.log('notification', notification.length)
       setOpenSnackbar(true);
     }
   }, [notification]);
@@ -176,7 +173,6 @@ function SignUpForm() {
       // Your form submission logic here
     }
   };
-  console.log("@@@@@@", notification);
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
