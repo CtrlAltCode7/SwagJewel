@@ -74,13 +74,13 @@ function ResponsiveAppBar() {
 
   const handleLogoICon = () => {
     // Redirect to another page
-    navigate("/");
+    navigate("/home");
   };
 
   const handleLogin = () => {
     // Redirect to another page
     // navigate('/login');
-    handleClick("bottom");
+    // handleClick("bottom");
   };
 
   return (

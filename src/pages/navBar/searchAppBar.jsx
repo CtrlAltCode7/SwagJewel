@@ -89,7 +89,7 @@ export default function SearchAppBar() {
 
   const handleLogoICon = () => {
     // Redirect to another page
-    navigate('/');
+    navigate('/home');
   };
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: "#eee" }}>
