@@ -21,6 +21,8 @@ export default function LoginContent() {
 
   const token = localStorage.getItem("token");
 
+  console.log('first', token)
+
   return (
     <Box className="text-center menu-dropdown-container w-100 u-regular-font-size">
       <form onSubmit={handleSubmit} className="u-relative">
@@ -45,7 +47,6 @@ export default function LoginContent() {
             />
           </div> */}
           <div className="mb-4">
-            {token && !token ? (
               <Button
                 type="submit"
                 tabIndex="13"
@@ -58,20 +59,7 @@ export default function LoginContent() {
               >
                 Log In
               </Button>
-            ) : (
-              <Button
-                type="submit"
-                tabIndex="13"
-                data-test="log-in"
-                variant="contained"
-                color="primary"
-                fullWidth
-                className="u-border-radius-xlarge"
-                onClick={handleLogout}
-              >
-                Log out
-              </Button>
-            )}
+           
           </div>
           {/* <div className="form-input-group my-4">
             <Checkbox
@@ -96,7 +84,6 @@ export default function LoginContent() {
         </Typography>
       </Box> */}
       <Box className="mt-5 mb-3 pt-3">
-        {token && !token && (
           <Button
             // href="/accountsignup/"
             data-test="apply-for-an-account-button"
@@ -108,7 +95,6 @@ export default function LoginContent() {
           >
             Apply for an Account
           </Button>
-        )}
       </Box>
     </Box>
   );
