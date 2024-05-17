@@ -29,7 +29,7 @@ const AccountSection = ({ title, description, buttonText }) => {
           size="large"
           fullWidth
           onClick={() => {
-            window.location = "/accountsignup/";
+            window.location = "/signup";
           }}
           className="create-account-btn"
         >

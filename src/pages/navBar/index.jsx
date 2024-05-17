@@ -21,14 +21,21 @@ import Layout from "../../components/layout/index";
 // import SwipeToSlide from "../../components/carousel/SwipeToSlide";
 import ProductSlider from "../../components/carousel/index";
 import HomePageSubBanner from "../homePageSubBanner/index";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from '../../slices/apiSlice';
+import { useSelector, useDispatch } from "react-redux";
+import { fetchData } from "../../slices/apiSlice";
 import { useEffect } from "react";
 import { useState } from "react";
 // import { getImageUrlsWithGroupDescription } from "../../helpers/index";
+import { useLocation } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 function Index() {
-  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] = useState([]);
+  const [imageUrlsWithGroupDescription, setImageUrlsWithGroupDescription] =
+    useState([]);
+  const location = useLocation();
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const message = location.state?.message;
 
   const cardData = [
     {
@@ -115,26 +122,65 @@ function Index() {
   }));
   // const BannerImg =
   const products = [
-    { title: "Product 1", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 2", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 4", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 5", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 6", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
-    { title: "Product 3", image: "https://meteor.stullercloud.com/das/348685?$list$" },
+    {
+      title: "Product 1",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 2",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 4",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 5",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 6",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
+    {
+      title: "Product 3",
+      image: "https://meteor.stullercloud.com/das/348685?$list$",
+    },
 
     // Add more product objects as needed
   ];
 
   const dispatch = useDispatch();
   const data1 = useSelector((state) => state.api.data);
-  console.log('data1', data1)
+  console.log("data1", data1);
   const status = useSelector((state) => state.api.status);
   const error = useSelector((state) => state.api.error);
 
@@ -153,11 +199,20 @@ function Index() {
   // const apiData = useSelector((state) => state.api.data);
   // console.log('apiData', apiData)
 
+  useEffect(() => {
+    if (message) {
+      setOpenSnackbar(true);
+    }
+  }, [message]);
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
 
   return (
     <>
       <Layout>
-       <Banner />
+        <Banner />
         <HomePageSubBanner />
         <Stack
           flexDirection={"row"}
@@ -173,7 +228,6 @@ function Index() {
               margin: "0 !important",
               flexWrap: "wrap",
               gap: "1rem !important",
-
             },
           }}
         >
@@ -212,6 +266,22 @@ function Index() {
           />
         </StyledPopularBox>
         <ProductSlider />
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          <MuiAlert
+            elevation={6}
+            variant="filled"
+            onClose={handleCloseSnackbar}
+            severity="success"
+            sx={{ bgcolor: "green" }}
+          >
+            {message}
+          </MuiAlert>
+        </Snackbar>
       </Layout>
     </>
   );

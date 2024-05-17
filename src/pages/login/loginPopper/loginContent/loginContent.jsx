@@ -16,15 +16,28 @@ export default function LoginContent() {
   };
 
   const handleLogout = () => {
-    navigate("/");
+    localStorage.removeItem("token");
+    navigate("/home");
   };
 
   const token = localStorage.getItem("token");
 
-  console.log('first', token)
+  const message = token ? "Logout" : "Login";
+  console.log(">>>>>>>>>", message);
 
   return (
-    <Box className="text-center menu-dropdown-container w-100 u-regular-font-size">
+    <Box
+      className="text-center menu-dropdown-container w-100 u-regular-font-size"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 2,
+        paddingBlock: 4,
+        paddingInline: 2,
+      }}
+    >
       <form onSubmit={handleSubmit} className="u-relative">
         <Box>
           {/* <div className="form-input-group">
@@ -46,21 +59,38 @@ export default function LoginContent() {
               data-test="password"
             />
           </div> */}
-          <div className="mb-4">
+          {token ? (
+            <div className="mb-4">
               <Button
                 type="submit"
                 tabIndex="13"
                 data-test="log-in"
                 variant="contained"
                 color="primary"
-                fullWidth
+                // fullWidth
+                className="u-border-radius-xlarge"
+                onClick={handleLogout}
+              >
+                Log Out
+              </Button>
+            </div>
+          ) : (
+            <div className="mb-4">
+              <Button
+                type="submit"
+                tabIndex="13"
+                data-test="log-in"
+                variant="contained"
+                color="primary"
+                // fullWidth
                 className="u-border-radius-xlarge"
                 onClick={handleLogin}
               >
                 Log In
               </Button>
-           
-          </div>
+            </div>
+          )}
+
           {/* <div className="form-input-group my-4">
             <Checkbox
               id="remember-me"
@@ -83,19 +113,21 @@ export default function LoginContent() {
           Recover username or password
         </Typography>
       </Box> */}
-      <Box className="mt-5 mb-3 pt-3">
+      {!token && (
+        <Box className="mt-5 mb-3 pt-3">
           <Button
             // href="/accountsignup/"
             data-test="apply-for-an-account-button"
             variant="contained"
             color="primary"
-            fullWidth
+            // fullWidth
             className="u-border-radius-xlarge"
             onClick={handleAccountOpen}
           >
             Apply for an Account
           </Button>
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 }

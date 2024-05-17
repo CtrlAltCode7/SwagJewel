@@ -54,7 +54,7 @@ function SignUpForm() {
     else if (name === "lastname") setLastname(value);
     else if (name === "password") setPassword(value);
     else if (name === "firstname") setFirstName(value);
-    else if (name === "confirmpassword") setConfirmPassword(value);
+    else if (name === "Confirm Password") setConfirmPassword(value);
     else if (name === "phone") setPhone(value);
 
     // else if (name === "password") setPhone(value);
@@ -85,7 +85,13 @@ function SignUpForm() {
     if (!firstname.trim()) {
       errors.firstname = "Firstname is required";
     } else if (!nameRegex.test(firstname.trim())) {
-      errors.firstname = "FirstName should be alphanumeric";
+      errors.firstname = "Firstname should be alphanumeric";
+    }
+
+    if (!lastname.trim()) {
+      errors.lastname = "Lastname is required";
+    } else if (!nameRegex.test(lastname.trim())) {
+      errors.lastname = "Lastname should be alphanumeric";
     }
 
     if (!email.trim()) {
@@ -94,11 +100,11 @@ function SignUpForm() {
       errors.email = "Invalid email format";
     }
 
-    // if (!phone.trim()) {
-    //   errors.phone = "Phone is required";
-    // } else if (!phoneRegex.test(phone.trim())) {
-    //   errors.phone = "Phone should be 10 digits";
-    // }
+    if (!phone.trim()) {
+      errors.phone = "Phone is required";
+    } else if (!phoneRegex.test(phone.trim())) {
+      errors.phone = "Phone should be 10 digits";
+    }
 
     if (!password.trim()) {
       errors.password = "Password is required";
@@ -143,8 +149,8 @@ function SignUpForm() {
         );
         if (response.status == 200) {
           const message = response.data.message;
-          setNotification(message);
-          navigate("/login");
+          // setNotification(message);
+          navigate("/login", { state: { message: message } });
         }
       } catch (error) {
         // Handle errors here
@@ -285,7 +291,7 @@ function SignUpForm() {
               </div>
               <div className="custom-field-container">
                 <CustomInputField
-                  label={"confirmpassword"}
+                  label={"Confirm Password"}
                   value={confirmPassword}
                   onChange={handleInputChange}
                   error={errors.confirmpassword}
@@ -339,12 +345,14 @@ function SignUpForm() {
                   open={openSnackbar}
                   autoHideDuration={3000}
                   onClose={handleCloseSnackbar}
+                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+
                 >
                   <MuiAlert
                     elevation={6}
                     variant="filled"
                     onClose={handleCloseSnackbar}
-                    severity="success"
+                    severity="error"
                   >
                     {notification}
                   </MuiAlert>

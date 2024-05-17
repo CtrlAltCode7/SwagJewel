@@ -66,7 +66,7 @@ export default function LoginPopper() {
         }}
         variant="caption"
       >
-        LOG IN
+        User
       </Typography>
       <Popper
         sx={{ zIndex: 1200, minWidth: "25%" }}

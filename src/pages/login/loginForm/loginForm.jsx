@@ -31,6 +31,12 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: "top",
+    horizontal: "right",
+  });
+  const { vertical, horizontal, open } = state;
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -73,9 +79,9 @@ const LoginForm = () => {
     let passwordErr = "";
 
     if (!username) {
-      usernameErr = "UserName is required";
+      usernameErr = "Username is required";
     } else if (!emailPattern.test(username)) {
-      usernameErr = "Please enter a valid UserName";
+      usernameErr = "Please enter a valid Username";
     }
 
     if (!password) {
@@ -86,7 +92,7 @@ const LoginForm = () => {
     setPasswordError(passwordErr);
 
     if (!username && !password) {
-      setUsernameError("UserName is required");
+      setUsernameError("Username is required");
       setPasswordError("Password is required");
       return;
     }
@@ -120,12 +126,14 @@ const LoginForm = () => {
             const token = response.data.data.token;
             localStorage.setItem("token", JSON.stringify(token));
             // console.log('token', token)
-            navigate("/home");
+            // setNotification(response.data.message);
+            navigate("/home", { state: { message: response.data.message } });
+            const message = response.data.message;
+            
           }
           console.log("response", response);
           console.log("@@@@@@@@@", JSON.stringify(response.data));
-          const message = response.data.message;
-          setNotification(message);
+       
         })
         .catch((error) => {
           console.log("@@@@@@@@@@", error);
@@ -143,7 +151,9 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (notification) {
+    console.log("notification", notification);
+    if (notification && notification.trim().length > 0) {
+      console.log("notification", notification);
       setOpenSnackbar(true);
     }
   }, [notification]);
@@ -249,6 +259,7 @@ const LoginForm = () => {
               </Button>
             )}
             <Snackbar
+              anchorOrigin={{ vertical, horizontal }}
               open={openSnackbar}
               autoHideDuration={3000}
               onClose={handleCloseSnackbar}
@@ -257,7 +268,7 @@ const LoginForm = () => {
                 elevation={6}
                 variant="filled"
                 onClose={handleCloseSnackbar}
-                severity="success"
+                severity="error"
               >
                 {notification}
               </MuiAlert>
