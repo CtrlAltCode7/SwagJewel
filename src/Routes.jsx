@@ -23,6 +23,7 @@ import InitialPageLoad from "./pages/initialPageLoad/initialPageLoad";
 import { Loader } from "./components/lazyLoader";
 import { PrivateRoute } from "./pages/protectedroute";
 import Error from "./pages/error/error";
+import { PublicRoute } from "./pages/publicRoute";
 
 const routes = [
   {
@@ -69,18 +70,18 @@ const routes = [
   {
     path: "/login",
     element: (
-      <PrivateRoute>
+      <PublicRoute>
         <Login />
-      </PrivateRoute>
+      </PublicRoute>
     ),
     // loader: <Loader />,
   },
   {
     path: "/signup",
     element: (
-      <PrivateRoute>
+      <PublicRoute>
         <AccountSignUp />
-      </PrivateRoute>
+      </PublicRoute>
     ),
     // loader: <Loader />,
   },

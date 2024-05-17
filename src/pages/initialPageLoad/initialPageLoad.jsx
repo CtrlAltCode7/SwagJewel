@@ -20,11 +20,15 @@ export default function InitialPageLoad() {
     navigate("/home");
   };
 
+  
+
   useEffect(() => {
     setOpen(true);
     const hashedPassword = md5("swagjewel");
     console.log("Entered password (MD5):", hashedPassword);
     localStorage.setItem("isLoggedIn", false);
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
     if (!localStorage.getItem("swag-jewelers")) {
       localStorage.setItem("swag-jewelers", hashedPassword);
@@ -33,6 +37,10 @@ export default function InitialPageLoad() {
   const handleClose = () => {
     setOpen(false);
     window.location.reload();
+  };
+
+  const handleBeforeUnload = () => {
+    localStorage.setItem('isLoggedIn', 'false');
   };
 
   const handleSubmit = () => {
@@ -59,6 +67,9 @@ export default function InitialPageLoad() {
       setOpen(false);
       navigate("*");
     }
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   };
   return (
     <Dialog open={open} onClose={handleClose}>

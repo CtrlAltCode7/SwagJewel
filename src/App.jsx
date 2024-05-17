@@ -10,7 +10,7 @@ import { decrement, increment, resetValue } from "./slices/userSlice.js";
 // import ProductListing from "./pages/ProductListing/ProductListing.jsx";
 // import Routes from "./Routes.js";
 import AllRoutes from "./Routes.jsx";
-
+import { useEffect } from "react";
 
 function Home() {
   return (
@@ -21,10 +21,22 @@ function Home() {
   );
 }
 
-
-
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.setItem("isLoggedin", "false");
+    };
+
+    // Add event listener when component mounts
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Clean up event listener when component unmounts
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <>

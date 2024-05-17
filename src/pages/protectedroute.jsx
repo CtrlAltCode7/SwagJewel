@@ -7,7 +7,7 @@ export function PrivateRoute({ children }) {
   console.log('#####', isLoggedIn);
   console.log('#####', token)
 
-  if (!isLoggedIn || !token === "") {
+  if (!isLoggedIn || !token) {
     return <Navigate to="*" />;
   }
 
