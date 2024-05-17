@@ -1,0 +1,87 @@
+[
+  {
+    "title": "Chain Making Workshops",
+    "links": [
+      {
+        "label": "Basic Chain Making Techniques",
+        "url": "/basic-chain-making-techniques"
+      },
+      {
+        "label": "Advanced Chain Weaving Methods",
+        "url": "/advanced-chain-weaving-methods"
+      },
+      {
+        "label": "Intricate Chain Designs",
+        "url": "/intricate-chain-designs"
+      }
+    ]
+  },
+  {
+    "title": "Cord Braiding Courses",
+    "links": [
+      {
+        "label": "Introduction to Cord Braiding",
+        "url": "/introduction-to-cord-braiding"
+      },
+      {
+        "label": "Knotted Cord Jewelry",
+        "url": "/knotted-cord-jewelry"
+      },
+      {
+        "label": "Macramé Techniques",
+        "url": "/macrame-techniques"
+      }
+    ]
+  },
+  {
+    "title": "Wire Wrapping Workshops",
+    "links": [
+      {
+        "label": "Basic Wire Wrapping Skills",
+        "url": "/basic-wire-wrapping-skills"
+      },
+      {
+        "label": "Wire Weaving Techniques",
+        "url": "/wire-weaving-techniques"
+      },
+      {
+        "label": "Wire Sculpture Artistry",
+        "url": "/wire-sculpture-artistry"
+      }
+    ]
+  },
+  {
+    "title": "Jewelry Repair Classes",
+    "links": [
+      {
+        "label": "Chain Repair and Restoration",
+        "url": "/chain-repair-and-restoration"
+      },
+      {
+        "label": "Cord and String Replacement",
+        "url": "/cord-and-string-replacement"
+      },
+      {
+        "label": "Wire Fixing and Reinforcement",
+        "url": "/wire-fixing-and-reinforcement"
+      }
+    ]
+  },
+  {
+    "title": "Design Inspiration Seminars",
+    "links": [
+      {
+        "label": "Contemporary Chain and Cord Designs",
+        "url": "/contemporary-chain-and-cord-designs"
+      },
+      {
+        "label": "Mixed Media Jewelry",
+        "url": "/mixed-media-jewelry"
+      },
+      {
+        "label": "Nature-Inspired Creations",
+        "url": "/nature-inspired-creations"
+      }
+    ]
+  }
+]

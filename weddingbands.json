@@ -1,0 +1,87 @@
+[
+    {
+      "title": "Ring Sizing Workshops",
+      "links": [
+        {
+          "label": "Basic Ring Sizing Techniques",
+          "url": "/basic-ring-sizing-techniques"
+        },
+        {
+          "label": "Advanced Ring Sizing Methods",
+          "url": "/advanced-ring-sizing-methods"
+        },
+        {
+          "label": "Ring Resizing Troubleshooting",
+          "url": "/ring-resizing-troubleshooting"
+        }
+      ]
+    },
+    {
+      "title": "Metalsmithing Courses",
+      "links": [
+        {
+          "label": "Introduction to Metalsmithing",
+          "url": "/introduction-to-metalsmithing"
+        },
+        {
+          "label": "Advanced Metalworking Techniques",
+          "url": "/advanced-metalworking-techniques"
+        },
+        {
+          "label": "Precious Metal Alloys",
+          "url": "/precious-metal-alloys"
+        }
+      ]
+    },
+    {
+      "title": "Engraving Workshops",
+      "links": [
+        {
+          "label": "Basic Engraving Techniques",
+          "url": "/basic-engraving-techniques"
+        },
+        {
+          "label": "Advanced Engraving Methods",
+          "url": "/advanced-engraving-methods"
+        },
+        {
+          "label": "Personalized Engraving Designs",
+          "url": "/personalized-engraving-designs"
+        }
+      ]
+    },
+    {
+      "title": "Stone Setting Classes",
+      "links": [
+        {
+          "label": "Prong Setting Fundamentals",
+          "url": "/prong-setting-fundamentals"
+        },
+        {
+          "label": "Bezel Setting Techniques",
+          "url": "/bezel-setting-techniques"
+        },
+        {
+          "label": "Pavé Setting Masterclass",
+          "url": "/pave-setting-masterclass"
+        }
+      ]
+    },
+    {
+      "title": "Design Consultation Seminars",
+      "links": [
+        {
+          "label": "Custom Wedding Band Design",
+          "url": "/custom-wedding-band-design"
+        },
+        {
+          "label": "Trends in Wedding Band Design",
+          "url": "/trends-in-wedding-band-design"
+        },
+        {
+          "label": "Innovative Materials in Wedding Bands",
+          "url": "/innovative-materials-in-wedding-bands"
+        }
+      ]
+    }
+  ]
