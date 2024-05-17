@@ -4,10 +4,10 @@ export function PrivateRoute({ children }) {
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
   const token = localStorage.getItem("token");
 
-  console.log('#####', isLoggedIn);
+  console.log('#####', !isLoggedIn);
   console.log('#####', token)
 
-  if (!isLoggedIn || !token) {
+  if (!isLoggedIn) {
     return <Navigate to="*" />;
   }
 

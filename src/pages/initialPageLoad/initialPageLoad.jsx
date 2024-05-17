@@ -20,7 +20,7 @@ export default function InitialPageLoad() {
     navigate("/home");
   };
 
-  
+
 
   useEffect(() => {
     setOpen(true);
@@ -28,7 +28,7 @@ export default function InitialPageLoad() {
     console.log("Entered password (MD5):", hashedPassword);
     localStorage.setItem("isLoggedIn", false);
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    // window.addEventListener('beforeunload', handleBeforeUnload);
 
     if (!localStorage.getItem("swag-jewelers")) {
       localStorage.setItem("swag-jewelers", hashedPassword);
