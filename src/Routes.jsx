@@ -111,7 +111,7 @@ const AllRoutes = () => {
   }
 
   return (
-    <Router basename="/">
+    <Router>
       <Routes>
         {/* <Route exact path="/" element={<Navigate replace to="/login" />} /> */}
         {routes.map(({ path, element, loader }) => (
