@@ -28,7 +28,7 @@ import Cart from "../cart/cart";
 
 const pages = [
   { name: "Contact Us", link: "/contact-us" },
-  { name: "Catalogs + Publications", link: "/catalogs-publications" },
+  { name: "Catalogs + Publications", link: "/catalogs" },
   { name: "SWAG Jewelers Blog", link: "/swag-jewelers-blog" },
   { name: "Locate a Jeweler", link: "/locate-a-jeweler" },
 ];
