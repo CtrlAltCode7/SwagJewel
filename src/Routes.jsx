@@ -110,10 +110,18 @@ const AllRoutes = () => {
     return null;
   }
 
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
   return (
     <Router>
       <Routes>
         {/* <Route exact path="/" element={<Navigate replace to="/login" />} /> */}
+        <Route
+          path="/"
+          element={
+            isLoggedIn ? <Navigate replace to="/home" /> : <InitialPageLoad />
+          }
+        />
         {routes.map(({ path, element, loader }) => (
           <Route
             path={path}

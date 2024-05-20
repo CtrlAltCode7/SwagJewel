@@ -183,7 +183,7 @@ export default function ContactForm() {
               />
             </Grid>
           </Grid>
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" color="primary" type="submit" disabled>
             Send
           </Button>
         </form>

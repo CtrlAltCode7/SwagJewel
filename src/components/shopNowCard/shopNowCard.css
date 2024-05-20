@@ -1,0 +1,19 @@
+.card-title {
+    color: #555;
+}
+
+.card-btn {
+    background-color: #fff !important;
+    color: #555 !important;
+    width: fit-content !important;
+    margin-bottom: 1rem !important;
+}
+
+.card-btn:hover {
+    background-color: #999 !important;
+    color: #fff !important;
+}
+
+.card-title-white{
+    color: #fff !important;
+}
