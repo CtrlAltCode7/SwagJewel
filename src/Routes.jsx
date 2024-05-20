@@ -24,6 +24,7 @@ import { Loader } from "./components/lazyLoader";
 import { PrivateRoute } from "./pages/protectedroute";
 import Error from "./pages/error/error";
 import { PublicRoute } from "./pages/publicRoute";
+import Catalogs from "./pages/catalogs/index";
 
 const routes = [
   {
@@ -90,6 +91,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <ContactUs />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/catalogs",
+    element: (
+      <PrivateRoute>
+        <Catalogs />
       </PrivateRoute>
     ),
     // loader: <Loader />,
