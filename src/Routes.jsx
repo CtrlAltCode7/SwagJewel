@@ -25,6 +25,8 @@ import { PrivateRoute } from "./pages/protectedroute";
 import Error from "./pages/error/error";
 import { PublicRoute } from "./pages/publicRoute";
 import Catalogs from "./pages/catalogs/index";
+import Cart from "./pages/cart/cart";
+import CartPage from "./pages/cart";
 
 const routes = [
   {
@@ -100,6 +102,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <Catalogs />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/cart",
+    element: (
+      <PrivateRoute>
+        <CartPage />
       </PrivateRoute>
     ),
     // loader: <Loader />,
