@@ -3,9 +3,9 @@ export const getImageUrlsWithGroupDescription = (apiData) => {
     return [];
   }
 
-  return apiData.data.Products.map((item) => {
+  return apiData?.data?.Products?.map((item) => {
     const images = item.Images;
-    const urls = images.map((image) => image.FullUrl);
+    const urls = images?.map((image) => image.FullUrl);
     return {
       urls: urls || [],
       groupDescription: item.GroupDescription || "", 
