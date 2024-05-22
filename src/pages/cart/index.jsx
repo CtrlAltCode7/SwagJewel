@@ -3,6 +3,7 @@ import Layout from '../../components/layout'
 import CartView from './cartView/cartView'
 import CartTabs from './cartTabs/cartTabs'
 import "./index.css"
+import EstimateSummary from './estimateSummary/estimateSummary'
 
 export default function CartPage() {
   return (
@@ -13,6 +14,7 @@ export default function CartPage() {
         <CatalogSlider key={index} title={title} />
       ))} */}
       <CartView />
+      <EstimateSummary />
     </div>
   </Layout>
   )
