@@ -27,6 +27,7 @@ import { PublicRoute } from "./pages/publicRoute";
 import Catalogs from "./pages/catalogs/index";
 import Cart from "./pages/cart/cart";
 import CartPage from "./pages/cart";
+import ReviewPlaceOrder from "./pages/reviewPlaceOrder";
 
 const routes = [
   {
@@ -111,6 +112,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <CartPage />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/review",
+    element: (
+      <PrivateRoute>
+        <ReviewPlaceOrder />
       </PrivateRoute>
     ),
     // loader: <Loader />,

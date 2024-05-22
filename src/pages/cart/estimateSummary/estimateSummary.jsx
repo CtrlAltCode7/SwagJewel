@@ -2,8 +2,13 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HelpIcon from "@mui/icons-material/Help";
+import { useNavigate } from "react-router-dom";
 
 export default function EstimateSummary() {
+  const navigate = useNavigate()
+  const handleCheckoutPage = () => {
+    navigate("/review")
+  }
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2} mt={1}>
@@ -159,7 +164,7 @@ export default function EstimateSummary() {
               }}
               mt={2}
             >
-              <Button fullWidth variant="contained" color="success">
+              <Button fullWidth variant="contained" color="success" onClick={handleCheckoutPage}>
                 Proceed to Secure Checkout
               </Button>
             </Grid>

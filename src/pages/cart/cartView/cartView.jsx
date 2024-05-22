@@ -20,6 +20,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ManageCartItemOption from "./manageCartItemOption/manageCartItemOption";
 import HelpIcon from "@mui/icons-material/Help";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CartView() {
   const [cartCount, setCartCount] = useState(0);
@@ -28,6 +29,11 @@ export default function CartView() {
   const handleStartShopping = () => {
     window.location = "/browse/";
   };
+
+  const navigate = useNavigate()
+  const handleCheckoutPage = () => {
+    navigate("/review")
+  }
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2}>
@@ -239,7 +245,7 @@ export default function CartView() {
                 <Grid item spacing={2} xs={12} md={2}></Grid>
 
                 <Grid item spacing={2} xs={12} md={10}>
-                  <Button fullWidth variant="contained" color="success">
+                  <Button fullWidth variant="contained" color="success" onClick={handleCheckoutPage}>
                     Proceed to Secure Checkout
                   </Button>
                 </Grid>
