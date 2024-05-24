@@ -49,7 +49,9 @@ export default function ReviewPlaceOrder() {
   }
   return (
     <>
-      <Box marginBlock={3}>
+      <Box marginBlock={3} sx={{
+        borderBottom: "1px solid"
+      }}>
         <Container
           maxWidth="lg"
           sx={{

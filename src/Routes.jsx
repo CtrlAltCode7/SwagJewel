@@ -28,7 +28,7 @@ import Catalogs from "./pages/catalogs/index";
 import Cart from "./pages/cart/cart";
 import CartPage from "./pages/cart";
 import ReviewPlaceOrder from "./pages/reviewPlaceOrder";
-import ShippingMethod from "./pages/shippingMethod/shippingMethos";
+import ShippingMethod from "./pages/shippingMethod/index";
 
 const routes = [
   {
