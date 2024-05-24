@@ -44,6 +44,9 @@ export default function ReviewPlaceOrder() {
   const handleBack = () => {
     navigate(-1);
   };
+  const handleShippingMethod = () => {
+    navigate("/shipping-method")
+  }
   return (
     <>
       <Box marginBlock={3}>
@@ -181,6 +184,7 @@ export default function ReviewPlaceOrder() {
                       <ShippingAddress
                         customText={shippingData}
                         boldText={"Shipping Method"}
+                        handleShippingMethod={handleShippingMethod}
                       />
                     </Box>
                   </Grid>

@@ -96,8 +96,8 @@ function ProductSlider({ products }) {
   }, []);
 
   useEffect(() => {
-    if (apiData) {
-      const data = getImageUrlsWithGroupDescription(apiData).filter(Boolean);
+    if (apiData && apiData.length > 0) {
+      const data = getImageUrlsWithGroupDescription(apiData)?.filter(Boolean);
       setImageUrlsWithGroupDescription(data);
       // console.log("first", data);
     }
@@ -115,7 +115,7 @@ function ProductSlider({ products }) {
     >
       <Slider {...settings}>
         {products
-          ? products.map((product, index) => (
+          ? products?.map((product, index) => (
               <div key={index} className="slide-content" style={{
                 textAlign: "center !important",
                 // margin: "10px 38px "

@@ -28,6 +28,7 @@ import Catalogs from "./pages/catalogs/index";
 import Cart from "./pages/cart/cart";
 import CartPage from "./pages/cart";
 import ReviewPlaceOrder from "./pages/reviewPlaceOrder";
+import ShippingMethod from "./pages/shippingMethod/shippingMethos";
 
 const routes = [
   {
@@ -121,6 +122,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <ReviewPlaceOrder />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/shipping-method",
+    element: (
+      <PrivateRoute>
+        <ShippingMethod />
       </PrivateRoute>
     ),
     // loader: <Loader />,

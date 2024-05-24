@@ -5,8 +5,10 @@ import {
   CustomTypography,
 } from "./shippingStyle";
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export default function ShippingAddress({ boldText, customText, disableBtn }) {
+export default function ShippingAddress({ boldText, customText, disableBtn, handleShippingMethod }) {
+
   return (
     <>
       <Box>
@@ -17,7 +19,7 @@ export default function ShippingAddress({ boldText, customText, disableBtn }) {
           </CustomTypography>
         ))}
         {!disableBtn ? (
-          <CustomButton>Change</CustomButton>
+          <CustomButton onClick={handleShippingMethod && handleShippingMethod}>Change</CustomButton>
         ) : (
           <Box
             sx={{
