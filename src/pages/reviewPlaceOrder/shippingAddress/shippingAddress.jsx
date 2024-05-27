@@ -7,14 +7,18 @@ import {
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function ShippingAddress({ boldText, customText, disableBtn, handleShippingMethod }) {
+export default function ShippingAddress({ boldText, customText, disableBtn, handleShippingMethod,shippingMethod }) {
 
   return (
     <>
       <Box>
-        <BoldTypography>{boldText}</BoldTypography>
+        <BoldTypography sx={{
+          color: !shippingMethod ? "" : "#fff"
+        }}>{boldText}</BoldTypography>
         {customText?.map((item, index) => (
-          <CustomTypography key={index} variant="body2">
+          <CustomTypography key={index} variant="body2" sx={{
+            color: !shippingMethod ? "" : "#fff"
+          }}>
             {item.text}
           </CustomTypography>
         ))}

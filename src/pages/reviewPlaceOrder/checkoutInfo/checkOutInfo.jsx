@@ -18,7 +18,7 @@ const shippingData = [
   { text: "Est. Charge: $27.99" },
   { text: "Est. Delivery Date: Tue May 21, 2024" },
 ];
-export default function CheckOutInfo() {
+export default function CheckOutInfo({ shippingMethod }) {
   return (
     <>
       <Box
@@ -27,6 +27,7 @@ export default function CheckOutInfo() {
           // flexDirection: "column"
           borderBottom: "1px solid",
         }}
+        pt={1}
       >
         <Avatar
           sx={{
@@ -69,11 +70,15 @@ export default function CheckOutInfo() {
         />
       </Box>
       <Box
-        mt={1}
+        mt={!shippingMethod ? 1 : 0}
+        pt = {!shippingMethod ? 0 : 1}
         sx={{
           display: "flex",
           // flexDirection: "column"
           borderBottom: "1px solid",
+          backgroundColor: !shippingMethod ? "" : "#665f63",
+
+          
         }}
       >
         <Avatar
@@ -82,6 +87,9 @@ export default function CheckOutInfo() {
             height: 24,
             fontSize: "14px",
             margin: "0 .5rem",
+            color: !shippingMethod ? "" : "#fff",
+            backgroundColor: !shippingMethod ? "" : "#5d86a8",
+            fontWeight: !shippingMethod ? "" : "bold",
           }}
         >
           3
@@ -90,6 +98,7 @@ export default function CheckOutInfo() {
           customText={shippingData}
           boldText={"Shipping Method"}
           disableBtn={true}
+          shippingMethod={shippingMethod}
         />
       </Box>
       <Box
@@ -98,7 +107,7 @@ export default function CheckOutInfo() {
           display: "flex",
           // flexDirection: "column"
           //   borderBottom: "1px solid",
-          backgroundColor: "#665f63",
+          backgroundColor: !shippingMethod ? "#665f63" :"",
           paddingBlock: "1rem",
         }}
       >
@@ -108,6 +117,9 @@ export default function CheckOutInfo() {
             height: 24,
             fontSize: "14px",
             margin: "0 .5rem",
+            color: !shippingMethod ?  "#fff":"",
+            backgroundColor: !shippingMethod ? "#5d86a8" : "",
+            fontWeight: !shippingMethod ? "bold" : "",
           }}
         >
           4
@@ -128,14 +140,14 @@ export default function CheckOutInfo() {
             variant="body1"
             sx={{
               fontWeight: "bold",
-              color: "#fff"
+              color:  !shippingMethod ? "#fff" :"#555",
             }}
           >
             Review and Place Order
           </Typography>
         </Box>
       </Box>
-      <ShippingEstimatedCharges right={true}/>
+      <ShippingEstimatedCharges right={true} />
     </>
   );
 }

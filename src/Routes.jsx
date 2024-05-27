@@ -29,6 +29,7 @@ import Cart from "./pages/cart/cart";
 import CartPage from "./pages/cart";
 import ReviewPlaceOrder from "./pages/reviewPlaceOrder";
 import ShippingMethod from "./pages/shippingMethod/index";
+import LocateAJeweler from "./pages/locateajeweler/locateAJeweler";
 
 const routes = [
   {
@@ -131,6 +132,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <ShippingMethod />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/locateajeweler",
+    element: (
+      <PrivateRoute>
+        <LocateAJeweler />
       </PrivateRoute>
     ),
     // loader: <Loader />,

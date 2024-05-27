@@ -10,6 +10,10 @@ import {
 import swagLogo from "../../assets/swag-logo.png";
 import Shipment from "./shipment/shipment";
 import { useState } from "react";
+import ShippingTable from "./shippingTable/shippingTable";
+import AccordionShipment from "./accordion/accordion";
+import ShippingEstimatedCharges from "../reviewPlaceOrder/shippingEstimatedCharges/shippingEstimatedCharges";
+import CheckOutInfo from "../reviewPlaceOrder/checkoutInfo/checkOutInfo";
 
 export default function ShippingMethod() {
   const [selectedShipment, setSelectedShipment] = useState("one");
@@ -135,6 +139,7 @@ export default function ShippingMethod() {
                   onChange={handleShipmentChange}
                   value="four"
                 />
+                <AccordionShipment />
               </Box>
             </Grid>
             <Grid xs={12} md={4} pl={3}>
@@ -143,7 +148,8 @@ export default function ShippingMethod() {
                   border: "1px solid",
                 }}
               >
-                ffff
+                <CheckOutInfo shippingMethod={true} />
+                {/* <ShippingEstimatedCharges right={true} /> */}
               </Box>
             </Grid>
           </Grid>
