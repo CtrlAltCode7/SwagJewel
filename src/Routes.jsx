@@ -137,7 +137,7 @@ const routes = [
     // loader: <Loader />,
   },
   {
-    path: "/locateajeweler",
+    path: "/locate-a-jeweler",
     element: (
       <PrivateRoute>
         <LocateAJeweler />

@@ -17,211 +17,182 @@ import EmailIcon from "@mui/icons-material/Email";
 import WebIcon from "@mui/icons-material/Web";
 import DiamondIcon from "@mui/icons-material/Diamond";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import "./locateAJeweler.css";
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CustomAccordion from "./customAccordion/customAccordion";
+
+const storeHours = [
+  { day: 'Monday', hours: '9:00 AM - 5:30 PM' },
+  { day: 'Tuesday', hours: '9:00 AM - 5:30 PM' },
+  { day: 'Wednesday', hours: '9:00 AM - 5:30 PM' },
+  { day: 'Thursday', hours: '9:00 AM - 5:30 PM' },
+  { day: 'Friday', hours: '7:00 AM - 5:30 PM' },
+  { day: 'Saturday', hours: '9:00 AM - 2:00 PM' },
+  { day: 'Sunday', hours: 'N/A' },
+];
+
+const services = 'Appraisal or gem identification, Jewelry design not using a computer, Jewelry repair, Clock repair, Watch repair';
 
 function StoreDetails() {
   return (
     <Box>
       {/* Andrews Manufacturing Jewellers */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h5">Andrews Manufacturing Jewellers</Typography>
-        <Typography variant="body1">
+      <Box sx={{ mb: 4, mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#555",
+            }}
+          >
+            Andrews Manufacturing Jewellers
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 1,
+              cursor: "pointer",
+            }}
+          >
+            <Typography variant="body2">(8.4343 miles)</Typography>
+            <img src="https://assets.stullercloud.com/web/static/i/locateajeweler/googlemapicons/diamondicon.png" />
+          </Box>
+        </Box>
+
+        <Typography
+          variant="body2"
+          sx={{
+            width: "33%",
+            color: "#555",
+          }}
+        >
           Shop Ag04, Ruisseau Creole, La Mivoie, Black River, Black River 134,
           MU
         </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <PhoneIcon />
-          <Typography variant="body2" sx={{ ml: 1 }}>
-            59713828
-          </Typography>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <EmailIcon />
-          <Link href="mailto:andrew@andrewsjewellers.mu" sx={{ ml: 1 }}>
-            E-mail
-          </Link>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <WebIcon />
-          <Link
-            href="http://www.andrewsjeweller.mu"
-            target="_blank"
-            sx={{ ml: 1 }}
-          >
-            Website
-          </Link>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <DiamondIcon />
-          <Link
-            href="https://andrewsjewellers.jewelershowcase.com"
-            target="_blank"
-            sx={{ ml: 1 }}
-          >
-            Jeweler Showcase
-          </Link>
-        </Box>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="subtitle1">Store Hours</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Monday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Tuesday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Wednesday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Thursday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Friday:</TableCell>
-                  <TableCell>7:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Saturday:</TableCell>
-                  <TableCell>9:00 AM - 2:00 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Sunday:</TableCell>
-                  <TableCell>N/A</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="subtitle1">Services</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">
-              Appraisal or gem identification, Jewelry design not using a
-              computer, Jewelry repair, Clock repair, Watch repair
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 1,
+          }}
+        >
+          <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+            <PhoneIcon
+              fontSize="small"
+              sx={{
+                color: "#75b0da",
+              }}
+            />
+            <Typography variant="body2" sx={{ ml: 1, color: "#555" }}>
+              59713828
             </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
+          </Box>
+          <Box
+            sx={{ display: "flex", alignItems: "center", mt: 1, color: "#555" }}
+          >
+            <EmailIcon fontSize="small" />
+            <Link
+              href="mailto:andrew@andrewsjewellers.mu"
+              sx={{
+                ml: 1,
+                color: "#555",
+                textDecoration: "none",
+                "&:hover": {
+                  color: "#75b0da",
+                },
+                cursor: "pointer",
+              }}
+              variant="body2"
+            >
+              E-mail
+            </Link>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+            <WebIcon
+              fontSize="small"
+              sx={{
+                color: "#75b0da",
+              }}
+            />
+            <Link
+              href="http://www.andrewsjeweller.mu"
+              target="_blank"
+              sx={{
+                ml: 1,
+                color: "#555",
+                textDecoration: "none",
+                "&:hover": {
+                  color: "#75b0da",
+                },
+                cursor: "pointer",
+              }}
+              variant="body2"
+            >
+              Website
+            </Link>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+            <DiamondIcon
+              fontSize="small"
+              sx={{
+                color: "#75b0da",
+              }}
+            />
+            <Link
+              href="https://andrewsjewellers.jewelershowcase.com"
+              target="_blank"
+              sx={{
+                ml: 1,
+                color: "#555",
+                textDecoration: "none",
 
-      {/* Cantrell's Fine Jewelry (Coffeyville) */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h5">
-          Cantrell's Fine Jewelry (Coffeyville)
-        </Typography>
-        <Typography variant="body1">
-          1312 W 11th St, Coffeyville, KS 67337
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <PhoneIcon />
-          <Typography variant="body2" sx={{ ml: 1 }}>
-            (620) 251-3530
-          </Typography>
+                "&:hover": {
+                  color: "#75b0da",
+                },
+                cursor: "pointer",
+              }}
+              variant="body2"
+            >
+              Jeweler Showcase
+            </Link>
+          </Box>
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <EmailIcon />
-          <Link href="mailto:james@cantrellsjewelry.com" sx={{ ml: 1 }}>
-            E-mail
-          </Link>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <WebIcon />
-          <Link
-            href="http://cantrellsjewelry.com"
-            target="_blank"
-            sx={{ ml: 1 }}
-          >
-            Website
-          </Link>
-        </Box>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="subtitle1">Store Hours</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Monday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Tuesday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Wednesday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Thursday:</TableCell>
-                  <TableCell>9:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Friday:</TableCell>
-                  <TableCell>7:00 AM - 5:30 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Saturday:</TableCell>
-                  <TableCell>9:00 AM - 2:00 PM</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Sunday:</TableCell>
-                  <TableCell>N/A</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="subtitle1">Services</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">
-              Appraisal or gem identification, Jewelry design not using a
-              computer, Jewelry repair, Clock repair, Watch repair
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
 
-      {/* Wall's Inc. DBA Eiseles Diamonds & Fine Jewelry */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h5">
-          Wall's Inc. DBA Eiseles Diamonds & Fine Jewelry
-        </Typography>
-        <Typography variant="body1">
-          124 W 8th St, P.O. Box #624, Coffeyville, KS 67337
-        </Typography>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <PhoneIcon />
-          <Typography variant="body2" sx={{ ml: 1 }}>
-            (620) 251-7740
-          </Typography>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <EmailIcon />
-          <Link href="mailto:eiseles@sbcglobal.net" sx={{ ml: 1 }}>
-            E-mail
-          </Link>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-          <WebIcon />
-          <Link href="http://eiseles.com" target="_blank" sx={{ ml: 1 }}>
-            Website
-          </Link>
-        </Box>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <div>
+          <CustomAccordion title="Store Hours" details={storeHours} />
+          <CustomAccordion title="Services" details={services} />
+        </div>
+
+        {/* <Accordion
+          elevation={0}
+          sx={{
+            mt: 0,
+            "& .MuiPaper-root-MuiAccordion-root": {
+              position: "inherit",
+            },
+          }}
+          // sx={{ boxShadow: "none",   background: "transparent",}}
+        >
+          <AccordionSummary
+            style={{}}
+            sx={{
+              "& .MuiAccordionSummary-content": {
+                margin: 0,
+                alignItems: "center",
+                gap: 1,
+              },
+              minHeight: 0,
+            }}
+          >
+            <AddCircleOutlineIcon fontSize="small" />
             <Typography variant="subtitle1">Store Hours</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -259,8 +230,23 @@ function StoreDetails() {
             </Table>
           </AccordionDetails>
         </Accordion>
-        <Accordion sx={{ mt: 2 }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Accordion
+          elevation={0}
+          sx={{ mt: 0 }}
+          style={{ boxShadow: "none", background: "none" }}
+        >
+          <AccordionSummary
+            sx={{
+              "& .MuiAccordionSummary-content": {
+                margin: 0,
+                alignItems: "center",
+                gap: 1,
+              },
+              minHeight: 0,
+            }}
+          >
+            <AddCircleOutlineIcon fontSize="small" />
+
             <Typography variant="subtitle1">Services</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -269,7 +255,7 @@ function StoreDetails() {
               computer, Jewelry repair, Clock repair, Watch repair
             </Typography>
           </AccordionDetails>
-        </Accordion>
+        </Accordion> */}
       </Box>
     </Box>
   );
