@@ -27,12 +27,16 @@ const CustomAccordion = ({ title, details }) => {
             margin: 0,
             alignItems: "center",
             gap: 1,
+            marginTop: "1rem"
           },
           minHeight: 0,
+          padding: 0,
         }}
       >
         <AddCircleOutlineIcon fontSize="small" />
-        <Typography variant="subtitle1">{title}</Typography>
+        <Typography variant="subtitle2" sx={{
+          color: "#555"
+        }}>{title}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         {Array.isArray(details) ? (
