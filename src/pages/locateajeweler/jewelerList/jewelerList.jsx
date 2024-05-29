@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import JewelerDetails from "../jewelerDetails/jewelerDetails"; // Assuming JewelerDetails component is in a separate file
+import JewelerDetails from "../jewelerDetails/jewelerDetails";
 
 const jewelersData = [
     {
@@ -26,7 +26,6 @@ const jewelersData = [
             "Service 2",
             "Service 3",
             "Service 4",
-            // Add more services as needed
         ],
     },
     {
@@ -52,10 +51,8 @@ const jewelersData = [
             "Service 2",
             "Service 3",
             "Service 4",
-            // Add more services as needed
         ],
     },
-    // Add more jewelers as needed
 ];
 
 const JewelerList = () => {

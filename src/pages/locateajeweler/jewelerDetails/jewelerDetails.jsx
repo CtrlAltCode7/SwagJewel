@@ -7,7 +7,7 @@ import DiamondIcon from "@mui/icons-material/LocationOn";
 import CustomAccordion from "../customAccordion/customAccordion";
 
 const JewelerDetails = ({ jeweler }) => {
-  console.log('jeweler', jeweler)
+  console.log("jeweler", jeweler);
   return (
     <Box sx={{ mb: 4, mt: 2 }}>
       <Box
@@ -15,9 +15,25 @@ const JewelerDetails = ({ jeweler }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexDirection: {
+            // sm: "column",
+            // md: "row"
+          }
         }}
       >
-        <Typography variant="h6" sx={{ color: "#555" }}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "#555",
+            fontSize: {
+              xs: 14,
+              sm: 14,
+              md: 16,
+              lg: 18,
+              xl: 20,
+            },
+          }}
+        >
           {jeweler.name}
         </Typography>
         <Box
@@ -36,7 +52,17 @@ const JewelerDetails = ({ jeweler }) => {
         {jeweler.address}
       </Typography>
 
-      <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: {
+            xs: "column",
+            sm: "column",
+            md: "row",
+          },
+          gap: 1,
+        }}
+      >
         <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
           <PhoneIcon fontSize="small" sx={{ color: "#75b0da" }} />
           <Typography variant="body2" sx={{ ml: 1, color: "#555" }}>

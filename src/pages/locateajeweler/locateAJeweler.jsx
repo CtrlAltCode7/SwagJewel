@@ -163,7 +163,7 @@ const LocateAJeweler = () => {
                 // marginBlock: "1rem",
               }}
             >
-              <Typography variant="body1">
+              <Typography variant="body1" p={2}>
                 Use Locate a Jeweler to find jewelry stores in your area (and
                 nationwide) that carry Stuller products. Dedicated retailers
                 will have an assortment of our jewelry, and they can order any
@@ -192,7 +192,7 @@ const LocateAJeweler = () => {
           <Grid container spacing={2} alignItems={"center"}>
             <Grid item xs={9}>
               <Grid container spacing={2}>
-                <Grid item xs={10}>
+                <Grid item xs={12} md={10}>
                   <TextField
                     id="searchTextField"
                     label="Enter a location"
@@ -212,8 +212,17 @@ const LocateAJeweler = () => {
                     }}
                   />
                 </Grid>
-                <Grid xs={2}>
-                  <FormControl sx={{ marginTop: 2 }}>
+                <Grid xs={12} md={2}>
+                  <FormControl
+                    sx={{
+                      marginTop: 2,
+                      paddingLeft: {
+                        xs: 2,
+                        sm: 2, 
+                        md: 0, 
+                      },
+                    }}
+                  >
                     {/* <InputLabel id="range-label">Range</InputLabel> */}
                     <Select
                       labelId="range-label"
@@ -233,7 +242,7 @@ const LocateAJeweler = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Button
                 variant="contained"
                 color="primary"
@@ -266,7 +275,7 @@ const LocateAJeweler = () => {
               >
                 Filter by Services Offered
               </Button>
-  
+
               <Collapse in={advancedSearch}>
                 <Box
                   sx={{
