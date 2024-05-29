@@ -9,6 +9,7 @@ import {
   MenuItem,
   Paper,
   Select,
+  Stack,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -55,12 +56,15 @@ export default function QuickOrderContent() {
       }}
     >
       {/* <CustomSeparator /> */}
-      <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
-        aria-label="breadcrumb"
-      >
-        {breadcrumbs}
-      </Breadcrumbs>
+      <Stack spacing={2} p={1} pt={2} pb={2}>
+        <Breadcrumbs
+          separator={<NavigateNextIcon fontSize="small" />}
+          aria-label="breadcrumb"
+        >
+          {breadcrumbs}
+        </Breadcrumbs>
+      </Stack>
+
       <Typography
         variant="body1"
         sx={{
@@ -230,7 +234,7 @@ export default function QuickOrderContent() {
               <Button>
                 <img
                   src="https://meteor.stullercloud.com/das/56489807?hei=200&fmt=smart-alpha"
-                  width={125}
+                  width={200}
                 />
               </Button>
               <Typography
