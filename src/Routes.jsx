@@ -30,6 +30,7 @@ import CartPage from "./pages/cart";
 import ReviewPlaceOrder from "./pages/reviewPlaceOrder";
 import ShippingMethod from "./pages/shippingMethod/index";
 import LocateAJeweler from "./pages/locateajeweler/locateAJeweler";
+import QuickOrder from "./pages/quickOrder";
 
 const routes = [
   {
@@ -143,7 +144,16 @@ const routes = [
         <LocateAJeweler />
       </PrivateRoute>
     ),
-    // loader: <Loader />,
+    // loader: <Loader />,quickorder
+  },
+  {
+    path: "/quickorder",
+    element: (
+      <PrivateRoute>
+        <QuickOrder />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,quickorder
   },
 ];
 

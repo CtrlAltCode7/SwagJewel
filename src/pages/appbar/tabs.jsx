@@ -12,6 +12,7 @@ import customJewellery from "../../../public/customJewelleryData.json";
 import eventsAndTraining from "../../../public/EventsAndTraing.json";
 import weddingbandsCategories from "../../../public/weddingbands.json";
 import chainAndCord from "../../../public/chainAndCord.json";
+import { useNavigate } from "react-router-dom";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,6 +58,7 @@ export default function BasicTabs() {
   const [productCategory, setProductCategory] = useState([]);
 
   const boxRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -220,6 +222,10 @@ export default function BasicTabs() {
 
   // console.log('productCategory', productCategory)
 
+  const handleQuickOrder = () => {
+    navigate("/quickorder")
+  }
+
   return (
     <Box
       sx={{
@@ -345,6 +351,7 @@ export default function BasicTabs() {
                 color: "#75b0da",
               },
             }}
+            onClick={handleQuickOrder}
           >
             Quick Order
           </Button>
