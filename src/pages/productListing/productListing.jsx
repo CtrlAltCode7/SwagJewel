@@ -3,10 +3,14 @@ import Layout from "../../components/layout/index";
 import CustomSeparator from "../../components/breadcrumbs/index";
 import { Box, Grid } from "@mui/material";
 import BasicGrid from "../../components/basicGrid/index";
+import { useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
 // import ProductCard from "../../components/BasicGrid/ProductCard";
 // import ProductCardDetails from "../../components/BasicGrid/ProductCardDetails"
 
 export default function ProductListing() {
+
+
 
   return (
     <Layout>

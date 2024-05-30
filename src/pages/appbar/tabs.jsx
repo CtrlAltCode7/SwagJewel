@@ -27,7 +27,8 @@ function CustomTabPanel(props) {
       style={{
         backgroundColor: "royalblue",
         position: "absolute",
-        width: "100%"
+        width: "100%",
+        zIndex: 999
       }}
     >
       {value === index && (
@@ -180,7 +181,8 @@ export default function BasicTabs() {
   tabData = productCategory.map((item) => ({
     label: item.Category.Name,
     content:
-      tabData.find((tab) => tab.label === item.Category.Name)?.content || null, // Retain content from original tabData if available
+      tabData.find((tab) => tab.label === item.Category.Name)?.content || null,
+    ...item,
   }));
 
   console.log("tabData", tabData);
@@ -223,8 +225,8 @@ export default function BasicTabs() {
   // console.log('productCategory', productCategory)
 
   const handleQuickOrder = () => {
-    navigate("/quickorder")
-  }
+    navigate("/quickorder");
+  };
 
   return (
     <Box
@@ -255,6 +257,7 @@ export default function BasicTabs() {
             // "& .MuiTab-root.Mui-selected": {
             //   color: 'red'
             // }
+            zIndex: 999,
           }}
           textColor="#fff"
           indicatorColor="red"
@@ -302,9 +305,10 @@ export default function BasicTabs() {
                 label={label}
                 {...a11yProps(index)}
                 onMouseEnter={(e) => handleMouseEnter(e, index)}
-                sx={
-                  (commanTabStyle)
-                }
+                sx={{
+                  ...commanTabStyle,
+                  zIndex: 999,
+                }}
               />
               {label == "Educational Resources" && (
                 <Typography
@@ -385,7 +389,7 @@ export default function BasicTabs() {
             onMouseLeave={(e) => handleMouseLeave(e, 0)}
           >
             {/* <AppbarNavigation /> */}
-            <VerticalTabs tabData={tabData} />
+            <VerticalTabs tabData={tabData} setTabValue={setValue}/>
           </CustomTabPanel>
           <CustomTabPanel
             value={value}

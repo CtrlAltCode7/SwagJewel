@@ -4,7 +4,18 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import AccordionComponent from "../../pages/accordion/index";
-import { Button, FormControl, MenuItem, Pagination, Select, Switch, Tooltip, Typography } from "@mui/material";
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  FormControl,
+  MenuItem,
+  Pagination,
+  Select,
+  Switch,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import SelectComponent from "../selectComponent/index";
 // import ProductCard from "./ProductCardDetails";
 import ProductCard from "./productCard";
@@ -12,7 +23,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getImageUrlsWithGroupDescription } from "../../helpers/index";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -31,9 +42,50 @@ export default function BasicGrid() {
   const [totalPages, setTotalPages] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(5);
   const [accordionApiData, setAccordionApiData] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const apiData = useSelector((state) => state.api.data);
+
+  const { category } = useParams();
+  const location = useLocation();
+  const catId = location.state?.message;
+  useEffect(() => {
+    console.log("Selected category:", category, catId);
+    // Fetch or filter products based on the category
+  }, [category]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Replace 'API_URL' with your actual API endpoint
+        const response = await axios.get(
+          `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=10&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
+        );
+
+        if (response && response?.data?.data?.Products.length > 0) {
+          // console.log("response", response)
+          const data = getImageUrlsWithGroupDescription(response);
+          setImageUrlsWithGroupDescription(data);
+          // if (response?.data?.PageSize > 10) {
+          setTotalPages(Math.ceil(data.length / productsPerPage));
+          // }
+          // fetchBooks()
+          // console.log("@@@@@@", data);
+        } else {
+          console.log("response is empty");
+        }
+      } catch (err) {
+        setError("Failed to fetch products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [category, catId]);
 
   const fetchBooks = async () => {
     try {
@@ -51,20 +103,20 @@ export default function BasicGrid() {
     }
   };
 
-  useEffect(() => {
-    if (apiData && apiData?.data?.Products.length > 0) {
-      // console.log("apiData", apiData)
-      const data = getImageUrlsWithGroupDescription(apiData);
-      setImageUrlsWithGroupDescription(data);
-      // if (apiData?.data?.PageSize > 10) {
-      setTotalPages(Math.ceil(data.length / productsPerPage));
-      // }
-      // fetchBooks()
-      // console.log("@@@@@@", data);
-    } else {
-      console.log("apiData is empty");
-    }
-  }, [apiData,productsPerPage]);
+  // useEffect(() => {
+  //   if (apiData && apiData?.data?.Products.length > 0) {
+  //     // console.log("apiData", apiData)
+  //     const data = getImageUrlsWithGroupDescription(apiData);
+  //     setImageUrlsWithGroupDescription(data);
+  //     // if (apiData?.data?.PageSize > 10) {
+  //     setTotalPages(Math.ceil(data.length / productsPerPage));
+  //     // }
+  //     // fetchBooks()
+  //     // console.log("@@@@@@", data);
+  //   } else {
+  //     console.log("apiData is empty");
+  //   }
+  // }, [apiData,productsPerPage]);
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
   const products = [
@@ -820,10 +872,9 @@ export default function BasicGrid() {
     setCurrentPage(page);
   };
 
-  const handleProdutPerPageChange = (e,value) => {
+  const handleProdutPerPageChange = (e, value) => {
     setProductsPerPage(e.target.value);
-
-  }
+  };
 
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
@@ -831,32 +882,66 @@ export default function BasicGrid() {
   useEffect(() => {
     const fetchAccordionData = async () => {
       try {
-        const response = await axios.get('https://api.swagjewelers.com/api/stuller/advanced-filters');
+        const response = await axios.get(
+          "https://api.swagjewelers.com/api/stuller/advanced-filters"
+        );
         const filterData = response?.data?.data?.AdvancedProductFilter; // Assuming your API response structure is like the one you provided
-        const updatedAccordionData = filterData.map(item => ({
+        const updatedAccordionData = filterData.map((item) => ({
           id: item.Type,
           title: item.Type,
-          contents: item.Values.map(value => ({
+          contents: item.Values.map((value) => ({
             id: value.Value,
-            text: value.DisplayValue
-          }))
+            text: value.DisplayValue,
+          })),
         }));
         setAccordionApiData(updatedAccordionData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchAccordionData();
 
-    return () => {
-    };
+    return () => {};
   }, []);
 
-  const remainingProducts = imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
+  const remainingProducts =
+    imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
 
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       setLoading(true);
+  //       setError(null);
+  //       // Replace 'API_URL' with your actual API endpoint
+  //       const response = await axios.get(
+  //         `API_URL/products?category=${sanitizedCategory}`
+  //       );
+  //       // setProducts(response.data);
+  //     } catch (err) {
+  //       setError("Failed to fetch products.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-  console.log('accordionApiData', accordionApiData);
+  //   fetchProducts();
+  // }, []);
+
+  if (loading) {
+    return (
+      <Backdrop
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -1067,8 +1152,10 @@ export default function BasicGrid() {
                   // alignItems: "center",
                 }}
               >
-                <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${apiData?.data?.Products.length}`}</Typography>|
-                <Typography>Items per page</Typography>
+                <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${
+                  apiData?.data?.Products.length
+                }`}</Typography>
+                |<Typography>Items per page</Typography>
                 {/* <SelectComponent minWidthSize="20" placeholder="26" /> */}
                 <FormControl>
                   {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
@@ -1095,12 +1182,17 @@ export default function BasicGrid() {
                         },
                       },
                     }}
-                    
                     onChange={handleProdutPerPageChange}
                   >
-                    <MenuItem value={5} disabled={remainingProducts < 5}>5</MenuItem>
-                    <MenuItem value={10} disabled={remainingProducts < 10}>10</MenuItem>
-                    <MenuItem value={15} disabled={remainingProducts < 15}>15</MenuItem>
+                    <MenuItem value={5} disabled={remainingProducts < 5}>
+                      5
+                    </MenuItem>
+                    <MenuItem value={10} disabled={remainingProducts < 10}>
+                      10
+                    </MenuItem>
+                    <MenuItem value={15} disabled={remainingProducts < 15}>
+                      15
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -1121,7 +1213,6 @@ export default function BasicGrid() {
                 </Typography>
 
                 <SelectComponent minWidthSize="60" placeholder="50" />
-
               </Box>
             </Box>
           </Item>

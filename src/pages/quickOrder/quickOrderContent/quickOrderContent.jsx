@@ -49,6 +49,10 @@ export default function QuickOrderContent() {
     console.info("You clicked a breadcrumb.");
     navigate(path);
   };
+
+  const handleLocateJewel = () => {
+    navigate("/locate-a-jeweler");
+  };
   return (
     <Container
       sx={{
@@ -104,7 +108,13 @@ export default function QuickOrderContent() {
             }}
           >
             <Grid item xs={12} md={5}>
-              <Typography variant="body1" textAlign={"end"} pr={4}>
+              <Typography
+                variant="body1"
+                textAlign={"end"}
+                fontWeight={"bold"}
+                color={"#555"}
+                pr={4}
+              >
                 Description:
               </Typography>
             </Grid>
@@ -229,12 +239,17 @@ export default function QuickOrderContent() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 padding: ".7rem .5rem",
+                "&:hover": {
+                  backgroundColor: "#625e5d",
+                },
               }}
+              onClick={handleLocateJewel}
             >
               <Button>
                 <img
                   src="https://meteor.stullercloud.com/das/56489807?hei=200&fmt=smart-alpha"
                   width={200}
+                  className="locateAJewelImg"
                 />
               </Button>
               <Typography

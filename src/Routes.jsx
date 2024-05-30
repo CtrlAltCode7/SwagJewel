@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useParams,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // const Login = React.lazy(() => import("./pages/auth/components/Login"));
@@ -63,17 +64,25 @@ const routes = [
         <ProductListing />
       </PrivateRoute>
     ),
-    // loader: <Loader />,
+    // loader: <Loader />, <Route path="/category/:category" element={<CategoryPage />} />
   },
   {
-    path: "/productdetails",
+    path: "/productListing/:category",
     element: (
       <PrivateRoute>
-        <ProductDetails />
+        <ProductListing />
       </PrivateRoute>
     ),
-    // loader: <Loader />,
   },
+  // {
+  //   path: "/productdetails",
+  //   element: (
+  //     <PrivateRoute>
+  //       <ProductDetails />
+  //     </PrivateRoute>
+  //   ),
+  //   // loader: <Loader />,
+  // },
   {
     path: "/login",
     element: (

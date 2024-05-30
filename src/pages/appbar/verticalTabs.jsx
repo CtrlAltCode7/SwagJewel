@@ -49,7 +49,7 @@ function a11yProps(index) {
   };
 }
 
-export default function VerticalTabs({ tabData1 }) {
+export default function VerticalTabs({ tabData, setTabValue }) {
   // console.log('tabs data', tabData)
   const [value, setValue] = useState(0);
 
@@ -69,59 +69,67 @@ export default function VerticalTabs({ tabData1 }) {
     console.log("Mouse left tab:", newValue);
   };
 
-  const navigate = useNavigate(); 
-  const tabData = [
-    {
-      label: "Engagement Rings",
-      content: <AppbarNavigation categories={jewelleryCategories} />,
-    },
-    {
-      label: "Wedding Bands",
-      content: <AppbarNavigation categories={weddingbandsCategories} />,
-    },
-    {
-      label: "Chain & Cord",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Jewelry",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Mountings",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Findings",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Lab Grown Diamonds",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Gemstone",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Metals",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
-    {
-      label: "Tools & Supplier",
-      content: <AppbarNavigation categories={chainAndCord} />,
-    },
+  const navigate = useNavigate();
+  // const tabData = [
+  //   {
+  //     label: "Engagement Rings",
+  //     content: <AppbarNavigation categories={jewelleryCategories} />,
+  //   },
+  //   {
+  //     label: "Wedding Bands",
+  //     content: <AppbarNavigation categories={weddingbandsCategories} />,
+  //   },
+  //   {
+  //     label: "Chain & Cord",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Jewelry",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Mountings",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Findings",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Diamonds",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Lab Grown Diamonds",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Gemstone",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Metals",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
+  //   {
+  //     label: "Tools & Supplier",
+  //     content: <AppbarNavigation categories={chainAndCord} />,
+  //   },
 
-    // Add more tab data as needed
-  ];
-  const handleTabClick = () => {
-    // Redirect to another page
-    navigate('/productlisting');
+  //   // Add more tab data as needed
+  // ];
+  const handleTabClick = (e, categoryLink) => {
+    console.log("categoryLink", categoryLink);
+    const convertToUrl = categoryLink.label.toLowerCase().replace(/ /g, "-");
+    console.log("categoryLink", convertToUrl);
+    // Redirect to another page tab.label, tab.category.Id
+    navigate(`/productListing/${convertToUrl}`, {
+      state: { message: categoryLink.Category.Id },
+    });
+    setTabValue(false);
   };
+
+  console.log("tabData", tabData);
 
   return (
     <Box
@@ -130,9 +138,9 @@ export default function VerticalTabs({ tabData1 }) {
         bgcolor: "background.paper",
         display: "flex",
         width: "100%",
-        // height: , 
-        // backgroundColor: "red",
-        // overflowY: "scroll !important", // or "scroll" for always visible scrollbar
+        height: "500px",
+        backgroundColor: "red",
+        overflowY: "scroll",
       }}
     >
       <Tabs
@@ -170,7 +178,7 @@ export default function VerticalTabs({ tabData1 }) {
               overflowY: "auto",
               alignItems: "flex-start",
             }}
-            onClick={handleTabClick}
+            onClick={(e) => handleTabClick(e, tab)}
           />
         ))}
       </Tabs>
@@ -182,6 +190,7 @@ export default function VerticalTabs({ tabData1 }) {
           sx={{
             // backgroundColor: "red",
             overflowY: "auto",
+            
           }}
         >
           {tab.content}

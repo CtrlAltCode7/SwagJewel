@@ -8,7 +8,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
   const navigate = useNavigate(); 
   const handleProductICon = () => {
     // Redirect to another page
-    navigate('/productdetails');
+    // navigate('/productdetails');
   };
   return (
     <>

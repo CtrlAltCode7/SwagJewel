@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NestedList({ handleClose }) {
   const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setOpen(!open);
@@ -31,9 +31,24 @@ export default function NestedList({ handleClose }) {
     color: "#fff",
   };
 
+  const otherText = {
+    color: "#ccc",
+    fontSize: "small",
+  };
+
   const handleTabClick = () => {
     // Redirect to another page
-    navigate('/productlisting');
+    navigate("/productlisting");
+  };
+
+  const handleQuickOrder = () => {
+    navigate("/quickorder");
+  };
+  const handleCatalogs = () => {
+    navigate("/catalogs");
+  };
+  const handleContactUs = () => {
+    navigate("/contact-us");
   };
 
   return (
@@ -113,12 +128,39 @@ export default function NestedList({ handleClose }) {
         </ListItemIcon> */}
         <ListItemText primary="Quick Order" sx={colorText} />
       </ListItemButton>
-      <ListItemButton sx={borderBottomStyle}>
+      <ListItemButton sx={borderBottomStyle} disableRipple>
         {/* <ListItemIcon>>
         {/* <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon> */}
-        <ListItemText primary="Deals" sx={colorText} />
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: "14px",
+          }}
+        >
+          <ListItemText
+            primary="Quick Order"
+            sx={otherText}
+            onClick={handleQuickOrder}
+          />
+          <ListItemText primary="Quick Shops" sx={otherText} />
+          <ListItemText primary="Deals" sx={otherText} />
+          <ListItemText primary="Stuller Blog" sx={otherText} />
+          <ListItemText
+            primary="Catalogs + Publication"
+            sx={otherText}
+            onClick={handleCatalogs}
+          />
+
+          <ListItemText
+            primary="Contact Us"
+            sx={otherText}
+            onClick={handleContactUs}
+          />
+        </Box>
       </ListItemButton>
       <Box
         sx={{
@@ -127,7 +169,7 @@ export default function NestedList({ handleClose }) {
           padding: "2rem 2rem",
           flexDirection: "column",
           alignItems: "center",
-          backgroundColor: "#4C5A63"
+          backgroundColor: "#4C5A63",
         }}
       >
         {/* <Button variant="contained"/> */}
@@ -166,9 +208,13 @@ export default function NestedList({ handleClose }) {
             margin: "0.1rem",
           }}
         >
-          <Typography variant="caption" color={"#bbb"} sx={{
-            cursor: "pointer"
-          }}>
+          <Typography
+            variant="caption"
+            color={"#bbb"}
+            sx={{
+              cursor: "pointer",
+            }}
+          >
             Weekdays 8AM - 7PM CST CENTRAL
           </Typography>
         </Box>
