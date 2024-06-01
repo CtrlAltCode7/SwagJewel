@@ -181,7 +181,7 @@ function AppbarNavigation({ categories, enableShopByButton }) {
                 <li key={linkIndex}>
                   <a href={link.url}></a>
                   <Link
-                    to={link.url}
+                    // to={link.url}
                     style={{
                       textDecoration: "none",
                       ":hover": { color: "red" },

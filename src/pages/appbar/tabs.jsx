@@ -222,11 +222,17 @@ export default function BasicTabs() {
     getProductCategories();
   }, []);
 
-  // console.log('productCategory', productCategory)
+  // console.log('productCategory', productCategory)quickshops
 
   const handleQuickOrder = () => {
     navigate("/quickorder");
   };
+
+  const handleQuickShops =() => {
+    navigate("/quickshops");
+
+    
+  }
 
   return (
     <Box
@@ -366,6 +372,8 @@ export default function BasicTabs() {
                 color: "#75b0da",
               },
             }}
+            onClick={handleQuickShops}
+
           >
             Quick Shops
           </Button>
