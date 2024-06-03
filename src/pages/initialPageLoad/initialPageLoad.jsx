@@ -16,7 +16,6 @@ export default function InitialPageLoad() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const handleHomepage = () => {
-    // Redirect to another page
     navigate("/home");
   };
 
@@ -27,9 +26,6 @@ export default function InitialPageLoad() {
     const hashedPassword = md5("swagjewel");
     console.log("Entered password (MD5):", hashedPassword);
     localStorage.setItem("isLoggedIn", false);
-
-    // window.addEventListener('beforeunload', handleBeforeUnload);
-
     if (!localStorage.getItem("swag-jewelers")) {
       localStorage.setItem("swag-jewelers", hashedPassword);
     }
@@ -44,23 +40,12 @@ export default function InitialPageLoad() {
   };
 
   const handleSubmit = () => {
-    // Hash the entered password using MD5
     const hashedPassword = md5(password);
-
-    // Retrieve the hashed password from local storage
     const storedHashedPassword = localStorage.getItem("swag-jewelers");
-    console.log("storedHashedPassword", storedHashedPassword);
-
-    // Compare the hashed passwords
     if (hashedPassword === storedHashedPassword) {
       localStorage.setItem("isLoggedIn", true);
-
-      // Passwords match
-      //   console.log("Password matched.");
       setError(false);
       setOpen(false);
-      // Passwords do not match
-      //   console.log("Password did not match.");
       setError(true);
       handleHomepage();
     } else {

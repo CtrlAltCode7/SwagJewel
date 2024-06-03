@@ -1006,56 +1006,13 @@ export default function BasicGrid() {
               <SelectComponent title="Metal Color" minWidthSize="200" />
             </Grid>
           </Item>
-          {/* <Item
-            sx={{
-              // paddingTop: "0 1rem",
-              // overflow: "hidden !important",
-              // display: "flex",
-              // justifyContent: "space-evenly !important",
-              // flexGrow: 1,
-              // padding: "1rem 1rem 0",
-              // backgroundColor: "red",
-              // margin: "0 1rem",
-              // flexGrow: 1,
-
-              "@media (max-width:  768px)": {
-                // flexDirection: "column",
-              },
-            }}
-          >
-            <Box
-              sx={{
-                // backgroundColor: "#eee",
-                // flexDirection: "row",
-                // display: "flex",
-                // gap: "1rem",
-                // padding: "1rem",
-                // // margin: "0 1rem",
-                // paddingTop: "2rem",
-
-                "@media (max-width:  1200px)": {
-                  flexDirection: "column",
-                  // margin: 0,
-                },
-              }}
-            >
-              <SelectComponent title="Finger Size" minWidthSize="200" />
-              <SelectComponent title="Primary Stone Count" minWidthSize="200" />
-              <SelectComponent title="Primary Stone Shape" minWidthSize="200" />
-              <SelectComponent title="Metal Color" minWidthSize="200" />
-            </Box>
-          </Item> */}
           <Item
             sx={{
-              // padding: "0 1.4rem ",
-              // backgroundColor: "red",
               margin: "0 1rem",
               padding: 0,
               backgroundColor: "#eee",
-
               justifyContent: "space-evenly !important",
               "@media (max-width:  768px)": {
-                // padding: "0 1rem ",
               },
             }}
           >
@@ -1068,14 +1025,14 @@ export default function BasicGrid() {
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "#fff", // Set background color
-                  color: "#555", // Set text color
+                  backgroundColor: "#fff",
+                  color: "#555",
                   border: "1px solid #999",
                   fontSize: "12px",
                   margin: ".5rem 1rem 1rem",
                   "&:hover": {
-                    backgroundColor: "#999", // Change background color on hover
-                    color: "#ffffff", // Change text color on hover
+                    backgroundColor: "#999",
+                    color: "#ffffff",
                   },
                 }}
               >

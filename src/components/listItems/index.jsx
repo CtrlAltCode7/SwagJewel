@@ -26,7 +26,6 @@ function ListedItems({
         textDecoration: "none",
         flexWrap: "wrap",
         "@media (max-width:  768px)": {
-          // Media query for smaller screens
           marginBottom: "10%",
         },
       }}

@@ -1,14 +1,8 @@
-/* .sign-up-container {
-    background: url(https://meteor.stullercloud.com/das/75918656?scl=1.1&fmt=png) no-repeat right, linear-gradient(to top, rgba(3, 3, 3, 0.3) 0%, rgba(3, 3, 3, 0) 100%), url(https://meteor.stullercloud.com/das/52699161?scl=1&$sharpenpng$) repeat left !important;
-    background-size: auto;
-} */
 
 .signup-title-container {
-    /* background-color: beige !important; */
 }
 
 .signup-title {
-    /* font-size: 2.313rem !important; */
     font-weight: 100;
     color: #fff;
 }

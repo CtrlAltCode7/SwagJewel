@@ -19,13 +19,6 @@ import LoginPopper from "../login/loginPopper/loginPopper";
 import { useState } from "react";
 import Cart from "../cart/cart";
 
-// const pages = [
-//   "Contact Us",
-//   "Catalogs + Publications",
-//   "SWAG Jewelers Blog ",
-//   "Locate a Jeweler",
-// ];
-
 const pages = [
   { name: "Contact Us", link: "/contact-us" },
   { name: "Catalogs + Publications", link: "/catalogs" },
@@ -37,10 +30,6 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-
-
-
-
 
   const handleClick1 = (newPlacement) => (event) => {
     setAnchorE2(event.currentTarget);
@@ -67,13 +56,11 @@ function ResponsiveAppBar() {
   const handleCall = () => {
     const confirmed = window.confirm("Are you sure you want to dial ?");
     if (confirmed) {
-      // Proceed with call initiation
       window.location.href = "tel:";
     }
   };
 
   const handleLogoICon = () => {
-    // Redirect to another page
     navigate("/home");
   };
 
@@ -259,13 +246,13 @@ function ResponsiveAppBar() {
               padding: "0rem 2% .1%",
               textAlign: "center",
               ":hover": {
-                bgcolor: "#999", // theme.palette.primary.main
+                bgcolor: "#999",
                 color: "red",
                 "& .MuiTypography-root": {
-                  color: "#fff", // Change text color on hover
+                  color: "#fff", 
                 },
                 "& .MuiSvgIcon-root": {
-                  color: "#fff", // Change icon color on hover
+                  color: "#fff",
                 },
               },
               borderLeft: "1.5px solid #ddd",
@@ -276,31 +263,6 @@ function ResponsiveAppBar() {
 
               <Cart
               />
-            {/* </Box> */}
-
-            {/* </Tooltip> */}
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
           <Box
             sx={{
@@ -308,12 +270,12 @@ function ResponsiveAppBar() {
               padding: "0rem 2% .1%",
               textAlign: "center",
               ":hover": {
-                bgcolor: "#999", // theme.palette.primary.main
+                bgcolor: "#999",
                 "& .MuiTypography-root": {
-                  color: "#fff", // Change text color on hover
+                  color: "#fff",
                 },
                 "& .MuiSvgIcon-root": {
-                  color: "#fff", // Change icon color on hover
+                  color: "#fff",
                 },
               },
               borderLeft: "1.5px solid #ddd",

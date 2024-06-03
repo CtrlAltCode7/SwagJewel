@@ -8,13 +8,9 @@ const CardContainer = styled(Grid)({
 });
 
 const Card = styled(Grid)({
-  // backgroundSize: "cover",
-  // backgroundPosition: "100%",
   border: "none",
   padding: "1rem",
   height: "280px",
-  // backgroundPosition: "center !important",
-  // backgroundSize: "cover !important",
   backgroundPosition: "100% !important",
   backgroundRepeat: "no-repeat !important",
   backgroundSize: "cover !important",
@@ -22,7 +18,6 @@ const Card = styled(Grid)({
 
 const CardText = styled("div")({
   padding: "20px",
-  // background: "red",
   height: "230px",
   display: "flex",
   flexDirection: "column",
@@ -35,27 +30,12 @@ const RootContainer = styled("div")({
   maxWidth: "1250px",
   margin: "3rem auto",
   padding: "0 20px",
-  // height: "300px",
-
-  // maxHeight: "300px",
-  // height: "auto",
-  "@media (max-width: 991px)": {
-    // flexDirection: "column !important",
-    // height: "auto",
-    // margin: "3rem auto",
-  },
 });
 
 const LeftContent = styled("div")({
-  // height: "300px",
-  // height: "100%",
-  // "@media (max-width: 991px)": {},
 });
 
 const RightContent = styled("div")({
-  // height: "300px",
-  // height: "100%",
-  // "@media (max-width: 991px)": {},
 });
 
 export default function AccountCard() {
@@ -68,8 +48,6 @@ export default function AccountCard() {
               sx={{
                 background:
                   "url(https://meteor.stullercloud.com/das/75918658?scl=1&wid=603&hei=270&align=1,1&bgc=%23eeeeee&$sharpenpng$)",
-                // backgroundRepeat: "round",
-                // height: "300px",
               }}
             >
               <CardText>

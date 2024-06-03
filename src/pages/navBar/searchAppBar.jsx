@@ -31,17 +31,12 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
   "&:hover": {
-    // backgroundColor: alpha(theme.palette.common.white, 0.25),
-    // backgroundColor: "red"
   },
   marginLeft: 0,
-  // minWidth: "400px",
-
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
-    // backgroundColor: "red",
     minWidth: "400px"
   },
 }));
@@ -61,7 +56,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
@@ -136,30 +130,6 @@ export default function SearchAppBar() {
               Menu
             </Typography>
           </Box>
-
-          {/* <Drawer open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-            <List
-              className={{
-                width: 250,
-              }}
-            >
-              <ListItem button>
-                <ListItemText primary="Home" />
-              </ListItem>
-
-              <ListItem button>
-                <ListItemText primary="About" />
-              </ListItem>
-
-              <ListItem button>
-                <ListItemText primary="Contact" />
-              </ListItem>
-
-              <ListItem button>
-                <ListItemText primary="Services" />
-              </ListItem>
-            </List>
-          </Drawer> */}
           <Menu
             id="demo-positioned-menu"
             aria-labelledby="demo-positioned-button"
@@ -196,26 +166,6 @@ export default function SearchAppBar() {
           >
             <img src={StullerLogo} width={180} />
           </Typography>
-          {/* <Search
-            sx={{
-              backgroundColor: "#fff",
-              borderRadius: "1rem",
-              color: "#000",
-              ":focus": {
-                color: "red",
-                backgroundColor: "red",
-              },
-              placeSelf: "end"
-            }}
-          >
-            <SearchIconWrapper>
-              <SearchIcon color="red" />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
           <CustomizedSearchInput />
         </Toolbar>
       </AppBar>

@@ -124,17 +124,7 @@ export default function CheckOutInfo({ shippingMethod }) {
         >
           4
         </Avatar>
-        {/* <ShippingAddress
-          customText={shippingData}
-          boldText={"Shipping Method"}
-          disableBtn={true}
-        /> */}
         <Box
-          sx={
-            {
-              // backgroundColor: "ActiveBorder",
-            }
-          }
         >
           <Typography
             variant="body1"

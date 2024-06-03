@@ -58,7 +58,6 @@ export default function CustomInputField({
             >
               <MenuItem value="+1">+1</MenuItem>
               <MenuItem value="+91">+91</MenuItem>
-              {/* Add more country codes as needed */}
             </Select>
           ),
         }}

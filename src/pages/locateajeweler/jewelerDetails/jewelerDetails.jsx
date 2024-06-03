@@ -15,10 +15,6 @@ const JewelerDetails = ({ jeweler }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          flexDirection: {
-            // sm: "column",
-            // md: "row"
-          }
         }}
       >
         <Typography

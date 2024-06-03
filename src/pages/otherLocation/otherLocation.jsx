@@ -60,7 +60,6 @@ export default function OtherLocation() {
       sx={{
         py: 6,
         "@media (max-width:  768px)": {
-          // Media query for smaller screens
           padding: "3rem",
         },
         "@media (min-width: 769px) and (max-width: 1250px)": {
@@ -70,7 +69,6 @@ export default function OtherLocation() {
     >
       <Container
         sx={{
-          //   maxWidth: 1300,
           padding: 0,
         }}
       >
@@ -78,10 +76,8 @@ export default function OtherLocation() {
           container
           spacing={3}
           sx={{
-            // maxWidth: 1300,
             "&>.MuiGrid-item": {
               paddingLeft: 0,
-              //   paddingRight: "24px",
             },
           }}
         >
@@ -155,7 +151,6 @@ export default function OtherLocation() {
                   <Box
                     sx={{
                       display: "flex",
-                      //   flexWrap: "wrap",
                     }}
                   >
                     <Typography
@@ -223,9 +218,7 @@ export default function OtherLocation() {
               </ItalicTypography>
               <Button
                 variant="contained"
-                // color="secondary"
                 size="small"
-                // href="/tradeshows"
                 sx={{
                   background: "#fff",
                   color: "#000",

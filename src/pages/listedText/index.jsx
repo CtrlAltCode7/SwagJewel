@@ -37,8 +37,7 @@ function ListedText() {
           justifyContent: "space-around",
           margin: "0rem 0 1.5rem 0",
           flexWrap: "wrap",
-          '@media (max-width:  768px)': { // Media query for smaller screens
-            // width: '50%', // Adjust width for smaller screens
+          '@media (max-width:  768px)': {
             flexDirection: "column",
           }
         }}

@@ -46,7 +46,6 @@ const StyledTypography = styled(Typography)({
 });
 
 const StyledIconButton = styled(IconButton)({
-  // Add your IconButton styles here if needed
 });
 
 const StyledPhoneNumber = styled(Typography)({

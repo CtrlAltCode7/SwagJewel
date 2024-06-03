@@ -12,63 +12,6 @@ import EMERALDImg from "../../assets/EMERALD............-02.svg";
 import ShopByContent from "./shopByContent.jsx";
 
 function AppbarNavigation({ categories, enableShopByButton }) {
-  // Define navigation data
-  // const categories = [
-  //   {
-  //     title: "Brand Name",
-  //     links: [
-  //       { label: "Home", url: "/home" },
-  //       { label: "Catalog", url: "/home" },
-  //       { label: "Search", url: "/home" },
-  //       { label: "About", url: "/home" },
-  //       { label: "Contact", url: "/home" },
-  //     ],
-  //   },
-  //   {
-  //     title: "Careers",
-  //     links: [
-  //       { label: "Apply Online", url: "/home" },
-  //       { label: "Available Positions", url: "/home" },
-  //     ],
-  //   },
-  //   {
-  //     title: "About Us",
-  //     links: [
-  //       { label: "Meet Our Team", url: "/home" },
-  //       { label: "Our Responsibilities", url: "/home" },
-  //       { label: "Our Codes", url: "/home" },
-  //       { label: "Our Values", url: "/home" },
-  //     ],
-  //   },
-  //   {
-  //     title: "About Us -1",
-  //     links: [
-  //       { label: "Meet Our Team", url: "/home" },
-  //       { label: "Our Responsibilities", url: "/home" },
-  //       { label: "Our Codes", url: "/home" },
-  //       { label: "Our Values", url: "/home" },
-  //     ],
-  //   },
-  //   {
-  //     title: "About Us -1",
-  //     links: [
-  //       { label: "Meet Our Team", url: "/home" },
-  //       { label: "Our Responsibilities", url: "/home" },
-  //       { label: "Our Codes", url: "/home" },
-  //       { label: "Our Values", url: "/home" },
-  //     ],
-  //   },
-  //   {
-  //     title: "About Us -1",
-  //     links: [
-  //       { label: "Meet Our Team", url: "/home" },
-  //       { label: "Our Responsibilities", url: "/home" },
-  //       { label: "Our Codes", url: "/home" },
-  //       { label: "Our Values", url: "/home" },
-  //     ],
-  //   },
-  // ];
-
   const shopByData = [
     {
       shopTitle: "Shop by shape",
@@ -153,14 +96,11 @@ function AppbarNavigation({ categories, enableShopByButton }) {
         className="pages"
         style={{
           display: "flex",
-          // justifyContent: { xs: "none", md: "none", lg: "space-between"},
           justifyContent: "flex-start",
-          // gap: "8rem",
           columnGap: "7rem",
           padding: "2rem 5rem 2rem 2rem",
           flexWrap: "wrap",
           backgroundColor: "#4C5A63",
-          // height: "100vh"
         }}
       >
         {categories?.map((section, index) => (
@@ -207,31 +147,6 @@ function AppbarNavigation({ categories, enableShopByButton }) {
           </>
         ))}
       </div>
-      {/* {enableShopByButton &&
-        shopByData.map((shop, index) => (
-          <>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-start",
-              padding: "2rem 5rem 2rem 2rem",
-              alignItems: "center",
-            }}
-          >
-            <Typography>{shop.shopTitle}</Typography>
-            <Box
-              sx={{
-                // flexDirection: "column",
-                // alignItems: "center"
-                textAlign: "center",
-              }}
-            >
-              <img src={shop.shapeImage} width={100} />
-              <Typography>{shop.shapeName}</Typography>
-            </Box>
-          </Box>
-          </>
-        ))} */}
       <ShopByContent
         shopByData={shopByData}
         enableShopByButton={enableShopByButton}

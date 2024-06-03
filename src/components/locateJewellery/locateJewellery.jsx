@@ -48,7 +48,6 @@ const StyledTypography = styled(Typography)({
 });
 
 const StyledIconButton = styled(IconButton)({
-  // Add your IconButton styles here if needed
 });
 
 const StyledPhoneNumber = styled(Typography)({
@@ -75,47 +74,6 @@ const LocateJewellery = ({ data }) => {
         </Typography>
         <StyledImage src={data.imageSrc} alt={data.imageAlt} />
       </StyledBox>
-      {/* <StyledBoxDescription>
-        <StyledTypography variant="body2">{data.description}</StyledTypography>
-        <Typography
-          variant="body2"
-          component="div"
-          sx={{ fontWeight: "bold", mb: 1 }}
-        >
-          {data.question}
-        </Typography>
-        <Typography variant="body2" sx={commonStyles}>
-          {data.answer}
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            mt: 2,
-          }}
-        >
-          <StyledIconButton>
-            <LocalPhoneIcon />
-          </StyledIconButton>
-          <StyledPhoneNumber
-            variant="body1"
-            component="span"
-            sx={commonStyles}
-            mr={1}
-            ml={1}
-          >
-            {data.phoneNumber}
-          </StyledPhoneNumber>
-          <Typography
-            variant="body2"
-            component="span"
-            sx={{ fontWeight: "bold", ...commonStyles }}
-          >
-            ext. <span>{data.extension}</span>
-          </Typography>
-        </Box>
-      </StyledBoxDescription> */}
     </>
   );
 };

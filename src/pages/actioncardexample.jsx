@@ -11,22 +11,14 @@ export default function ActionAreaCard({ image, title, description }) {
     <Link to={"home"} style={{ textDecoration: "none" }}>
       <Card
         sx={{
-          // width: 390,
-          // height: { xs: 331, md: !title && !description ? 175 : 200 },
           boxShadow: "none",
           borderRadius: 0,
           "&:hover": {
             boxShadow: "none",
           },
           "@media (max-width: 768px)": {
-            // height: 331,
             width: "100%"
           },
-          // "@media (max-width: 1200px) and (min-width: 768px": {
-          //   // width: "390px !important"
-          //   padding : "0 1rem !important"
-            
-          // },
         }}
       >
         <CardMedia

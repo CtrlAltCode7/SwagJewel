@@ -10,26 +10,20 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useEffect } from "react";
 
 function AccordionComponent({ data }) {
-  // const [expanded, setExpanded] = useState(null);
   const [loadingAccordion, setLoadingAccordion] = useState(null);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
     if (isExpanded) {
       setLoadingAccordion(panel);
-      // Simulate async data loading
       setTimeout(() => {
         setLoadingAccordion(null);
-      }, 1000); // Replace 1000 with actual loading time
+      }, 1000);
     }
   };
 
   const [expanded, setExpanded] = useState(null);
   const [checkedItems, setCheckedItems] = useState({});
-
-  // const handleChange = (panel) => (event, isExpanded) => {
-  //   setExpanded(isExpanded ? panel : null);
-  // };
 
   const handleCheckboxChange = (contentId, title) => (event) => {
     const isChecked = event.target.checked;
@@ -40,9 +34,7 @@ function AccordionComponent({ data }) {
   };
 
   useEffect(() => {
-    // Function to send data to API
     const sendDataToAPI = async () => {
-      // Prepare data to send to API
       const checkedData = {};
       Object.entries(checkedItems).forEach(([contentId, checked]) => {
         Object.entries(checked).forEach(([title, isChecked]) => {
@@ -52,24 +44,10 @@ function AccordionComponent({ data }) {
           }
         });
       });
-
-      // Here you can send 'checkedData' to your API using fetch or any other method
-      console.log("Data to be sent to API:", checkedData);
-      // Example of API call using fetch
-      // await fetch('your_api_endpoint', {
-      //   method: 'POST',
-      //   body: JSON.stringify(checkedData),
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   }
-      // });
     };
 
-    // Call the function when checkedItems state changes
     sendDataToAPI();
-  }, [checkedItems]); // Run this effect whenever checkedItems changes
-
-  console.log("checkedItems", checkedItems);
+  }, [checkedItems]);
 
   return (
     <div>
@@ -112,7 +90,7 @@ function AccordionComponent({ data }) {
           </AccordionSummary>
           <AccordionDetails
             sx={{
-              maxHeight: "240px", // Set maximum height for virtualization
+              maxHeight: "240px",
               overflowY: "auto",
               "&::-webkit-scrollbar": {
                 width: "7px",
