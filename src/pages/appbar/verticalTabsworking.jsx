@@ -65,7 +65,7 @@ export default function VerticalTabs() {
         bgcolor: "background.paper",
         display: "flex",
         height: "100vh",
-        backgroundColor: "red"
+        // backgroundColor: "red"
       }}
     >
       <Tabs
@@ -114,7 +114,7 @@ export default function VerticalTabs() {
         />
       </Tabs>
       <TabPanel value={value} index={0} sx={{ 
-        backgroundColor: "red"
+        // backgroundColor: "red"
 
       }}>
         <AppbarNavigation />

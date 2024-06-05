@@ -96,12 +96,15 @@ function ProductSlider({ products }) {
   }, []);
 
   useEffect(() => {
-    if (apiData && apiData.length > 0) {
+    if (apiData && apiData?.data?.Products?.length > 0) {
       const data = getImageUrlsWithGroupDescription(apiData)?.filter(Boolean);
+      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@', data)
       setImageUrlsWithGroupDescription(data);
       // console.log("first", data);
     }
   }, [apiData]);
+
+  console.log('imageUrlsWithGroupDescription', imageUrlsWithGroupDescription)
 
   return (
     <div

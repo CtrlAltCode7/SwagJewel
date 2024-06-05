@@ -139,7 +139,7 @@ export default function VerticalTabs({ tabData, setTabValue }) {
         display: "flex",
         width: "100%",
         height: "500px",
-        backgroundColor: "red",
+        // backgroundColor: "red",
         overflowY: "scroll",
       }}
     >
