@@ -25,7 +25,7 @@ function CustomTabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
       style={{
-        backgroundColor: "royalblue",
+        // backgroundColor: "royalblue",
         position: "absolute",
         width: "100%",
         zIndex: 999
