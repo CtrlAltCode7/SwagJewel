@@ -34,11 +34,6 @@ export default function Login() {
             description="Sign up for a new Stuller account."
             buttonText="Create Account"
           />
-          {/* <AccountSection
-            title="Get Website Login"
-            description="Create a login for an existing Stuller account."
-            buttonText="Get Login"
-          /> */}
         </div>
       </div>
       <Snackbar

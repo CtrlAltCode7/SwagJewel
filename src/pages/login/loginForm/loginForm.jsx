@@ -123,20 +123,13 @@ const LoginForm = () => {
         .request(config)
         .then((response) => {
           if (response.status == 200 && response.data.message == "Success") {
-            const token = response.data.data.token;
-            localStorage.setItem("token", JSON.stringify(token));
-            // console.log('token', token)
-            // setNotification(response.data.message);
-            navigate("/home", { state: { message: response.data.message } });
-            const message = response.data.message;
-            
+           
+           
+            navigate("/verifyOTP", { state: { message: response.data } });
           }
-          console.log("response", response);
-          console.log("@@@@@@@@@", JSON.stringify(response.data));
        
         })
         .catch((error) => {
-          console.log("@@@@@@@@@@", error);
           const message = error.response.data.message;
           setNotification(message);
         })
@@ -151,9 +144,7 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    console.log("notification", notification);
     if (notification && notification.trim().length > 0) {
-      console.log("notification", notification);
       setOpenSnackbar(true);
     }
   }, [notification]);

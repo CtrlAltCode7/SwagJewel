@@ -37,6 +37,12 @@ function Index() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const message = location.state?.message;
 
+  useEffect(() => {
+    if (message) {
+      setOpenSnackbar(true);
+    }
+  }, [message]);
+
   const cardData = [
     {
       image: "https://meteor.stullercloud.com/das/128969798",
