@@ -66,7 +66,7 @@ const OtpInput = ({ otp, setOtp }) => {
     );
 };
 
-const OTP = () => {
+const OTP = ({ forgotpassword, VerifyOTPToken, setShowPassword, setShowVerifyOTP, setVerifyOTPToken }) => {
     const navigate = useNavigate();
     const [otp, setOtp] = useState(new Array(4).fill(""));
     const [error, setError] = useState(false);
@@ -74,8 +74,7 @@ const OTP = () => {
     const [isResendDisabled, setIsResendDisabled] = useState(false);
     const location = useLocation();
     const loginData = location.state?.message;
-    const username = loginData.data.userName;
-    console.log('@@@@@@@', loginData)
+    const username = loginData?.data?.userName;
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [notification, setNotification] = useState("");
     const [state, setState] = useState({
@@ -87,7 +86,7 @@ const OTP = () => {
     const { vertical, horizontal, open } = state;
 
 
-    const token = loginData.data.token;
+    const token = loginData?.data?.token;
 
     useEffect(() => {
         let timer;
@@ -191,7 +190,6 @@ const OTP = () => {
 
     };
 
-    console.log('notification', notification)
 
     const handleResendOtp = () => {
         setIsResendDisabled(true);
@@ -248,6 +246,37 @@ const OTP = () => {
         }
     }, [notification]);
 
+    const handleEmailVerify = () => {
+        // VerifyOTPToken
+
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${VerifyOTPToken}`);
+
+        const raw = JSON.stringify({
+            "otp": otp.join("")
+        });
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("https://api.swagjewelers.com/api/user/verify-otp", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                setShowVerifyOTP(false)
+                setShowPassword(true);
+                console.log("emailverification",result)
+                const token = result?.user?.token;
+                setVerifyOTPToken(token);
+            })
+            .catch((error) => console.error(error));
+
+    }
+
 
     return (
         <>
@@ -272,19 +301,26 @@ const OTP = () => {
                             Please enter a valid 4-digit OTP.
                         </Alert>
                     )}
-                    <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
-                        <Button variant="contained" color="primary" onClick={handleClick}>
-                            Submit
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            color="secondary"
-                            onClick={handleResendOtp}
-                            disabled={isResendDisabled}
-                        >
-                            {isResendDisabled ? `Resend OTP (${resendCountdown})` : "Resend OTP"}
-                        </Button>
-                    </Stack>
+                    {
+                        forgotpassword ? <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
+                            <Button variant="contained" color="primary" onClick={handleEmailVerify}>
+                                Verify OTP
+                            </Button> </Stack> :
+
+                            <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
+                                <Button variant="contained" color="primary" onClick={handleClick}>
+                                    Submit
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    color="secondary"
+                                    onClick={handleResendOtp}
+                                    disabled={isResendDisabled}
+                                >
+                                    {isResendDisabled ? `Resend OTP (${resendCountdown})` : "Resend OTP"}
+                                </Button>
+                            </Stack>
+                    }
                 </Box>
             </Container>
             <Snackbar

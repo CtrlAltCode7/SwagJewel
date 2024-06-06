@@ -23,7 +23,7 @@ export default function LoginContent() {
   const token = localStorage.getItem("token");
 
   const message = token ? "Logout" : "Login";
-  console.log(">>>>>>>>>", message);
+  // console.log(">>>>>>>>>", message);
 
   return (
     <Box
