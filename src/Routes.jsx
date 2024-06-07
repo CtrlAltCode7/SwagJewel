@@ -35,6 +35,7 @@ import QuickOrder from "./pages/quickOrder";
 import QuickShops from "./pages/quickShops";
 import VerifyOTP from "./pages/login/verifyOTP/verifyOTP";
 import OTP from "./pages/login/verifyOTP/verifyOTP";
+import UserProfile from "./pages/login/userProfile/userProfile";
 
 const routes = [
   {
@@ -181,6 +182,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <OTP />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,quickorder
+  },
+  {
+    path: "/user-profile",
+    element: (
+      <PrivateRoute>
+        <UserProfile />
       </PrivateRoute>
     ),
     // loader: <Loader />,quickorder

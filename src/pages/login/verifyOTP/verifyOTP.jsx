@@ -173,7 +173,7 @@ const OTP = ({ forgotpassword, VerifyOTPToken, setShowPassword, setShowVerifyOTP
                 if (result.message.trim().toLowerCase() === "success") {
                     const token = result.user.token;
                     localStorage.setItem("token", JSON.stringify(token));
-                    setNotification("OTP Verified successfully")
+                    // setNotification("OTP Verified successfully")
                     navigate("/home", { state: { message: "OTP Verified successfully" } });
                 } else {
                     setNotification(result.message)

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Box, Checkbox, Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CustomComponent from "../loginUserContent/loginUserContent";
 
 export default function LoginContent() {
   const handleSubmit = (event) => {
@@ -30,12 +31,12 @@ export default function LoginContent() {
       className="text-center menu-dropdown-container w-100 u-regular-font-size"
       sx={{
         display: "flex",
-        justifyContent: "center",
+        // justifyContent: "center",
         flexDirection: "column",
-        alignItems: "center",
+        // alignItems: "center",
         gap: 2,
-        paddingBlock: 4,
-        paddingInline: 2,
+        // paddingBlock: 4,
+        // paddingInline: 2,
       }}
     >
       <form onSubmit={handleSubmit} className="u-relative">
@@ -61,7 +62,8 @@ export default function LoginContent() {
           </div> */}
           {token ? (
             <div className="mb-4">
-              <Button
+              <CustomComponent />
+              {/* <Button
                 type="submit"
                 tabIndex="13"
                 data-test="log-in"
@@ -72,7 +74,7 @@ export default function LoginContent() {
                 onClick={handleLogout}
               >
                 Log Out
-              </Button>
+              </Button> */}
             </div>
           ) : (
             <div className="mb-4">
