@@ -11,7 +11,7 @@ function CustomIcon({ path }) {
     );
 }
 
-export default function CustomComponent() {
+export default function CustomComponent({handleLogout}) {
     const navigate = useNavigate()
     const hanldeUserProfile = () => {
         navigate("/user-profile")
@@ -32,7 +32,7 @@ export default function CustomComponent() {
                     </ListItemIcon>
                     <ListItemText primary="My Profile" />
                 </ListItem>
-                <ListItem sx={{ '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.04)' }, cursor: "pointer" }}>
+                <ListItem sx={{ '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.04)' }, cursor: "pointer" }} onClick={handleLogout}>
                     <ListItemIcon>
                         <Logout />
                     </ListItemIcon>

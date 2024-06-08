@@ -11,6 +11,8 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom';
 import toastr from 'toastr';
 import MuiAlert from "@mui/material/Alert";
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../../slices/userSlice';
 
 // import REACT_APP_URL from 'src/views/dashboard/components/url';
 
@@ -84,6 +86,7 @@ const OTP = ({ forgotpassword, VerifyOTPToken, setShowPassword, setShowVerifyOTP
     });
     const [alertSeverity, setAlertSeverity] = useState("error");
     const { vertical, horizontal, open } = state;
+    const dispatch = useDispatch();
 
 
     const token = loginData?.data?.token;
@@ -171,6 +174,7 @@ const OTP = ({ forgotpassword, VerifyOTPToken, setShowPassword, setShowVerifyOTP
             .then((result) => {
                 console.log('result', result)
                 if (result.message.trim().toLowerCase() === "success") {
+                    dispatch(setUser(result.user));
                     const token = result.user.token;
                     localStorage.setItem("token", JSON.stringify(token));
                     // setNotification("OTP Verified successfully")

@@ -3,6 +3,7 @@ import { Grid, TextField, Button, Typography, RadioGroup, Radio, FormControlLabe
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
+import { useSelector } from 'react-redux';
 
 const AddAddressForm = () => {
     const [formData, setFormData] = useState({
@@ -23,6 +24,7 @@ const AddAddressForm = () => {
     const [addresses, setAddresses] = useState([]);
     const [editIndex, setEditIndex] = useState(null);
     const [expanded, setExpanded] = useState(false);
+    const userData = useSelector((state) => state.user.user);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +42,8 @@ const AddAddressForm = () => {
                 setAddresses(updatedAddresses);
                 setEditIndex(null);
             } else {
-                // Add new address
+                //Fresh address tobe added hete
+                addAddress(formData);
                 setAddresses([...addresses, formData]);
             }
 
@@ -121,6 +124,78 @@ const AddAddressForm = () => {
         });
 
     }
+
+    // Function to add a new address
+    const addAddress = (newAddress) => {
+        // fetch('https://api.swagjewelers.com/api/address/store', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Bearer ${userData.token}`
+        //     },
+        //     body: JSON.stringify(newAddress)
+        // })
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         // Handle successful response (if needed)
+        //         setAddresses([...addresses, data]); // Add the new address to the state
+        //     })
+        //     .catch(error => {
+        //         console.error('There was a problem with the fetch operation:', error);
+        //         // Handle errors
+        //     });
+        const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization",`Bearer ${userData.token}`);
+
+        const raw = JSON.stringify(newAddress);
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("https://api.swagjewelers.com//api/address/store", requestOptions)
+            .then((response) => response.text())
+            .then((result) => console.log(result))
+            .catch((error) => console.error(error));
+    };
+
+    // Function to update an existing address
+    const updateAddress = (updatedAddress) => {
+        fetch(`https://api.swagjewelers.com/api/user/address/${updatedAddress.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userData.token}`
+            },
+            body: JSON.stringify(updatedAddress)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle successful response (if needed)
+                const updatedAddresses = [...addresses];
+                updatedAddresses[editIndex] = data;
+                setAddresses(updatedAddresses);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // Handle errors
+            });
+    };
+
 
     return (
         <Box sx={{
