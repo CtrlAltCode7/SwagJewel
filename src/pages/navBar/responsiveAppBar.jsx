@@ -208,6 +208,7 @@ function ResponsiveAppBar() {
                           fontSize: "0.6rem",
                           border: "1px solid transparent",
                           mr: 1,
+                          ml:1
                         }}
                       >
                         <Typography
@@ -216,7 +217,8 @@ function ResponsiveAppBar() {
                           variant="caption"
                           sx={{
                             fontSize: "0.6rem",
-                            mr: "0.2rem",
+                            mx: "0.2rem",
+                            
                           }}
                         >
                           New

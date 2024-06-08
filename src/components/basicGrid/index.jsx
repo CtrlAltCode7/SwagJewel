@@ -40,13 +40,16 @@ export default function BasicGrid() {
     useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(5);
+  const [productsPerPage, setProductsPerPage] = useState(10);
   const [accordionApiData, setAccordionApiData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [length, setLength] = useState(null);
+  const [filteredData, setfilterData] = useState(null)
   const apiData = useSelector((state) => state.api.data);
 
+  // console.log("filteredData", filteredData?.data?.data?.Products);
+  console.log("filteredData", filteredData);
   const { category } = useParams();
   const location = useLocation();
   const catId = location.state?.message;
@@ -55,6 +58,12 @@ export default function BasicGrid() {
     // Fetch or filter products based on the category
   }, [category]);
 
+
+  const handleFilteredData = (data) => {
+    //  if(data?.data?.data?.Products.length > 0){setfilterData(data)}
+    setfilterData(data)
+  }
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -62,18 +71,24 @@ export default function BasicGrid() {
         setError(null);
         // Replace 'API_URL' with your actual API endpoint
         const response = await axios.get(
-          `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=10&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
+          `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=${currentPage}&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
         );
 
+        let tolalProducts = response?.data?.data?.TotalNumberOfProducts;
+        // console.log("totalProducts", response?.data?.TotalNumberOfProducts);
         if (response && response?.data?.data?.Products.length > 0) {
-          // console.log("response", response)
-          const data = getImageUrlsWithGroupDescription(response);
-          setImageUrlsWithGroupDescription(data);
-          // if (response?.data?.PageSize > 10) {
-          setTotalPages(Math.ceil(data.length / productsPerPage));
-          // }
-          // fetchBooks()
-          // console.log("@@@@@@", data);
+          console.log("responss dfdsdsddsde", response?.data?.data?.TotalNumberOfProducts);
+          setLength(response?.data?.data?.TotalNumberOfProducts);
+          // const data = getImageUrlsWithGroupDescription(response);
+          // setImageUrlsWithGroupDescription(data);
+          // const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
+          // setImageUrlsWithGroupDescription(filteredResponse);
+
+          // filteredData?.data?.data?.Products.length >0 ? getImageUrlsWithGroupDescription(filteredData) : getImageUrlsWithGroupDescription(response);
+
+          // filteredData?.data?.data?.Products.length >0 ? setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(filteredData)) : setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(response));
+
+          setTotalPages(Math.ceil(tolalProducts / productsPerPage));
         } else {
           console.log("response is empty");
         }
@@ -83,790 +98,18 @@ export default function BasicGrid() {
         setLoading(false);
       }
     };
-
     fetchProducts();
-  }, [category, catId]);
+  }, [category, catId, currentPage]);
 
-  const fetchBooks = async () => {
-    try {
-      const response = await fetch(`/productsListing.json`)
-        .then((res) => res.json())
-        .then((data) => {
-          return data;
-        });
 
-      // console.log("API response:", response);
-      setImageUrlsWithGroupDescription(response);
-      setTotalPages(Math.ceil(response.length / productsPerPage));
-    } catch (err) {
-      console.error(err.message);
+  useEffect(() => {
+    if (filteredData) {
+      const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
+      setImageUrlsWithGroupDescription(filteredResponse);
     }
-  };
-
-  // useEffect(() => {
-  //   if (apiData && apiData?.data?.Products.length > 0) {
-  //     // console.log("apiData", apiData)
-  //     const data = getImageUrlsWithGroupDescription(apiData);
-  //     setImageUrlsWithGroupDescription(data);
-  //     // if (apiData?.data?.PageSize > 10) {
-  //     setTotalPages(Math.ceil(data.length / productsPerPage));
-  //     // }
-  //     // fetchBooks()
-  //     // console.log("@@@@@@", data);
-  //   } else {
-  //     console.log("apiData is empty");
-  //   }
-  // }, [apiData,productsPerPage]);
+  }, [filteredData]);
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
-  const products = [
-    {
-      id: 1,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 1",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123531",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://meteor.stullercloud.com/das/128648008?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      imgSrcOnHover:
-        "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj.recipe=rose&$spotlight$",
-      buttonText: "Add",
-      title: "Anniversary Band 2",
-      icons: [
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 1",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 2",
-        },
-        {
-          src: "https://assets.stullercloud.com/das/84852017.svg",
-          tooltip: "Tooltip 3",
-        },
-      ],
-      sku: "123532",
-    },
-    // Add more product objects as needed
-  ];
-  const accordionData = [
-    {
-      id: 1,
-      title: "Category",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-        {
-          id: 1,
-          text: "Content 1 for Accordion 1",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 1",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 1",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Product State",
-      contents: [
-        {
-          id: 1,
-          text: "Semi-set",
-        },
-        {
-          id: 2,
-          text: "Set",
-        },
-        {
-          id: 3,
-          text: "unset",
-        },
-        {
-          id: 4,
-          text: "N/A",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Primary Stone Size",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Primary Stone Type",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Setting Method",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 6,
-      title: "3C Designs",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 7,
-      title: "Metal Type",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 8,
-      title: "Metal Karat",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    {
-      id: 9,
-      title: "Discount",
-      contents: [
-        {
-          id: 1,
-          text: "Content 1 for Accordion 2",
-        },
-        {
-          id: 2,
-          text: "Content 2 for Accordion 2",
-        },
-        {
-          id: 3,
-          text: "Content 3 for Accordion 2",
-        },
-      ],
-    },
-    // Add more accordion items as needed
-  ];
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
@@ -901,32 +144,12 @@ export default function BasicGrid() {
     };
 
     fetchAccordionData();
-
-    return () => {};
+    return () => { };
   }, []);
 
-  const remainingProducts =
-    imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       setLoading(true);
-  //       setError(null);
-  //       // Replace 'API_URL' with your actual API endpoint
-  //       const response = await axios.get(
-  //         `API_URL/products?category=${sanitizedCategory}`
-  //       );
-  //       // setProducts(response.data);
-  //     } catch (err) {
-  //       setError("Failed to fetch products.");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, []);
+  // const remainingProducts =
+  
+  // imageUrlsWithGroupDescription.length > 0 && imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
 
   if (loading) {
     return (
@@ -957,7 +180,7 @@ export default function BasicGrid() {
       >
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
-            <AccordionComponent data={accordionApiData || accordionData} />
+            <AccordionComponent data={accordionApiData} currentPage={currentPage} catId={catId} getFilteredData={handleFilteredData} />
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
@@ -1109,9 +332,8 @@ export default function BasicGrid() {
                   // alignItems: "center",
                 }}
               >
-                <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${
-                  apiData?.data?.Products.length
-                }`}</Typography>
+                <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${length
+                  }`}</Typography>
                 |<Typography>Items per page</Typography>
                 {/* <SelectComponent minWidthSize="20" placeholder="26" /> */}
                 <FormControl>
@@ -1141,15 +363,11 @@ export default function BasicGrid() {
                     }}
                     onChange={handleProdutPerPageChange}
                   >
-                    <MenuItem value={5} disabled={remainingProducts < 5}>
-                      5
-                    </MenuItem>
-                    <MenuItem value={10} disabled={remainingProducts < 10}>
+
+                    {/* <MenuItem value={10} disabled={remainingProducts < 10}>
                       10
-                    </MenuItem>
-                    <MenuItem value={15} disabled={remainingProducts < 15}>
-                      15
-                    </MenuItem>
+                    </MenuItem> */}
+
                   </Select>
                 </FormControl>
               </Box>
@@ -1181,6 +399,7 @@ export default function BasicGrid() {
             }}
           >
             <Pagination
+              // count='5'
               count={totalPages}
               page={currentPage}
               onChange={handlePageChange}
@@ -1209,16 +428,7 @@ export default function BasicGrid() {
             }}
           >
             <Grid container spacing={2}>
-              {/* {Array.from({ length: 4 }).map((_, index) => (
-                <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                  <ActualProductCard 
-                   productImg={"https://meteor.stullercloud.com/das/35535773?$standard$"}
-                   productImgOnHover={"https://meteor.stullercloud.com/das/14952862?$standard$"}
-                   productTitle={"Cross Pendant "}
-                  />
-                </Grid>
-              ))} */}
-              {imageUrlsWithGroupDescription
+              {/* {imageUrlsWithGroupDescription
                 .slice(startIndex, endIndex)
                 .map((imgWithTitle, index) => (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
@@ -1228,7 +438,34 @@ export default function BasicGrid() {
                       productTitle={imgWithTitle?.groupDescription}
                     />
                   </Grid>
-                ))}
+                ))} */}
+
+              {imageUrlsWithGroupDescription ? imageUrlsWithGroupDescription
+                .map((imgWithTitle, index) => (
+                  <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
+                    <ProductCard
+                      productImg={imgWithTitle?.urls[0] || ""}
+                      productImgOnHover={imgWithTitle?.urls[1] || ""}
+                      productTitle={imgWithTitle?.groupDescription}
+                    />
+                  </Grid>
+                ))
+              : <h1>No Data Found</h1>
+              }
+
+                {/* {
+                  filteredData?.data?.data?.Products.length >0 ? imageUrlsWithGroupDescription
+                  .map((imgWithTitle, index) => (
+                    <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
+                      <ProductCard
+                        productImg={imgWithTitle?.urls[0] || ""}
+                        productImgOnHover={imgWithTitle?.urls[1] || ""}
+                        productTitle={imgWithTitle?.groupDescription}
+                      />
+                    </Grid>
+                  )) : <h1>No Data Found</h1>
+                } */}
+
             </Grid>
           </Item>
           <Item

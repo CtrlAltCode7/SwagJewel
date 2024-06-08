@@ -380,6 +380,7 @@ export default function BasicTabs() {
           <Button
             sx={{
               color: "#fff",
+              marginRight: "10px",
               ":hover": {
                 color: "#75b0da",
               },
