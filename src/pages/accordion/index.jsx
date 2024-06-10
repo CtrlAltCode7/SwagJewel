@@ -29,7 +29,7 @@ function AccordionComponent({ data, currentPage, catId, getFilteredData }) {
   console.log("categories", selectedFilters);
 
   let options = data.length > 0 && data.reduce((obj, item) => {
-    obj[item.title] = item.contents.map(content => content.text);
+    obj[item.title] = item.contents.map(content => content.id);
     return obj;
   }, {});
 

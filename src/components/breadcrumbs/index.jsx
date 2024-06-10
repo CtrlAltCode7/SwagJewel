@@ -44,7 +44,7 @@ export default function CustomSeparator({ breadcrumbsColor }) {
           color: breadcrumbsColor && breadcrumbsColor
         }}
       >
-        {breadcrumbs}
+        {/* {breadcrumbs} */}
       </Breadcrumbs>
     </Stack>
   );
