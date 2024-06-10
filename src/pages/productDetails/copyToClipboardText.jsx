@@ -37,11 +37,11 @@ const CopyToClipboardText = () => {
               verticalAlign: "middle",
               cursor: "pointer",
               marginRight: 5,
-              color: hovered ? "#888" : "#555", // Change icon color based on hover state
+              color: hovered ? "#888" : "#555",
             }}
             onClick={handleCopy}
-            onMouseEnter={() => setHovered(true)} // Set hovered state on mouse enter
-            onMouseLeave={() => setHovered(false)} // Reset hovered state on mouse leave
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           />
           <span
             className="copy-text"
@@ -49,11 +49,11 @@ const CopyToClipboardText = () => {
             style={{
               cursor: "pointer",
               fontSize: "14px",
-              color: hovered ? "#888" : "#555", // Change text color based on hover state
-              transition: "color 0.3s", // Added transition effect
+              color: hovered ? "#888" : "#555",
+              transition: "color 0.3s",
             }}
-            onMouseEnter={() => setHovered(true)} // Set hovered state on mouse enter
-            onMouseLeave={() => setHovered(false)} // Reset hovered state on mouse leave
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
           >
             Item # 126912:105:P
           </span>

@@ -66,10 +66,6 @@ export default function NestedList({ handleClose }) {
       }}
       component="nav"
       aria-labelledby="nested-list-subheader"
-      // subheader={
-      //   <ListSubheader component="div" id="nested-list-subheader">
-      //   </ListSubheader>
-      // }
     >
       <ListItemButton onClick={handleClose} sx={borderBottomStyle}>
         <ListItemIcon>
@@ -78,62 +74,34 @@ export default function NestedList({ handleClose }) {
         <ListItemText primary="Close" sx={colorText} />
       </ListItemButton>
       <ListItemButton onClick={handleClick} sx={borderBottomStyle}>
-        {/* <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon> */}
         <ListItemText primary="Products" sx={[colorText]} />
         {open ? <ExpandLess sx={colorText} /> : <ExpandMore sx={colorText} />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }} onClick={handleTabClick}>
-            {/* <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon> */}
             <ListItemText primary="Engagement rings" sx={colorText} />
           </ListItemButton>
         </List>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }} onClick={handleTabClick}>
-            {/* <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon> */}
             <ListItemText primary="Wedding Bands" sx={colorText} />
           </ListItemButton>
         </List>
       </Collapse>
       <ListItemButton sx={borderBottomStyle}>
-        {/* <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon> */}
         <ListItemText primary="Services" sx={colorText} />
       </ListItemButton>
       <ListItemButton sx={borderBottomStyle}>
-        {/* <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon> */}
         <ListItemText primary="Customization" sx={colorText} />
       </ListItemButton>
       <ListItemButton sx={borderBottomStyle}>
-        {/* <ListItemIcon>>
-        {/* <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon> */}
         <ListItemText primary="Events & Training" sx={colorText} />
       </ListItemButton>
       <ListItemButton sx={borderBottomStyle}>
-        {/* <ListItemIcon>>
-        {/* <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon> */}
         <ListItemText primary="Quick Order" sx={colorText} />
       </ListItemButton>
       <ListItemButton sx={borderBottomStyle} disableRipple>
-        {/* <ListItemIcon>>
-        {/* <ListItemIcon>
-          <DraftsIcon />
-        </ListItemIcon> */}
-
         <Box
           sx={{
             display: "flex",
@@ -187,7 +155,6 @@ export default function NestedList({ handleClose }) {
         >
           <CallIcon
             sx={{
-              // display: { xs: "none", md: "flex" },
               mr: 1,
               color: "#fff!important",
             }}

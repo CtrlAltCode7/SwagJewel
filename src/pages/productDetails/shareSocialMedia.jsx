@@ -22,7 +22,6 @@ export default function ShareSocialMedia() {
   return (
     <Box sx={{ width: 500 }}>
       <Popper
-        // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         sx={{ zIndex: 1200 }}
         open={open}
         anchorEl={anchorEl}
@@ -63,8 +62,7 @@ export default function ShareSocialMedia() {
               sx={{
                 cursor: "pointer",
                 fontSize: "14px",
-                //   color: hovered ? "#888" : "#555", // Change text color based on hover state
-                transition: "color 0.3s", // Added transition effect
+                transition: "color 0.3s",
               }}
             >
               Share

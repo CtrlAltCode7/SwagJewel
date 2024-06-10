@@ -13,8 +13,6 @@ export default function FooterGraphicText({
   variantStyle1,
   variantStyle2,
 }) {
-  //   const variantStyle1 = "h6";
-  //   const variantStyle = "body2";
   return (
     <Card
       sx={{
@@ -22,26 +20,12 @@ export default function FooterGraphicText({
         width: "23rem",
         flex: 1,
         "@media (max-width:  768px)": {
-          // Media query for smaller screens
-          // width: '50%', // Adjust width for smaller screens
-          // flexDirection: "column",
           width: "100%",
         },
       }}
     >
       <CardActionArea>
-        {/* <CardMedia
-          component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
-        /> */}
         <CardContent
-          sx={
-            {
-              // width: "-webkit-fill-available",
-            }
-          }
         >
           <Box
             sx={{
@@ -71,9 +55,6 @@ export default function FooterGraphicText({
               >
                 {title}
               </Typography>
-              {/* <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography> */}
             </Box>
             <Box
               sx={{

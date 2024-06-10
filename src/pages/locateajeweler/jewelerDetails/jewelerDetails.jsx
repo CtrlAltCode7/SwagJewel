@@ -15,10 +15,6 @@ const JewelerDetails = ({ jeweler }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          flexDirection: {
-            // sm: "column",
-            // md: "row"
-          }
         }}
       >
         <Typography
@@ -131,10 +127,10 @@ const JewelerDetails = ({ jeweler }) => {
         </Box>
       </Box>
 
-      <div>
+      <Box sx={{ display: "flex", flexDirection: "column",}}>
         <CustomAccordion title="Store Hours" details={jeweler.storeHours} />
         <CustomAccordion title="Services" details={jeweler.services} />
-      </div>
+      </Box>
     </Box>
   );
 };

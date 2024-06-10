@@ -10,59 +10,22 @@
     border: 1px solid #ccc;
     color: #555;
     font-size: 14px;
-
-
 }
 .detailsTable th {
     background-color: #f2f2f2;
 }
 .detailsTable td:nth-child(1) {
-    width: 271px; /* Fixed width for the first column */
+    width: 271px;
     background-color: #f5f5f5;
   }
   .detailsTable td:nth-child(2) {
-    width: calc(100% - 271px); /* Adjusted width for the second column */
+    width: calc(100% - 271px);
   }
-
-/* Responsive styling */
-/* @media only screen and (max-width: 768px) {
-    .detailsTable th, .detailsTable td {
-        display: block;
-        width: 100%;
-    }
-    .detailsTable th {
-        display: none;
-    }
-    .detailsTable td:nth-child(1) {
-    .detailsTable td:nth-child(2) {
-        min-width: 50%;
-        max-width: 70%; /* Adjust as needed */
-    /* }        width: auto;
-    }
-
-} */ */
-
-
 
 @media screen and (max-width: 768px) {
     table {
       border: 0;
     }
-
-    /* table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      
-      th, td {
-        text-align: left;
-        padding: 8px;
-        border-bottom: 1px solid #ddd;
-      } */
-      
-      /* tr:nth-child(even) {
-        background-color: #f2f2f2;
-      } */
   
     table caption {
       font-size: 1.3em;
@@ -93,10 +56,6 @@
     }
   
     table td::before {
-      /*
-      * aria-label has no advantage, it won't be read inside a table
-      content: attr(aria-label);
-      */
       content: attr(data-label);
       float: left;
       font-weight: bold;

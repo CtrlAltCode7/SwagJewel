@@ -31,7 +31,6 @@ export default function ProductDetailSection() {
         {/* Third Portion */}
         <Grid item xs={12} sm={isSmallScreen ? 12 : 6}>
           <Grid container spacing={2}>
-            {/* First half of the Third Portion */}
             <Grid
               item
               xs={isSmallScreen ? 12 : 7}
@@ -42,11 +41,6 @@ export default function ProductDetailSection() {
               }}
             >
               <Paper elevation={3} style={{ padding: 0 }}>
-                {/* <Typography variant="h6">Third Portion - First Half</Typography> */}
-                {/* <Typography>
-                  This is the content for the first half of the third portion.
-                  Add your content or components here.
-                </Typography> */}
                 <ProductDetailCustomizeOptions />
               </Paper>
               <Grid gap={1}>
@@ -91,13 +85,6 @@ export default function ProductDetailSection() {
                 }}
               >
                 <Paper elevation={3} style={{ padding: 20 }}>
-                  {/* <Typography variant="h6">
-                    Third Portion - Second Half
-                  </Typography>
-                  <Typography>
-                    This is the content for the second half of the third
-                    portion. Customize it as per your requirements.
-                  </Typography> */}
                   <Button
                     variant="contained"
                     fullWidth

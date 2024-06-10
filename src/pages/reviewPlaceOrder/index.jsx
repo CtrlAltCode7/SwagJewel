@@ -161,14 +161,6 @@ export default function ReviewPlaceOrder() {
                     item
                     xs={12}
                     md={5}
-                    sx={
-                      {
-                        // backgroundColor: "red",
-                        // display: "flex",
-                        // flexDirection: "column",
-                        // gap:1
-                      }
-                    }
                   >
                     <Box mt={3}>
                       <ShippingAddress
@@ -194,11 +186,6 @@ export default function ReviewPlaceOrder() {
                     item
                     xs={12}
                     md={7}
-                    sx={
-                      {
-                        // backgroundColor: "red"
-                      }
-                    }
                   >
                     <ProomoCodeAndPO />
                   </Grid>
@@ -214,13 +201,13 @@ export default function ReviewPlaceOrder() {
                     {/* <ProomoCodeAndPO /> */}
                     <Button
                       variant="contained"
-                      startIcon={<ArrowBackIcon />} // Add icon to the start of the button
+                      startIcon={<ArrowBackIcon />}
                       sx={{
-                        backgroundColor: "#fff", // Background color
-                        color: "#999699", // Text color
+                        backgroundColor: "#fff",
+                        color: "#999699",
                         "&:hover": {
-                          backgroundColor: "#666666", // Hover background color
-                          color: "#e0e0e0", // Hover text color
+                          backgroundColor: "#666666",
+                          color: "#e0e0e0",
                         },
                         paddingInlineStart: 3,
                       }}
@@ -333,31 +320,14 @@ export default function ReviewPlaceOrder() {
                         color: "#555",
                         p: 1,
                       }}
-                      // startAdornment={
-                      // }
+                    // startAdornment={
+                    // }
                     >
                       UPS next day saver $27.55
                     </Typography>
                   </Box>
                 </Grid>
               </Grid>
-
-              {/* <Grid container xs={12} md={12} spacing={2}>
-                <Grid item xs={12} md={7}>
-                  <Box sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center"
-                  }}>
-                    <Typography>Shipment #1</Typography>
-                    <Typography>Ships Today</Typography>
-
-                  </Box>
-                </Grid>
-                <Grid item xs={12} md={5}>
-                  <Typography>UPS next day saver</Typography>
-                </Grid>
-              </Grid> */}
 
               <Box sx={{ flexGrow: 1, border: "0px solid #cecece" }}>
                 <Grid container spacing={2} p={2}>
@@ -418,30 +388,6 @@ export default function ReviewPlaceOrder() {
                         </Grid>
                       </Grid>
                     </Box>
-                    {/* <Box>
-                  <Grid container spacing={2}>
-                    <Grid
-                      item
-                      xs={6}
-                      sx={{
-                        fontWeight: "bold",
-                        color: "#555",
-                      }}
-                    >
-                      Added on:
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                        }}
-                      >
-                        5/20/2024
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box> */}
                     <Box
                       sx={{
                         margin: "1rem",
@@ -450,52 +396,14 @@ export default function ReviewPlaceOrder() {
                         alignItems: "center",
                       }}
                     >
-                      {/* <Checkbox defaultChecked size="small" /> */}
-                      {/* <Typography
-                    variant="subtitle2"
-                    sx={{
-                      color: "red",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Match for Size and Color
-                  </Typography> */}
                     </Box>
                     <Box>
-                      {/* <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#555",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Special Instructions:
-                    <Tooltip title="Additional information about customer notes">
-                      <HelpIcon fontSize="small" />
-                    </Tooltip>
-                  </Typography> */}
-                      {/* <TextField
-                    fullWidth
-                    placeholder="Reviewed Prior to Shipping"
-                    variant="outlined"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        height: "40px",
-                      },
-                    }}
-                    InputLabelProps={{ shrink: true }}
-                  /> */}
                     </Box>
                   </Grid>
                   <Grid
                     item
                     xs={12}
                     md={5}
-                    sx={
-                      {
-                        // backgroundColor: "red",
-                      }
-                    }
                   >
                     <Grid container spacing={2}>
                       <Grid item xs={6}>
@@ -510,28 +418,12 @@ export default function ReviewPlaceOrder() {
                           <Typography
                             variant="outlined"
                             size="small"
-                            // sx={{
-                            //   width: "100px",
-                            //   "& .MuiOutlinedInput-root": {
-                            //     height: "40px",
-                            //     borderRadius: "0px",
-                            //   },
-                            // }}
-                            // defaultValue={1}
-                            // value={productQuantity}
-                            // onChange={(e) => setProductQuantity(e.target.value)}
                           >
                             1
                           </Typography>
                           <Typography
                             // variant="contained"
                             sx={{
-                              // height: "40px",
-                              // borderRadius: "0px",
-                              // backgroundColor: "#eee",
-                              // color: "#555",
-                              // border: "1px solid #555",
-                              // textTransform: "capitalize",
                               marginLeft: 1,
                             }}
                           >
@@ -578,12 +470,6 @@ export default function ReviewPlaceOrder() {
                             gap: 1,
                           }}
                         >
-                          {/* <LocalShippingIcon
-                        fontSize="small"
-                        sx={{
-                          visibility: "hidden",
-                        }}
-                      /> */}
                           <Typography variant="body2"></Typography>
                         </Box>
                       </Grid>
@@ -596,14 +482,6 @@ export default function ReviewPlaceOrder() {
               item
               xs={12}
               md={4}
-              // sx={{
-              //   border: "1px solid #cecece",
-              //   mx: { xs: 0, md: 0 },
-              //   width: { xs: "calc(100% + 0px)" },
-              //   my: { xs: 0 },
-              //   ml: { xs: 0 },
-              //   maxWidth: { xs: "90%", md: "100%" },
-              // }}
               mb={3}
             >
               {/* dd */}

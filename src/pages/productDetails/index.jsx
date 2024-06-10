@@ -69,18 +69,13 @@ export default function ProductDetails() {
         .then((data) => {
           return data;
         });
-
-      // console.log("API response:", response);
       setTableData(response);
     } catch (err) {
       console.error(err.message);
     }
   };
-
-  // useEffect hook to fetch the data from the database
   useEffect(() => {
     fetchBooks();
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -90,8 +85,6 @@ export default function ProductDetails() {
         sx={{
           padding: "0 1.875rem",
           "@media (max-width:  768px)": {
-            // Media query for smaller screens
-            // flexDirection: "column-reverse",
             padding: "0 5%",
           },
         }}
@@ -106,7 +99,6 @@ export default function ProductDetails() {
         >
           14K Rose 1/2 CTW Natural Diamond Anniversary Band
         </Typography>
-        {/* <Typography></Typography> */}
         <Box
           sx={{
             display: "flex",
@@ -129,8 +121,6 @@ export default function ProductDetails() {
             sx={{
               padding: "3% 10% 0",
               "@media (max-width:  768px)": {
-                // Media query for smaller screens
-                // flexDirection: "column-reverse",
                 padding: "3% 0 0",
               },
             }}
@@ -158,7 +148,7 @@ export default function ProductDetails() {
           sx={{
             padding: "3% 10% !important",
             "@media (max-width: 768px)": {
-              padding: 0, // Reduced padding for smaller screens
+              padding: 0,
             },
           }}
         >

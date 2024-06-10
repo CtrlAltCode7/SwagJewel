@@ -15,7 +15,6 @@ const CartTabs = () => {
           label={
             <span>
               Your Cart Items
-              {/* Add any conditional rendering or additional components here if needed */}
             </span>
           }
           href="/cart/"

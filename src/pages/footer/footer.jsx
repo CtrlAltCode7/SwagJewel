@@ -144,45 +144,6 @@ export default function Footer() {
                 redirect={item.redirect}
               />
             ))}
-
-        {/* {data?.map((item, index) => (
-          <>
-            <div style={classes.links} id="1">
-              <h3>{item.heading}</h3>
-              <a href="#" style={classes.aStyles}>
-                {item.body1}
-              </a>
-              <a href="#" style={classes.aStyles}>
-                {item.body2}
-              </a>
-              <a href="#" style={classes.aStyles}>
-                {item.body3}
-              </a>
-            </div>
-          </>
-        ))} */}
-
-        {/* <div style={classes.links} id="2">
-          <h4>Support</h4>
-          <a href="#" style={classes.aStyles}>
-            FAQs
-          </a>
-          <a href="#" style={classes.aStyles}>
-            Email Us
-          </a>
-          <a href="#" style={classes.aStyles}>
-            Refund Policy
-          </a>
-        </div>
-        <div style={classes.links} id="3">
-          <h4>Partnerships</h4>
-          <a href="#" style={classes.aStyles}>
-            Become a Partner
-          </a>
-          <a href="#" style={classes.aStyles}>
-            Check Status
-          </a>
-        </div> */}
         <Box
           sx={{
             display: "flex",
@@ -191,9 +152,6 @@ export default function Footer() {
             padding: "4rem 2rem 3rem 0",
             flexWrap: "wrap",
             "@media (max-width:  768px)": {
-              // Media query for smaller screens
-              // width: '50%', // Adjust width for smaller screens
-              // flexDirection: "column",
               width: "100%",
               padding: 0,
               flexDirection: "row",
@@ -228,11 +186,9 @@ export default function Footer() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          //   borderBottom: "2px solid red",
           paddingRight: "1rem",
           color: "#000",
           "@media (max-width:  768px)": {
-            // Media query for smaller screens
             flexDirection: "column-reverse",
             textAlign: "center",
             paddingRight: 0,
@@ -246,7 +202,6 @@ export default function Footer() {
             alignItems: "center",
             gap: "1rem",
             "@media (max-width:  768px)": {
-              // Media query for smaller screens
               flexDirection: "column",
               textAlign: "center",
             },
@@ -258,7 +213,6 @@ export default function Footer() {
             className="text-center"
             sx={{
               "@media (max-width:  768px)": {
-                // Media query for smaller screens
                 color: "#7a8f9e!important",
                 fontWeight: "bold",
               },
@@ -271,7 +225,6 @@ export default function Footer() {
           <Typography
             sx={{
               "@media (max-width:  768px)": {
-                // Media query for smaller screens
                 display: "flex",
                 flexDirection: "column-reverse",
                 textAlign: "center",
@@ -292,7 +245,6 @@ export default function Footer() {
               ml={"0.9rem"}
               sx={{
                 "@media (max-width:  768px)": {
-                  // Media query for smaller screens
                   backgroundColor: "#7a8f9e!important",
                   fontSize: "1rem",
                   color: "#fff",
@@ -319,12 +271,9 @@ export default function Footer() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          //   borderBottom: "2px solid red",
           padding: "1.5%",
           color: "#666",
-          // paddingRight: "1rem",
           "@media (max-width:  768px)": {
-            // Media query for smaller screens
             flexDirection: "column",
           },
         }}
@@ -336,7 +285,6 @@ export default function Footer() {
             alignItems: "center",
             gap: "1rem",
             "@media (max-width:  768px)": {
-              // Media query for smaller screens
               flexDirection: "column",
               marginBottom: "10%",
             },
@@ -364,7 +312,6 @@ export default function Footer() {
           sx={{
             display: "flex",
             gap: "1rem",
-            // paddingRight: "1rem",
           }}
         >
           <SociaMedia />

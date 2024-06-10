@@ -34,16 +34,9 @@ export default function ProductDetailContentTabs() {
         <ProductDetailsCustomizeHeaderOption
           leftTitle="Primary Stone Type"
           rightTitle="Lab-Grown Diamonds"
-          // paddingValue="2"
         />
       </Box>
       <Box
-        sx={
-          {
-            // p: 2,
-            // m:2
-          }
-        }
       >
         <ProductDetailTabs
           tabs={[

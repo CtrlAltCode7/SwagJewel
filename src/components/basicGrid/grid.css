@@ -1,7 +1,7 @@
 .custom-box:hover {
-    border-color: blue; /* Change border color on hover */
+    border-color: blue; 
   }
   
   .custom-box:hover .anniversary-band {
-    text-decoration: underline; /* Underline text on hover */
+    text-decoration: underline; 
   }

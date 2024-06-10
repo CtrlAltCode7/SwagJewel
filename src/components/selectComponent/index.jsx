@@ -18,18 +18,16 @@ export default function SelectComponent({ title, minWidthSize,placeholder }) {
   return (
     <Grid
       item
-      lg={3} // For large screens, each item takes up 3 out of 12 columns (4 items in a row)
-      md={6} // For medium screens, each item takes up 6 out of 12 columns (2 items in a row)
-      xs={12} // For small screens, each item takes up 12 out of 12 columns (1 item in a row)
+      lg={3} 
+      md={6} 
+      xs={12}
       sx={{
-        // background: "#eee",
         borderRadius: "5px",
         minHeight: "35px",
-        marginBottom: "1rem", // Add margin between items
+        marginBottom: "1rem",
       }}
     >
       <FormControl fullWidth sx={{
-        // padding: 2,
         backgroundColor: "ButtonHighlight"
       }}>
         {title && (
@@ -64,7 +62,6 @@ export default function SelectComponent({ title, minWidthSize,placeholder }) {
                 ".MuiNativeSelect-icon": {
                   color: "red",
                 },
-                // width: "90%"
               },
             },
           }}

@@ -81,26 +81,17 @@ function ProductSlider({ products }) {
         .then((data) => {
           return data;
         });
-
-      // console.log("API response:", response);
       setCards(response);
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  // useEffect hook to fetch the data from the database
-  useEffect(() => {
-    // fetchBooks();
-    // eslint-disable-next-line
-  }, []);
-
   useEffect(() => {
     if (apiData && apiData?.data?.Products?.length > 0) {
       const data = getImageUrlsWithGroupDescription(apiData)?.filter(Boolean);
       console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@', data)
       setImageUrlsWithGroupDescription(data);
-      // console.log("first", data);
     }
   }, [apiData]);
 
@@ -111,8 +102,6 @@ function ProductSlider({ products }) {
       className="slider-container homepade-slider"
       style={{
         padding: "3% 10% !important",
-        // background: "red",
-        // textAlign: "center !important",
         overflow: "hidden"
       }}
     >
@@ -121,7 +110,6 @@ function ProductSlider({ products }) {
           ? products?.map((product, index) => (
               <div key={index} className="slide-content" style={{
                 textAlign: "center !important",
-                // margin: "10px 38px "
               }}>
                 <img src={product.image} alt={product.title} style={{
                   margin: "auto"

@@ -165,30 +165,6 @@ function CustomAccordion() {
                   </Grid>
                 </Grid>
               </Box>
-              {/* <Box>
-                  <Grid container spacing={2}>
-                    <Grid
-                      item
-                      xs={6}
-                      sx={{
-                        fontWeight: "bold",
-                        color: "#555",
-                      }}
-                    >
-                      Added on:
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                        }}
-                      >
-                        5/20/2024
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box> */}
               <Box
                 sx={{
                   margin: "1rem",
@@ -197,52 +173,14 @@ function CustomAccordion() {
                   alignItems: "center",
                 }}
               >
-                {/* <Checkbox defaultChecked size="small" /> */}
-                {/* <Typography
-                    variant="subtitle2"
-                    sx={{
-                      color: "red",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Match for Size and Color
-                  </Typography> */}
               </Box>
               <Box>
-                {/* <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#555",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Special Instructions:
-                    <Tooltip title="Additional information about customer notes">
-                      <HelpIcon fontSize="small" />
-                    </Tooltip>
-                  </Typography> */}
-                {/* <TextField
-                    fullWidth
-                    placeholder="Reviewed Prior to Shipping"
-                    variant="outlined"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        height: "40px",
-                      },
-                    }}
-                    InputLabelProps={{ shrink: true }}
-                  /> */}
               </Box>
             </Grid>
             <Grid
               item
               xs={12}
               md={5}
-              sx={
-                {
-                  // backgroundColor: "red",
-                }
-              }
             >
               <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -273,12 +211,6 @@ function CustomAccordion() {
                     <Typography
                       // variant="contained"
                       sx={{
-                        // height: "40px",
-                        // borderRadius: "0px",
-                        // backgroundColor: "#eee",
-                        // color: "#555",
-                        // border: "1px solid #555",
-                        // textTransform: "capitalize",
                         marginLeft: 1,
                       }}
                     >
@@ -325,12 +257,6 @@ function CustomAccordion() {
                       gap: 1,
                     }}
                   >
-                    {/* <LocalShippingIcon
-                        fontSize="small"
-                        sx={{
-                          visibility: "hidden",
-                        }}
-                      /> */}
                     <Typography variant="body2"></Typography>
                   </Box>
                 </Grid>

@@ -8,7 +8,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
   const navigate = useNavigate(); 
   const handleProductICon = () => {
     // Redirect to another page
-    // navigate('/productdetails');
+    navigate('/productdetails');
   };
   return (
     <>
@@ -32,8 +32,8 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
             padding: "4% 2%",
             border: "1px solid #dee2e6",
             height: "375px",
-            width: "100%", // Set width to 100% to adjust dynamically
-            transition: "border-color 0.3s ease", // Add transition effect for smooth hover
+            width: "100%",
+            transition: "border-color 0.3s ease",
      
             "&:hover": {
               borderColor: "#999",
@@ -72,7 +72,6 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
               textAlign: "left",
               padding: "8.13%",
               "@media (max-width:  768px)": {
-                // Media query for smaller screens
                 padding: "0 4.13%",
               },
             }}
@@ -95,7 +94,6 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
                 </span>
               }
               placement="top"
-              // sx={{ borderRadius: "5px", }}
               componentsProps={{
                 tooltip: {
                   sx: {
@@ -123,10 +121,6 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
                   marginBottom: "10%",
                   "&:hover": {
                     "&.MuiButtonBase-root.MuiButton-root": {
-                      /* Add your custom styles here */
-                      // backgroundColor: 'your-desired-color',
-                      /* Add other styles as needed */
-                      // backgroundColor: "rgba(25, 118, 210, 0)",
                       backgroundColor: "green",
                       color: "#fff",
                     },
@@ -138,13 +132,6 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
               </Button>
             </Tooltip>
             <Typography
-              sx={
-                {
-                  // "&:hover": {
-                  //   textDecoration: 'underline'
-                  // },
-                }
-              }
               className="anniversary-band"
             >
               {productTitle}
@@ -156,25 +143,6 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
               }}
             >
               <Tooltip title="Add" placement="top">
-                {/* <Button
-                        sx={{
-                          fontSize: "12px",
-                          backgroundColor: "green",
-                          color: "#fff",
-                          minWidth: "45px",
-                          padding: 0,
-                          borderRadius: "15px",
-                          fontWeight: "bold",
-                          marginBottom: "1rem",
-                          "&:hover": {
-                            "&.MuiButtonBase-root.MuiButton-root": {
-                              backgroundColor: "green",
-                              color: "#fff",
-                            },
-                          },
-                        }}
-                        disableRipple={true}
-                      > */}
                 <img
                   src="https://assets.stullercloud.com/das/84852017.svg"
                   width={20}
@@ -201,8 +169,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
                 fontWeight: "bold",
                 textDecoration: "none !important",
                 "&.anniversary-band": {
-                  // Target the Typography with the class .anniversary-band
-                  textDecoration: "underline", // Underline text on hover
+                  textDecoration: "underline",
                 },
               }}
             >
