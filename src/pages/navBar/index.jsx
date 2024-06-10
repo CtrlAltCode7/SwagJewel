@@ -35,7 +35,7 @@ function Index() {
     useState([]);
   const location = useLocation();
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const message = location.state?.message;
+  const message = location?.data?.state?.message;
 
   useEffect(() => {
     if (message) {
