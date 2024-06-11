@@ -20,6 +20,7 @@ import StoreDetails from "./storeDetails";
 import GoogleApiService from "../googleApiService/googleApiService";
 import SearchIcon from "@mui/icons-material/Search";
 import JewelerDetails from "./jewelerDetails/jewelerDetails";
+import JewelerList from "./jewelerList/jewelerList";
 
 const LocateAJewelerContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "#ecf9f6",
@@ -209,7 +210,7 @@ const LocateAJeweler = () => {
               sx={{ height: 56 }}
               onClick={() => findJewelers(location)}
             >
-              Locate a Jeweler
+              Locate a Jeweler fff
             </Button>
           </Grid>
         </Grid>
@@ -255,7 +256,7 @@ const LocateAJeweler = () => {
             </Collapse>
           </Box>
           {/* <StoreDetails /> */}
-          <JewelerDetails />
+          {/* <JewelerList /> */}
         </Grid>
         <Grid item xs={12} md={6}>
           <GoogleApiService />
