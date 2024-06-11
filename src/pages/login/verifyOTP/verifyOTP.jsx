@@ -174,7 +174,7 @@ const OTP = ({ forgotpassword, VerifyOTPToken, setShowPassword, setShowVerifyOTP
             .then((result) => {
                 console.log('result', result)
                 if (result.message.trim().toLowerCase() === "success") {
-                    dispatch(setUser(result.user));
+                    dispatch(setUser(loginData?.data));
                     const token = result.user.token;
                     localStorage.setItem("token", JSON.stringify(token));
                     // setNotification("OTP Verified successfully")

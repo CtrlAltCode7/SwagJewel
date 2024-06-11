@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Button, FormControlLabel, Grid, InputLabel, Paper, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import AddAddressForm from '../addAddress/addAddressForm';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { setUser } from '../../../../slices/userSlice';
 
 
 export default function PersonalInfo() {
@@ -19,6 +20,7 @@ export default function PersonalInfo() {
     const [editModeEmail, setEditModeEmail] = useState(false);
     const [editModeMobile, setEditModeMobile] = useState(false);
     const userData = useSelector((state) => state.user.user);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -46,39 +48,37 @@ export default function PersonalInfo() {
         if (validateForm()) {
             console.log(formData);
 
-            const apiUrl = 'https://api.swagjewelers.com/api/user';
-            const requestData = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${userData.token}`,
+            try {
+                const myHeaders = new Headers();
+                const tokenToSend = userData.token;
+                console.log("tokenToSend", tokenToSend)
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append(`Authorization`, `Bearer ${tokenToSend}\n`);
 
-  
-                },
-                body: JSON.stringify({
-                    firstName: 'mahi'
-                })
-            };
-
-            fetch(apiUrl, requestData)
-                .then(response => {
-                    console.log('FETCH METHOD', response)
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response data:', data);
-                    // Handle response data
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                    // Handle errors
+                const raw = JSON.stringify({
+                    ...formData
                 });
 
+                const requestOptions = {
+                    method: "PUT",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.swagjewelers.com/api/user/", requestOptions)
+                    .then((response) => response.json())
+                    .then((result) => {
+                        console.log('after the update', result);
+                        dispatch(setUser(result?.data));
+                    })
+                    .catch((error) => console.error(error));
+            } catch (error) {
+                setError(error);
+            }
+
             // let data = JSON.stringify({
-            //     "firstName": "mahi"
+            //     firstName: "mahi"
             // });
 
             // let config = {
@@ -86,7 +86,7 @@ export default function PersonalInfo() {
             //     maxBodyLength: Infinity,
             //     url: 'https://api.swagjewelers.com/api/user',
             //     headers: {
-            //         'Content-Type': 'application/json',
+            //         // 'Content-Type': 'application/json',
             //         'Authorization': `Bearer ${userData.token}`
             //     },
             //     data: data
@@ -99,6 +99,9 @@ export default function PersonalInfo() {
             //     .catch((error) => {
             //         console.log(error);
             //     });
+
+            // const config = { headers: { Authorization: `Bearer ${userData.token}` } };
+            // axios.put(`https://api.swagjewelers.com/api/user`, { firstName: "Test with team" }, config)
 
 
             setEditMode(false);
