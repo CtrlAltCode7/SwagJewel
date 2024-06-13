@@ -4,8 +4,9 @@ import ProductDetailsCustomizeHeaderOption from "./productDetailsCustomizeHeader
 import marquiseImg from "../../assets/marquise.svg";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ProductDetailDropdown from "./productDetailDropdown";
-
+import StoneLocation from "./PopUps/StoneLocation";
 export default function ProductDetailsDimondsCategory() {
+  const [open, setOpen] = React.useState(false);
   return (
     <>
       <Box>
@@ -169,10 +170,11 @@ export default function ProductDetailsDimondsCategory() {
                   
                 }
               }}
-              // onClick={() => handleChange(null, index)}
+              onClick={() =>setOpen(true)} 
             >
               Set Stones
             </Button>
+            <StoneLocation open={open} setOpen={setOpen} />
           </Box>
         </Box>
       </Box>

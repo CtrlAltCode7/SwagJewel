@@ -18,14 +18,14 @@ function ProductCard({ productImg, productImgOnHover, productTitle }) {
           display: "flex",
           gap: "1rem",
           justifyItems: "center",
+          cursor: "pointer",
         }}
         xs={12}
         sm={12}
         md={3}
         lg={3}
         onClick={handleProductICon}
-
-      >
+        >
         <Box
           sx={{
             borderRadius: "5px",
