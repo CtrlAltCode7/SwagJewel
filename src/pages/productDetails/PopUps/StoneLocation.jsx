@@ -46,7 +46,7 @@ const StoneLocation = ({ open, setOpen }) => {
                                 marginTop: '20px',
                             }}
                             alt="Stone Locations"
-                            src="https://picsum.photos/seed/picsum/200/300"
+                            src="https://meteor.stullercloud.com/das/130071612?obj=metals&obj.recipe=yellow&$xlarge$"
                         />
                         <Box sx={{ marginLeft: "20px" }}>
                             <Typography sx={{ color: "gray", fontSize: "40px", fontWeight: "200" }}>Ring </Typography>
@@ -61,7 +61,7 @@ const StoneLocation = ({ open, setOpen }) => {
                                     </Box>
                                     <Typography> 22 Stones </Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", width: "400px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
+                                <Box sx={{ display: "flex", width: isMobile ? "100%" : "400px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
                                     <Box
                                         component="img"
                                         sx={{
@@ -69,7 +69,7 @@ const StoneLocation = ({ open, setOpen }) => {
                                             height: '25px',
                                         }}
                                         alt="Stone Locations"
-                                        src="https://picsum.photos/seed/picsum/200/300"
+                                        src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
                                     />
                                     <Typography> Varrying Size</Typography>
                                 </Box>

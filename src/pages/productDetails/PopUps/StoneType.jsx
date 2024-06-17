@@ -6,33 +6,31 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Link } from 'react-router-dom';
-import StoneType from './StoneType';
-const StoneListing = ({ open, setOpen }) => {
-    const [openStoneType, setOpenStoneType] = useState(false);
-
+import StoneTypeCategory from '../../../components/popUps/StoneTypeCategory';
+const StoneType = ({ isOpen, setIsOpen }) => {
+    const [openStonePopUp, setOpenStonePopUp] = useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
-        setOpen(false);
+        setIsOpen(false);
     };
 
     let data = [];
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < 17; i++) {
         data.push({
-            stone: `stone ${i}`,
-            size: (1 + i * 0.1).toFixed(1) + ' ' + "mm",
+            url: 'https://meteor.stullercloud.com/das/119231635',
+            title: "Diamond",
         });
     }
 
-    const HandleOpenStoneType = () => {
-        setOpenStoneType(true)
-        console.log("open stone type")
+    const openStoneCategory = () => {
+        setOpenStonePopUp(true);
     }
-
     return (
         <div>
             <Dialog
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
@@ -43,8 +41,8 @@ const StoneListing = ({ open, setOpen }) => {
                 <Box>
                     <CloseIcon sx={{ position: "absolute", right: "10px", cursor: "pointer" }} onClick={handleClose} />
                 </Box>
-                <DialogTitle id="alert-dialog-title" sx={{ fontWeight: "bold", marginTop: '40px' }}>
-                    Stone Locations
+                <DialogTitle id="alert-dialog-title" sx={{ fontWeight: "bold", marginTop: '30px' }}>
+                    StoneType
                 </DialogTitle>
 
                 <DialogContent>
@@ -83,6 +81,7 @@ const StoneListing = ({ open, setOpen }) => {
                                 <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
                             </Box>
                             <Box sx={{ display: "flex", flexDirection: "row", marginTop: '50px' }}>
+
                                 <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
                                 <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
                                 <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
@@ -96,71 +95,46 @@ const StoneListing = ({ open, setOpen }) => {
                                 <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
                             </Box>
                         </Box>
-                        
-                        <Box sx={{ marginLeft: "20px" }}>
-                            <Typography sx={{ color: "gray", fontSize: "40px", fontWeight: "200" }}>Ring</Typography>
-                            
-                            {
-                                data.map((item, index) => {
-                                    return (
-                                        <>
-                                            <Box sx={{
-                                                display: "flex", flexDirection: isMobile ? 'column' : 'row',
-                                                gap: isMobile ? '10px' : '20px', borderTop: "1px solid gray", borderBottom: "1px solid gray"
-                                            }}>
-                                                <Box>
-                                                    <Box sx={{ display: "flex", gap: "120px", width: "100px" }}>
-                                                        <Typography sx={{ fontWeight: "bold" }}> {item.stone} </Typography>
-                                                        {/* <ControlPointSharpIcon /> */}
-                                                    </Box>
-                                                    {/* <Typography> 22 Stones </Typography> */}
-                                                </Box>
-                                                <Box sx={{ display: "flex", width:isMobile ? '100%' :"300px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
-                                                    <Box
-                                                        component="img"
-                                                        sx={{
-                                                            width: '25px',
-                                                            height: '25px',
-                                                        }}
-                                                        alt="Stone Locations"
-                                                        src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
-                                                    />
-                                                    <Typography> {item.size}</Typography>
-                                                </Box>
-                                                <Box >
-                                                    <Button
-                                                        variant={"contained"}
-                                                        sx={{
-                                                            borderRadius: 1,
-                                                            textTransform: "none",
-                                                            padding: ".5rem 1.5rem",
-                                                            background: "#6fa8d1",
-                                                            color: "#fff",
-                                                            width: '200px',
-                                                            borderColor: "#6fa8d1",
-                                                            marginTop: "5px",
-                                                            marginBottom: "5px",
-                                                            "&:hover": {
-                                                                backgroundColor: "#999",
-                                                            }
-                                                        }}
-                                                        onClick={HandleOpenStoneType}
-                                                    >
-                                                        Select
-                                                    </Button>
-                                                </Box>
-                                                <Link style={{ color: "gray", marginTop: "10px" }} >
-                                                    Use My Stone
-                                                </Link>
+                        <Box>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+                                <Button onClick={handleClose} sx={{ color: 'black', border: '1px solid black', right: "30px", cursor: "pointer", width: isMobile ? "75px" : "150px" }}><ArrowBackIosNewIcon /> Back</Button>
+                            </Box>
+                            <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "50px", marginLeft: "10px" }}>
+                                <Typography sx={{ fontWeight: "bold" }}>Stone 1</Typography>
+                                <Box
+                                    component="img"
+                                    sx={{
+                                        width: '25px',
+                                        height: '25px',
+                                    }}
+                                    alt="Stone Locations"
+                                    src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
+                                />
+                                <Typography>1.00 mm</Typography>
+                            </Box>
+                            <Box onClick={openStoneCategory} sx={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "10px", marginLeft: "10px", cursor: "pointer" }}>
+                                {
+                                    data.map((item, index) => {
+                                        return (
+                                            <Box key={index} sx={{ display: "flex", flexDirection: "column", gap: "10px", border: "1px solid gray", padding: isMobile ? "10px 20px" : "20px 30px" }}>
+                                                <Box
+                                                    component="img"
+                                                    sx={{
+                                                        width: isMobile ? '60px' : '70px',
+                                                        height: isMobile ? '60px' : '70px',
+                                                    }}
+                                                    alt="Stone Locations"
+                                                    src={item.url}
+                                                />
+                                                <Typography sx={{ fontWeight: "bold" }}>{item.title}</Typography>
                                             </Box>
-                                        </>
-                                    )
-                                })
-                            }
+                                        )
+                                    })
+                                }
+                            </Box>
                         </Box>
                     </Box>
                 </DialogContent>
-              
                 <DialogActions>
                     <Button
                         variant={"contained"}
@@ -181,14 +155,12 @@ const StoneListing = ({ open, setOpen }) => {
                     >
                         Done
                     </Button>
+                    <StoneTypeCategory open={openStonePopUp} setOpen={setOpenStonePopUp} />
                 </DialogActions>
-                <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} />
             </Dialog>
-            {/* <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} /> */}
-          
         </div>
     )
 }
 
-export default StoneListing
+export default StoneType
 
