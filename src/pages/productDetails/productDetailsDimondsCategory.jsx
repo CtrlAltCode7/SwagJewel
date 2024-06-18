@@ -161,7 +161,7 @@ export default function ProductDetailsDimondsCategory() {
               sx={{
                 borderRadius: 20,
                 textTransform: "none",
-                padding: ".5rem 1.5rem",
+                // padding: ".5rem 1.5rem",
                 background: "#6fa8d1",
                 color: "#fff",
                 borderColor: "#6fa8d1",

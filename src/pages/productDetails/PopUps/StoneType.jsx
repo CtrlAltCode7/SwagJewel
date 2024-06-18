@@ -51,19 +51,20 @@ const StoneType = ({ isOpen, setIsOpen }) => {
 
                         <Box >
                             <Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
+                                    <Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
                             </Box>

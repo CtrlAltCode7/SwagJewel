@@ -19,7 +19,7 @@ const StoneTypeCategory = ({ open, setOpen }) => {
     const openStoneSearchResult = () => {
         setOpenStoneSearch(true);
     }
-  
+
     return (
         <div>
             <Dialog
@@ -44,19 +44,20 @@ const StoneTypeCategory = ({ open, setOpen }) => {
 
                         <Box >
                             <Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
+                                    <Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
+                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
                                     <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
                                 </Box>
                             </Box>
@@ -89,7 +90,9 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                             </Box>
                         </Box>
                         <Box>
-                            <Button onClick={handleClose} sx={{ color: 'black', border: '1px solid black', position: "absolute", right: "30px", cursor: "pointer", width: isMobile ? "75px" : "150px" }}><ArrowBackIosNewIcon /> Back</Button>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
+                                <Button onClick={handleClose} sx={{ color: 'black', border: '1px solid black', right: "30px", cursor: "pointer", width: isMobile ? "75px" : "150px" }}><ArrowBackIosNewIcon /> Back</Button>
+                            </Box>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "50px", marginLeft: "10px" }}>
                                 <Typography sx={{ fontWeight: "bold" }}>Stone 1</Typography>
                                 <Box
@@ -115,7 +118,7 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                 />
                                 <Typography sx={{ fontSize: "30px", color: "gray" }}>Diamond</Typography>
                             </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
+                            <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
                                 <Button
                                     variant={"contained"}
                                     sx={{
@@ -124,16 +127,16 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                         padding: ".5rem 1.5rem",
                                         background: "#fff",
                                         color: "black",
-                                        width: isMobile ? "250px" : "425px",
+                                        width: isMobile ? "300px" : "425px",
                                         border: '1px solid black',
-                                        
+                                        height: isMobile ? "60px" : "auto",
                                         "&:hover": {
                                             backgroundColor: "#999",
                                         }
                                     }}
                                     onClick={openStoneSearchResult}
                                 >
-                                  <Typography sx={{ fontWeight: "bold",textAlign:"center" }}>Imitation</Typography> 
+                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Imitation</Typography>
                                 </Button>
                                 <Box
                                     variant={"contained"}
@@ -145,18 +148,18 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                         color: "black",
                                         width: isMobile ? "250px" : "375px",
                                         border: '1px solid black',
-                                      
+
                                         "&:hover": {
                                             backgroundColor: "#999",
                                         }
                                     }}
                                     onClick={openStoneSearchResult}
                                 >
-                                    <Typography sx={{ fontWeight: "bold",textAlign:"center" }}>Lab Grown</Typography>
-                                    <Typography sx={{textAlign:"center"}}>Without Grading Report</Typography>
+                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Lab Grown</Typography>
+                                    <Typography sx={{ textAlign: "center" }}>Without Grading Report</Typography>
                                 </Box>
                             </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
+                            <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
                                 <Box
                                     variant={"contained"}
                                     sx={{
@@ -167,15 +170,15 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                         color: "black",
                                         width: isMobile ? "250px" : "375px",
                                         border: '1px solid black',
-                                        
+
                                         "&:hover": {
                                             backgroundColor: "#999",
                                         }
                                     }}
                                     onClick={openStoneSearchResult}
                                 >
-                                    <Typography sx={{ fontWeight: "bold" ,textAlign:"center" }}>Diamond</Typography>
-                                    <Typography sx={{textAlign:"center"}}>Without Grading Report</Typography>
+                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Diamond</Typography>
+                                    <Typography sx={{ textAlign: "center" }}>Without Grading Report</Typography>
                                 </Box>
                                 <Button
                                     variant={"contained"}
@@ -185,9 +188,9 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                         padding: ".5rem 1.5rem",
                                         background: "#6fa8d1",
                                         color: "#fff",
-                                        width: isMobile ? "250px" : "425px",
+                                        width: isMobile ? "300px" : "425px",
                                         borderColor: "#6fa8d1",
-                                        
+                                        height: isMobile ? "60px" : "auto",
                                         "&:hover": {
                                             backgroundColor: "#999",
                                         }
@@ -200,7 +203,7 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                         </Box>
                     </Box>
                 </DialogContent>
-                <StoneSearchResult isOpen={openStoneSearch} setIsOpen={setOpenStoneSearch}/>
+                <StoneSearchResult isOpen={openStoneSearch} setIsOpen={setOpenStoneSearch} />
             </Dialog>
         </div>
     )

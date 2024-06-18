@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -8,27 +8,23 @@ import { Box, Typography, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import StoneType from './StoneType';
+import { useSelector } from 'react-redux';
 const StoneListing = ({ open, setOpen }) => {
     const [openStoneType, setOpenStoneType] = useState(false);
 
+    const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+    // console.log("singleProduct", singleProduct);
+
+    const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
+    const StoneMapImage = singleProduct?.data?.Products[0].StoneMapImage;
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setOpen(false);
     };
-
-    let data = [];
-    for (let i = 0; i < 22; i++) {
-        data.push({
-            stone: `stone ${i}`,
-            size: (1 + i * 0.1).toFixed(1) + ' ' + "mm",
-        });
-    }
-
     const HandleOpenStoneType = () => {
         setOpenStoneType(true)
         console.log("open stone type")
     }
-
     return (
         <div>
             <Dialog
@@ -51,57 +47,20 @@ const StoneListing = ({ open, setOpen }) => {
 
                     <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : 'row' }}>
 
-                        <Box >
-                            <Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row" }}>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row", marginTop: '50px' }}>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                            </Box>
-                        </Box>
-                        
+                        <Box
+                            component="img"
+                            sx={{
+                                width: '300px',
+                                height: '300px',
+                            }}
+                            alt="Stone Locations"
+                            src={StoneMapImage}
+                        />
                         <Box sx={{ marginLeft: "20px" }}>
                             <Typography sx={{ color: "gray", fontSize: "40px", fontWeight: "200" }}>Ring</Typography>
-                            
+
                             {
-                                data.map((item, index) => {
+                                SettingOptions && SettingOptions.map((item, index) => {
                                     return (
                                         <>
                                             <Box sx={{
@@ -110,12 +69,12 @@ const StoneListing = ({ open, setOpen }) => {
                                             }}>
                                                 <Box>
                                                     <Box sx={{ display: "flex", gap: "120px", width: "100px" }}>
-                                                        <Typography sx={{ fontWeight: "bold" }}> {item.stone} </Typography>
+                                                        <Typography sx={{ fontWeight: "bold" ,paddingTop:'10px'}}> {item.Description} </Typography>
                                                         {/* <ControlPointSharpIcon /> */}
                                                     </Box>
                                                     {/* <Typography> 22 Stones </Typography> */}
                                                 </Box>
-                                                <Box sx={{ display: "flex", width:isMobile ? '100%' :"300px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
+                                                <Box sx={{ display: "flex", width: isMobile ? '100%' : "300px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
                                                     <Box
                                                         component="img"
                                                         sx={{
@@ -125,7 +84,7 @@ const StoneListing = ({ open, setOpen }) => {
                                                         alt="Stone Locations"
                                                         src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
                                                     />
-                                                    <Typography> {item.size}</Typography>
+                                                    <Typography> {item.SizeMM}</Typography>
                                                 </Box>
                                                 <Box >
                                                     <Button
@@ -160,7 +119,6 @@ const StoneListing = ({ open, setOpen }) => {
                         </Box>
                     </Box>
                 </DialogContent>
-              
                 <DialogActions>
                     <Button
                         variant={"contained"}
@@ -184,11 +142,8 @@ const StoneListing = ({ open, setOpen }) => {
                 </DialogActions>
                 <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} />
             </Dialog>
-            {/* <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} /> */}
-          
         </div>
     )
 }
-
 export default StoneListing
 
