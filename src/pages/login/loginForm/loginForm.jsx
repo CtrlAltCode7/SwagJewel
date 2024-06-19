@@ -22,6 +22,7 @@ import axios from "axios";
 import MuiAlert from "@mui/material/Alert";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ScrollDialog from "../forgotDialogbox/forgotDialogBox";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -98,11 +99,8 @@ const LoginForm = () => {
     }
 
     if (!usernameErr && !passwordErr) {
-      // alert("hi");
       setLoading(true);
       setNotification("");
-      console.log("first", username);
-      console.log("first", password);
 
       let data = JSON.stringify({
         userName: username,
@@ -123,12 +121,9 @@ const LoginForm = () => {
         .request(config)
         .then((response) => {
           if (response.status == 200 && response.data.message == "Success") {
-            const token = response.data.data.token;
-            localStorage.setItem("token", JSON.stringify(token));
-            navigate("/home", { state: { message: response.data.message } });
-            const message = response.data.message;
-            
+            navigate("/verifyOTP", { state: { message: response.data } });
           }
+
         })
         .catch((error) => {
           const message = error.response.data.message;
@@ -149,6 +144,10 @@ const LoginForm = () => {
       setOpenSnackbar(true);
     }
   }, [notification]);
+
+  const handleForgotPassword = () => {
+    navigate("/verifyOTP")
+  }
 
   return (
     <Container id="loginFormContainer">
@@ -227,7 +226,7 @@ const LoginForm = () => {
             />
           </Grid>
           <Grid item xs={12} className="recover-box">
-            <Link href="/forgot/">Recover username or password</Link>
+            <ScrollDialog />
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel

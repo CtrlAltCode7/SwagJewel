@@ -54,13 +54,13 @@
   }
   
   .sub-sub-menu div {
-    background-color: "red";
+    /* background-color: "red"; */
   
     padding: 8px 0;
   }
   
   .sub-sub-menu div:hover {
     background-color: #f0f0f0;
-    background-color: "red";
+    /* background-color: "red"; */
   }
   
