@@ -148,7 +148,7 @@ export default function BasicGrid() {
   }, []);
 
   // const remainingProducts =
-  
+
   // imageUrlsWithGroupDescription.length > 0 && imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
 
   if (loading) {
@@ -219,14 +219,14 @@ export default function BasicGrid() {
             sx={{
               margin: "0 1rem",
               backgroundColor: "#eee",
-              padding: "2rem 1.5rem 0",
+             // padding: "2rem 1.5rem 0",
             }}
           >
             <Grid container spacing={2}>
-              <SelectComponent title="Finger Size" minWidthSize="200" />
-              <SelectComponent title="Primary Stone Count" minWidthSize="200" />
-              <SelectComponent title="Primary Stone Shape" minWidthSize="200" />
-              <SelectComponent title="Metal Color" minWidthSize="200" />
+              <SelectComponent title="Finger Size" minWidthSize="180" />
+              <SelectComponent title="Primary Stone Count" minWidthSize="180" />
+              <SelectComponent title="Primary Stone Shape" minWidthSize="180" />
+              <SelectComponent title="Metal Color" minWidthSize="180" />
             </Grid>
           </Item>
           <Item
@@ -450,10 +450,10 @@ export default function BasicGrid() {
                     />
                   </Grid>
                 ))
-              : <h1>No Data Found</h1>
+                : <h1>No Data Found</h1>
               }
 
-                {/* {
+              {/* {
                   filteredData?.data?.data?.Products.length >0 ? imageUrlsWithGroupDescription
                   .map((imgWithTitle, index) => (
                     <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>

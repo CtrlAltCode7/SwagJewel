@@ -9,11 +9,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import StoneType from './StoneType';
 import { useSelector } from 'react-redux';
+import {Loader} from '../../../components/lazyLoader';
 const StoneListing = ({ open, setOpen }) => {
     const [openStoneType, setOpenStoneType] = useState(false);
 
     const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
-    // console.log("singleProduct", singleProduct);
+    const status = useSelector((state) => state.singleProduct.status);
+    console.log("singleProductStatus", status);
 
     const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
     const StoneMapImage = singleProduct?.data?.Products[0].StoneMapImage;
@@ -27,6 +29,7 @@ const StoneListing = ({ open, setOpen }) => {
     }
     return (
         <div>
+            {status === "loading" ? <Loader /> : 
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -142,6 +145,7 @@ const StoneListing = ({ open, setOpen }) => {
                 </DialogActions>
                 <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} />
             </Dialog>
+        }
         </div>
     )
 }

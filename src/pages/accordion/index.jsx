@@ -6,6 +6,8 @@ import {
   Checkbox,
   FormControlLabel,
   Typography,
+  CircularProgress,
+  Backdrop
 } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -27,7 +29,7 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData }) => {
     StoneCut: [],
     StoneSize: [],
   });
-
+  const [loading, setLoading] = useState(true);
   const convertDataStructure = useCallback((input) => {
     const result = {};
     for (const key in input) {
@@ -70,6 +72,7 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData }) => {
       .filter((item) => item.Values.length > 0);
 
     try {
+      setLoading(true);
       const response = await axios.post('https://api.swagjewelers.com/api/stuller', {
         PageSize: 10,
         Page: currentPage,
@@ -83,6 +86,9 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData }) => {
       console.log("filteredResponse,", response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
+    }
+    finally {
+      setLoading(false);
     }
   }, [selectedFilters]);
 
@@ -107,7 +113,17 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData }) => {
       />
     );
   };
-
+  
+  if (loading) {
+    return (
+      <Backdrop
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    );
+  }
   return (
     <div>
       {Object.entries(options).map(([category, items]) => (
