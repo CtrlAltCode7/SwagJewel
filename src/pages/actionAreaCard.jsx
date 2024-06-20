@@ -15,9 +15,6 @@ export default function ActionAreaCard({ image, title, description }) {
           m: 1,
           width: "100%",
           objectFit: !title && !description ? "contain" : "fill",
-          // height: "400px",
-          // objectFit: "inherit"
-          // backgroundColor: "red"
           borderRadius: ".5rem"
         }}
         elevation={5}

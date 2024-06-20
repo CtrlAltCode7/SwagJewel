@@ -57,7 +57,7 @@ export default function BasicTabs() {
   const [value, setValue] = useState(false);
   const [mouseOverTabs, setMouseOverTabs] = useState(false);
   const [productCategory, setProductCategory] = useState([]);
-
+  console.log('productCategory', productCategory)
   const boxRef = useRef(null);
   const navigate = useNavigate();
 
@@ -179,19 +179,19 @@ export default function BasicTabs() {
   ];
 
   tabData = productCategory.map((item) => ({
-    label: item.Category.Name,
-    content:
-      tabData.find((tab) => tab.label === item.Category.Name)?.content || null,
+    label: item.name,
+    // content:
+    //   tabData.find((tab) => tab.label === item.Category.Name)?.content || null,
     ...item,
   }));
 
   console.log("tabData", tabData);
 
-  const productlabel = productCategory.map((category, index) => {
-    return {
-      label: category.Category.Name,
-    };
-  });
+  // const productlabel = productCategory.map((category, index) => {
+  //   return {
+  //     label: category.Category.Name,
+  //   };
+  // });
 
   // console.log('productlabel', productlabel)
 
@@ -228,10 +228,10 @@ export default function BasicTabs() {
     navigate("/quickorder");
   };
 
-  const handleQuickShops =() => {
+  const handleQuickShops = () => {
     navigate("/quickshops");
 
-    
+
   }
 
   return (
@@ -268,7 +268,7 @@ export default function BasicTabs() {
           textColor="#fff"
           indicatorColor="red"
           TabIndicatorProps={{ style: { background: "#fff" } }}
-          // #3C474F
+        // #3C474F
         >
           {/* <Tab
             label="Products"
@@ -380,6 +380,7 @@ export default function BasicTabs() {
           <Button
             sx={{
               color: "#fff",
+              marginRight: "10px",
               ":hover": {
                 color: "#75b0da",
               },
@@ -397,7 +398,7 @@ export default function BasicTabs() {
             onMouseLeave={(e) => handleMouseLeave(e, 0)}
           >
             {/* <AppbarNavigation /> */}
-            <VerticalTabs tabData={tabData} setTabValue={setValue}/>
+            <VerticalTabs tabData={tabData} setTabValue={setValue} />
           </CustomTabPanel>
           <CustomTabPanel
             value={value}

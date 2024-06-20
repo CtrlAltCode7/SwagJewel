@@ -39,7 +39,7 @@ export default function ProductDetailSlider({ handleClick, activeClass }) {
   const sliderBorder = activeClass ? "applyBorder" : ""
   const settings = {
     customPaging: function (i) {
-      const isActive = i === this.currentSlide; // Check if the image is currently active
+      const isActive = i === this.currentSlide;
       const borderStyle = isActive ? "0 0 0 3px #547f9e" : "0 0 0 1px #bbbbbb";
       return (
         <a>

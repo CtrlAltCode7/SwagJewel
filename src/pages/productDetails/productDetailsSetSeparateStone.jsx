@@ -117,7 +117,6 @@ export default function ProductDetailsSetSeparateStone() {
               </td>
               <td
                 style={{
-                //   border: "1px solid #ccc",
                   padding: "8px",
                   textAlign: "right",
                   display: "flex",

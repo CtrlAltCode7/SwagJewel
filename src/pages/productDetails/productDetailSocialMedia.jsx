@@ -31,7 +31,6 @@ export default function ProductDetailSocialMedia() {
           </Typography>
         </Grid>
       ))}
-      {/* Add other buttons here */}
     </Grid>
   );
 }

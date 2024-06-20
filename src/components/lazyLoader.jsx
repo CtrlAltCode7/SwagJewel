@@ -4,7 +4,14 @@ import Box from "@mui/material/Box";
 
 const Loader = () => {
   return (
-    <Box className="flex items-center justify-center body overflowY-hidden overflowX-hidden w-screen h-screen ">
+    <Box className="flex items-center justify-center body overflowY-hidden overflowX-hidden w-screen h-screen "
+      style={{
+        display: 'flex',
+        // alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden'
+      }}
+    >
       <CircularProgress size={70} />
     </Box>
   );

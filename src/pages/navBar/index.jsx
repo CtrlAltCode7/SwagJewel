@@ -1,31 +1,19 @@
 import React from "react";
-// import ResponsiveAppBar from "./ResponsiveAppBar";
-// import SearchAppBar from "./SearchAppBar";
 import { Box, Stack, Typography } from "@mui/material";
 import ActionAreaCard from "../actioncardexample";
 import img1 from "../../assets/128968694.webp";
 import img2 from "../../assets/128968687.webp";
 import img3 from "../../assets/128968698.webp";
-// import Footer from "../Footer/Footer";
-// import StickyFooter from "../Footer/StickyFooter";
-// import TabsComponent from "../Appbar/Tabs";
-// import BasicTabs from "../Appbar/Tabs";
-// import { Link } from "react-router-dom";
 import Banner from "../banner";
-// import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-// import { makeStyles } from "@mui/styles";
-// import { withTheme } from '@mui/system';
 import { styled } from "@mui/material/styles";
 import "../../styles/homeStyles.css";
 import Layout from "../../components/layout/index";
-// import SwipeToSlide from "../../components/carousel/SwipeToSlide";
 import ProductSlider from "../../components/carousel/index";
 import HomePageSubBanner from "../homePageSubBanner/index";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../slices/apiSlice";
 import { useEffect } from "react";
 import { useState } from "react";
-// import { getImageUrlsWithGroupDescription } from "../../helpers/index";
 import { useLocation } from "react-router-dom";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
@@ -59,7 +47,6 @@ function Index() {
       title: "Equipment & Tools",
       description: "Take advantage of exclusive pricing.",
     },
-    // Add more objects as needed for additional cards
   ];
   const cardData1 = [
     {
@@ -74,10 +61,7 @@ function Index() {
     },
     {
       image: `${img3}`,
-      // title: "Equipment & Tools",
-      // description: "Take advantage of exclusive pricing.",
     },
-    // Add more objects as needed for additional cards
   ];
   const tabLabels = ["Engagement Rings", "Item Two", "Item Three"];
 
@@ -120,13 +104,12 @@ function Index() {
     padding: "0.8rem",
     position: "relative",
     [theme.breakpoints.up("lg")]: {
-      margin: "1.5rem 9rem 0", // Apply margin only at lg screens
+      margin: "1.5rem 9rem 0",
     },
     [theme.breakpoints.down("md")]: {
-      marginBottom: "1.5rem", // Apply margin only at lg screens
+      marginBottom: "1.5rem",
     },
   }));
-  // const BannerImg =
   const products = [
     {
       title: "Product 1",
@@ -181,7 +164,6 @@ function Index() {
       image: "https://meteor.stullercloud.com/das/348685?$list$",
     },
 
-    // Add more product objects as needed
   ];
 
   const dispatch = useDispatch();
@@ -193,17 +175,6 @@ function Index() {
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
-
-  // if (status === 'loading') {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (status === 'failed') {
-  //   return <div>Error: {error}</div>;
-  // }
-
-  // const apiData = useSelector((state) => state.api.data);
-  // console.log('apiData', apiData)
 
   useEffect(() => {
     if (message) {

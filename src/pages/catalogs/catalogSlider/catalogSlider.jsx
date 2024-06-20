@@ -78,10 +78,8 @@ function PreviousNextMethods({ displayData }) {
     }
   };
 
-  // useEffect hook to fetch the data from the database
   useEffect(() => {
     fetchBooks();
-    // eslint-disable-next-line
   }, [displayData]);
   return (
     <div className="slider-container">
@@ -91,16 +89,12 @@ function PreviousNextMethods({ displayData }) {
         }}
         {...settings}
       >
-        {/* {imageUrlsWithGroupDescription?.map((bookItem, index) => (
-          <BookCard book={bookItem} key={index} />
-        ))} */}
         {imageUrlsWithGroupDescription.map((product, index) => (
           <div
             key={index}
             className="slide-content"
             style={{
               textAlign: "center !important",
-              // margin: "10px 38px"
             }}
           >
             <img

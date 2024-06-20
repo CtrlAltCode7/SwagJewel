@@ -25,7 +25,6 @@ import Layout from "../../components/layout/index";
 
 const LocateAJewelerContainer = styled(Box)(({ theme }) => ({
   backgroundColor: "#ecf9f6",
-  // padding: theme.spacing(2),
   marginBottom: theme.spacing(1.5),
 }));
 
@@ -52,10 +51,8 @@ const LocateAJeweler = () => {
 
   const findJewelers = (location) => {
     console.log(`Finding jewelers near ${location} within ${range} miles.`);
-    // Implement the logic to find jewelers
   };
 
-  // const [location, setLocation] = useState('');
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleLocationChange = (e) => {
@@ -111,9 +108,7 @@ const LocateAJeweler = () => {
               backgroundImage:
                 "url(https://meteor.stullercloud.com/das/56391262?scl=1&$sharpen$)",
               backgroundPosition: "70% 73%",
-              // backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              // position: "relative",
               width: "100%",
               minHeight: "275px",
               backgroundPositionX: "center",
@@ -143,11 +138,8 @@ const LocateAJeweler = () => {
                 src="https://meteor.stullercloud.com/das/56392816?scl=1&amp;$sharpenpng$"
                 alt="Locate a Jeweler"
                 sx={{
-                  // width: "100%",
-                  // margin: "0 auto",
                   marginTop: -10,
                   marginBottom: 2,
-                  // padding: "0rem 2rem",
                   objectFit: "none",
                 }}
               />
@@ -223,7 +215,6 @@ const LocateAJeweler = () => {
                       },
                     }}
                   >
-                    {/* <InputLabel id="range-label">Range</InputLabel> */}
                     <Select
                       labelId="range-label"
                       id="range"

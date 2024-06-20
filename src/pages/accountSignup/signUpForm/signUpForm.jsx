@@ -315,17 +315,6 @@ function SignUpForm() {
             </Grid>
             <Grid item xs={12} sm={10}>
               <Box className="apply-btn-container">
-                {/* <Button
-                  type="submit"
-                  data-test="apply-now-button"
-                  form="account-signup-form"
-                  variant="contained"
-                  fullWidth
-                  className="apply-btn"
-                >
-                  Apply Now
-                </Button> */}
-                {/* <button type="submit">Now</button> */}
                 {loading ? (
                   <CircularProgress size={24} color="primary" />
                 ) : (
@@ -374,23 +363,11 @@ function SignUpForm() {
                 </Typography>
               </Box>
             </Grid>
-            {/* Second sub-column */}
           </Grid>
         </form>
       </Grid>
 
-      {/* Second column */}
-
-      {/* Second part */}
       <Grid item xs={12} sm={2} md={4} lg={6}>
-        {/* Content for the second part */}
-        {/* <div style={{ height: "100px" }}>
-          <h2>Part B</h2>
-          <p>
-            This is the content for Part B. You can add any text, images, or
-            other elements here.
-          </p>
-        </div> */}
       </Grid>
     </Grid>
   );

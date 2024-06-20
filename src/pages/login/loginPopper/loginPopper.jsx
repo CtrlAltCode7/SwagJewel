@@ -20,7 +20,6 @@ export default function LoginPopper() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if the click occurred outside of the Popper content and the trigger element
       if (
         popperRef.current &&
         !popperRef.current.contains(event.target) &&

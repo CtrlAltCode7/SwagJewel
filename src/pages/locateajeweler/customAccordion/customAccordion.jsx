@@ -27,7 +27,8 @@ const CustomAccordion = ({ title, details }) => {
             margin: 0,
             alignItems: "center",
             gap: 1,
-            marginTop: "1rem"
+            marginTop: "1rem",
+
           },
           minHeight: 0,
           padding: 0,
@@ -38,7 +39,8 @@ const CustomAccordion = ({ title, details }) => {
           color: "#555"
         }}>{title}</Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails >
+     
         {Array.isArray(details) ? (
           details.length > 0 && typeof details[0] === "object" ? (
             <Table>

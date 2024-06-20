@@ -26,7 +26,6 @@ export default function EstimateSummary() {
               xs={12}
               lg={8}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
                 color: "#555",
@@ -39,7 +38,6 @@ export default function EstimateSummary() {
               xs={12}
               lg={4}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 color: "#555",
@@ -52,7 +50,6 @@ export default function EstimateSummary() {
               xs={12}
               lg={8}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
                 color: "#555",
@@ -65,7 +62,6 @@ export default function EstimateSummary() {
               xs={12}
               lg={4}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 color: "#555",
@@ -78,10 +74,8 @@ export default function EstimateSummary() {
               xs={12}
               lg={8}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
-                // padding: '4px'
                 borderBottom: "1px solid",
                 color: "#555",
               }}
@@ -93,13 +87,10 @@ export default function EstimateSummary() {
               xs={12}
               lg={4}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 borderBottom: "1px solid",
                 color: "#555",
-
-                // padding: '4px'
               }}
             >
               $228.27
@@ -109,13 +100,10 @@ export default function EstimateSummary() {
               xs={12}
               lg={8}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
                 color: "#555",
                 fontWeight: "bold",
-
-                // padding: '4px'
               }}
             >
               Estimated Total:
@@ -125,13 +113,10 @@ export default function EstimateSummary() {
               xs={12}
               lg={4}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 color: "#555",
                 fontWeight: "bold",
-
-                // padding: '4px'
               }}
             >
               $228.27
@@ -141,26 +126,20 @@ export default function EstimateSummary() {
               xs={12}
               lg={2}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
-                // padding: '4px'
               }}
               mt={2}
             >
-              {/* Estimated Total: */}
             </Grid>
             <Grid
               item
               xs={12}
               lg={10}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 textTransform: "uppercase",
-
-                // padding: '4px'
               }}
               mt={2}
             >
@@ -173,26 +152,21 @@ export default function EstimateSummary() {
               xs={12}
               lg={2}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "end",
-                // padding: '4px'
               }}
               mt={2}
             >
-              {/* Estimated Total: */}
             </Grid>
             <Grid
               item
               xs={12}
               lg={10}
               sx={{
-                // background: "red",
                 display: "flex",
                 justifyContent: "flex-end",
                 textTransform: "uppercase",
 
-                // padding: '4px'
               }}
               mt={2}
             >
@@ -249,11 +223,6 @@ export default function EstimateSummary() {
           item
           xs={12}
           lg={2}
-          sx={
-            {
-              // backgroundColor: "red",
-            }
-          }
         ></Grid>
       </Grid>
     </Container>

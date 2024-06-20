@@ -9,9 +9,6 @@ import { useEffect } from "react";
 // import ProductCardDetails from "../../components/BasicGrid/ProductCardDetails"
 
 export default function ProductListing() {
-
-
-
   return (
     <Layout>
       <Box sx={{

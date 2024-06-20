@@ -17,14 +17,11 @@ export default function CustomizedSearchInput() {
         alignItems: 'center',
         width: 400,
         borderRadius: '20px',
-        '@media (max-width:  768px)': { // Media query for smaller screens
-          width: '50%', // Adjust width for smaller screens
+        '@media (max-width:  768px)': {
+          width: '50%',
         }
       }}
     >
-      {/* <IconButton sx={{ p: '10px' }} aria-label="menu">
-        <MenuIcon />
-      </IconButton> */}
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search..."
@@ -43,9 +40,6 @@ export default function CustomizedSearchInput() {
       >
         <SearchIcon />
       </IconButton>
-      {/* <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-        <DirectionsIcon />
-      </IconButton> */}
     </Paper>
   );
 }

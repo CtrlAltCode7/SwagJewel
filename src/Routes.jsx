@@ -77,15 +77,15 @@ const routes = [
       </PrivateRoute>
     ),
   },
-  // {
-  //   path: "/productdetails",
-  //   element: (
-  //     <PrivateRoute>
-  //       <ProductDetails />
-  //     </PrivateRoute>
-  //   ),
-  //   // loader: <Loader />,
-  // },
+  {
+    path: "/productdetails",
+    element: (
+      <PrivateRoute>
+        <ProductDetails />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
   {
     path: "/login",
     element: (
@@ -236,5 +236,4 @@ const AllRoutes = () => {
     </Router>
   );
 };
-
 export default AllRoutes;

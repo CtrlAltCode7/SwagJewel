@@ -13,11 +13,8 @@ export default function ContactUsContainer() {
       associates: "English-speaking and Spanish-speaking associates",
       phoneNumber: "800-877-7777",
       phoneNumberHref: "tel:+18008777777",
-      fax: "800-444-4741", // Fax number
-      // contactMethod: {
-      //     whatsapp: '9999999', // Generic contact method as an object
-      // },
-      contactMethodLabel: "Fax", // Dynamic label for contact method
+      fax: "800-444-4741",
+      contactMethodLabel: "Fax",
       location: {
         address: "302 Rue Louis XIV",
         city: "Lafayette",
@@ -40,7 +37,7 @@ export default function ContactUsContainer() {
       contactMethod: {
           whatsapp: '9999999',
       },
-      contactMethodLabel: "Fax", // Dynamic label for contact method
+      contactMethodLabel: "Fax", 
       location: {
         address: "302 Rue Louis XIV",
         city: "Lafayette",
@@ -59,17 +56,8 @@ export default function ContactUsContainer() {
       associates: "English-speaking and Spanish-speaking associates",
       phoneNumber: "800-877-7777",
       phoneNumberHref: "tel:+18008777777",
-      fax: "800-444-4741", // Fax number
-      // contactMethod: {
-      //     whatsapp: '9999999', // Generic contact method as an object
-      // },
-      contactMethodLabel: "Fax", // Dynamic label for contact method
-      // location: {
-      //   address: "302 Rue Louis XIV",
-      //   city: "Lafayette",
-      //   state: "LA",
-      //   zip: "70508",
-      // },
+      fax: "800-444-4741",
+      contactMethodLabel: "Fax",
       mailingAddress: "P.O. Box 87777",
       mailingCity: "Lafayette",
       mailingState: "LA",
@@ -82,25 +70,14 @@ export default function ContactUsContainer() {
       associates: "English-speaking and Spanish-speaking associates",
       phoneNumber: "800-877-7777",
       phoneNumberHref: "tel:+18008777777",
-      fax: "800-444-4741", // Fax number
-      // contactMethod: {
-      //     whatsapp: '9999999', // Generic contact method as an object
-      // },
-      contactMethodLabel: "Fax", // Dynamic label for contact method
-      // location: {
-      //   address: "302 Rue Louis XIV",
-      //   city: "Lafayette",
-      //   state: "LA",
-      //   zip: "70508",
-      // },
+      fax: "800-444-4741",
+      contactMethodLabel: "Fax",
       mailingAddress: "P.O. Box 87777",
       mailingCity: "Lafayette",
       mailingState: "LA",
       mailingZip: "70508",
     },
   ];
-
-  // Render the component
 
   return (
     <Grid

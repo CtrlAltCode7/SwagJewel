@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -52,7 +52,7 @@ function a11yProps(index) {
 export default function VerticalTabs({ tabData, setTabValue }) {
   // console.log('tabs data', tabData)
   const [value, setValue] = useState(0);
-
+  const [navigateTo, setNavigateTo] = useState(null);
   const handleChange = (event, newValue) => {
     console.log("Changed tab:", newValue);
     setValue(newValue);
@@ -118,18 +118,19 @@ export default function VerticalTabs({ tabData, setTabValue }) {
 
   //   // Add more tab data as needed
   // ];
+  
   const handleTabClick = (e, categoryLink) => {
-    console.log("categoryLink", categoryLink);
+    console.log("categoryLink", categoryLink.path);
     const convertToUrl = categoryLink.label.toLowerCase().replace(/ /g, "-");
-    console.log("categoryLink", convertToUrl);
+    console.log("categoryURL", convertToUrl);
     // Redirect to another page tab.label, tab.category.Id
-    navigate(`/productListing/${convertToUrl}`, {
-      state: { message: categoryLink.Category.Id },
+    navigate(`/productListing/${categoryLink.path}`, {
+      state: { message: categoryLink.ManufacturerCategoryId},
     });
     setTabValue(false);
   };
 
-  console.log("tabData", tabData);
+  // console.log("tabData", tabData);
 
   return (
     <Box

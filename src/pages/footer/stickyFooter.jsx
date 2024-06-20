@@ -47,7 +47,6 @@ const StickyFooter = () => {
           justifyContent: "center",
           gap: "1rem",
           "@media (max-width:  768px)": {
-            // Media query for smaller screens
             flexDirection: "column",
             alignItems: "center",
             gap: "0.25rem",
@@ -85,9 +84,6 @@ const StickyFooter = () => {
           </span>
         </div>
       </Box>
-      {/* <div style={{ textAlign: 'center' }}>
-        <img src="arrow.png" alt="Arrow" style={{ width: '50px', height: 'auto' }} />
-      </div> */}
     </footer>
   );
 };

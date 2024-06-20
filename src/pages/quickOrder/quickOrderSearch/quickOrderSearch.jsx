@@ -9,8 +9,7 @@ const QuickOrderSearch = () => {
   const handleInputChange = (event, newInputValue) => {
     setInputValue(newInputValue);
     if (newInputValue.length >= 2) {
-      // Simulate fetching data from API
-      setOptions(["Option 1", "Option 2", "Option 3"]); // Replace with actual data fetching logic
+      setOptions(["Option 1", "Option 2", "Option 3"]);
     } else {
       setOptions([]);
     }
@@ -46,7 +45,6 @@ const QuickOrderSearch = () => {
             placeholder="Enter Series, Item Number, or Stone Type"
             variant="outlined"
             size="small"
-            // sx={{ height: "30px", flex: 1,width: "100%" }}
             required
           />
         )}

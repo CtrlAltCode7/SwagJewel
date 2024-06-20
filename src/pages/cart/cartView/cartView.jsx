@@ -281,37 +281,6 @@ export default function CartView() {
             >
               $228.27
             </Grid>
-
-                {/* <Grid item xs={6} md={2}>
-                  <Typography
-                    sx={{
-                      color: "#555",
-                      fontWeight: "bold",
-                      textAlign: "center",
-                    }}
-                    variant="body2"
-                  >
-                    QUANTITY
-                  </Typography>
-                </Grid> */}
-                {/* <Grid item xs={6} md={10}> */}
-                {/* <Grid
-                    item
-                    // xs={12}
-                    // lg={10}
-                    sx={{
-                      // background: "red",
-                      display: "flex",
-                      justifyContent: "flex-end",
-                      textTransform: "uppercase",
-
-                      // padding: '4px'
-                    }}
-                    mt={2}
-                  > */}
-
-                {/* </Grid> */}
-                {/* </Grid> */}
               </Grid>
               <Grid></Grid>
             </Grid>
@@ -339,7 +308,6 @@ export default function CartView() {
                 </Typography>
               </Grid>
               <Grid item xs={12} md={5}>
-                {/* Additional content can be added here if needed */}
               </Grid>
               <Grid item container spacing={2} xs={12} md={5}>
                 <Grid item xs={6} md={6}>
@@ -448,7 +416,6 @@ export default function CartView() {
                   sx={{
                     margin: "1rem",
                     display: "flex",
-                    // justifyContent: "center",
                     alignItems: "center",
                   }}
                 >
@@ -494,7 +461,6 @@ export default function CartView() {
                 xs={12}
                 md={5}
                 sx={{
-                  // backgroundColor: "red",
                 }}
               >
                 <Grid container spacing={2}>
@@ -642,26 +608,6 @@ export default function CartView() {
                 </Box>
               </Grid>
             </Grid>
-            {/* <Box
-              sx={{
-                backgroundColor: "#eee",
-                display: "flex",
-                justifyContent: "end",
-                alignItems: "center"
-              }}
-              p={1}
-            >
-              <Box sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 1
-              }}>
-                <FavoriteBorderIcon fontSize="small"/>
-                <Typography>Move To Favorites</Typography>
-              </Box>
-            </Box> */}
             <Box
               sx={{
                 backgroundColor: "#eee",
