@@ -178,7 +178,7 @@ export default function BasicTabs() {
     // Add more tab data as needed
   ];
 
-  tabData = productCategory.map((item) => ({
+  tabData = productCategory && productCategory.map((item) => ({
     label: item.name,
     // content:
     //   tabData.find((tab) => tab.label === item.Category.Name)?.content || null,

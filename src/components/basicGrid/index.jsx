@@ -48,6 +48,8 @@ export default function BasicGrid() {
   const [filteredData, setfilterData] = useState(null)
   const apiData = useSelector((state) => state.api.data);
 
+  console.log("currentPage", currentPage);
+
   // console.log("filteredData", filteredData?.data?.data?.Products);
   console.log("filteredData", filteredData);
   const { category } = useParams();
@@ -78,7 +80,7 @@ export default function BasicGrid() {
         // console.log("totalProducts", response?.data?.TotalNumberOfProducts);
         if (response && response?.data?.data?.Products.length > 0) {
           console.log("responss dfdsdsddsde", response?.data?.data?.TotalNumberOfProducts);
-          setLength(response?.data?.data?.TotalNumberOfProducts);
+          // setLength(response?.data?.data?.TotalNumberOfProducts);
           // const data = getImageUrlsWithGroupDescription(response);
           // setImageUrlsWithGroupDescription(data);
           // const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
@@ -88,7 +90,7 @@ export default function BasicGrid() {
 
           // filteredData?.data?.data?.Products.length >0 ? setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(filteredData)) : setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(response));
 
-          setTotalPages(Math.ceil(tolalProducts / productsPerPage));
+          // setTotalPages(Math.ceil(tolalProducts / productsPerPage));
         } else {
           console.log("response is empty");
         }
@@ -99,21 +101,30 @@ export default function BasicGrid() {
       }
     };
     fetchProducts();
-  }, [category, catId, currentPage]);
+  }, [category, catId]);
 
 
   useEffect(() => {
     if (filteredData) {
       const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
       setImageUrlsWithGroupDescription(filteredResponse);
+      setLength(filteredData?.data?.data?.TotalNumberOfProducts);
+      let tolalProducts = filteredData?.data?.data?.TotalNumberOfProducts;
+      if (filteredData) {
+        setTotalPages(Math.ceil(tolalProducts / productsPerPage));
+      }
     }
-  }, [filteredData]);
+  }, [filteredData, category, catId, currentPage]);
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [category]);
 
   const handleProdutPerPageChange = (e, value) => {
     setProductsPerPage(e.target.value);
@@ -180,7 +191,7 @@ export default function BasicGrid() {
       >
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
-            <AccordionComponent data={accordionApiData} currentPage={currentPage} catId={catId} getFilteredData={handleFilteredData} />
+            <AccordionComponent data={accordionApiData} currentPage={currentPage} catId={catId} getFilteredData={handleFilteredData} setCurrentPage = {setCurrentPage}/>
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
@@ -219,7 +230,7 @@ export default function BasicGrid() {
             sx={{
               margin: "0 1rem",
               backgroundColor: "#eee",
-             // padding: "2rem 1.5rem 0",
+              // padding: "2rem 1.5rem 0",
             }}
           >
             <Grid container spacing={2}>
@@ -499,3 +510,5 @@ export default function BasicGrid() {
     </Box>
   );
 }
+
+

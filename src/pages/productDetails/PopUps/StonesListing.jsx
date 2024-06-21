@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 import StoneType from './StoneType';
 import { useSelector } from 'react-redux';
 import {Loader} from '../../../components/lazyLoader';
+import useMyStone from '../../../components/popUps/useMyStone';
 const StoneListing = ({ open, setOpen }) => {
     const [openStoneType, setOpenStoneType] = useState(false);
-
+    const [isUseMyStone , setIsUseMyStone] = useState(false);
     const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
     const status = useSelector((state) => state.singleProduct.status);
     console.log("singleProductStatus", status);
@@ -26,6 +27,10 @@ const StoneListing = ({ open, setOpen }) => {
     const HandleOpenStoneType = () => {
         setOpenStoneType(true)
         console.log("open stone type")
+    }
+
+    const openUseMyStone = () => {
+        setIsUseMyStone(true);
     }
     return (
         <div>
@@ -111,9 +116,9 @@ const StoneListing = ({ open, setOpen }) => {
                                                         Select
                                                     </Button>
                                                 </Box>
-                                                <Link style={{ color: "gray", marginTop: "10px" }} >
+                                                <Button onClick={openUseMyStone} style={{ color: "gray", marginTop: "10px" }} >
                                                     Use My Stone
-                                                </Link>
+                                                </Button>
                                             </Box>
                                         </>
                                     )
@@ -121,6 +126,7 @@ const StoneListing = ({ open, setOpen }) => {
                             }
                         </Box>
                     </Box>
+                    <useMyStone isOpen={isUseMyStone} setIsOpen={setIsUseMyStone} />
                 </DialogContent>
                 <DialogActions>
                     <Button
