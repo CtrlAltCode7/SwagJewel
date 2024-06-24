@@ -10,12 +10,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import ControlPointSharpIcon from '@mui/icons-material/ControlPointSharp';
 // import { fetchSingleProduct } from '../../../slices/singleProductSlice';
 import { useDispatch, useSelector } from 'react-redux';
-const useMyStone = ({ open, setOpen }) => {
+const useMyStone = ({ isOpen, setIsOpen }) => {
     const [openList, setOpenList] = React.useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
     const dispatch = useDispatch();
     const handleClose = () => {
-        setOpen(false);
+        setIsOpen(false);
     };
 
     const openListPopUP = () => {
@@ -26,7 +26,7 @@ const useMyStone = ({ open, setOpen }) => {
     return (
         <div>
             <Dialog
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"

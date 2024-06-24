@@ -251,7 +251,9 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                             <StyledTableRow component="tr" sx={{ backgroundColor: '#e0e0e0', mb: 1 }} key={index}>
                                                 <TableCell>{row.shape}</TableCell>
                                                 <TableCell>{row.cut}</TableCell>
-                                                <TableCell>{row.color}</TableCell>
+                                                <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                                                    <Box sx={{border: '1px solid black', width: '15px', height: '15px',borderRadius: '50%' ,backgroundColor:'white'}}></Box>
+                                                    {row.color}</TableCell>
                                                 <TableCell>{row.quality}</TableCell>
                                                 <TableCell>{row.uniqueness}</TableCell>
                                                 <TableCell>{row.mmSize}</TableCell>
@@ -260,7 +262,7 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                                 <TableCell>{row.estPrice}</TableCell>
                                                 <TableCell>
                                                     <Button variant="contained" color="primary">
-                                                        Action
+                                                        Set
                                                     </Button>
                                                 </TableCell>
                                             </StyledTableRow>

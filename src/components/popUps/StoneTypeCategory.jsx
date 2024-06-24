@@ -9,7 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import StoneSearchResult from './StoneSearchResult';
 import { Link } from 'react-router-dom';
-const StoneTypeCategory = ({ open, setOpen }) => {
+const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
     const [openStoneSearch, setOpenStoneSearch] = useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
@@ -19,6 +19,11 @@ const StoneTypeCategory = ({ open, setOpen }) => {
     const openStoneSearchResult = () => {
         setOpenStoneSearch(true);
     }
+
+    console.log("stoneFamily", stoneFamily)
+    // let name =stoneFamily.Name
+
+    const stoneFamilyCategories = stoneFamily?.Categories
 
     return (
         <div>
@@ -41,54 +46,16 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                 <DialogContent>
 
                     <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : 'row' }}>
+                        <Box
+                            component="img"
+                            sx={{
+                                width: '270px',
+                                height: '270px',
+                            }}
+                            alt="Stone Locations"
+                            src={StoneMapImage}
+                        />
 
-                        <Box >
-                            <Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
-                                    <Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row" }}>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row", marginTop: '50px' }}>
-
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                            </Box>
-                        </Box>
                         <Box>
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
                                 <Button onClick={handleClose} sx={{ color: 'black', border: '1px solid black', right: "30px", cursor: "pointer", width: isMobile ? "75px" : "150px" }}><ArrowBackIosNewIcon /> Back</Button>
@@ -116,89 +83,60 @@ const StoneTypeCategory = ({ open, setOpen }) => {
                                     alt="Stone Locations"
                                     src="https://meteor.stullercloud.com/das/119231635"
                                 />
-                                <Typography sx={{ fontSize: "30px", color: "gray" }}>Diamond</Typography>
+                                <Typography sx={{ fontSize: "30px", color: "gray" }}>{stoneFamily && stoneFamily.Name}</Typography>
+                            </Box>
+                            <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", flexWrap: "wrap", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
+                                {
+                                    stoneFamilyCategories && stoneFamilyCategories.map((item, ind) => {
+                                        return (
+                                            <Button key={ind}
+                                                variant={"contained"}
+                                                sx={{
+                                                    borderRadius: 1,
+                                                    textTransform: "none",
+                                                    padding: ".5rem 1.5rem",
+                                                    background: "#fff",
+                                                    color: "black",
+                                                    width: isMobile ? "300px" : "425px",
+                                                    border: '1px solid black',
+                                                    height: isMobile ? "60px" : "auto",
+                                                    "&:hover": {
+                                                        backgroundColor: "#999",
+                                                    }
+                                                }}
+                                                onClick={openStoneSearchResult}
+                                            >
+                                                <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>{item}</Typography>
+                                            </Button>
+                                        )
+                                    })
+                                }
+                                {
+                                   stoneFamilyCategories && stoneFamilyCategories.length > 1 &&
+                                    <Button
+                                        variant={"contained"}
+                                        sx={{
+                                            borderRadius: 1,
+                                            textTransform: "none",
+                                            padding: ".5rem 1.5rem",
+                                            background: "#6fa8d1",
+                                            color: "#fff",
+                                            width: isMobile ? "300px" : "425px",
+                                            borderColor: "#6fa8d1",
+                                            height: isMobile ? "60px" : "auto",
+                                            "&:hover": {
+                                                backgroundColor: "#999",
+                                            }
+                                        }}
+                                        onClick={openStoneSearchResult}
+                                    >
+                                        View All
+                                    </Button>
+                                }
+                               
                             </Box>
                             <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
-                                <Button
-                                    variant={"contained"}
-                                    sx={{
-                                        borderRadius: 1,
-                                        textTransform: "none",
-                                        padding: ".5rem 1.5rem",
-                                        background: "#fff",
-                                        color: "black",
-                                        width: isMobile ? "300px" : "425px",
-                                        border: '1px solid black',
-                                        height: isMobile ? "60px" : "auto",
-                                        "&:hover": {
-                                            backgroundColor: "#999",
-                                        }
-                                    }}
-                                    onClick={openStoneSearchResult}
-                                >
-                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Imitation</Typography>
-                                </Button>
-                                <Box
-                                    variant={"contained"}
-                                    sx={{
-                                        borderRadius: 1,
-                                        textTransform: "none",
-                                        padding: ".5rem 1.5rem",
-                                        background: "#fff",
-                                        color: "black",
-                                        width: isMobile ? "250px" : "375px",
-                                        border: '1px solid black',
-
-                                        "&:hover": {
-                                            backgroundColor: "#999",
-                                        }
-                                    }}
-                                    onClick={openStoneSearchResult}
-                                >
-                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Lab Grown</Typography>
-                                    <Typography sx={{ textAlign: "center" }}>Without Grading Report</Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
-                                <Box
-                                    variant={"contained"}
-                                    sx={{
-                                        borderRadius: 1,
-                                        textTransform: "none",
-                                        padding: ".5rem 1.5rem",
-                                        background: "#fff",
-                                        color: "black",
-                                        width: isMobile ? "250px" : "375px",
-                                        border: '1px solid black',
-
-                                        "&:hover": {
-                                            backgroundColor: "#999",
-                                        }
-                                    }}
-                                    onClick={openStoneSearchResult}
-                                >
-                                    <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>Diamond</Typography>
-                                    <Typography sx={{ textAlign: "center" }}>Without Grading Report</Typography>
-                                </Box>
-                                <Button
-                                    variant={"contained"}
-                                    sx={{
-                                        borderRadius: 1,
-                                        textTransform: "none",
-                                        padding: ".5rem 1.5rem",
-                                        background: "#6fa8d1",
-                                        color: "#fff",
-                                        width: isMobile ? "300px" : "425px",
-                                        borderColor: "#6fa8d1",
-                                        height: isMobile ? "60px" : "auto",
-                                        "&:hover": {
-                                            backgroundColor: "#999",
-                                        }
-                                    }}
-                                    onClick={openStoneSearchResult}
-                                >
-                                    View All
-                                </Button>
+                              
                             </Box>
                         </Box>
                     </Box>
