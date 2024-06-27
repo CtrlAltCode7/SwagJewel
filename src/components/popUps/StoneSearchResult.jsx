@@ -24,7 +24,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-
+import { useSelector } from 'react-redux';
 
 const StyledTableHeadCell = styled(TableCell)({
     fontWeight: 'bold',
@@ -39,33 +39,13 @@ const StyledTableRow = styled(TableRow)({
     }
 });
 
-const dummyData = [
-    {
-        shape: 'Round',
-        cut: 'Excellent',
-        color: 'D',
-        quality: 'VVS1',
-        uniqueness: 'High',
-        mmSize: '5.0',
-        sizeCt: '1.0',
-        priceCt: '$5000',
-        estPrice: '$5000'
-    },
-    {
-        shape: 'Oval',
-        cut: 'Very Good',
-        color: 'G',
-        quality: 'VS1',
-        uniqueness: 'Medium',
-        mmSize: '6.0',
-        sizeCt: '1.5',
-        priceCt: '$4000',
-        estPrice: '$6000'
-    },
-    // Add more dummy data as needed
-];
-
 const StoneSearchResult = ({ isOpen, setIsOpen }) => {
+    const stoneSearchData = useSelector((state) => state.singleProduct.searchStone);
+    const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+    const StoneMapImage = singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
+    // console.log("stoneSearchData", stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones);
+    let normalizedData = stoneSearchData && stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones.map((item) => item?.Product?.DescriptiveElementGroup?.DescriptiveElements);
+    console.log("normalizedData", normalizedData);
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setIsOpen(false);
@@ -93,53 +73,15 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
 
                     <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : 'row' }}>
 
-                        <Box >
-                            <Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} >
-                                    <Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row",alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row",alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                                <Box sx={{ display: "flex", flexDirection: "row",alignItems: "center", gap: "10px" }} ><Box sx={{ width: '5px', height: '5px', borderRadius: '50%', border: '1px solid black', margingTop: '10px', backgroundColor: 'black' }}></Box>
-                                    <Typography sx={{ fontSize: '10px' }} >2 Rounds 1.7mm SH</Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row" }}>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                            </Box>
-                            <Box sx={{ display: "flex", flexDirection: "row", marginTop: '50px' }}>
-
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }} >  </Box>
-                                <Box sx={{ width: '35px', height: '35px', borderRadius: '50%', border: '1px solid black', marginTop: '10px' }}>  </Box>
-                                <Box sx={{ width: '30px', height: '30px', borderRadius: '50%', border: '1px solid black', marginTop: '20px' }}>  </Box>
-                                <Box sx={{ width: '25px', height: '25px', borderRadius: '50%', border: '1px solid black', marginTop: '16px' }}>  </Box>
-                                <Box sx={{ width: '20px', height: '20px', borderRadius: '50%', border: '1px solid black', marginTop: '12px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '8px' }}>  </Box>
-                                <Box sx={{ width: '15px', height: '15px', borderRadius: '50%', border: '1px solid black', marginTop: '4px' }}>  </Box>
-                            </Box>
-                        </Box>
+                        <Box
+                            component="img"
+                            sx={{
+                                width: '250px',
+                                height: '250px',
+                            }}
+                            alt="Stone Locations"
+                            src={StoneMapImage}
+                        />
                         <Box>
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px' }}>
                                 <Button onClick={handleClose} sx={{ color: 'black', border: '1px solid black', right: "30px", cursor: "pointer", width: isMobile ? "75px" : "150px" }}><ArrowBackIosNewIcon /> Back</Button>
@@ -185,7 +127,7 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                         </select>
                                     </div>
                                     <div style={{ margingTop: "10px", display: 'flex', flexDirection: 'column', gap: "10px" }}>
-                                        <label style={{ fontWeight: "bold" }}>Cut</label>
+                                        <label style={{ fontWeight: "bold" }}>Color</label>
                                         <select style={{ width: isMobile ? '250px' : '280px', height: '40px' }}>
                                             <option value="1">1</option>
                                             <option value="1">1</option>
@@ -193,7 +135,7 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                         </select>
                                     </div>
                                     <div style={{ margingTop: "10px", display: 'flex', flexDirection: 'column', gap: "10px" }}>
-                                        <label style={{ fontWeight: "bold" }}>Cut</label>
+                                        <label style={{ fontWeight: "bold" }}>Quality</label>
                                         <select style={{ width: isMobile ? '250px' : '280px', height: '40px' }}>
                                             <option value="1">1</option>
                                             <option value="1">1</option>
@@ -201,7 +143,7 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                         </select>
                                     </div>
                                 </Box>
-                                <Box sx={{ display: "flex",flexDirection: isMobile ? 'column' : "row", gap:isMobile ? "1px" : "10px" ,marginTop: "10px", marginLeft: "10px", justifyContent: 'space-between' }}>
+                                <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : "row", gap: isMobile ? "1px" : "10px", marginTop: "10px", marginLeft: "10px", justifyContent: 'space-between' }}>
                                     <FormControl>
                                         <RadioGroup
                                             row={!isMobile}
@@ -209,9 +151,9 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                             name="row-radio-buttons-group"
                                         >
                                             <FormControlLabel value="female" control={<Radio />} label="All" />
-                                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                            <FormControlLabel value="disabled" control={<Radio />} label="other" />
+                                            <FormControlLabel value="male" control={<Radio />} label="Natural" />
+                                            <FormControlLabel value="other" control={<Radio />} label="Lab-Grown" />
+                                            <FormControlLabel value="disabled" control={<Radio />} label="Imitation" />
                                         </RadioGroup>
                                     </FormControl>
                                     {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}> */}
@@ -247,19 +189,19 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {dummyData.map((row, index) => (
+                                        {normalizedData && normalizedData.map((row, index) => (
                                             <StyledTableRow component="tr" sx={{ backgroundColor: '#e0e0e0', mb: 1 }} key={index}>
-                                                <TableCell>{row.shape}</TableCell>
-                                                <TableCell>{row.cut}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'SHAPE').Value}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'CUT').Value}</TableCell>
                                                 <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <Box sx={{border: '1px solid black', width: '15px', height: '15px',borderRadius: '50%' ,backgroundColor:'white'}}></Box>
-                                                    {row.color}</TableCell>
-                                                <TableCell>{row.quality}</TableCell>
-                                                <TableCell>{row.uniqueness}</TableCell>
-                                                <TableCell>{row.mmSize}</TableCell>
-                                                <TableCell>{row.sizeCt}</TableCell>
-                                                <TableCell>{row.priceCt}</TableCell>
-                                                <TableCell>{row.estPrice}</TableCell>
+                                                    <Box sx={{ border: '1px solid black', width: '15px', height: '15px', borderRadius: '50%', backgroundColor: 'white', marginTop: '5px' }}></Box>
+                                                    {row.find(item => item.Name === 'COLOR').Value}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'QUALITY').Value}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'UNIQUE').Value}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'SIZE MM').Value.replace(/\s*\(.*\)$/, '')}</TableCell>
+                                                <TableCell>{row.find(item => item.Name === 'SIZE CT').Value.split(" ")[0]}</TableCell>
+                                                <TableCell>Price Restricted</TableCell>
+                                                <TableCell></TableCell>
                                                 <TableCell>
                                                     <Button variant="contained" color="primary">
                                                         Set

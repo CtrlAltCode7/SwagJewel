@@ -1,15 +1,34 @@
-import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./productDetailsTable.css";
+import { fetchSingleProduct } from "../../slices/singleProductSlice";
+export default function ProductDetailsTableContainer({ productDetailsTableData }) {
+  const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+  const Weight = singleProduct && singleProduct?.data?.Products[0].Weight;
+  const Specs = singleProduct && singleProduct?.data?.Products[0].Specifications;
 
+  let Specifications = [{
+    "label": "Weight",
+    "value": Weight
+  },];
 
-export default function ProductDetailsTableContainer({ productDetailsTableData}) {
+  {
+    if (Specs) {
+      for (let i = 0; i < Specs.length; i++) {
+        Specifications.push({
+          label: Specs[i].Name,
+          value: Specs[i].Value
+        });
+      }
+    }
+  }
+
+  console.log("Specs", Specifications);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchSingleProduct());
+  }, []);
+
   return (
     <table className="detailsTable">
       <tbody>
@@ -23,7 +42,7 @@ export default function ProductDetailsTableContainer({ productDetailsTableData})
         >
           Specifications
         </p>
-        {productDetailsTableData?.map((item, index) => (
+        {Specifications && Specifications?.map((item, index) => (
           <tr key={index}>
             <td>{item.label}:</td>
             <td>{item.value}</td>

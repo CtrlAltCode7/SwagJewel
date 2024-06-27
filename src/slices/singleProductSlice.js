@@ -6,6 +6,8 @@ const initialState = {
   stoneFamily: [],
   status: 'idle',
   stoneFamilyStatus: 'idle',
+  searchStoneStatus: 'idle',
+  searchStone: {},
   error: null
 };
 
@@ -26,7 +28,7 @@ export const fetchSingleProduct = createAsyncThunk('singleProduct/fetchSinglePro
 });
 
 //StoneFamily
-export const fetchStoneFamily = createAsyncThunk('singleProduct/fetchStoneFamily', async ({LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType,ConfigurationModelId}) => {
+export const fetchStoneFamily = createAsyncThunk('singleProduct/fetchStoneFamily', async ({ LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelId }) => {
   try {
     const response = await axios.post('https://api.swagjewelers.com/api/stuller/stone-families', {
       ConfigurationModelId: 972635,
@@ -51,6 +53,37 @@ export const fetchStoneFamily = createAsyncThunk('singleProduct/fetchStoneFamily
     console.error('Error StoneCustimizationResponse:', error);
   }
 });
+
+//fetchStoneSearchByGroup
+export const fetchStoneSearchByGroup = createAsyncThunk('singleProduct/fetchStoneSearchByGroup', async () => {
+  try {
+    const response = await axios.post('https://api.swagjewelers.com/api/stuller/search-stones-by-stone-group', {
+      ConfigurationModelId: 972635,
+      StoneGroupName: "Accent",
+      Locations: [
+        {
+          "LocationNumber": 1,
+          "Dimension1": 1,
+          "Dimension2": 0,
+          "Dimension3": 0,
+          "Shape": "Round",
+          "SettingType": "Shared Prong"
+        }
+      ],
+      StoneFamilyName: "Diamond",
+      StoneCategories: [
+        "Lab-Grown"
+      ],
+      IncludeBomActiveStones: true,
+      IncludeSerializedProduct: true
+    });
+    return response.data;
+    // console.log("StoneCustimizationResponse,", response.data);
+  } catch (error) {
+    console.error('Error StoneCustimizationResponse:', error);
+  }
+});
+
 // Create the API slice
 const singleProductSlice = createSlice({
   name: 'singleProduct',
@@ -82,6 +115,20 @@ const singleProductSlice = createSlice({
       })
       .addCase(fetchStoneFamily.rejected, (state, action) => {
         state.stoneFamilyStatus = 'failed';
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(fetchStoneSearchByGroup.pending, (state) => {
+        state.searchStoneStatus = 'loading';
+      })
+      .addCase(fetchStoneSearchByGroup.fulfilled, (state, action) => {
+        console.log('state', state, action)
+        state.searchStoneStatus = 'succeeded';
+        state.searchStone = action.payload;
+      })
+      .addCase(fetchStoneSearchByGroup.rejected, (state, action) => {
+        state.searchStoneStatus = 'failed';
         state.error = action.error.message;
       });
   },

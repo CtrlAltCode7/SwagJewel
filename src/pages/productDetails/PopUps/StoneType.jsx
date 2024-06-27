@@ -23,13 +23,25 @@ const StoneType = ({ isOpen, setIsOpen }) => {
         setIsOpen(false);
     };
 
-    // let data = [];
-    // for (let i = 0; i < 17; i++) {
-    //     data.push({
-    //         url: 'https://meteor.stullercloud.com/das/119231635',
-    //         title: "Diamond",
-    //     });
-    // }
+    let images = [
+        "https://meteor.stullercloud.com/das/119231635",
+        "https://meteor.stullercloud.com/das/63990312",
+        "https://meteor.stullercloud.com/das/63990428",
+        "https://meteor.stullercloud.com/das/63990704",
+        "https://meteor.stullercloud.com/das/63989561",
+        "https://meteor.stullercloud.com/das/63990688",
+        "https://meteor.stullercloud.com/das/63991001",
+        "https://meteor.stullercloud.com/das/64005142",
+        "https://meteor.stullercloud.com/das/63989926",
+        "https://meteor.stullercloud.com/das/66448646",
+        "https://meteor.stullercloud.com/das/63990698",
+        "https://meteor.stullercloud.com/das/63989547",
+        "https://meteor.stullercloud.com/das/63990290",
+        "https://meteor.stullercloud.com/das/63990421",
+        "https://meteor.stullercloud.com/das/68043108",
+        "https://meteor.stullercloud.com/das/63990687",
+        "https://meteor.stullercloud.com/das/63990147"
+    ]
 
     const openStoneCategory = (data) => {
         setOpenStonePopUp(true);
@@ -87,17 +99,18 @@ const StoneType = ({ isOpen, setIsOpen }) => {
                                 {
                                     data && data.map((item, index) => {
                                         return (
-                                            <Box onClick={()=>openStoneCategory(item)} key={index} sx={{ display: "flex", flexDirection: "column", gap: "10px", border: "1px solid gray", padding: isMobile ? "10px 20px" : "20px 30px" }}>
+                                            <Box onClick={()=>openStoneCategory(item)} key={index} sx={{ display: "flex", flexDirection: "column", gap: "10px", border: "1px solid gray", padding: isMobile ? "10px 20px" : "10px 20px" }}>
                                                 <Box
                                                     component="img"
                                                     sx={{
                                                         width: isMobile ? '60px' : '70px',
                                                         height: isMobile ? '60px' : '70px',
+                                                        alignSelf: "center"
                                                     }}
                                                     alt="Stone Locations"
-                                                    src="https://meteor.stullercloud.com/das/119231635"
+                                                    src={images[index]}
                                                 />
-                                                <Typography sx={{ fontWeight: "bold" }}>{item.Name}</Typography>
+                                                <Typography sx={{ fontWeight: "bold",textAlign: "center"}}>{item.Name}</Typography>
                                             </Box>
                                         )
                                     })

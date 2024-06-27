@@ -6,10 +6,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Box, Typography, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useDispatch, useSelector } from 'react-redux';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import StoneSearchResult from './StoneSearchResult';
 import { Link } from 'react-router-dom';
+import {fetchStoneSearchByGroup} from "../../slices/singleProductSlice";
 const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
+    const dispatch = useDispatch();
     const [openStoneSearch, setOpenStoneSearch] = useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
@@ -17,6 +20,7 @@ const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
     };
 
     const openStoneSearchResult = () => {
+        dispatch(fetchStoneSearchByGroup());
         setOpenStoneSearch(true);
     }
 
