@@ -4,18 +4,38 @@ import axios from 'axios';
 
 // Define the initial state
 const initialState = {
-  data: [],
+  data: null,
   status: 'idle',
   error: null
 };
 
-// Define the thunk for fetching data from the API
-export const fetchData = createAsyncThunk('api/fetchData', async () => {
+// // Define the thunk for fetching data from the API
+// export const fetchData = createAsyncThunk('api/fetchData', async () => {
+//   try {
+//     const response = await axios.get('https://api.swagjewelers.com/api/stuller?PageSize=20&Page=1&Include[]=1&Filter[]=5');
+//     return response.data;
+//   } catch (error) {
+//     throw Error(error.response.data.error);
+//   }
+// });
+
+
+export const fetchData = createAsyncThunk('api/fetchData', async ({catId, page , subcategories}) => {
   try {
-    const response = await axios.get('https://api.swagjewelers.com/api/stuller?PageSize=20&Page=1&Include[]=1&Filter[]=5');
-    return response.data;
-  } catch (error) {
-    throw Error(error.response.data.error);
+    // setLoading(true);
+    const response = await axios.post('https://api.swagjewelers.com/api/stuller', {
+      PageSize: 10,
+      Page: page || 1,
+      CategoryIds: [catId],
+      Include: [1],
+      Filter: [5],
+      AdvancedProductFilters: subcategories || [],
+      // AdvancedProductFilters: [{ "Type": "StoneShape",  "Values": [{"Value": "Straight Baguette"}] }]
+    });
+    // getFilteredData(response);
+    return response;
+   } catch (error) {
+    console.error('Error fetching data:', error);
   }
 });
 

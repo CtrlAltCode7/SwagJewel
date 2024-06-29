@@ -76,7 +76,7 @@ const routes = [
     ),
   },
   {
-    path: "/productdetails",
+    path: "/productdetails/:SKU",
     element: (
       <PrivateRoute>
         <ProductDetails />

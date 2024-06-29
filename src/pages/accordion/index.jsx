@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import {
   Accordion,
   AccordionSummary,
@@ -12,6 +13,7 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { FixedSizeList as List } from 'react-window';
+import { fetchData } from "../../slices/apiSlice";
 // import { commonOptions } from './Data';
 import { commonOptions } from "../../constants/commonOptions";
 import axios from 'axios';
@@ -19,6 +21,8 @@ import axios from 'axios';
 const AccordionComponent = ({ currentPage, catId, getFilteredData, setCurrentPage }) => {
   console.log("currentPageppp", currentPage);
   const [expanded, setExpanded] = useState(false);
+  const dispatch = useDispatch();
+
   // const [firstPage , setFirstPage] = useState(null)
   const [selectedFilters, setSelectedFilters] = useState({
     ProductType: [],
@@ -58,7 +62,6 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData, setCurrentPag
           [category]: [...categoryFilters, option],
         };
       }
-
     });
   }, []);
 
@@ -71,33 +74,33 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData, setCurrentPag
     applyFilters(currentPage);
   }, [currentPage, catId]);
 
-  const applyFilters = useCallback(async (page) => {
+  const applyFilters = useCallback((page) => {
     const subcategories = Object.entries(selectedFilters)
       .map(([type, values]) => ({
         Type: type,
         Values: values.map((value) => ({ Value: value })),
       }))
       .filter((item) => item.Values.length > 0);
-
-    try {
-      setLoading(true);
-      const response = await axios.post('https://api.swagjewelers.com/api/stuller', {
-        PageSize: 10,
-        Page: page,
-        CategoryIds: [catId],
-        Include: [1],
-        Filter: [5],
-        AdvancedProductFilters: subcategories
-        // AdvancedProductFilters: [{ "Type": "StoneShape",  "Values": [{"Value": "Straight Baguette"}] }]
-      });
-      getFilteredData(response);
-      console.log("filteredResponse,", response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-    finally {
-      setLoading(false);
-    }
+    dispatch(fetchData({ page, catId, subcategories }));
+    // try {
+    //   // setLoading(true);
+    //   const response = await axios.post('https://api.swagjewelers.com/api/stuller', {
+    //     PageSize: 10,
+    //     Page: page,
+    //     CategoryIds: [catId],
+    //     Include: [1],
+    //     Filter: [5],
+    //     AdvancedProductFilters: subcategories
+    //     // AdvancedProductFilters: [{ "Type": "StoneShape",  "Values": [{"Value": "Straight Baguette"}] }]
+    //   });
+    //   getFilteredData(response);
+    //   console.log("filteredResponse,", response.data);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+    // finally {
+    //   setLoading(false);
+    // }
   }, [selectedFilters, currentPage, catId]);
 
   const handleAccordionChange = useCallback((panel) => (event, isExpanded) => {
@@ -123,16 +126,16 @@ const AccordionComponent = ({ currentPage, catId, getFilteredData, setCurrentPag
   };
 
 
-  if (loading) {
-    return (
-      <Backdrop
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
-        open={loading}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Backdrop
+  //       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
+  //       open={loading}
+  //     >
+  //       <CircularProgress color="inherit" />
+  //     </Backdrop>
+  //   );
+  // }
   return (
     <div>
       {Object.entries(options).map(([category, items]) => (

@@ -14,6 +14,7 @@ import {fetchStoneSearchByGroup} from "../../slices/singleProductSlice";
 const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
     const dispatch = useDispatch();
     const [openStoneSearch, setOpenStoneSearch] = useState(false);
+    
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setOpen(false);

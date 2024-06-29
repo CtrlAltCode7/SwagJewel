@@ -11,20 +11,24 @@ import ControlPointSharpIcon from '@mui/icons-material/ControlPointSharp';
 import StonesListing from './StonesListing';
 import { fetchSingleProduct } from '../../../slices/singleProductSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
 const StoneLocation = ({ open, setOpen }) => {
     const [openList, setOpenList] = React.useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
+    const {SKU} = useParams();
     const dispatch = useDispatch();
+    const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+    const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions || [];
+    const images = singleProduct?.data?.Products[0].FullySetImages[0].FullUrl;
     const handleClose = () => {
         setOpen(false);
     };
 
     const openListPopUP = () => {
         setOpenList(true);
-        dispatch(fetchSingleProduct());
+        dispatch(fetchSingleProduct(SKU));
     }
-    
-    return (
+   return (
         <div>
             <Dialog
                 open={open}
@@ -54,7 +58,8 @@ const StoneLocation = ({ open, setOpen }) => {
                                 marginTop: '20px',
                             }}
                             alt="Stone Locations"
-                            src="https://meteor.stullercloud.com/das/130071612?obj=metals&obj.recipe=yellow&$xlarge$"
+                            // src="https://meteor.stullercloud.com/das/130071612?obj=metals&obj.recipe=yellow&$xlarge$"
+                            src={images}
                         />
                         <Box sx={{ marginLeft: "20px" }}>
                             <Typography sx={{ color: "gray", fontSize: "40px", fontWeight: "200" }}>Ring </Typography>
@@ -67,7 +72,7 @@ const StoneLocation = ({ open, setOpen }) => {
                                         <Typography> Accent </Typography>
                                         <ControlPointSharpIcon sx={{ curser: "pointer" }} onClick={openListPopUP} />
                                     </Box>
-                                    <Typography> 22 Stones </Typography>
+                                    <Typography>{SettingOptions.length}</Typography>
                                 </Box>
                                 <Box sx={{ display: "flex", width: isMobile ? "100%" : "400px", gap: "20px", marginLeft: "20px", marginTop: "10px" }}>
                                     <Box

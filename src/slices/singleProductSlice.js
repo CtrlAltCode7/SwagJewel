@@ -8,17 +8,19 @@ const initialState = {
   stoneFamilyStatus: 'idle',
   searchStoneStatus: 'idle',
   searchStone: {},
+  stoneSearchStatus: 'idle',
+  stoneSearch: {},
   error: null
 };
 
 //singleProduct
-export const fetchSingleProduct = createAsyncThunk('singleProduct/fetchSingleProduct', async () => {
+export const fetchSingleProduct = createAsyncThunk('singleProduct/fetchSingleProduct', async (SKU) => {
   try {
     const response = await axios.post('https://api.swagjewelers.com/api/stuller', {
       PageSize: 10,
       Page: 1,
       Include: [1],
-      SKU: ["72445:106:P"]
+      SKU: [SKU] || ["72445:106:P"]
     });
     return response.data;
     // console.log("StoneCustimizationResponse,", response.data);
@@ -28,11 +30,14 @@ export const fetchSingleProduct = createAsyncThunk('singleProduct/fetchSinglePro
 });
 
 //StoneFamily
-export const fetchStoneFamily = createAsyncThunk('singleProduct/fetchStoneFamily', async ({ LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelId }) => {
+export const fetchStoneFamily = createAsyncThunk('singleProduct/fetchStoneFamily', async ({ LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID }) => {
   try {
+    console.log('Parameters received in fetchStoneFamily:', {
+      LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
+    });
     const response = await axios.post('https://api.swagjewelers.com/api/stuller/stone-families', {
-      ConfigurationModelId: 972635,
-      // ConfigurationModelId:ConfigurationModelId,
+      // ConfigurationModelId: 972635,
+      ConfigurationModelId: ConfigurationModelID,
       LocationNumbers: [
         1
       ],
@@ -73,6 +78,28 @@ export const fetchStoneSearchByGroup = createAsyncThunk('singleProduct/fetchSton
       StoneFamilyName: "Diamond",
       StoneCategories: [
         "Lab-Grown"
+      ],
+      IncludeBomActiveStones: true,
+      IncludeSerializedProduct: true
+    });
+    return response.data;
+    // console.log("StoneCustimizationResponse,", response.data);
+  } catch (error) {
+    console.error('Error StoneCustimizationResponse:', error);
+  }
+});
+
+//SeachStone
+export const fetchStoneSearch = createAsyncThunk('singleProduct/fetchStoneSearch', async () => {
+  try {
+    const response = await axios.post('https://api.swagjewelers.com/api/stuller/search-stones', {
+      ConfigurationModelId: 972635,
+      LocationNumbers: [
+        1
+      ],
+      StoneFamilyName: "Diamond",
+      StoneCategories: [
+        "Natural"
       ],
       IncludeBomActiveStones: true,
       IncludeSerializedProduct: true

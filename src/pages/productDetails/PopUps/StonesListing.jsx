@@ -24,15 +24,29 @@ const StoneListing = ({ open, setOpen }) => {
     const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
     const StoneMapImage =  singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
     const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id; 
-
+    // console.log("ConfigurationModelID", ConfigurationModelID);
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setOpen(false);
     };
-    const HandleOpenStoneType = (LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID) => {
-        dispatch(fetchStoneFamily({LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID})); 
-        setOpenStoneType(true)
-        console.log("open stone type")
+    // const HandleOpenStoneType = (LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID) => {
+    //     dispatch(fetchStoneFamily({LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID})); 
+    //     setOpenStoneType(true)
+    //     console.log("ConfigurationModelID", ConfigurationModelID)
+    // }
+
+    const HandleOpenStoneType = (LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID) => {
+        if (ConfigurationModelID) {
+            console.log("Dispatching with parameters:", {
+                LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
+            }); // Log parameters
+            dispatch(fetchStoneFamily({
+                LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
+            }));
+            setOpenStoneType(true);
+        } else {
+            console.error("ConfigurationModelID is not defined");
+        }
     }
 
     const openUseMyStone = () => {

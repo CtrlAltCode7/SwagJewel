@@ -9,6 +9,7 @@ export const getImageUrlsWithGroupDescription = (apiData) => {
     return {
       urls: urls || [],
       groupDescription: item.GroupDescription || "", 
+      SKU: item.SKU || "",
     };
   });
 };

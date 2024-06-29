@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./productDetailsTable.css";
 import { fetchSingleProduct } from "../../slices/singleProductSlice";
+import { useParams } from "react-router-dom";
 export default function ProductDetailsTableContainer({ productDetailsTableData }) {
+  const {SKU} = useParams();
   const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
   const Weight = singleProduct && singleProduct?.data?.Products[0].Weight;
   const Specs = singleProduct && singleProduct?.data?.Products[0].Specifications;
@@ -23,10 +25,10 @@ export default function ProductDetailsTableContainer({ productDetailsTableData }
     }
   }
 
-  console.log("Specs", Specifications);
+  // console.log("Specs", Specifications);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchSingleProduct());
+    dispatch(fetchSingleProduct(SKU));
   }, []);
 
   return (

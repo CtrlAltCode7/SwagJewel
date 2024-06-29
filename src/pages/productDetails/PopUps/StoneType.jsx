@@ -18,30 +18,55 @@ const StoneType = ({ isOpen, setIsOpen }) => {
     const [stoneFamily , setStoneFamily]  = useState(null);
     const stoneFamilies = useSelector((state) => state?.singleProduct?.stoneFamily);
     const data = stoneFamilies?.data?.StoneFamilies
-    // console.log("stoneFamily", stoneFamilies?.data?.StoneFamilies);
+    console.log("stoneFamily", data);
     const handleClose = () => {
         setIsOpen(false);
     };
 
-    let images = [
-        "https://meteor.stullercloud.com/das/119231635",
-        "https://meteor.stullercloud.com/das/63990312",
-        "https://meteor.stullercloud.com/das/63990428",
-        "https://meteor.stullercloud.com/das/63990704",
-        "https://meteor.stullercloud.com/das/63989561",
-        "https://meteor.stullercloud.com/das/63990688",
-        "https://meteor.stullercloud.com/das/63991001",
-        "https://meteor.stullercloud.com/das/64005142",
-        "https://meteor.stullercloud.com/das/63989926",
-        "https://meteor.stullercloud.com/das/66448646",
-        "https://meteor.stullercloud.com/das/63990698",
-        "https://meteor.stullercloud.com/das/63989547",
-        "https://meteor.stullercloud.com/das/63990290",
-        "https://meteor.stullercloud.com/das/63990421",
-        "https://meteor.stullercloud.com/das/68043108",
-        "https://meteor.stullercloud.com/das/63990687",
-        "https://meteor.stullercloud.com/das/63990147"
-    ]
+    // let images = [
+    //     "https://meteor.stullercloud.com/das/119231635",
+    //     "https://meteor.stullercloud.com/das/63990312",
+    //     "https://meteor.stullercloud.com/das/63990428",
+    //     "https://meteor.stullercloud.com/das/63990704",
+    //     "https://meteor.stullercloud.com/das/63989561",
+    //     "https://meteor.stullercloud.com/das/63990688",
+    //     "https://meteor.stullercloud.com/das/63991001",
+    //     "https://meteor.stullercloud.com/das/64005142",
+    //     "https://meteor.stullercloud.com/das/63989926",
+    //     "https://meteor.stullercloud.com/das/66448646",
+    //     "https://meteor.stullercloud.com/das/63990698",
+    //     "https://meteor.stullercloud.com/das/63989547",
+    //     "https://meteor.stullercloud.com/das/63990290",
+    //     "https://meteor.stullercloud.com/das/63990421",
+    //     "https://meteor.stullercloud.com/das/68043108",
+    //     "https://meteor.stullercloud.com/das/63990687",
+    //     "https://meteor.stullercloud.com/das/63990147"
+    // ]
+
+    let images = {
+        Diamond: "https://meteor.stullercloud.com/das/119231635",
+        Amethyst: "https://meteor.stullercloud.com/das/63990312",
+        Aquamarine: "https://meteor.stullercloud.com/das/63990428",
+        Citrine: "https://meteor.stullercloud.com/das/63990704",
+        CZ: "https://meteor.stullercloud.com/das/63989561",
+        Emerald: "https://meteor.stullercloud.com/das/63990688",
+        Garnet: "https://meteor.stullercloud.com/das/63991001",
+        Marcasite: "https://meteor.stullercloud.com/das/64005142",
+        Moissanite: "https://meteor.stullercloud.com/das/63989926",
+        Pearl: "https://meteor.stullercloud.com/das/66448646",
+        Peridot: "https://meteor.stullercloud.com/das/63990698",
+        Quartz: "https://meteor.stullercloud.com/das/63989547",
+        Ruby: "https://meteor.stullercloud.com/das/63990290",
+        Sapphire: "https://meteor.stullercloud.com/das/63990421",
+        Spinel: "https://meteor.stullercloud.com/das/68043108",
+        Topaz: "https://meteor.stullercloud.com/das/63990687",
+        Tourmaline: "https://meteor.stullercloud.com/das/63990147",
+        Alexandrite:"https://meteor.stullercloud.com/das/63991140",
+        Zircon:"https://meteor.stullercloud.com/das/63990686",
+        Opal:"https://meteor.stullercloud.com/das/64005140",
+        Tanzanite:"https://meteor.stullercloud.com/das/63990315",
+        DefaultImage:"https://ih1.redbubble.net/image.4905811472.8675/st,small,845x845-pad,1000x1000,f8f8f8.jpg"
+};
 
     const openStoneCategory = (data) => {
         setOpenStonePopUp(true);
@@ -98,8 +123,9 @@ const StoneType = ({ isOpen, setIsOpen }) => {
                             <Box  sx={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "10px", marginLeft: "10px", cursor: "pointer" }}>
                                 {
                                     data && data.map((item, index) => {
+                                        let imageName = item.Name
                                         return (
-                                            <Box onClick={()=>openStoneCategory(item)} key={index} sx={{ display: "flex", flexDirection: "column", gap: "10px", border: "1px solid gray", padding: isMobile ? "10px 20px" : "10px 20px" }}>
+                                            <Box onClick={()=>openStoneCategory(item)} key={index} sx={{ display: "flex", flexDirection: "column", gap: "10px", border: "1px solid gray", padding: isMobile ? "10px 20px" : "10px 20px", width:'100px' }}>
                                                 <Box
                                                     component="img"
                                                     sx={{
@@ -108,7 +134,7 @@ const StoneType = ({ isOpen, setIsOpen }) => {
                                                         alignSelf: "center"
                                                     }}
                                                     alt="Stone Locations"
-                                                    src={images[index]}
+                                                    src={images[imageName] ? images[imageName] : images.DefaultImage}
                                                 />
                                                 <Typography sx={{ fontWeight: "bold",textAlign: "center"}}>{item.Name}</Typography>
                                             </Box>
@@ -145,6 +171,5 @@ const StoneType = ({ isOpen, setIsOpen }) => {
         </div>
     )
 }
-
 export default StoneType
 

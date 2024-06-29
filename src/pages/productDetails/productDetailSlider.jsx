@@ -1,22 +1,49 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "./productSlider.css";
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchSingleProduct } from '../../slices/singleProductSlice';
+import { useParams } from "react-router-dom";
 // import { baseUrl } from "./config";
 // config.js
 export const baseUrl =
   "https://meteor.stullercloud.com/das/128648010?obj=stones/diamonds/g_Accent1&obj=stones/diamonds/g_Accent2&obj=stones/diamonds/g_Accent3&obj=metals&obj=metals&obj.recipe=rose&$xlarge$";
 
-const imageUrls = [
-  `${baseUrl}/abstract01.jpg`,
-  `${baseUrl}/abstract02.jpg`,
-  `${baseUrl}/abstract03.jpg`,
-  `${baseUrl}/abstract04.jpg`,
-];
+// const imageUrls = [
+//   `${baseUrl}/abstract01.jpg`,
+//   `${baseUrl}/abstract02.jpg`,
+//   `${baseUrl}/abstract03.jpg`,
+//   `${baseUrl}/abstract04.jpg`,
+// ];
 export default function ProductDetailSlider({ handleClick, activeClass }) {
+  const dispatch = useDispatch();
+  const apiData = useSelector((state) => state.api.data);
+  const { SKU } = useParams();
+  const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+
+  console.log("singleProduct", singleProduct?.data?.Products[0].FullySetImages);
+  const images = singleProduct?.data?.Products[0].FullySetImages || []
+
+  const imageUrls = [];
+  const ThumbnailUrl = [];
+
+  for (let i = 0; i < images.length; i++) {
+    imageUrls.push(images[i].ZoomUrl);
+  }
+
+  for (let i = 0; i < images.length; i++) {
+    ThumbnailUrl.push(images[i].ThumbnailUrl);
+  }
+  console.log("ThumbnailUrl", ThumbnailUrl);
+
+  useEffect(() => {
+    dispatch(fetchSingleProduct(SKU));
+  }, []);
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (
@@ -44,7 +71,8 @@ export default function ProductDetailSlider({ handleClick, activeClass }) {
       return (
         <a>
           <img
-            src={`${baseUrl}/abstract0${i + 1}.jpg`}
+            // src={`${baseUrl}/abstract0${i + 1}.jpg`}
+            src={ThumbnailUrl[i]}
             alt={`Slide ${i + 1}`}
             style={{
               boxShadow: borderStyle,
@@ -83,7 +111,7 @@ export default function ProductDetailSlider({ handleClick, activeClass }) {
             style={{
               border: "1px solid #000",
               background: "red",
-              cursor: "pointer",
+              cursor: "pointer",           
             }}
             onClick={handleClick}
           >

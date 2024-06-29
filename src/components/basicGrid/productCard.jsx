@@ -3,12 +3,14 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ productImg, productImgOnHover, productTitle }) {
+function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate(); 
   const handleProductICon = () => {
     // Redirect to another page
-    navigate('/productdetails');
+    // navigate('/productdetails'); 
+    navigate(`/productdetails/${SKU}`); 
+
   };
   return (
     <>

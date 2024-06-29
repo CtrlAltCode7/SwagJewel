@@ -19,12 +19,13 @@ import {
 import SelectComponent from "../selectComponent/index";
 // import ProductCard from "./ProductCardDetails";
 import ProductCard from "./productCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getImageUrlsWithGroupDescription } from "../../helpers/index";
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
+import { fetchData } from "../../slices/apiSlice";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -47,6 +48,9 @@ export default function BasicGrid() {
   const [length, setLength] = useState(null);
   const [filteredData, setfilterData] = useState(null)
   const apiData = useSelector((state) => state.api.data);
+  const apiStatus = useSelector((state) => state.api.status);
+  const dispatch = useDispatch();
+  console.log("apiData", apiData);
 
   console.log("currentPage", currentPage);
 
@@ -67,54 +71,70 @@ export default function BasicGrid() {
   }
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        // Replace 'API_URL' with your actual API endpoint
-        const response = await axios.get(
-          `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=${currentPage}&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
-        );
+    // const fetchProducts = async () => {
+    //   try {
+    //     setLoading(true);
+    //     setError(null);
+    //     // Replace 'API_URL' with your actual API endpoint
+    //     const response = await axios.get(
+    //       `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=${currentPage}&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
+    //     );
 
-        let tolalProducts = response?.data?.data?.TotalNumberOfProducts;
-        // console.log("totalProducts", response?.data?.TotalNumberOfProducts);
-        if (response && response?.data?.data?.Products.length > 0) {
-          console.log("responss dfdsdsddsde", response?.data?.data?.TotalNumberOfProducts);
-          // setLength(response?.data?.data?.TotalNumberOfProducts);
-          // const data = getImageUrlsWithGroupDescription(response);
-          // setImageUrlsWithGroupDescription(data);
-          // const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
-          // setImageUrlsWithGroupDescription(filteredResponse);
+    //     let tolalProducts = response?.data?.data?.TotalNumberOfProducts;
+    //     // console.log("totalProducts", response?.data?.TotalNumberOfProducts);
+    //     if (response && response?.data?.data?.Products.length > 0) {
+    //       console.log("responss dfdsdsddsde", response?.data?.data?.TotalNumberOfProducts);
+    //       // setLength(response?.data?.data?.TotalNumberOfProducts);
+    //       // const data = getImageUrlsWithGroupDescription(response);
+    //       // setImageUrlsWithGroupDescription(data);
+    //       // const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
+    //       // setImageUrlsWithGroupDescription(filteredResponse);
 
-          // filteredData?.data?.data?.Products.length >0 ? getImageUrlsWithGroupDescription(filteredData) : getImageUrlsWithGroupDescription(response);
+    //       // filteredData?.data?.data?.Products.length >0 ? getImageUrlsWithGroupDescription(filteredData) : getImageUrlsWithGroupDescription(response);
 
-          // filteredData?.data?.data?.Products.length >0 ? setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(filteredData)) : setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(response));
+    //       // filteredData?.data?.data?.Products.length >0 ? setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(filteredData)) : setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(response));
 
-          // setTotalPages(Math.ceil(tolalProducts / productsPerPage));
-        } else {
-          console.log("response is empty");
-        }
-      } catch (err) {
-        setError("Failed to fetch products.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
+    //       // setTotalPages(Math.ceil(tolalProducts / productsPerPage));
+    //     } else {
+    //       console.log("response is empty");
+    //     }
+    //   } catch (err) {
+    //     setError("Failed to fetch products.");
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
+    // fetchProducts();
+    dispatch(fetchData({ currentPage, catId }));
   }, [category, catId]);
 
 
+  // useEffect(() => {
+  //   if (filteredData) {
+  //     const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
+  //     setImageUrlsWithGroupDescription(filteredResponse);
+  //     setLength(filteredData?.data?.data?.TotalNumberOfProducts);
+  //     let tolalProducts = filteredData?.data?.data?.TotalNumberOfProducts;
+  //     if (filteredData) {
+  //       setTotalPages(Math.ceil(tolalProducts / productsPerPage));
+  //     }
+  //   }
+  // }, [filteredData, category, catId, currentPage]);
+ 
+
   useEffect(() => {
-    if (filteredData) {
-      const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
+
+    if (apiData) {
+      const filteredResponse = getImageUrlsWithGroupDescription(apiData);
       setImageUrlsWithGroupDescription(filteredResponse);
-      setLength(filteredData?.data?.data?.TotalNumberOfProducts);
-      let tolalProducts = filteredData?.data?.data?.TotalNumberOfProducts;
-      if (filteredData) {
+      setLength(apiData?.data?.data?.TotalNumberOfProducts);
+      let tolalProducts = apiData?.data?.data?.TotalNumberOfProducts;
+      if (apiData) {
         setTotalPages(Math.ceil(tolalProducts / productsPerPage));
       }
     }
-  }, [filteredData, category, catId, currentPage]);
+  }, [apiData, category, catId, currentPage]);
+  console.log("imageUrlsWithGroupDescription", imageUrlsWithGroupDescription)
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
 
@@ -139,7 +159,7 @@ export default function BasicGrid() {
         const response = await axios.get(
           "https://api.swagjewelers.com/api/stuller/advanced-filters"
         );
-        const filterData = response?.data?.data?.AdvancedProductFilter; // Assuming your API response structure is like the one you provided
+        const filterData = response?.data?.data?.AdvancedProductFilter; 
         const updatedAccordionData = filterData.map((item) => ({
           id: item.Type,
           title: item.Type,
@@ -162,16 +182,16 @@ export default function BasicGrid() {
 
   // imageUrlsWithGroupDescription.length > 0 && imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
 
-  if (loading) {
-    return (
-      <Backdrop
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
-        open={loading}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <Backdrop
+  //       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
+  //       open={loading}
+  //     >
+  //       <CircularProgress color="inherit" />
+  //     </Backdrop>
+  //   );
+  // }
 
   if (error) {
     return <div>{error}</div>;
@@ -191,7 +211,7 @@ export default function BasicGrid() {
       >
         <Grid xs={12} sm={12} md={3} lg={3}>
           <Item>
-            <AccordionComponent data={accordionApiData} currentPage={currentPage} catId={catId} getFilteredData={handleFilteredData} setCurrentPage = {setCurrentPage}/>
+            <AccordionComponent data={accordionApiData} currentPage={currentPage} catId={catId} getFilteredData={handleFilteredData} setCurrentPage={setCurrentPage} />
           </Item>
         </Grid>
         <Grid xs={12} sm={12} md={9} lg={9}>
@@ -458,6 +478,7 @@ export default function BasicGrid() {
                       productImg={imgWithTitle?.urls[0] || ""}
                       productImgOnHover={imgWithTitle?.urls[1] || ""}
                       productTitle={imgWithTitle?.groupDescription}
+                      SKU={imgWithTitle?.SKU}
                     />
                   </Grid>
                 ))

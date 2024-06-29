@@ -13,7 +13,6 @@ import {
     TableHead,
     TableRow,
     Paper,
-
 } from '@mui/material';
 import { styled } from '@mui/system';
 import CloseIcon from '@mui/icons-material/Close';
@@ -43,6 +42,8 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
     const stoneSearchData = useSelector((state) => state.singleProduct.searchStone);
     const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
     const StoneMapImage = singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
+    const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
+    const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id; 
     // console.log("stoneSearchData", stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones);
     let normalizedData = stoneSearchData && stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones.map((item) => item?.Product?.DescriptiveElementGroup?.DescriptiveElements);
     console.log("normalizedData", normalizedData);

@@ -166,9 +166,9 @@ function Index() {
   const status = useSelector((state) => state.api.status);
   const error = useSelector((state) => state.api.error);
 
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchData());
+  // }, [dispatch]);
 
   useEffect(() => {
     if (message) {
@@ -257,5 +257,4 @@ function Index() {
     </>
   );
 }
-
 export default Index;
