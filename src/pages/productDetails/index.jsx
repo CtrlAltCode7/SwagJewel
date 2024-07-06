@@ -10,9 +10,13 @@ import ProductSlider from "../../components/carousel";
 import ProductDetailsTableContainer from "./productDetailsTableContainer";
 import ProductDetailAdditionalContainer from "./productDetailAdditionalContainer";
 import ProductDetailsSetSeparateStone from "./productDetailsSetSeparateStone";
-
+import { useSelector } from 'react-redux';
 export default function ProductDetails() {
   const [tableData, setTableData] = useState([]);
+  const singleProduct = useSelector((state) => state.singleProduct.singleProduct)
+  const Description = singleProduct && singleProduct?.data?.Products[0].Description;
+  const CanBeSetWith = singleProduct && singleProduct?.data?.Products[0].CanBeSetWith
+
   const products = [
     {
       title: "Anniversary Band 1",
@@ -97,7 +101,7 @@ export default function ProductDetails() {
             fontSize: ["1.4rem", "1.6rem", "1.8rem", "2.313rem", "2.813rem"],
           }}
         >
-          14K Rose 1/2 CTW Natural Diamond Anniversary Band
+          {Description}
         </Typography>
         <Box
           sx={{

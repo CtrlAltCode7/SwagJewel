@@ -8,45 +8,31 @@ import { Box, Typography, useMediaQuery } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import StoneType from './StoneType';
-import {fetchStoneFamily} from '../../../slices/singleProductSlice';
-import { useSelector,useDispatch } from 'react-redux';
+import { fetchStoneFamily } from '../../../slices/singleProductSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import { Loader } from '../../../components/lazyLoader';
-// import useMyStone from '../../../components/popUps/useMyStone';
-import useMyStone from '../../../components/popUps/useMyStone';
+import UseMyStone from '../../../components/popUps/useMyStone';
 const StoneListing = ({ open, setOpen }) => {
     const [openStoneType, setOpenStoneType] = useState(false);
     const [isUseMyStone, setIsUseMyStone] = useState(false);
+    const [size, setSize] = useState(null);
     const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
     const status = useSelector((state) => state.singleProduct.status);
     const dispatch = useDispatch();
-    console.log("singleProductStatus", status);
-
     const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
-    const StoneMapImage =  singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
-    const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id; 
-    // console.log("ConfigurationModelID", ConfigurationModelID);
+    const StoneMapImage = singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
+    const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id;
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setOpen(false);
     };
-    // const HandleOpenStoneType = (LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID) => {
-    //     dispatch(fetchStoneFamily({LocationNumber,Dimension1,Dimension2,Dimension3,Shape,SettingType,ConfigurationModelID})); 
-    //     setOpenStoneType(true)
-    //     console.log("ConfigurationModelID", ConfigurationModelID)
-    // }
 
-    const HandleOpenStoneType = (LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID) => {
-        if (ConfigurationModelID) {
-            console.log("Dispatching with parameters:", {
-                LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
-            }); // Log parameters
-            dispatch(fetchStoneFamily({
-                LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
-            }));
-            setOpenStoneType(true);
-        } else {
-            console.error("ConfigurationModelID is not defined");
-        }
+    const HandleOpenStoneType = (LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID, SizeMM) => {
+        dispatch(fetchStoneFamily({
+            LocationNumber, Dimension1, Dimension2, Dimension3, Shape, SettingType, ConfigurationModelID
+        }));
+        setOpenStoneType(true);
+        setSize(SizeMM);
     }
 
     const openUseMyStone = () => {
@@ -112,7 +98,7 @@ const StoneListing = ({ open, setOpen }) => {
                                                             alt="Stone Locations"
                                                             src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
                                                         />
-                                                        <Typography> {item.SizeMM}</Typography>
+                                                        <Typography> {`${item.SizeMM} mm`}</Typography>
                                                     </Box>
                                                     <Box >
                                                         <Button
@@ -131,7 +117,7 @@ const StoneListing = ({ open, setOpen }) => {
                                                                     backgroundColor: "#999",
                                                                 }
                                                             }}
-                                                            onClick={()=>HandleOpenStoneType(item.LocationNumber,item.Dimension1,item.Dimension2,item.Dimension3,item.Shape,item.SettingType,ConfigurationModelID)}
+                                                            onClick={() => HandleOpenStoneType(item.LocationNumber, item.Dimension1, item.Dimension2, item.Dimension3, item.Shape, item.SettingType, ConfigurationModelID, item.SizeMM)}
                                                         >
                                                             Select
                                                         </Button>
@@ -148,7 +134,7 @@ const StoneListing = ({ open, setOpen }) => {
                         </Box>
 
                     </DialogContent>
-                    
+
                     <DialogActions>
                         <Button
                             variant={"contained"}
@@ -170,8 +156,8 @@ const StoneListing = ({ open, setOpen }) => {
                             Done
                         </Button>
                     </DialogActions>
-                    <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} />
-                    <useMyStone />
+                    <StoneType isOpen={openStoneType} setIsOpen={setOpenStoneType} size={size} />
+                    <UseMyStone isUseMyStone ={isUseMyStone} setIsUseMyStone={setIsUseMyStone} />
                 </Dialog>
             }
         </div>

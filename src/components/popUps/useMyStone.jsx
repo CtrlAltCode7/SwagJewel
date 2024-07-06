@@ -10,12 +10,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import ControlPointSharpIcon from '@mui/icons-material/ControlPointSharp';
 // import { fetchSingleProduct } from '../../../slices/singleProductSlice';
 import { useDispatch, useSelector } from 'react-redux';
-const useMyStone = ({ isOpen, setIsOpen }) => {
+const UseMyStone = ({ isUseMyStone, setIsUseMyStone }) => {
     const [openList, setOpenList] = React.useState(false);
     const isMobile = useMediaQuery("(max-width:600px)");
     const dispatch = useDispatch();
     const handleClose = () => {
-        setIsOpen(false);
+        setIsUseMyStone(false);
     };
 
     const openListPopUP = () => {
@@ -26,7 +26,7 @@ const useMyStone = ({ isOpen, setIsOpen }) => {
     return (
         <div>
             <Dialog
-                open={isOpen}
+                open={isUseMyStone}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
@@ -39,11 +39,10 @@ const useMyStone = ({ isOpen, setIsOpen }) => {
                 </Box>
                 <DialogTitle id="alert-dialog-title" sx={{ fontWeight: "bold", marginTop: '40px' }}>
                     {/* {"Stone Locations"} */}
-                    Stone Locations
+                   UseMyStone
                 </DialogTitle>
 
                 <DialogContent>
-
                     <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : 'row' }}>
                         <Box
                             component="img"
@@ -131,5 +130,5 @@ const useMyStone = ({ isOpen, setIsOpen }) => {
         </div>
     )
 }
-export default useMyStone;
+export default UseMyStone;
 

@@ -11,21 +11,27 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import StoneSearchResult from './StoneSearchResult';
 import { Link } from 'react-router-dom';
 import {fetchStoneSearchByGroup} from "../../slices/singleProductSlice";
-const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
+import {fetchStoneSearch} from "../../slices/singleProductSlice";
+const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage ,size ,stoneImg ,defaultImg}) => {
     const dispatch = useDispatch();
     const [openStoneSearch, setOpenStoneSearch] = useState(false);
-    
+    const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
+    const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id; 
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setOpen(false);
     };
 
-    const openStoneSearchResult = () => {
-        dispatch(fetchStoneSearchByGroup());
+    const LocationNumber = stoneFamily?.LocationNumber;
+    const StoneFamilyName = stoneFamily?.Name
+
+    const openStoneSearchResult = (StoneCategories) => {
+        // dispatch(fetchStoneSearchByGroup());
+        dispatch(fetchStoneSearch({ConfigurationModelID,LocationNumber,StoneFamilyName,StoneCategories}));
         setOpenStoneSearch(true);
     }
 
-    console.log("stoneFamily", stoneFamily)
+    console.log("stoneFamilydddd", stoneFamily)
     // let name =stoneFamily.Name
 
     const stoneFamilyCategories = stoneFamily?.Categories
@@ -76,7 +82,7 @@ const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
                                     alt="Stone Locations"
                                     src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
                                 />
-                                <Typography>1.00 mm</Typography>
+                                <Typography>{`${size} mm`}</Typography>
                             </Box>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
                                 <Box
@@ -86,7 +92,7 @@ const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
                                         height: '45px',
                                     }}
                                     alt="Stone Locations"
-                                    src="https://meteor.stullercloud.com/das/119231635"
+                                    src={stoneImg ? stoneImg : defaultImg}
                                 />
                                 <Typography sx={{ fontSize: "30px", color: "gray" }}>{stoneFamily && stoneFamily.Name}</Typography>
                             </Box>
@@ -109,7 +115,7 @@ const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
                                                         backgroundColor: "#999",
                                                     }
                                                 }}
-                                                onClick={openStoneSearchResult}
+                                                onClick={()=>openStoneSearchResult(item)}
                                             >
                                                 <Typography sx={{ fontWeight: "bold", textAlign: "center" }}>{item}</Typography>
                                             </Button>
@@ -146,7 +152,7 @@ const StoneTypeCategory = ({ open, setOpen, stoneFamily, StoneMapImage }) => {
                         </Box>
                     </Box>
                 </DialogContent>
-                <StoneSearchResult isOpen={openStoneSearch} setIsOpen={setOpenStoneSearch} />
+                <StoneSearchResult isOpen={openStoneSearch} setIsOpen={setOpenStoneSearch} size ={size}/>
             </Dialog>
         </div>
     )

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { useParams } from "react-router-dom";
 
 const CopyToClipboardText = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const {SKU} = useParams();
 
   const handleCopy = () => {
     const textToCopy = "126912:105:P";
@@ -55,7 +57,7 @@ const CopyToClipboardText = () => {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
-            Item # 126912:105:P
+           {`Item #${SKU}`}
           </span>
         </div>
       </Tooltip>

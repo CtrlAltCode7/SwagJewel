@@ -33,24 +33,30 @@ const StyledTableHeadCell = styled(TableCell)({
 const StyledTableRow = styled(TableRow)({
     backgroundColor: '#e0e0e0',
     '&:not(:last-child)': {
-        // marginBottom: '10px',
         borderBottom: "15px solid white"
     }
 });
 
-const StoneSearchResult = ({ isOpen, setIsOpen }) => {
+const StoneSearchResult = ({ isOpen, setIsOpen ,size }) => {
     const stoneSearchData = useSelector((state) => state.singleProduct.searchStone);
+    const stoneSearch = useSelector((state) => state.singleProduct.stoneSearch);
     const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
     const StoneMapImage = singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
-    const SettingOptions = singleProduct?.data?.Products[0].ConfigurationModel?.SettingOptions;
-    const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id; 
-    // console.log("stoneSearchData", stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones);
-    let normalizedData = stoneSearchData && stoneSearchData?.data?.ConfiguredStonesGroups[0]?.ConfiguredStones.map((item) => item?.Product?.DescriptiveElementGroup?.DescriptiveElements);
-    console.log("normalizedData", normalizedData);
+
+    console.log("stoneSearchData", stoneSearch);
+
     const isMobile = useMediaQuery("(max-width:600px)");
     const handleClose = () => {
         setIsOpen(false);
     };
+
+    let normalizedData = stoneSearch && stoneSearch?.data?.ConfiguredStones.map((item) => item?.Product?.DescriptiveElementGroup?.DescriptiveElements);
+    
+    // if (normalizedData && normalizedData.length === 1) {
+    //     normalizedData = [normalizedData];
+    // }
+
+    // console.log("normalizedData", normalizedData);
 
     return (
         <div>
@@ -59,7 +65,6 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-                // sx={{ '& .MuiPaper-root': { width: '1600px' } }}
                 fullWidth
                 maxWidth={isMobile ? "sm" : "lg"}
             >
@@ -71,9 +76,7 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                 </DialogTitle>
 
                 <DialogContent>
-
                     <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : 'row' }}>
-
                         <Box
                             component="img"
                             sx={{
@@ -98,10 +101,9 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                     alt="Stone Locations"
                                     src="https://www.shutterstock.com/image-vector/realistic-vector-illustration-top-view-600nw-2098946590.jpg"
                                 />
-                                <Typography>1.00 mm</Typography>
+                                <Typography>{`${size} mm`}</Typography>
                             </Box>
                             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px", marginTop: "10px", marginLeft: "10px" }}>
-
                                 <Typography sx={{ fontWeight: "bold" }}>Results - Imitation Diamond - Calibrated (1)</Typography>
                             </Box>
                             <Button sx={{ background: '#547f9e', color: 'white', marginTop: '10px', marginLeft: '10px', borderRadius: '10px 10px 0 0', textAlign: 'center', fontWeight: 'bold', padding: '10px' }}>
@@ -109,16 +111,6 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                             </Button>
                             <Box sx={{ background: '#e0e0e0', height: isMobile ? '470px' : '150px', width: '100%', marginLeft: '10px', paddingTop: '20px' }}>
                                 <Box sx={{ display: "flex", flexDirection: isMobile ? 'column' : "row", gap: "10px", marginLeft: "10px" }}>
-                                    {/* <TextField
-                                        sx={{ width: '300px' ,background: '#fff'}}
-                                        select
-                                        size="small" >
-                                        <MenuItem value="1">1</MenuItem>    
-                                    </TextField>
-                                    <TextField
-                                        select />
-                                    <TextField
-                                        select /> */}
                                     <div style={{ margingTop: "10px", display: 'flex', flexDirection: 'column', gap: "10px" }}>
                                         <label style={{ fontWeight: "bold" }}>Cut</label>
                                         <select style={{ width: isMobile ? '250px' : '280px', height: '40px' }}>
@@ -157,23 +149,20 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                             <FormControlLabel value="disabled" control={<Radio />} label="Imitation" />
                                         </RadioGroup>
                                     </FormControl>
-                                    {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}> */}
                                     <Button sx={{
                                         color: 'red', background: 'white', border: '1px solid red',
                                         cursor: 'pointer', width: isMobile ? '75px' : '150px', marginRight: '10px',
                                         marginLeft: isMobile && '170px',
                                     }}>Reset</Button>
-                                    {/* </Box> */}
                                 </Box>
                             </Box>
 
                             <Box sx={{ margin: '0 10px' }}>
                                 <Typography sx={{ fontWeight: 'bold' }}>1 result</Typography>
-                                <Typography>Showing Imitaiton</Typography>
+                                <Typography>Showing Imitation</Typography>
                             </Box>
 
                             <TableContainer sx={{ marginLeft: "10px" }} component={Paper}>
-
                                 <Table>
                                     <TableHead>
                                         <TableRow>
@@ -190,26 +179,40 @@ const StoneSearchResult = ({ isOpen, setIsOpen }) => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {normalizedData && normalizedData.map((row, index) => (
-                                            <StyledTableRow component="tr" sx={{ backgroundColor: '#e0e0e0', mb: 1 }} key={index}>
-                                                <TableCell>{row.find(item => item.Name === 'SHAPE').Value}</TableCell>
-                                                <TableCell>{row.find(item => item.Name === 'CUT').Value}</TableCell>
-                                                <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <Box sx={{ border: '1px solid black', width: '15px', height: '15px', borderRadius: '50%', backgroundColor: 'white', marginTop: '5px' }}></Box>
-                                                    {row.find(item => item.Name === 'COLOR').Value}</TableCell>
-                                                <TableCell>{row.find(item => item.Name === 'QUALITY').Value}</TableCell>
-                                                <TableCell>{row.find(item => item.Name === 'UNIQUE').Value}</TableCell>
-                                                <TableCell>{row.find(item => item.Name === 'SIZE MM').Value.replace(/\s*\(.*\)$/, '')}</TableCell>
-                                                <TableCell>{row.find(item => item.Name === 'SIZE CT').Value.split(" ")[0]}</TableCell>
-                                                <TableCell>Price Restricted</TableCell>
-                                                <TableCell></TableCell>
-                                                <TableCell>
-                                                    <Button variant="contained" color="primary">
-                                                        Set
-                                                    </Button>
-                                                </TableCell>
-                                            </StyledTableRow>
-                                        ))}
+                                        {normalizedData && normalizedData.map((row, index) => {
+                                            // console.log(`Processing row ${index}`, row[0].map((item)=>item?.Name.toUpperCase()) );
+                                            const shape = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'SHAPE')?.Value ?? "";
+                                            const cut = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'CUT')?.Value ?? '';
+                                            const color = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'COLOR')?.Value?.toUpperCase() ?? "";
+                                            const quality = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'QUALITY')?.Value ?? '';
+                                            const uniqueness = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'UNIQUE')?.Value ?? '';
+                                            const mmSize = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'SIZE MM')?.Value?.replace(/\s*\(.*\)$/, '') ?? '';
+                                            const sizeCt = row?.find(item => typeof item.Name === 'string' && item.Name.toUpperCase() === 'SIZE CT')?.Value?.split(" ")[0] ?? '';
+                                            const size  = row?.find(item => typeof item.Name === 'string' && item.Name === 'Size')?.Value ?? '';
+                                            console.log(`Shape: ${shape}, Cut: ${cut}, Color: ${color}, Quality: ${quality}, Uniqueness: ${uniqueness}, MM Size: ${mmSize}, Size Ct: ${sizeCt} Size: ${size}`);
+
+                                            return (
+                                                <StyledTableRow component="tr" sx={{ backgroundColor: '#e0e0e0', mb: 1 }} key={index}>
+                                                    <TableCell>{shape}</TableCell>
+                                                    <TableCell>{cut}</TableCell>
+                                                    <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Box sx={{ border: '1px solid black', width: '15px', height: '15px', borderRadius: '50%', backgroundColor: 'white', marginTop: '5px' }}></Box>
+                                                        {color}
+                                                    </TableCell>
+                                                    <TableCell>{quality}</TableCell>
+                                                    <TableCell>{uniqueness}</TableCell>
+                                                    <TableCell>{mmSize ? mmSize : size}</TableCell>
+                                                    <TableCell>{sizeCt}</TableCell>
+                                                    <TableCell>Price Restricted</TableCell>
+                                                    <TableCell></TableCell>
+                                                    <TableCell>
+                                                        <Button variant="contained" color="primary">
+                                                            Set
+                                                        </Button>
+                                                    </TableCell>
+                                                </StyledTableRow>
+                                            );
+                                        })}
                                     </TableBody>
                                 </Table>
                             </TableContainer>

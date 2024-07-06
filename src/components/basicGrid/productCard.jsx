@@ -3,13 +3,14 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
+function ProductCard({ productImg, productImgOnHover, productTitle, SKU }) {
   const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
   const handleProductICon = () => {
     // Redirect to another page
     // navigate('/productdetails'); 
-    navigate(`/productdetails/${SKU}`); 
+    navigate(`/productdetails/${SKU}`);
 
   };
   return (
@@ -27,7 +28,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
         md={3}
         lg={3}
         onClick={handleProductICon}
-        >
+      >
         <Box
           sx={{
             borderRadius: "5px",
@@ -36,7 +37,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
             height: "375px",
             width: "100%",
             transition: "border-color 0.3s ease",
-     
+
             "&:hover": {
               borderColor: "#999",
               ".anniversary-band": {
@@ -175,7 +176,7 @@ function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
                 },
               }}
             >
-              123531
+              {SKU.split(":")[0]}
             </Typography>
           </Box>
         </Box>
@@ -183,5 +184,4 @@ function ProductCard({ productImg, productImgOnHover, productTitle ,SKU}) {
     </>
   );
 }
-
 export default ProductCard;

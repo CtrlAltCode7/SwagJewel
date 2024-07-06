@@ -33,7 +33,7 @@ import ShippingMethod from "./pages/shippingMethod/index";
 import LocateAJeweler from "./pages/locateajeweler/locateAJeweler";
 import QuickOrder from "./pages/quickOrder";
 import QuickShops from "./pages/quickShops";
-
+import SavedCartPage from "./pages/cart/savedCartPage/savedCartPage";
 const routes = [
   {
     path: "/",
@@ -125,6 +125,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <CartPage />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/savedCart",
+    element: (
+      <PrivateRoute>
+        <SavedCartPage />
       </PrivateRoute>
     ),
     // loader: <Loader />,

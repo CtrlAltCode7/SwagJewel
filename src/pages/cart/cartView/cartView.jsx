@@ -60,7 +60,6 @@ export default function CartView() {
               Your Shopping Cart
             </Typography>
           </Box>
-
           <Box id="cart">
             {cartCount === 0 ? (
               <Box
@@ -250,37 +249,37 @@ export default function CartView() {
                   </Button>
                 </Grid>
                 <Grid
-              item
-              xs={12}
-              lg={8}
-              sx={{
-                // background: "red",
-                display: "flex",
-                justifyContent: "end",
-                color: "#555",
-                fontWeight: "bold",
+                  item
+                  xs={12}
+                  lg={8}
+                  sx={{
+                    // background: "red",
+                    display: "flex",
+                    justifyContent: "end",
+                    color: "#555",
+                    fontWeight: "bold",
 
-                // padding: '4px'
-              }}
-            >
-              Estimated Total:
-            </Grid>
-            <Grid
-              item
-              xs={12}
-              lg={4}
-              sx={{
-                // background: "red",
-                display: "flex",
-                justifyContent: "flex-end",
-                color: "#555",
-                fontWeight: "bold",
+                    // padding: '4px'
+                  }}
+                >
+                  Estimated Total:
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  lg={4}
+                  sx={{
+                    // background: "red",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    color: "#555",
+                    fontWeight: "bold",
 
-                // padding: '4px'
-              }}
-            >
-              $228.27
-            </Grid>
+                    // padding: '4px'
+                  }}
+                >
+                  $228.27
+                </Grid>
               </Grid>
               <Grid></Grid>
             </Grid>

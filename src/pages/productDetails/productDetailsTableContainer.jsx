@@ -7,11 +7,13 @@ export default function ProductDetailsTableContainer({ productDetailsTableData }
   const {SKU} = useParams();
   const singleProduct = useSelector((state) => state.singleProduct.singleProduct);
   const Weight = singleProduct && singleProduct?.data?.Products[0].Weight;
+  const weightUnit = singleProduct && singleProduct?.data?.Products[0].WeightUnitOfMeasure;
+  const gramWeight = singleProduct && singleProduct?.data?.Products[0].GramWeight;
   const Specs = singleProduct && singleProduct?.data?.Products[0].Specifications;
 
   let Specifications = [{
     "label": "Weight",
-    "value": Weight
+    "value": `${Weight} ${weightUnit} (${gramWeight} gram)`
   },];
 
   {

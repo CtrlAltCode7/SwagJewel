@@ -90,16 +90,16 @@ export const fetchStoneSearchByGroup = createAsyncThunk('singleProduct/fetchSton
 });
 
 //SeachStone
-export const fetchStoneSearch = createAsyncThunk('singleProduct/fetchStoneSearch', async () => {
+export const fetchStoneSearch = createAsyncThunk('singleProduct/fetchStoneSearch', async ({ ConfigurationModelID, LocationNumber, StoneFamilyName, StoneCategories }) => {
   try {
     const response = await axios.post('https://api.swagjewelers.com/api/stuller/search-stones', {
-      ConfigurationModelId: 972635,
+      ConfigurationModelId: ConfigurationModelID,
       LocationNumbers: [
-        1
+        LocationNumber
       ],
-      StoneFamilyName: "Diamond",
+      StoneFamilyName: StoneFamilyName,
       StoneCategories: [
-        "Natural"
+        StoneCategories
       ],
       IncludeBomActiveStones: true,
       IncludeSerializedProduct: true
@@ -156,6 +156,20 @@ const singleProductSlice = createSlice({
       })
       .addCase(fetchStoneSearchByGroup.rejected, (state, action) => {
         state.searchStoneStatus = 'failed';
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(fetchStoneSearch.pending, (state) => {
+        state.stoneSearchStatus = 'loading';
+      })
+      .addCase(fetchStoneSearch.fulfilled, (state, action) => {
+        console.log('state', state, action)
+        state.stoneSearchStatus = 'succeeded';
+        state.stoneSearch = action.payload;
+      })
+      .addCase(fetchStoneSearch.rejected, (state, action) => {
+        state.stoneSearchStatus = 'failed';
         state.error = action.error.message;
       });
   },

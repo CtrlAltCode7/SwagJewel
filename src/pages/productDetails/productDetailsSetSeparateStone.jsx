@@ -1,42 +1,10 @@
 import React from "react";
-import "./productDetailsSetSeparateStone.css"
+import "./productDetailsSetSeparateStone.css";
+import { useSelector } from 'react-redux';
 
 export default function ProductDetailsSetSeparateStone() {
-  const jsonData = [
-    {
-      Quantity: "24",
-      Stone: "MARQUISE",
-      Size: "2.50x1.25",
-      "Setting Type": "Prong",
-      Actions: [
-        {
-          label: "View Available Gemstones",
-          url: "/browse/gemstones/shop-by-stone-size/?dimensionid=3385&shape=MARQUISE&size=2.50x1.25&recommendationSource=CanBeSetWith",
-        },
-        {
-          label: "View Available Diamonds",
-          url: "/browse/diamonds/listingbysize/?stoneshape=MARQUISE&size=2.50x1.25&recommendationSource=CanBeSetWith",
-        },
-      ],
-    },
-    {
-      Quantity: "3",
-      Stone: "ROUND",
-      Size: "1.70",
-      "Setting Type": "Prong",
-      Actions: [
-        {
-          label: "View Available Gemstones",
-          url: "/browse/gemstones/shop-by-stone-size/?dimensionid=1902&shape=ROUND&size=1.70&recommendationSource=CanBeSetWith",
-        },
-        {
-          label: "View Available Diamonds",
-          url: "/browse/diamonds/listingbysize/?stoneshape=ROUND&size=1.70&recommendationSource=CanBeSetWith",
-        },
-      ],
-    },
-  ];
-
+  const singleProduct = useSelector((state) => state.singleProduct.singleProduct)
+  const CanBeSetWith = singleProduct && singleProduct?.data?.Products[0].CanBeSetWith
   return (
     <>
       <table
@@ -99,21 +67,21 @@ export default function ProductDetailsSetSeparateStone() {
           </tr>
         </thead>
         <tbody>
-          {jsonData.map((item, index) => (
+          {CanBeSetWith && CanBeSetWith.map((item, index) => (
             <tr key={index} style={{
-                borderBottom: "1px solid #ccc"
+              borderBottom: "1px solid #ccc"
             }}>
               <td style={{ border: "0px solid #ccc", padding: "8px" }}>
                 {item.Quantity}
               </td>
               <td style={{ border: "0px solid #ccc", padding: "8px" }}>
-                {item.Stone}
+                {item.Shape}
               </td>
               <td style={{ border: "0px solid #ccc", padding: "8px" }}>
                 {item.Size}
               </td>
               <td style={{ border: "0px solid #ccc", padding: "8px" }}>
-                {item["Setting Type"]}
+                {item.SettingType}
               </td>
               <td
                 style={{
@@ -125,25 +93,33 @@ export default function ProductDetailsSetSeparateStone() {
                 }}
                 className="actionTableCell"
               >
-                {item.Actions.map((action, idx) => (
-                  <a
-                    key={idx}
-                    className="display-block-xs"
-                    // href={action.url}
-                    // onClick={() => ProductPageEventTrack("ViewGemstones", "")}
-                    // style={{
-                    //   display: "block",
-                    //   textDecoration: "none",
-                    //   marginLeft: "0",
-                    //   textDecorationLine: "underline",
-                    //   textDecorationColor: "inherit",
-                    //   textDecorationThickness: "from-font",
-                    // //   color: "#555",
-                    // }}
-                  >
-                    {action.label}
-                  </a>
-                ))}
+                <a
+                  className="display-block-xs"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    marginLeft: "0",
+                    textDecorationLine: "underline",
+                    textDecorationColor: "inherit",
+                    textDecorationThickness: "from-font",
+                  }}
+                >
+                  <div> View Available Gemstones </div>
+                </a>
+                <a
+                  className="display-block-xs"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    marginLeft: "0",
+                    textDecorationLine: "underline",
+                    textDecorationColor: "inherit",
+                    textDecorationThickness: "from-font",
+                    //   color: "#555",
+                  }}
+                >
+                  <div> View Available Gemstones </div>
+                </a>
               </td>
             </tr>
           ))}

@@ -3,11 +3,13 @@ import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
 import { IconButton, Paper, Typography } from "@mui/material";
 import EmptyCart from "./emptyCart/emptyCart";
+import CartPage from "./cartPage/cartPage";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function Cart({ placement1 }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const popperRef = useRef(null);
+  const [isLoggedIn , setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -74,11 +76,11 @@ export default function Cart({ placement1 }) {
               bgcolor: "background.paper",
               width: "100%",
               "@media (min-width: 1280px)": {
-                width: "360px",
+                width: "330px",
               },
             }}
           >
-            <EmptyCart />
+            {isLoggedIn ? <CartPage/> : <EmptyCart />}
           </Box>
         </Paper>
       </Popper>

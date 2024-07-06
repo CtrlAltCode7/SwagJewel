@@ -26,6 +26,7 @@ import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchData } from "../../slices/apiSlice";
+import { Loader } from "../lazyLoader";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -48,7 +49,8 @@ export default function BasicGrid() {
   const [length, setLength] = useState(null);
   const [filteredData, setfilterData] = useState(null)
   const apiData = useSelector((state) => state.api.data);
-  const apiStatus = useSelector((state) => state.api.status);
+  const productStatus = useSelector((state) => state.api.status);
+
   const dispatch = useDispatch();
   console.log("apiData", apiData);
 
@@ -120,7 +122,7 @@ export default function BasicGrid() {
   //     }
   //   }
   // }, [filteredData, category, catId, currentPage]);
- 
+
 
   useEffect(() => {
 
@@ -159,7 +161,7 @@ export default function BasicGrid() {
         const response = await axios.get(
           "https://api.swagjewelers.com/api/stuller/advanced-filters"
         );
-        const filterData = response?.data?.data?.AdvancedProductFilter; 
+        const filterData = response?.data?.data?.AdvancedProductFilter;
         const updatedAccordionData = filterData.map((item) => ({
           id: item.Type,
           title: item.Type,
@@ -422,6 +424,8 @@ export default function BasicGrid() {
               </Box>
             </Box>
           </Item>
+          {productStatus === "loading" ? <Loader /> :
+          <div>
           <Item
             sx={{
               margin: "0 1rem",
@@ -429,6 +433,7 @@ export default function BasicGrid() {
               justifyContent: "end",
             }}
           >
+
             <Pagination
               // count='5'
               count={totalPages}
@@ -482,7 +487,7 @@ export default function BasicGrid() {
                     />
                   </Grid>
                 ))
-                : <h1>No Data Found</h1>
+                : <h1>No Product Found</h1>
               }
 
               {/* {
@@ -500,6 +505,7 @@ export default function BasicGrid() {
 
             </Grid>
           </Item>
+
           <Item
             sx={{
               margin: "0 1rem",
@@ -526,6 +532,8 @@ export default function BasicGrid() {
               }}
             />
           </Item>
+          </div>
+}
         </Grid>
       </Grid>
     </Box>
