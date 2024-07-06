@@ -34,6 +34,10 @@ import LocateAJeweler from "./pages/locateajeweler/locateAJeweler";
 import QuickOrder from "./pages/quickOrder";
 import QuickShops from "./pages/quickShops";
 import SavedCartPage from "./pages/cart/savedCartPage/savedCartPage";
+import VerifyOTP from "./pages/login/verifyOTP/verifyOTP";
+import OTP from "./pages/login/verifyOTP/verifyOTP";
+import UserProfile from "./pages/login/userProfile/userProfile";
+
 const routes = [
   {
     path: "/",
@@ -50,7 +54,7 @@ const routes = [
     // loader: <Loader />,
   },
   {
-    path: "/homePage",
+    path: "/homePage", // unused
     element: (
       <PrivateRoute>
         <HomePage />
@@ -179,6 +183,24 @@ const routes = [
     element: (
       <PrivateRoute>
         <QuickShops />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,quickorder
+  },
+  {
+    path: "/verifyOTP",
+    element: (
+      <PrivateRoute>
+        <OTP />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,quickorder
+  },
+  {
+    path: "/user-profile",
+    element: (
+      <PrivateRoute>
+        <UserProfile />
       </PrivateRoute>
     ),
     // loader: <Loader />,quickorder

@@ -52,8 +52,6 @@ export default function BasicGrid() {
   const productStatus = useSelector((state) => state.api.status);
 
   const dispatch = useDispatch();
-  console.log("apiData", apiData);
-
   console.log("currentPage", currentPage);
 
   // console.log("filteredData", filteredData?.data?.data?.Products);
@@ -68,66 +66,18 @@ export default function BasicGrid() {
 
 
   const handleFilteredData = (data) => {
-    //  if(data?.data?.data?.Products.length > 0){setfilterData(data)}
     setfilterData(data)
   }
 
   useEffect(() => {
-    // const fetchProducts = async () => {
-    //   try {
-    //     setLoading(true);
-    //     setError(null);
-    //     // Replace 'API_URL' with your actual API endpoint
-    //     const response = await axios.get(
-    //       `https://api.swagjewelers.com/api/stuller?PageSize=10&Page=${currentPage}&CategoryIds[]=${catId}&Include[]=1&Filter[]=5`
-    //     );
-
-    //     let tolalProducts = response?.data?.data?.TotalNumberOfProducts;
-    //     // console.log("totalProducts", response?.data?.TotalNumberOfProducts);
-    //     if (response && response?.data?.data?.Products.length > 0) {
-    //       console.log("responss dfdsdsddsde", response?.data?.data?.TotalNumberOfProducts);
-    //       // setLength(response?.data?.data?.TotalNumberOfProducts);
-    //       // const data = getImageUrlsWithGroupDescription(response);
-    //       // setImageUrlsWithGroupDescription(data);
-    //       // const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
-    //       // setImageUrlsWithGroupDescription(filteredResponse);
-
-    //       // filteredData?.data?.data?.Products.length >0 ? getImageUrlsWithGroupDescription(filteredData) : getImageUrlsWithGroupDescription(response);
-
-    //       // filteredData?.data?.data?.Products.length >0 ? setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(filteredData)) : setImageUrlsWithGroupDescription(getImageUrlsWithGroupDescription(response));
-
-    //       // setTotalPages(Math.ceil(tolalProducts / productsPerPage));
-    //     } else {
-    //       console.log("response is empty");
-    //     }
-    //   } catch (err) {
-    //     setError("Failed to fetch products.");
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
-    // fetchProducts();
     dispatch(fetchData({ currentPage, catId }));
   }, [category, catId]);
 
 
-  // useEffect(() => {
-  //   if (filteredData) {
-  //     const filteredResponse = getImageUrlsWithGroupDescription(filteredData);
-  //     setImageUrlsWithGroupDescription(filteredResponse);
-  //     setLength(filteredData?.data?.data?.TotalNumberOfProducts);
-  //     let tolalProducts = filteredData?.data?.data?.TotalNumberOfProducts;
-  //     if (filteredData) {
-  //       setTotalPages(Math.ceil(tolalProducts / productsPerPage));
-  //     }
-  //   }
-  // }, [filteredData, category, catId, currentPage]);
-
-
   useEffect(() => {
-
     if (apiData) {
       const filteredResponse = getImageUrlsWithGroupDescription(apiData);
+      console.log("filteredResponseChecking", filteredResponse);
       setImageUrlsWithGroupDescription(filteredResponse);
       setLength(apiData?.data?.data?.TotalNumberOfProducts);
       let tolalProducts = apiData?.data?.data?.TotalNumberOfProducts;
@@ -136,7 +86,6 @@ export default function BasicGrid() {
       }
     }
   }, [apiData, category, catId, currentPage]);
-  console.log("imageUrlsWithGroupDescription", imageUrlsWithGroupDescription)
 
   const label = { inputProps: { "aria-label": "Size switch demo" } };
 
@@ -179,21 +128,6 @@ export default function BasicGrid() {
     fetchAccordionData();
     return () => { };
   }, []);
-
-  // const remainingProducts =
-
-  // imageUrlsWithGroupDescription.length > 0 && imageUrlsWithGroupDescription.length - (currentPage - 1) * productsPerPage;
-
-  // if (loading) {
-  //   return (
-  //     <Backdrop
-  //       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: "#fff" }}
-  //       open={loading}
-  //     >
-  //       <CircularProgress color="inherit" />
-  //     </Backdrop>
-  //   );
-  // }
 
   if (error) {
     return <div>{error}</div>;
@@ -367,7 +301,7 @@ export default function BasicGrid() {
               >
                 <Typography>{`Showing ${startIndex + 1} - ${endIndex} of ${length
                   }`}</Typography>
-                |<Typography>Items per page</Typography>
+                <Typography>Items per page</Typography>
                 {/* <SelectComponent minWidthSize="20" placeholder="26" /> */}
                 <FormControl>
                   {/* <InputLabel id="demo-simple-select-label">Age</InputLabel> */}
@@ -464,18 +398,6 @@ export default function BasicGrid() {
             }}
           >
             <Grid container spacing={2}>
-              {/* {imageUrlsWithGroupDescription
-                .slice(startIndex, endIndex)
-                .map((imgWithTitle, index) => (
-                  <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                    <ProductCard
-                      productImg={imgWithTitle?.urls[0] || ""}
-                      productImgOnHover={imgWithTitle?.urls[1] || ""}
-                      productTitle={imgWithTitle?.groupDescription}
-                    />
-                  </Grid>
-                ))} */}
-
               {imageUrlsWithGroupDescription ? imageUrlsWithGroupDescription
                 .map((imgWithTitle, index) => (
                   <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
@@ -489,20 +411,6 @@ export default function BasicGrid() {
                 ))
                 : <h1>No Product Found</h1>
               }
-
-              {/* {
-                  filteredData?.data?.data?.Products.length >0 ? imageUrlsWithGroupDescription
-                  .map((imgWithTitle, index) => (
-                    <Grid key={index} item xs={12} sm={6} md={4} lg={3} xl={3}>
-                      <ProductCard
-                        productImg={imgWithTitle?.urls[0] || ""}
-                        productImgOnHover={imgWithTitle?.urls[1] || ""}
-                        productTitle={imgWithTitle?.groupDescription}
-                      />
-                    </Grid>
-                  )) : <h1>No Data Found</h1>
-                } */}
-
             </Grid>
           </Item>
 

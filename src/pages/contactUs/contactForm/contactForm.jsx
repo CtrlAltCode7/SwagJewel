@@ -178,7 +178,7 @@ export default function ContactForm() {
               }}
             >
               <ReCAPTCHA
-                sitekey="Your client site key"
+                sitekey="6LdR8fMpAAAAAKHLMU3-msWLFoo6EunyKe8KE5qp"
                 // onChange={handleCaptchaChange}
               />
             </Grid>
