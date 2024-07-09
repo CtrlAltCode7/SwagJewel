@@ -25,6 +25,7 @@ export default function Cart({ placement1 }) {
     };
   }, []);
 
+  const token = localStorage.getItem("token");
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
@@ -80,7 +81,7 @@ export default function Cart({ placement1 }) {
               },
             }}
           >
-            {isLoggedIn ? <CartPage/> : <EmptyCart />}
+            {token ? <CartPage/> : <EmptyCart />}
           </Box>
         </Paper>
       </Popper>

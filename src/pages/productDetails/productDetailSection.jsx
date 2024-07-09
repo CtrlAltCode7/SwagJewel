@@ -22,7 +22,8 @@ import ProductDetailsCustomizeHeaderOption from "./productDetailsCustomizeHeader
 import ScrollDialog from "./productDetailsDialogBox";
 
 export default function ProductDetailSection() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const [token, settoken] = useState(true);
+  const token = localStorage.getItem("token");
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -80,7 +81,7 @@ export default function ProductDetailSection() {
             </Grid>
 
             {/* Second half of the Third Portion (conditionally rendered based on screen size) */}
-            {isLoggedIn ?
+            {token ?
               <Grid
                 item
                 xs={5}

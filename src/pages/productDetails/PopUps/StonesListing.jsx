@@ -23,6 +23,7 @@ const StoneListing = ({ open, setOpen }) => {
     const StoneMapImage = singleProduct && singleProduct?.data?.Products[0].StoneMapImage;
     const ConfigurationModelID = singleProduct?.data?.Products[0].ConfigurationModel?.Id;
     const isMobile = useMediaQuery("(max-width:600px)");
+    const user = useSelector((state) => state.user.user);
     const handleClose = () => {
         setOpen(false);
     };

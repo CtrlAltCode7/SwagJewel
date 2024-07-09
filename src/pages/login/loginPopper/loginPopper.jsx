@@ -10,6 +10,7 @@ import EmptyCart from "../../cart/emptyCart/emptyCart";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginContent from "./loginContent/loginContent";
+import { useSelector } from "react-redux";
 
 export default function LoginPopper() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -17,7 +18,9 @@ export default function LoginPopper() {
   const [placement, setPlacement] = useState("bottom");
   const navigate = useNavigate();
   const popperRef = useRef(null);
-
+  const user = useSelector((state) => state.user.user);
+ 
+  let name = user && user?.firstName 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -65,7 +68,7 @@ export default function LoginPopper() {
         }}
         variant="caption"
       >
-        User
+       {name ? name : "Login"}
       </Typography>
       <Popper
         sx={{ zIndex: 1200, minWidth: "25%" }}

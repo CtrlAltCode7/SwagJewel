@@ -16,13 +16,13 @@ import {
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import localStorage from "redux-persist/es/storage";
 import userReducer from "../slices/userSlice";
-import apiReducer from "../slices/apiSlice"
+import apiReducer from "../slices/apiSlice";
+import cartReducer from "../slices/cartSlice";
 import singleProductReducer from "../slices/singleProductSlice";
-// import cartReducer from "./cartSlice";
 // import navigationReducer from "./navigationSlice";
 
 const reducers = combineReducers({
-//   cart: cartReducer,
+  cart: cartReducer,
   user: userReducer,
   api: apiReducer,
   singleProduct: singleProductReducer,

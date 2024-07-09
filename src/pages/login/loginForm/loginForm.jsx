@@ -121,11 +121,8 @@ const LoginForm = () => {
         .request(config)
         .then((response) => {
           if (response.status == 200 && response.data.message == "Success") {
-
-
             navigate("/verifyOTP", { state: { message: response.data } });
           }
-
         })
         .catch((error) => {
           const message = error.response.data.message;
