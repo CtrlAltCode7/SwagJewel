@@ -20,7 +20,7 @@ const ResetPassword = ({ VerifyOTPToken, handleClose, setOpen, setPasswordShow, 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const navigate = useNavigate();
-
+    console.log("VerifyOTPToken", VerifyOTPToken)
     const handleSubmit = () => {
         if (password !== confirmPassword) {
             setError("Passwords do not match");
@@ -41,7 +41,6 @@ const ResetPassword = ({ VerifyOTPToken, handleClose, setOpen, setPasswordShow, 
             body: raw,
             redirect: "follow"
         };
-
         fetch("https://api.swagjewelers.com//api/user/reset-password", requestOptions)
             .then((response) => response.json())
             .then((result) => {
@@ -51,16 +50,10 @@ const ResetPassword = ({ VerifyOTPToken, handleClose, setOpen, setPasswordShow, 
                     setOpen(false)
                     handleClose()
                     navigate("/login");
-
-
                 }
-
             })
             .catch((error) => console.error(error));
-
-
-
-    };
+        };
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -150,5 +143,4 @@ const ResetPassword = ({ VerifyOTPToken, handleClose, setOpen, setPasswordShow, 
         </Container>
     );
 };
-
 export default ResetPassword;

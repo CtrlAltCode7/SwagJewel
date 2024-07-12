@@ -20,12 +20,18 @@ import ProductDetailTabs from "./productDetailTabs";
 import ProductDetailContentTabs from "./productDetailContentTabs";
 import ProductDetailsCustomizeHeaderOption from "./productDetailsCustomizeHeaderOption";
 import ScrollDialog from "./productDetailsDialogBox";
-
+import CartMassage from "../cart/cartMassage/CartMassage";
 export default function ProductDetailSection() {
   // const [token, settoken] = useState(true);
   const token = localStorage.getItem("token");
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const [showCartMsg , setShowCartMsg] = useState(false);
+  
+  const handleAddToCart = () => {
+   setShowCartMsg(true);
+  };
+
   return (
     <>
       <Grid container spacing={2} mt={0.5}>
@@ -79,7 +85,7 @@ export default function ProductDetailSection() {
                 </Paper>
               </Grid>
             </Grid>
-
+          {showCartMsg && <CartMassage showCartMsg={showCartMsg} setShowCartMsg={setShowCartMsg} />}
             {/* Second half of the Third Portion (conditionally rendered based on screen size) */}
             {token ?
               <Grid
@@ -252,6 +258,7 @@ export default function ProductDetailSection() {
                       fontSize: "11px",
                       fontWeight: "bold",
                     }}
+                    onClick={handleAddToCart}
                   >
                     ADD TO CART
                   </Button>

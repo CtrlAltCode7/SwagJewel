@@ -57,7 +57,7 @@ export default function ScrollDialog() {
             fetch("https://api.swagjewelers.com/api/user/forgot-password", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log("forgot result", result?.data);
+                    console.log("forgot result", result);
                     // If response indicates success, show the VerifyOTP component
                     if (result.message.trim().toLowerCase() === "success") {
                         const token = result?.data;

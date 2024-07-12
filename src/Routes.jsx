@@ -37,6 +37,7 @@ import SavedCartPage from "./pages/cart/savedCartPage/savedCartPage";
 import VerifyOTP from "./pages/login/verifyOTP/verifyOTP";
 import OTP from "./pages/login/verifyOTP/verifyOTP";
 import UserProfile from "./pages/login/userProfile/userProfile";
+import Demo from "./Demo";
 
 const routes = [
   {
@@ -49,6 +50,15 @@ const routes = [
     element: (
       <PrivateRoute>
         <Index />
+      </PrivateRoute>
+    ),
+    // loader: <Loader />,
+  },
+  {
+    path: "/demo",
+    element: (
+      <PrivateRoute>
+        <Demo />
       </PrivateRoute>
     ),
     // loader: <Loader />,
