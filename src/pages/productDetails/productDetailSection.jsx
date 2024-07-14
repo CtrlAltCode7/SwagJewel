@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import {
   Box,
   Button,
@@ -26,10 +26,12 @@ export default function ProductDetailSection() {
   const token = localStorage.getItem("token");
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const [showCartMsg , setShowCartMsg] = useState(false);
-  
+  const [showCartMsg, setShowCartMsg] = useState(false);
+  const anchorRef = useRef(null);
+
+
   const handleAddToCart = () => {
-   setShowCartMsg(true);
+    setShowCartMsg(true);
   };
 
   return (
@@ -85,7 +87,7 @@ export default function ProductDetailSection() {
                 </Paper>
               </Grid>
             </Grid>
-          {showCartMsg && <CartMassage showCartMsg={showCartMsg} setShowCartMsg={setShowCartMsg} />}
+            {/* {showCartMsg && <CartMassage showCartMsg={showCartMsg} setShowCartMsg={setShowCartMsg} />} */}
             {/* Second half of the Third Portion (conditionally rendered based on screen size) */}
             {token ?
               <Grid
@@ -167,7 +169,7 @@ export default function ProductDetailSection() {
                     </Typography>
                   </Grid>
                   <Box>
-                    <Typography sx={{ marginLeft:"160px"}}>QTY</Typography>
+                    <Typography sx={{ marginLeft: "160px" }}>QTY</Typography>
                     <Box sx={{ display: "flex" }}>
                       <TextField
                         variant="outlined"
@@ -273,7 +275,7 @@ export default function ProductDetailSection() {
                       fontWeight: "bold",
                     }}
                   >
-                    <AutorenewIcon sx={{ color: "black"}} size ="small"/> Audio Refresher
+                    <AutorenewIcon sx={{ color: "black" }} size="small" /> Audio Refresher
                   </Button>
                   <Button
                     // variant="contained"
@@ -287,7 +289,7 @@ export default function ProductDetailSection() {
 
                     }}
                   >
-                    <FavoriteBorderIcon sx={{ color: "black"}} size ="small"/> Add to favorite
+                    <FavoriteBorderIcon sx={{ color: "black" }} size="small" /> Add to favorite
                   </Button>
                   <Button
                     variant="contained"
@@ -365,7 +367,10 @@ export default function ProductDetailSection() {
                     </Button>
                   </Paper>
                 </Grid>
+
               ))}
+            {showCartMsg && <CartMassage showCartMsg={showCartMsg} setShowCartMsg={setShowCartMsg} anchorEl={anchorRef.current}
+              placement="left" />}
           </Grid>
 
         </Grid>
